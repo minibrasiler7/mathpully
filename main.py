@@ -9,6 +9,9 @@ from flask_login import login_user, login_required
 from flask_login import current_user, UserMixin
 from flask_login import LoginManager
 
+import os
+
+port = int(os.environ.get("PORT", 5000))
 
 
 app = Flask(__name__)
@@ -120,4 +123,4 @@ def confirmation(username, token):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
