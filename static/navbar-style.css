@@ -1,0 +1,84 @@
+/* Couleurs des onglets */
+#nav-9VG1 { background-color: #FFB6C1; }
+#nav-9VG2 { background-color: #FFA500; }
+#nav-9VP { background-color: #FFFF00; }
+#nav-10VG1 { background-color: #00FF00; }
+#nav-10VG2 { background-color: #87CEFA; }
+#nav-10VP { background-color: #4169E1; }
+#nav-11VG1 { background-color: #EE82EE; }
+#nav-11VG2 { background-color: #FF69B4; }
+#nav-11VP { background-color: #DC143C; }
+
+/* Couleur de la barre de navigation */
+.navbar { background-color: #87CEFA; }
+
+/* Couleur des liens dans les menus déroulants */
+.dropdown-menu a { color: white; }
+
+/* Couleur de fond des menus déroulants */
+._9VG1menu { background-color: #FFB6C1; }
+._9VG2menu { background-color: #FFA500; }
+._9VPmenu { background-color: #159895; }
+._10VG1menu{ background-color: #00FF00; }
+._10VG2menu { background-color: #87CEFA; }
+._10VPmenu{ background-color: #4169E1; }
+._11VG1menu{ background-color: #EE82EE; }
+._11VG2menu { background-color: #FF69B4; }
+._11VPmenu { background-color: #DC143C; }
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+.user-menu a{
+    color: grey;
+}
+
+.user-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0 10px;
+  border-left: 1px solid #fff;
+}
+
+.user-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+  z-index: 1;
+}
+
+.user-menu:hover .user-dropdown {
+  display: block;
+}
+
+.user-dropdown a {
+  display: block;
+  color: grey;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.user-dropdown a:hover {
+  background-color: #bbb;
+}
+
