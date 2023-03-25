@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematicus</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Mathematicus</h1>
+    <h2>Connexion</h2>
+    <img src="static/logo_paco.png" alt="Dog image" class="dog-image">
+    <form action="{{ url_for('login') }}" method="post">
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+      <button type="submit">Se connecter</button>
+    </form>
+    <p>Pas encore inscrit ? <a href={{url_for('inscription')}}>Inscrivez-vous ici</a></p>
+  </div>
+</body>
+</html>
