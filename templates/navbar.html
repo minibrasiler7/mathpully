@@ -168,9 +168,11 @@
 
       <div class="user-menu">
         <a href="#" class="user-link">
-        <img src="path/to/user-image.png" alt="User Image" class="user-image">
+        <img src="static/images/{{user.avatar}}" alt="User Image" class="user-image">
        {{ user.username }}
         <i class="fas fa-chevron-down"></i>
+        <span class="points-nav">{{user.points}} points</span>
+
         </a>
       <div class="user-dropdown">
         <a href="#">Mon compte</a>

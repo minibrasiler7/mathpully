@@ -1,4 +1,3 @@
-from sqlalchemy import BLOB
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
@@ -32,7 +31,8 @@ class User(UserMixin, db.Model):
     token = db.Column(db.Integer, default=False, nullable=False)
     is_confirmed = db.Column(db.Boolean, default=False)
     personnalisation = db.Column(db.Boolean, default=False)
-    avatar = db.Column(BLOB, nullable=True)
+    avatar = db.Column(db.String(50), nullable = True)
+    points = db.Column(db.Integer, default=0)
 
     def is_active(self):
         """Return True if the user is active, else False."""
@@ -70,11 +70,20 @@ def dashboard():
      user = current_user
      return render_template('dashboard.html',user=current_user)
 
-@app.route('/personnalisation')
+@app.route('/personnalisation', methods=["GET","POST"])
 @login_required
 def personnalisation():
-     images =['avatar1.png', 'avatar2.png', 'avatar3.png']
-     return render_template('personnaliser-utilisateur.html', user=current_user, images = images)
+    if request.method == 'POST':
+        selected_avatar = request.form['avatar']
+        user = User.query.get(current_user.id)
+        print(selected_avatar)
+        user.avatar = selected_avatar
+        user.personnalisation = True
+        db.session.commit()
+        return render_template('dashboard.html', user=user)
+
+    images =['avatar1.png', 'avatar2.png', 'avatar3.png']
+    return render_template('personnaliser-utilisateur.html', user=current_user, images = images)
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():

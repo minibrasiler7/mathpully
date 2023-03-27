@@ -85,4 +85,8 @@ color: #007bff !important;
 .user-dropdown a:hover {
   background-color: #bbb;
 }
+.points-nav{
+    padding-left:20px;
+    margin-left:20px;
+}
 

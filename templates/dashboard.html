@@ -5,10 +5,25 @@
   <!-- lien vers les fichiers CSS de Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/navbar-style.css">
-  <link rel="stylesheet" href="static/avatar-style.css">
+  <link rel="stylesheet" href="static/dashboard-style.css">
 </head>
 <body>
   {% include 'navbar.html' %}
+  <section id="welcome">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center">
+        <h2 class="mb-4">Bienvenue sur notre site !</h2>
+        <p class="lead mb-4">Nous sommes heureux de vous accueillir ici.</p>
+        <button class="btn btn-primary btn-lg"><a href="#">Aller à la dernière section visité</a></button>
+      </div>
+      <div class="col-md-6">
+        <img src=static/images/{{user.avatar}} alt="Bienvenue" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  </section>
+
 
   <!-- lien vers les fichiers JS de Bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
