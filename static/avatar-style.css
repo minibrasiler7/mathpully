@@ -1,0 +1,49 @@
+.avatar {
+  width: 150px;
+  height: 150px;
+  transition: all 0.2s ease-in
+}
+
+/* Styles pour le titre "Choisir votre avatar" */
+h1 {
+  margin: 30px 0;
+  font-size: 2.5rem;
+}
+
+/* Styles pour les images */
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+  border: 4px solid #4caf50;
+}
+
+.avatar.selected {
+  border: 4px solid #4caf50;
+}
+
+/* Styles pour le bouton "Choisir" */
+.btn-choose {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.btn-choose:hover {
+  transform: scale(1.1);
+  background-color: #3e8e41;
+}

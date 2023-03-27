@@ -1,14 +1,12 @@
+from sqlalchemy import BLOB
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 import secrets
 from flask_login import login_user, login_required
 from flask_login import current_user, UserMixin
 from flask_login import LoginManager
-
+from flask_mail import Mail, Message
 import os
 
 port = int(os.environ.get("PORT", 5000))
@@ -17,6 +15,11 @@ port = int(os.environ.get("PORT", 5000))
 app = Flask(__name__)
 app.secret_key = 'jhbviug75765drtxzbiu'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['MAIL_SERVER']='smtp-relay.sendinblue.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'loic_strauch_19@msn.com'
+app.config['MAIL_PASSWORD'] = 'aPN85AhBSbWzxmY0'
 login_manager = LoginManager()
 login_manager.init_app(app)
 db = SQLAlchemy(app)
@@ -28,13 +31,15 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128), nullable=False)
     token = db.Column(db.Integer, default=False, nullable=False)
     is_confirmed = db.Column(db.Boolean, default=False)
+    personnalisation = db.Column(db.Boolean, default=False)
+    avatar = db.Column(BLOB, nullable=True)
 
     def is_active(self):
         """Return True if the user is active, else False."""
         return self.is_active
     @login_manager.user_loader
     def load_user(user_id):
-        return User.query.get(int(user_id))
+        return db.session.get(User,(int(user_id)))
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -49,9 +54,12 @@ def login():
     username = request.form['username']
     password = request.form['password']
     user = User.query.filter_by(username=username).first()
-    if user is not None and check_password_hash(user.password_hash, password):
+    if user is not None and check_password_hash(user.password_hash, password) and user.is_confirmed:
         login_user(user)
-        return redirect(url_for('dashboard'))
+        if user.personnalisation:
+            return redirect(url_for('dashboard'))
+        else:
+            return redirect(url_for('personnalisation', user=current_user))
     flash('Invalid username or password.')
     return redirect(url_for('index'))
 
@@ -61,6 +69,12 @@ def login():
 def dashboard():
      user = current_user
      return render_template('dashboard.html',user=current_user)
+
+@app.route('/personnalisation')
+@login_required
+def personnalisation():
+     images =['avatar1.png', 'avatar2.png', 'avatar3.png']
+     return render_template('personnaliser-utilisateur.html', user=current_user, images = images)
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -80,25 +94,19 @@ def inscription():
 @app.route('/verifier_mail/<email>')
 def verifier_mail(email):
     # Adresse e-mail de l'expéditeur et mot de passe
-    EMAIL_ADDRESS = "loicstrauch123@gmail.com"
-    EMAIL_PASSWORD = "vouelukgzkutyvji"
+
     # Adresse e-mail du destinataire
-    to_email = email
+
     user = User.query.filter_by(email=email).first()
     # Sujet et corps du message
+    mail = Mail(app)
     subject = 'Confirmation d\'inscription'
     body = f'Cliquez sur ce lien pour activer votre compte : http://127.0.0.1:5000/confirmation/{user.username}/{user.token}'
     # Créer un message multipart et ajouter le sujet et le corps du message
-    msg = MIMEMultipart()
-    msg['From'] = EMAIL_ADDRESS
-    msg['To'] = to_email
-    msg['Subject'] = subject
-    msg.attach(MIMEText(body, 'plain'))
-# Se connecter au serveur SMTP et envoyer le message
-    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-        smtp.starttls()
-        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        smtp.send_message(msg)
+
+    msg = Message('Votre confirmation', sender = 'loic_strauch_19@msn.com', recipients=[email])
+    msg.body=body
+    mail.send(msg)
     return render_template('verifiermail.html')
 
 @app.route('/confirmation/<username>/<token>')

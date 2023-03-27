@@ -12,6 +12,10 @@
 /* Couleur de la barre de navigation */
 .navbar { background-color: #87CEFA; }
 
+.navbar-brand {
+color: #007bff !important;
+}
+
 /* Couleur des liens dans les menus déroulants */
 .dropdown-menu a { color: white; }
 
@@ -19,7 +23,7 @@
 ._9VG1menu { background-color: #FFB6C1; }
 ._9VG2menu { background-color: #FFA500; }
 ._9VPmenu { background-color: #159895; }
-._10VG1menu{ background-color: #00FF00; }
+._10VG1menu{ background-color: #C7E8CA; }
 ._10VG2menu { background-color: #87CEFA; }
 ._10VPmenu{ background-color: #4169E1; }
 ._11VG1menu{ background-color: #EE82EE; }

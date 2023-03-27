@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Choisir votre avatar</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="static/avatar-style.css">
+  <style>
+    .avatar {
+      border-radius: 50%;
+      width: 100%;
+      height: auto;
+      border: 2px solid transparent;
+    }
+    .avatar:hover {
+      border-color: #28a745;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Choisir votre avatar</h1>
+  <form method="post" action="{{ url_for('personnalisation') }}">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <label>
+          <input type="radio" name="avatar" value="avatar1.png" class="d-none">
+          <img src="{{ url_for('static', filename='images/avatar1.png') }}" class="avatar">
+        </label>
+      </div>
+      <div class="col-md-4 mb-4">
+        <label>
+          <input type="radio" name="avatar" value="avatar2.png" class="d-none">
+          <img src="{{ url_for('static', filename='images/avatar2.png') }}" class="avatar">
+        </label>
+      </div>
+      <div class="col-md-4 mb-4">
+        <label>
+          <input type="radio" name="avatar" value="avatar3.png" class="d-none">
+          <img src="{{ url_for('static', filename='images/avatar3.png') }}" class="avatar">
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Choisir</button>
+  </form>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNSliN6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
