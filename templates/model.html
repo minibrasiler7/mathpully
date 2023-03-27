@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mathematicus</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/navbar-style.css">
+    <link rel="stylesheet" href="static/souschapitre.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <header>
+        <h1>{% block heading %} {% endblock %}</h1>
+    </header>
+    <nav>
+        <ul>
+            {% block subchapters %}
+            {% endblock %}
+        </ul>
+    </nav>
+    {% block exercises %}
+    {% endblock %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

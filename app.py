@@ -7,6 +7,8 @@ from flask_login import current_user, UserMixin
 from flask_login import LoginManager
 from flask_mail import Mail, Message
 import os
+import sujet
+import points
 
 port = int(os.environ.get("PORT", 5000))
 
@@ -84,6 +86,24 @@ def personnalisation():
 
     images =['avatar1.png', 'avatar2.png', 'avatar3.png']
     return render_template('personnaliser-utilisateur.html', user=current_user, images = images)
+
+
+@login_required
+@app.route('/chapitre')
+def chapitre():
+    nom_chapitre = request.args.get('nom_chapitre')
+    sujet_selectionne = getattr(sujet, f"_{nom_chapitre}")
+    dic_point=[]
+    for souschapitre in sujet_selectionne['points']:
+        souschapitre = souschapitre.replace(" ", "_")
+        souschapitre = souschapitre.replace("'", "_")
+        print(souschapitre)
+        dic_point.append(getattr(points, souschapitre))
+
+
+
+    # Code pour récupérer les données du chapitre correspondant à nom_chapitre depuis la base de données
+    return render_template(f"{nom_chapitre}.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user)
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():

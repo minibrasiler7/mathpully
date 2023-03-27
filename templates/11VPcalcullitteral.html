@@ -1,0 +1,51 @@
+{% extends "model.html" %}
+
+
+{% block heading %}
+    {{chapitre.chapitre}}
+{% endblock %}
+
+{% block subchapters %}
+    <h3>Les différents points abordés dans ce chapitre</h3>
+    {% for point in chapitre.points %}
+    <li><a href="#section_{{point}}">{{point}}</a></li>
+    {% endfor %}
+
+
+{% endblock %}
+
+{% block exercises %}
+<h3>Exercices</h3>
+<table>
+  {% for i in range(0, chapitre['exercices']|length, 8) %}
+    <tr>
+      {% for j in range(i, i+8) %}
+        {% if j < chapitre['exercices']|length %}
+          <td>{{ chapitre['exercices'][j] }}</td>
+        {% else %}
+          <td></td>
+        {% endif %}
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block content %}
+    <h1 class="mathjax">$$ a^2+2ab \sqrt{2} $$</h1>
+    <script type="text/javascript">
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$']]
+            }
+        };
+    </script>
+    {% for point in souschapitre %}
+    <section id="section_{{point.nom}}" class="section_chapitre">
+        <h2 class="section_chapitre_titre">{{point.nom}}</h2>
+        <p class="section_chapitre_body">{{point.body|safe}}</p>
+    </section>
+    {% endfor %}
+{% endblock %}
+
