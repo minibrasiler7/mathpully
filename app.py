@@ -138,6 +138,16 @@ def verifier_mail(email):
     mail.send(msg)
     return render_template('verifiermail.html')
 
+
+@app.route('/update_score', methods=['POST'])
+def update_score():
+    user = current_user
+    print("HEllo")
+    user.points += 10
+    db.session.commit()
+    return 'Score mis à jour'
+
+
 @app.route('/confirmation/<username>/<token>')
 def confirmation(username, token):
     # Vérifier si l'utilisateur existe dans la base de données et que le token est valide

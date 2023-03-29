@@ -2,6 +2,29 @@ Evaluer_une_expression_littérale = {
     "chapitres": ["_11VPcalcullitteral"],
     "nom": "Evaluer une expression littérale",
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
+    "exemple":"<span>$$ 3x^2+2x-15 $$</span><br><p>Si on évalue l'expression pour x=3 alors notre expression devient:</p><br><span>$$ 3\cdot 3^2+2 \cdot 3-15 = 18 $$</span><br>"
+              "<p> Si on évalue l'expression pour x=-2 notre expression devient: </p> <span>$$ 3\cdot (-2)^2+2 \cdot (-2)-15 = 18 $$</span><br> <p class='attention'>Attention à bien mettre en parenthèse la valeur que prends x si celui-ci est un nombre négatif! </p>",
+    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
+    "questions": [
+        {
+        "question": "Quelle est la capitale de la France ?",
+        "answer": "Paris",
+        "feedback": "Bravo, c'est la bonne réponse !",
+        "feedbackClass": "text-success"
+    },
+    {
+        "question": "En quelle année a eu lieu la Révolution française ?",
+        "answer": "1789",
+        "feedback": "Bravo, c'est la bonne réponse !",
+        "feedbackClass": "text-success"
+    },
+    {
+        "question": "Combien de planètes composent le système solaire ?",
+        "answer": "8",
+        "feedback": "Bravo, c'est la bonne réponse !",
+        "feedbackClass": "text-success"
+    }
+    ]
 }
 
 Réduction_de_polynômes = {

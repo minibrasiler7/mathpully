@@ -6,17 +6,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/navbar-style.css">
     <link rel="stylesheet" href="static/souschapitre.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <link rel="stylesheet" href="static/exercice_theorique.css">
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
 
+<script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 </head>
 <body>
     {% include 'navbar.html' %}
     <header>
-        <h1>{% block heading %} {% endblock %}</h1>
+        <h1 class="titre_chapitre">{% block heading %} {% endblock %}</h1>
     </header>
-    <nav>
-        <ul>
+    <nav class="nav_subchapters">
+        <ul class="ul_subchapters">
             {% block subchapters %}
             {% endblock %}
         </ul>
