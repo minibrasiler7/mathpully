@@ -1,0 +1,41 @@
+#tableau_exercices_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#tableau_exercices_section h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: black;
+}
+.table_exercice {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.tr_exercice:nth-child(even) {
+  background-color: #47B9FF;
+  color: white;
+}
+.td_exercice {
+  padding: 10px;
+  text-align: center;
+}
+.tr_exercice:nth-child(even) a {
+  color:white;
+}
+.td_exercice a {
+  color: #47B9FF;
+  text-decoration: none;
+}
+.td_exercice a:hover {
+  text-decoration: none;
+}

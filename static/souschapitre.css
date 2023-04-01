@@ -11,7 +11,7 @@
   margin-top: 30px;
   border: 2px solid #E5E5E5;
   padding: 20px;
-  background-color: #F9F9F9;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -22,106 +22,34 @@
   font-weight: bold;
   margin: 0 0 10px 0;
   padding: 0;
-  color: #444444;
+  color: black;
 }
 
 /* Style pour les corps des sections de chapitres */
 .section_chapitre_body {
   font-size: 16px;
   line-height: 1.5;
-  color: #666666;
+  color: black;
 }
 .attention {
-  background-color: #ffffcc; /* couleur de fond jaune pâle */
-  border: 2px solid #ffcccc; /* bordure rouge pâle de 2px */
+  background-color: #47B9FF;
+  color: white;/* couleur de fond jaune pâle */
+  border: 2px solid white; /* bordure rouge pâle de 2px */
   padding: 10px; /* espace intérieur de 10px */
   font-weight: bold; /* texte en gras */
   font-size: 1.2em; /* taille de police 1.2 fois plus grande que la taille normale */
   border-radius: 10px; /* coins de bordure arrondis de 10px */
 }
-/* Style du menu de navigation */
-/* Style du menu de navigation */
+
 nav.nav_subchapters {
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #f7f7f7; /* couleur de fond du menu */
+  background-color: white; /* couleur de fond du menu */
   border-radius: 10px; /* coins de bordure arrondis */
   padding: 10px; /* espace intérieur */
   margin-bottom: 20px; /* marge en bas pour aérer le contenu */
 }
 
-/* Style de la liste des sous-chapitres */
-ul.ul_subchapters {
-  list-style: none; /* supprime les puces de la liste */
-  padding-left: 0; /* supprime l'espacement de gauche */
-  justify-content: space-between; /* aligne les éléments avec un espace équivalent */
-  align-items: center; /* aligne les éléments verticalement */
-}
 
-/* Style des éléments de sous-chapitre */
-li.li_subchapters {
-  margin: 0 10px; /* marge horizontale entre les éléments */
-  transform: scale(1); /* remet l'échelle à 1 par défaut */
-  transition: transform 0.2s ease-in-out; /* ajoute une transition en douceur */
-}
-
-/* Effet de survol des éléments de sous-chapitre */
-li.li_subchapters:hover {
-  transform: scale(1.1); /* agrandit l'élément survolé */
-}
-
-/* Style des liens des sous-chapitres */
-a {
-  text-decoration: none; /* supprime la soulignement des liens */
-  color: #666; /* couleur des liens */
-  font-weight: bold; /* texte en gras */
-  font-size: 1.2em; /* taille de police légèrement plus grande */
-  transition: color 0.2s ease-in-out; /* ajoute une transition de couleur */
-  border-bottom: none; /* supprime la ligne en dessous du lien */
-}
-
-/* Effet de survol des liens des sous-chapitres */
-a:hover {
-  color: #f00; /* change la couleur du lien en rouge */
-  border-bottom: none; /* supprime la ligne en dessous du lien */
-}
-
-/* Supprime les puces de la liste */
-li::before {
-  display: none;
-}
-
-/* Style de la table */
-table.table_exercice {
-  margin-left:5%;
-  margin-right: 5%;
-  border-collapse: collapse; /* fusionne les bordures des cellules */
-  width: 90%; /* ajuste la largeur à 100% */
-}
-
-/* Style des lignes impaires */
-tr.tr_exercice:nth-child(odd) {
-  background-color: #f2f2f2; /* couleur de fond grise */
-}
-
-/* Style des cellules */
-td.td_exercice {
-  padding: 10px; /* espace intérieur de 10px */
-  border: 1px solid #ddd; /* bordure grise de 1px */
-}
-
-/* Style des liens des exercices */
-td.td_exercice a {
-  text-decoration: none; /* supprime la soulignement des liens */
-  color: #666; /* couleur des liens */
-  font-weight: bold; /* texte en gras */
-  font-size: 1.2em; /* taille de police légèrement plus grande */
-  transition: color 0.2s ease-in-out; /* ajoute une transition de couleur */
-}
-
-/* Effet de survol des liens des exercices */
-td.td_exercice a:hover {
-  color: #f00; /* change la couleur du lien en rouge */
-}
 
 

@@ -1,5 +1,5 @@
 const myDiv = document.querySelector('#my-div');
-const questions = myDiv.dataset.myVariable;
+const questions = JSON.parse(myDiv.dataset.myVariable.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e"));
 console.log(questions);
 
 
@@ -10,9 +10,25 @@ const questionText = document.getElementById("question-text");
 const answerInput = document.getElementById("answer-input");
 const feedbackText = document.getElementById("feedback-text");
 const scoreText = document.getElementById("score-text");
+const valider = document.getElementById("valider");
+var progressbar = document.querySelector('.progress-bar');
+
+
+valider.addEventListener('click', function() {
+  // Vérifier si la réponse est correcte
+  var reponse_correcte = true;
+  if (reponse_correcte) {
+    // Ajouter 33% à la largeur de la barre de progression
+    var width = parseInt(progressbar.style.width) || 0;
+    width += 33;
+    progressbar.style.width = width + '%';
+    progressbar.setAttribute('aria-valuenow', width);
+  }
+});
+
 
 function showQuestion() {
-    questionText.textContent = questions[currentQuestion].question;
+    questionText.innerHTML = questions[currentQuestion].question;
     answerInput.value = "";
     feedbackText.textContent = "";
     scoreText.textContent = `Score : ${score}`;
@@ -38,9 +54,12 @@ function checkAnswer() {
         if (currentQuestion === questions.length - 1) {
             questionText.textContent = "Vous avez terminé toutes les questions !";
             answerInput.style.display = "none";
+            valider.style.display = "none";
         } else {
             currentQuestion++;
             showQuestion();
+            MathJax.typeset()
+
         }
     }, 2000);
 }
@@ -48,6 +67,14 @@ answerInput.addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     checkAnswer();
+    var reponse_correcte = true;
+    if (reponse_correcte) {
+    // Ajouter 33% à la largeur de la barre de progression
+    var width = parseInt(progressbar.style.width) || 0;
+    width += 33;
+    progressbar.style.width = width + '%';
+    progressbar.setAttribute('aria-valuenow', width);
+  }
   }
 });
 

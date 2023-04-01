@@ -10,7 +10,10 @@
 #nav-11VP { background-color: #DC143C; }
 
 /* Couleur de la barre de navigation */
-.navbar { background-color: #87CEFA; }
+.navbar { background-color: #87CEFA;
+            position: fixed;
+            width: 100%;
+            z-index: 3;}
 
 .navbar-brand {
 color: #007bff !important;

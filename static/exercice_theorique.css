@@ -1,37 +1,35 @@
-#exercices {
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  text-align: center;
-  margin: 0 auto;
-  max-width: 500px;
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
-
-#question {
-  font-size: 24px;
-  font-weight: bold;
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.form-control {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+.btn-primary {
+    background-color: #47B9FF;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background-color: #3B9EE0;
+}
+.progress {
+  height: 20px;
   margin-bottom: 20px;
 }
 
-#reponse {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 20px;
+.progress-bar {
+  transition: width 0.5s ease;
 }
 
-#valider {
-  background-color: #36b03c;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-#feedback {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: bold;
-}

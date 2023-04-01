@@ -145,7 +145,7 @@ def update_score():
     print("HEllo")
     user.points += 10
     db.session.commit()
-    return 'Score mis à jour'
+    return user.points
 
 
 @app.route('/confirmation/<username>/<token>')

@@ -1,11 +1,11 @@
 #welcome {
-  background-color: #f9d6c9;
+  background-color: #f7df1e;
   padding: 100px 0;
 }
 
 #welcome h2 {
   font-size: 48px;
-  color: #ff6b6b;
+  color: #007bff;
   font-weight: bold;
 }
 
@@ -17,8 +17,8 @@
 #welcome button {
   margin-top: 30px;
   font-size: 24px;
-  background-color: #ff6b6b;
-  border-color: #ff6b6b;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 #welcome button:hover {
@@ -30,8 +30,14 @@
   border-radius: 50%;
   border: 10px solid #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  animation: rotate 5s linear infinite;
+  width: 300px; /* taille initiale */
+  height: 300px;
+  position: relative; /* position relative pour permettre la translation */
+  animation-name: zoomInAndTranslate; /* nom de l'animation */
+  animation-duration: 2s; /* durée de l'animation */
+  animation-fill-mode: forwards; /* conserve l'état final de l'animation */
 }
+
 a{
 text-decoration:none;
 color:white;
@@ -43,11 +49,11 @@ color:pink;
 }
 
 
-@keyframes rotate {
+@keyframes zoomInAndTranslate {
   from {
-    transform: rotate(0deg);
+    transform: scale(0.2) translate(-60px, -60px); /* taille et position initiales */
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(1) translate(200, 0); /* taille et position finales */
   }
 }

@@ -4,30 +4,39 @@
     {{chapitre.chapitre}}
 {% endblock %}
 
-{% block subchapters %}
-    <h3>Les différents points abordés dans ce chapitre</h3>
-    {% for point in chapitre.points %}
-    <li><a href="#section_{{point}}" class="li_subchapters">{{point}}</a></li>
-    {% endfor %}
+    {% block subchapters %}
+    <div>
+        <h3>Les différents points abordés dans ce chapitre</h3>
+        <ul class="list-group d-flex flex-row flex-wrap">
+            {% for point in chapitre.points %}
+            <li class="list-group-item">
+            <a href="#section_{{ point }}" class="li_subchapters">{{ point }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 
 
 {% endblock %}
 
 {% block exercises %}
-<h3 class="titre_exercice">Exercices</h3>
-<table class="table_exercice">
-  {% for i in range(0, chapitre['exercices']|length, 8) %}
-    <tr class="tr_exercice">
-      {% for j in range(i, i+8) %}
+<div id="tableau_exercices_section">
+    <h3 class="titre_exercice">Exercices</h3>
+    <table class="table_exercice">
+    {% for i in range(0, chapitre['exercices']|length, 8) %}
+        <tr class="tr_exercice">
+        {% for j in range(i, i+8) %}
         {% if j < chapitre['exercices']|length %}
           <td class="td_exercice"><a href="#">{{ chapitre['exercices'][j] }}</a></td>
         {% else %}
           <td></td>
         {% endif %}
-      {% endfor %}
-    </tr>
-  {% endfor %}
-</table>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</div>>
 
 {% endblock %}
 

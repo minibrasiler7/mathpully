@@ -7,22 +7,58 @@ Evaluer_une_expression_littérale = {
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": [
         {
-        "question": "Quelle est la capitale de la France ?",
-        "answer": "Paris",
+        "question": "Evalue l'expression pour x=4 : <span>$$ 2x^2-3x-15 $$</span>",
+        "answer": "5",
         "feedback": "Bravo, c'est la bonne réponse !",
         "feedbackClass": "text-success"
     },
     {
-        "question": "En quelle année a eu lieu la Révolution française ?",
-        "answer": "1789",
+        "question": "Evalue l'expression pour x=-3 : <span>$$ x^2+6x-20 $$</span>",
+        "answer": "-29",
         "feedback": "Bravo, c'est la bonne réponse !",
         "feedbackClass": "text-success"
     },
     {
-        "question": "Combien de planètes composent le système solaire ?",
-        "answer": "8",
+        "question": "Evalue l'expression pour x=2 : <span>$$ -2x^2-3x+10 $$</span>",
+        "answer": "4",
         "feedback": "Bravo, c'est la bonne réponse !",
         "feedbackClass": "text-success"
+    },
+        {
+        "question": "Evalue l'expression pour x=7 : <span>$$ 3x-4 $$</span>",
+        "answer": "17",
+        "feedback": "Bravo, c'est la bonne réponse !",
+        "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=3 : <span>$$ 2x+5 $$</span>",
+    "answer": "11",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=2 : <span>$$ x^3-4x^2+5x-6 $$</span>",
+    "answer": "0",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=5 : <span>$$ x^2-4x-7 $$</span>",
+    "answer": "3",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=6 : <span>$$ 3x+2 $$</span>",
+    "answer": "20",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=1 : <span>$$ x^2+x-5 $$</span>",
+    "answer": "-3",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
     }
     ]
 }
