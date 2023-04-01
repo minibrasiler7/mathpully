@@ -6,29 +6,29 @@ Evaluer_une_expression_littérale = {
               "<p> Si on évalue l'expression pour x=-2 notre expression devient: </p> <span>$$ 3\cdot (-2)^2+2 \cdot (-2)-15 = 18 $$</span><br> <p class='attention'>Attention à bien mettre en parenthèse la valeur que prends x si celui-ci est un nombre négatif! </p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": [
-        {
-        "question": "Evalue l'expression pour x=4 : <span>$$ 2x^2-3x-15 $$</span>",
-        "answer": "5",
-        "feedback": "Bravo, c'est la bonne réponse !",
-        "feedbackClass": "text-success"
+    {
+    "question": "Evalue l'expression pour x=4 : <span>$$ 2x^2-3x-15 $$</span>",
+    "answer": "5",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
     },
     {
-        "question": "Evalue l'expression pour x=-3 : <span>$$ x^2+6x-20 $$</span>",
-        "answer": "-29",
-        "feedback": "Bravo, c'est la bonne réponse !",
-        "feedbackClass": "text-success"
+    "question": "Evalue l'expression pour x=-3 : <span>$$ x^2+6x-20 $$</span>",
+    "answer": "-29",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
     },
     {
-        "question": "Evalue l'expression pour x=2 : <span>$$ -2x^2-3x+10 $$</span>",
-        "answer": "4",
-        "feedback": "Bravo, c'est la bonne réponse !",
-        "feedbackClass": "text-success"
+    "question": "Evalue l'expression pour x=2 : <span>$$ -2x^2-3x+10 $$</span>",
+    "answer": "4",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
     },
-        {
-        "question": "Evalue l'expression pour x=7 : <span>$$ 3x-4 $$</span>",
-        "answer": "17",
-        "feedback": "Bravo, c'est la bonne réponse !",
-        "feedbackClass": "text-success"
+    {
+    "question": "Evalue l'expression pour x=7 : <span>$$ 3x-4 $$</span>",
+    "answer": "17",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
     },
     {
     "question": "Evalue l'expression pour x=3 : <span>$$ 2x+5 $$</span>",
@@ -59,14 +59,111 @@ Evaluer_une_expression_littérale = {
     "answer": "-3",
     "feedback": "Bravo, c'est la bonne réponse !",
     "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=1 : <span>$$ 2x+5 $$</span>",
+    "answer": "7",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=3 : <span>$$ 4x-7 $$</span>",
+    "answer": "5",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=0 : <span>$$ 3x^2-2x+1 $$</span>",
+    "answer": "1",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
     }
+
     ]
 }
 
 Réduction_de_polynômes = {
     "chapitres": ["_11VPcalcullitteral"],
     "nom": "Réduction de polynômes",
-    "body": "Réduire un polynôme signifie que l’on va mettre ensemble les monômes avec la même partie littérale. Avant de réduire un polynôme, il faut s’assurer que l’on a bien effectué toutes les opérations de puissances, racines, multiplications et divisions.<br>1ère étape : on sépare le polynôme en ses monômes. Dès que l’on voit un signe d’addition ou de soustraction on place une séparation avant ce dernier.<br>2ème étape : on reconnaît les monômes qui ont la même partie littérale. 3ème étape : on les additionne entre eux",
+    "body": "Réduire un polynôme signifie que l’on va mettre ensemble les monômes avec la même partie littérale. Avant de réduire un polynôme, il faut s’assurer que l’on a bien effectué toutes les opérations de puissances, racines, multiplications et divisions.<br> <strong>1ère étape </strong> <br> On sépare le polynôme en ses monômes. Dès que l’on voit un signe d’addition ou de soustraction on place une séparation avant ce dernier.<br><strong>2ème étape </strong> <br> On reconnaît les monômes qui ont la même partie littérale. <br><strong>3ème étape</strong> <br> On les additionne entre eux pour cela on fait la somme des coefficients et on réécrit la partie littérale sans la modifier",
+    "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \$ x^2 \$ ensemble"
+              "<p> Si on évalue l'expression pour x=-2 notre expression devient: </p> <span>$$ 3\cdot (-2)^2+2 \cdot (-2)-15 = 18 $$</span><br> <p class='attention'>Attention à bien mettre en parenthèse la valeur que prends x si celui-ci est un nombre négatif! </p>",
+    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
+    "questions": [
+    {
+    "question": "Evalue l'expression pour x=4 : <span>$$ 2x^2-3x-15 $$</span>",
+    "answer": "5",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=-3 : <span>$$ x^2+6x-20 $$</span>",
+    "answer": "-29",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=2 : <span>$$ -2x^2-3x+10 $$</span>",
+    "answer": "4",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=7 : <span>$$ 3x-4 $$</span>",
+    "answer": "17",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=3 : <span>$$ 2x+5 $$</span>",
+    "answer": "11",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=2 : <span>$$ x^3-4x^2+5x-6 $$</span>",
+    "answer": "0",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=5 : <span>$$ x^2-4x-7 $$</span>",
+    "answer": "3",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=6 : <span>$$ 3x+2 $$</span>",
+    "answer": "20",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=1 : <span>$$ x^2+x-5 $$</span>",
+    "answer": "-3",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=1 : <span>$$ 2x+5 $$</span>",
+    "answer": "7",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=3 : <span>$$ 4x-7 $$</span>",
+    "answer": "5",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    },
+    {
+    "question": "Evalue l'expression pour x=0 : <span>$$ 3x^2-2x+1 $$</span>",
+    "answer": "1",
+    "feedback": "Bravo, c'est la bonne réponse !",
+    "feedbackClass": "text-success"
+    }
+
+    ]
 }
 
 Ordonner_un_polynôme = {

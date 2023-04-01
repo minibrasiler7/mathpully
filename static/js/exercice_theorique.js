@@ -3,7 +3,8 @@ const questions = JSON.parse(myDiv.dataset.myVariable.replaceAll("'", '"').repla
 console.log(questions);
 
 
-let currentQuestion = 0;
+let currentQuestion;
+let nombre_questions = 0;
 let score = 0;
 
 const questionText = document.getElementById("question-text");
@@ -20,7 +21,7 @@ valider.addEventListener('click', function() {
   if (reponse_correcte) {
     // Ajouter 33% à la largeur de la barre de progression
     var width = parseInt(progressbar.style.width) || 0;
-    width += 33;
+    width += 25;
     progressbar.style.width = width + '%';
     progressbar.setAttribute('aria-valuenow', width);
   }
@@ -28,19 +29,28 @@ valider.addEventListener('click', function() {
 
 
 function showQuestion() {
-    questionText.innerHTML = questions[currentQuestion].question;
+    currentQuestion = selectionSansRemise(questions);
+    questionText.innerHTML = currentQuestion.question;
     answerInput.value = "";
     feedbackText.textContent = "";
     scoreText.textContent = `Score : ${score}`;
 }
 
+function selectionSansRemise(tableau) {
+  if (tableau.length === 0) {
+    return null; // retourne null si le tableau est vide
+  }
+  let index = Math.floor(Math.random() * tableau.length);
+  let element = tableau.splice(index, 1)[0]; // retire l'élément sélectionné du tableau
+  return element;
+}
 
 function checkAnswer() {
     const userAnswer = answerInput.value.toLowerCase();
-    const correctAnswer = questions[currentQuestion].answer.toLowerCase();
+    const correctAnswer = currentQuestion.answer.toLowerCase();
     if (userAnswer === correctAnswer) {
-        feedbackText.textContent = questions[currentQuestion].feedback;
-        feedbackText.classList.add(questions[currentQuestion].feedbackClass);
+        feedbackText.textContent = currentQuestion.feedback;
+        feedbackText.classList.add(currentQuestion.feedbackClass);
         score += 10;
         updateScore();
 
@@ -50,13 +60,14 @@ function checkAnswer() {
     }
     setTimeout(() => {
         feedbackText.textContent = "";
-        feedbackText.classList.remove(questions[currentQuestion].feedbackClass, "text-danger");
-        if (currentQuestion === questions.length - 1) {
+        feedbackText.classList.remove(currentQuestion.feedbackClass, "text-danger");
+        if (nombre_questions === 3) {
             questionText.textContent = "Vous avez terminé toutes les questions !";
+             scoreText.textContent = `Score : ${score}`;
             answerInput.style.display = "none";
             valider.style.display = "none";
         } else {
-            currentQuestion++;
+            nombre_questions++;
             showQuestion();
             MathJax.typeset()
 
@@ -69,9 +80,9 @@ answerInput.addEventListener('keyup', function(event) {
     checkAnswer();
     var reponse_correcte = true;
     if (reponse_correcte) {
-    // Ajouter 33% à la largeur de la barre de progression
+    // Ajouter 25% à la largeur de la barre de progression
     var width = parseInt(progressbar.style.width) || 0;
-    width += 33;
+    width += 25;
     progressbar.style.width = width + '%';
     progressbar.setAttribute('aria-valuenow', width);
   }
