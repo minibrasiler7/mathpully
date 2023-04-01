@@ -47,8 +47,8 @@ function selectionSansRemise(tableau) {
 
 function checkAnswer() {
     const userAnswer = answerInput.value.toLowerCase();
-    const correctAnswer = currentQuestion.answer.toLowerCase();
-    if (userAnswer === correctAnswer) {
+    const correctAnswer = currentQuestion.answer;
+    if (correctAnswer.includes(userAnswer)) {
         feedbackText.textContent = currentQuestion.feedback;
         feedbackText.classList.add(currentQuestion.feedbackClass);
         score += 10;
