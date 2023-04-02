@@ -1,107 +1,90 @@
-const myDiv = document.querySelector('#my-div');
-const questions = JSON.parse(myDiv.dataset.myVariable.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e"));
-console.log(questions);
 
+document.addEventListener('DOMContentLoaded', function () {
+class Exercices {
 
-let currentQuestion;
-let nombre_questions = 0;
-let score = 0;
-
-const questionText = document.getElementById("question-text");
-const answerInput = document.getElementById("answer-input");
-const feedbackText = document.getElementById("feedback-text");
-const scoreText = document.getElementById("score-text");
-const valider = document.getElementById("valider");
-var progressbar = document.querySelector('.progress-bar');
-
-
-valider.addEventListener('click', function() {
-  // Vérifier si la réponse est correcte
-  var reponse_correcte = true;
-  if (reponse_correcte) {
-    // Ajouter 33% à la largeur de la barre de progression
-    var width = parseInt(progressbar.style.width) || 0;
-    width += 25;
-    progressbar.style.width = width + '%';
-    progressbar.setAttribute('aria-valuenow', width);
-  }
+  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html) {
+    this.questions = questions;
+    this.index_question = 0;
+    this.currentQuestion = this.questions[this.index_question]
+    this.donnee_problem_html = donnee_problem_html;
+    this.input_html = input_html;
+    this.feedback_html = feedback_html;
+    this.score_html = score_html;
+    this.valider_html = valider_html;
+    this.progress_html = progress_html;
+    this.valider_html.addEventListener('click', () => this.checkAnswer());
+    this.valider_html.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        this.checkAnswer();
+    }
 });
+  }
 
+  showQuestion() {
+      this.donnee_problem_html.innerHTML = this.currentQuestion.question;
+      this.input_html.value = "";
+      this.feedback_html.textContent = "";
+      this.score_html.textContent = `Score : ${this.index_question * 10}`;
 
-function showQuestion() {
-    currentQuestion = selectionSansRemise(questions);
-    questionText.innerHTML = currentQuestion.question;
-    answerInput.value = "";
-    feedbackText.textContent = "";
-    scoreText.textContent = `Score : ${score}`;
+  }
+  checkAnswer(){
+      var userAnswer =  this.input_html.value.toLowerCase();
+      const correctAnswer = this.currentQuestion.answer;
+      if (correctAnswer.includes(userAnswer)) {
+        this.feedback_html.textContent = this.currentQuestion.feedback;
+        this.feedback_html.classList.add(this.currentQuestion.feedbackClass);
+        this.index_question++;
+        this.updateScore();
+        this.currentQuestion = this.questions[this.index_question]
+
+        if (this.index_question === 4) {
+          this.donnee_problem_html.textContent = "Vous avez terminé toutes les questions !";
+          this.input_html.style.display = "none";
+          this.valider_html.style.display = "none";
+        } else {
+          this.showQuestion();
+        }
+      } else {
+        this.feedback_html.textContent = "Dommage, ce n'est pas la bonne réponse. Veuillez réessayer";
+        this.feedback_html.classList.add("text-danger");
+        setTimeout(() => {this.feedback_html.textContent = ""; this.feedback_html.classList.remove("text-danger");}, 1000);
+      }
+  }
+  updateScore(){
+      this.score_html.textContent = `Score : ${this.index_question * 10}`;
+      var width = parseInt(this.progress_html.style.width) || 0;
+      width += 25;
+      this.progress_html.style.width = width + '%';
+      this.progress_html.setAttribute('aria-valuenow', width);
+  }
+
 }
 
 function selectionSansRemise(tableau) {
-  if (tableau.length === 0) {
-    return null; // retourne null si le tableau est vide
-  }
-  let index = Math.floor(Math.random() * tableau.length);
-  let element = tableau.splice(index, 1)[0]; // retire l'élément sélectionné du tableau
-  return element;
-}
-
-function checkAnswer() {
-    const userAnswer = answerInput.value.toLowerCase();
-    const correctAnswer = currentQuestion.answer;
-    if (correctAnswer.includes(userAnswer)) {
-        feedbackText.textContent = currentQuestion.feedback;
-        feedbackText.classList.add(currentQuestion.feedbackClass);
-        score += 10;
-        updateScore();
-
-    } else {
-        feedbackText.textContent = "Dommage, ce n'est pas la bonne réponse.";
-        feedbackText.classList.add("text-danger");
+    questions = []
+    for (i=0; i<4; i++) {
+      let index = Math.floor(Math.random() * tableau.length);
+      let element = tableau.splice(index, 1)[0];
+      questions.push(element);
     }
-    setTimeout(() => {
-        feedbackText.textContent = "";
-        feedbackText.classList.remove(currentQuestion.feedbackClass, "text-danger");
-        if (nombre_questions === 3) {
-            questionText.textContent = "Vous avez terminé toutes les questions !";
-             scoreText.textContent = `Score : ${score}`;
-            answerInput.style.display = "none";
-            valider.style.display = "none";
-        } else {
-            nombre_questions++;
-            showQuestion();
-            MathJax.typeset()
+    return questions
+    }
 
-        }
-    }, 2000);
-}
-answerInput.addEventListener('keyup', function(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    checkAnswer();
-    var reponse_correcte = true;
-    if (reponse_correcte) {
-    // Ajouter 25% à la largeur de la barre de progression
-    var width = parseInt(progressbar.style.width) || 0;
-    width += 25;
-    progressbar.style.width = width + '%';
-    progressbar.setAttribute('aria-valuenow', width);
-  }
-  }
+  list_objet = [];
+  const exercicesInteractifs = document.querySelectorAll('.exercice-interactif');
+  exercicesInteractifs.forEach((exerciceInteractif) => {
+    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e"));
+    const questionText = exerciceInteractif.querySelector('.question-text');
+    const answerInput = exerciceInteractif.querySelector('.answer-input');
+    const feedbackText = exerciceInteractif.querySelector('.feedback-text');
+    const scoreText = exerciceInteractif.querySelector('.score-text');
+    const valider = exerciceInteractif.querySelector('.valider');
+    const progressbar = exerciceInteractif.querySelector('.progress-bar');
+    choose_question = selectionSansRemise(questions)
+    var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar)
+    exercice.showQuestion()
+    list_objet.push(exercice)
+
+  });
 });
-
-function updateScore() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      // Mettre à jour l'affichage du score de l'utilisateur
-      document.getElementById("score").innerHTML = "Score: " + this.responseText;
-    }
-  };
-  xhttp.open("POST", "/update_score", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send();
-}
-
-
-document.querySelector("#valider").addEventListener("click", checkAnswer);
-showQuestion();
