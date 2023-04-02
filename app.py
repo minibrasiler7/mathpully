@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import secrets
 from flask_login import login_user, login_required
@@ -142,10 +142,16 @@ def verifier_mail(email):
 @app.route('/update_score', methods=['POST'])
 def update_score():
     user = current_user
-    print("HEllo")
     user.points += 10
     db.session.commit()
-    return user.points
+    response = {
+        'message': 'Score updated successfully',
+        'new_score': user.points  # Remplacez cette valeur par le nouveau score de l'utilisateur.
+    }
+
+    # Utilisez jsonify pour renvoyer la réponse JSON.
+    return jsonify(response)
+
 
 
 @app.route('/confirmation/<username>/<token>')

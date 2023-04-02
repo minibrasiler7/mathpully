@@ -1,5 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
+const pointsUtilisateurNav = document.getElementById('points_utilisateurs_nav');
+
 class Exercices {
 
   constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html) {
@@ -13,7 +15,7 @@ class Exercices {
     this.valider_html = valider_html;
     this.progress_html = progress_html;
     this.valider_html.addEventListener('click', () => this.checkAnswer());
-    this.valider_html.addEventListener('keyup', (event) => {
+    this.input_html.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
         this.checkAnswer();
@@ -26,6 +28,7 @@ class Exercices {
       this.input_html.value = "";
       this.feedback_html.textContent = "";
       this.score_html.textContent = `Score : ${this.index_question * 10}`;
+      this.updateMathJax();
 
   }
   checkAnswer(){
@@ -36,6 +39,7 @@ class Exercices {
         this.feedback_html.classList.add(this.currentQuestion.feedbackClass);
         this.index_question++;
         this.updateScore();
+        this.upScore();
         this.currentQuestion = this.questions[this.index_question]
 
         if (this.index_question === 4) {
@@ -58,6 +62,42 @@ class Exercices {
       this.progress_html.style.width = width + '%';
       this.progress_html.setAttribute('aria-valuenow', width);
   }
+  upScore() {
+  fetch('/update_score', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      score: 10
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Score updated:', data);
+    const pointsUtilisateursNav = document.getElementById('points_utilisateurs_nav');
+    // Met à jour le nombre de points de l'utilisateur dans la balise HTML
+    const currentScore = parseInt(pointsUtilisateurNav.textContent, 10);
+    pointsUtilisateurNav.textContent = `${currentScore + 10} points`;
+    pointsUtilisateursNav.classList.add('blink-green');
+
+      // Supprimez la classe 'blink-green' une fois l'animation terminée.
+      setTimeout(() => {
+        pointsUtilisateursNav.classList.remove('blink-green');
+      }, 1500); // La durée totale de l'animation est de 0.5s * 3 = 1.5s (1500ms).
+    })
+
+
+  .catch((error) => {
+    console.error('Error updating score:', error);
+  });
+}
+  updateMathJax() {
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+}
+
 
 }
 
