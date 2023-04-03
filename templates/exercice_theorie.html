@@ -6,6 +6,12 @@
                 <div class="card-body" >
                     <div class="question-text"></div>
                 </div>
+                <div class="formattage_user">
+                    {% for message in point.message_aide %}
+                        <p> {{message}}</p>
+                    {% endfor %}
+                </div>
+
             </div>
         </div>
         <div class="col-12 col-lg-6">
@@ -19,7 +25,7 @@
                     <button class="btn btn-primary mt-2 valider" type="submit" name="action">Valider</button>
                     <div class="score-text"></div>
                     <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>

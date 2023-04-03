@@ -46,5 +46,11 @@
 .blink-green {
   animation: blink-green 0.5s 3;
 }
+.formattage_user{
+    color: #47B9FF;
+    margin-left: 10px;
+
+
+}
 
 

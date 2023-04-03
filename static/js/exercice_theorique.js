@@ -22,7 +22,6 @@ class Exercices {
     }
 });
   }
-
   showQuestion() {
       this.donnee_problem_html.innerHTML = this.currentQuestion.question;
       this.input_html.value = "";
@@ -31,9 +30,40 @@ class Exercices {
       this.updateMathJax();
 
   }
+  transforme_fraction_to_latex(userAnswer){
+    const fractionRegex = /\((\d+)\/(\d+)\)/g;
+    return userAnswer.replace(fractionRegex, '\\frac{$1}{$2}');
+  }
+  transforme_puissance_to_latex(userAnswer){
+    const regex = /\^([2-9])/g;
+    // Remplace chaque occurrence de la regex par l'expression LaTeX correspondante
+    const resultat = userAnswer.replace(regex, "^{$1}");
+    return resultat;
+  }
+  enlever_espace(userAnswer){
+    userAnswer = userAnswer.replace(/\s/g, "")
+    return userAnswer
+  }
   checkAnswer(){
       var userAnswer =  this.input_html.value.toLowerCase();
+      if (this.currentQuestion.methods.length !== 0){
+      for (let i = 0; i < this.currentQuestion.methods.length; i++) {
+        if(this.currentQuestion.methods[i] == "enlever_espace"){
+            userAnswer = this.enlever_espace(userAnswer)
+        }
+        if(this.currentQuestion.methods[i] == "transforme_fraction_to_latex"){
+            userAnswer = this.transforme_fraction_to_latex(userAnswer)
+
+        }
+        if(this.currentQuestion.methods[i] == "transforme_puissance_to_latex"){
+
+            userAnswer = this.transforme_puissance_to_latex(userAnswer)
+
+        }
+
+      }}
       const correctAnswer = this.currentQuestion.answer;
+      console.log(correctAnswer)
       if (correctAnswer.includes(userAnswer)) {
         this.feedback_html.textContent = this.currentQuestion.feedback;
         this.feedback_html.classList.add(this.currentQuestion.feedbackClass);
@@ -86,18 +116,16 @@ class Exercices {
         pointsUtilisateursNav.classList.remove('blink-green');
       }, 1500); // La durée totale de l'animation est de 0.5s * 3 = 1.5s (1500ms).
     })
-
-
   .catch((error) => {
     console.error('Error updating score:', error);
   });
 }
+
   updateMathJax() {
   if (window.MathJax) {
     MathJax.typesetPromise();
   }
 }
-
 
 }
 

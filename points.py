@@ -5,81 +5,92 @@ Evaluer_une_expression_littérale = {
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
     "exemple":"<span>$$ 3x^2+2x-15 $$</span><br><p>Si on évalue l'expression pour x=3 alors notre expression devient:</p><br><span>$$ 3\cdot 3^2+2 \cdot 3-15 = 18 $$</span><br>"
               "<p> Si on évalue l'expression pour x=-2 notre expression devient: </p> <span>$$ 3\cdot (-2)^2+2 \cdot (-2)-15 = 18 $$</span><br> <p class='attention'>Attention à bien mettre en parenthèse la valeur que prends x si celui-ci est un nombre négatif! </p>",
-    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
+    "message_aide":[],
     "questions": [
     {
     "question": "Evalue l'expression pour x=4 : <span>$$ 2x^2-3x-15 $$</span>",
     "answer": ["5"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=-3 : <span>$$ x^2+6x-20 $$</span>",
     "answer": ["-29"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=2 : <span>$$ -2x^2-3x+10 $$</span>",
     "answer": ["4"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=7 : <span>$$ 3x-4 $$</span>",
     "answer": ["17"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=3 : <span>$$ 2x+5 $$</span>",
     "answer": ["11"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=2 : <span>$$ x^3-4x^2+5x-6 $$</span>",
     "answer": ["0"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=5 : <span>$$ x^2-4x-7 $$</span>",
     "answer": ["3"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=6 : <span>$$ 3x+2 $$</span>",
     "answer": ["20"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=1 : <span>$$ x^2+x-5 $$</span>",
     "answer": ["-3"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=1 : <span>$$ 2x+5 $$</span>",
     "answer": ["7"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=3 : <span>$$ 4x-7 $$</span>",
     "answer": ["5"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     },
     {
     "question": "Evalue l'expression pour x=0 : <span>$$ 3x^2-2x+1 $$</span>",
     "answer": ["1"],
     "feedback": "Bravo, c'est la bonne réponse !",
-    "feedbackClass": "text-success"
+    "feedbackClass": "text-success",
+    "methods": ["enlever_espace"]
     }
-
     ]
 }
 
@@ -89,56 +100,68 @@ Réduction_de_polynômes = {
     "nom": "Réduction de polynômes",
     "body": "Réduire un polynôme signifie que l’on va mettre ensemble les monômes avec la même partie littérale. Avant de réduire un polynôme, il faut s’assurer que l’on a bien effectué toutes les opérations de puissances, racines, multiplications et divisions.<br> <strong>1ère étape </strong> <br> On sépare le polynôme en ses monômes. Dès que l’on voit un signe d’addition ou de soustraction on place une séparation avant ce dernier.<br><strong>2ème étape </strong> <br> On reconnaît les monômes qui ont la même partie littérale. On réorganise le polynôme afin de mettre ensemble les mônomes qui ont les mêmes parties littérales. <br><strong>3ème étape</strong> <br> On les additionne entre eux pour cela on fait la somme des coefficients et on réécrit la partie littérale sans la modifier",
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
-    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
+    "message_aide":[],
     "questions": [
     {'question': 'Réduis le polynôme suivant <span>$$ 10x^3 + 10x^3 + 8x^3 + 12x + 8x + 3x^3 + 12 + 11 + 4x^2 $$</span>',
      'answer': ['31x^3+4x^2+20x+23', '31x^3+4x^2+23+20x', '31x^3+20x+4x^2+23', '31x^3+20x+23+4x^2', '31x^3+23+4x^2+20x', '31x^3+23+20x+4x^2', '4x^2+31x^3+20x+23', '4x^2+31x^3+23+20x', '4x^2+20x+31x^3+23', '4x^2+20x+23+31x^3', '4x^2+23+31x^3+20x', '4x^2+23+20x+31x^3', '20x+31x^3+4x^2+23', '20x+31x^3+23+4x^2', '20x+4x^2+31x^3+23', '20x+4x^2+23+31x^3', '20x+23+31x^3+4x^2', '20x+23+4x^2+31x^3', '23+31x^3+4x^2+20x', '23+31x^3+20x+4x^2', '23+4x^2+31x^3+20x', '23+4x^2+20x+31x^3', '23+20x+31x^3+4x^2', '23+20x+4x^2+31x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 2x + 8x^3 + 2x + 1x^2 + 8x + 11x + 10 + 11 $$</span>',
      'answer': ['8x^3+1x^2+23x+21', '8x^3+1x^2+21+23x', '8x^3+23x+1x^2+21', '8x^3+23x+21+1x^2', '8x^3+21+1x^2+23x', '8x^3+21+23x+1x^2', '1x^2+8x^3+23x+21', '1x^2+8x^3+21+23x', '1x^2+23x+8x^3+21', '1x^2+23x+21+8x^3', '1x^2+21+8x^3+23x', '1x^2+21+23x+8x^3', '23x+8x^3+1x^2+21', '23x+8x^3+21+1x^2', '23x+1x^2+8x^3+21', '23x+1x^2+21+8x^3', '23x+21+8x^3+1x^2', '23x+21+1x^2+8x^3', '21+8x^3+1x^2+23x', '21+8x^3+23x+1x^2', '21+1x^2+8x^3+23x', '21+1x^2+23x+8x^3', '21+23x+8x^3+1x^2', '21+23x+1x^2+8x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 6x^3 - 10x - 11x^2 - 9x^3 - 6x^2 - 8x^3 - 7x - 7x - 12x^2 $$</span>',
      'answer': ['-11x^3-29x^2-24x', '-11x^3-24x-29x^2', '-29x^2-11x^3-24x', '-29x^2-24x-11x^3', '-24x-11x^3-29x^2', '-24x-29x^2-11x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 11x^2 - 7 - 2 - 6x - 2x^3 - 7x - 9x^3 $$</span>',
      'answer': ['-11x^3+11x^2-13x-9', '-11x^3+11x^2-9-13x', '-11x^3-13x+11x^2-9', '-11x^3-13x-9+11x^2', '-11x^3-9+11x^2-13x', '-11x^3-9-13x+11x^2', '11x^2-11x^3-13x-9', '11x^2-11x^3-9-13x', '11x^2-13x-11x^3-9', '11x^2-13x-9-11x^3', '11x^2-9-11x^3-13x', '11x^2-9-13x-11x^3', '-13x-11x^3+11x^2-9', '-13x-11x^3-9+11x^2', '-13x+11x^2-11x^3-9', '-13x+11x^2-9-11x^3', '-13x-9-11x^3+11x^2', '-13x-9+11x^2-11x^3', '-9-11x^3+11x^2-13x', '-9-11x^3-13x+11x^2', '-9+11x^2-11x^3-13x', '-9+11x^2-13x-11x^3', '-9-13x-11x^3+11x^2', '-9-13x+11x^2-11x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 + 6 + 2x + 8x^2 + 6 + 8x^2 + 8 + 7 $$</span>',
      'answer': ['2x^3+16x^2+2x+27', '2x^3+16x^2+27+2x', '2x^3+2x+16x^2+27', '2x^3+2x+27+16x^2', '2x^3+27+16x^2+2x', '2x^3+27+2x+16x^2', '16x^2+2x^3+2x+27', '16x^2+2x^3+27+2x', '16x^2+2x+2x^3+27', '16x^2+2x+27+2x^3', '16x^2+27+2x^3+2x', '16x^2+27+2x+2x^3', '2x+2x^3+16x^2+27', '2x+2x^3+27+16x^2', '2x+16x^2+2x^3+27', '2x+16x^2+27+2x^3', '2x+27+2x^3+16x^2', '2x+27+16x^2+2x^3', '27+2x^3+16x^2+2x', '27+2x^3+2x+16x^2', '27+16x^2+2x^3+2x', '27+16x^2+2x+2x^3', '27+2x+2x^3+16x^2', '27+2x+16x^2+2x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 4x - 8x^3 - 10 - 9x^3 - 1x - 8x - 4x^3 $$</span>',
      'answer': ['-21x^3-5x-10', '-21x^3-10-5x', '-5x-21x^3-10', '-5x-10-21x^3', '-10-21x^3-5x', '-10-5x-21x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 10x - 3x^2 - 2x^2 - 11 - 2x^2 - 3x^2 - 6x - 12 - 5x^2 $$</span>',
      'answer': ['-15x^2+4x-23', '-15x^2-23+4x', '4x-15x^2-23', '4x-23-15x^2', '-23-15x^2+4x', '-23+4x-15x^2'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 - 10x - 7 - 8x^2 - 12x^3 - 7x - 4x $$</span>',
      'answer': ['-10x^3-8x^2-21x-7', '-10x^3-8x^2-7-21x', '-10x^3-21x-8x^2-7', '-10x^3-21x-7-8x^2', '-10x^3-7-8x^2-21x', '-10x^3-7-21x-8x^2', '-8x^2-10x^3-21x-7', '-8x^2-10x^3-7-21x', '-8x^2-21x-10x^3-7', '-8x^2-21x-7-10x^3', '-8x^2-7-10x^3-21x', '-8x^2-7-21x-10x^3', '-21x-10x^3-8x^2-7', '-21x-10x^3-7-8x^2', '-21x-8x^2-10x^3-7', '-21x-8x^2-7-10x^3', '-21x-7-10x^3-8x^2', '-21x-7-8x^2-10x^3', '-7-10x^3-8x^2-21x', '-7-10x^3-21x-8x^2', '-7-8x^2-10x^3-21x', '-7-8x^2-21x-10x^3', '-7-21x-10x^3-8x^2', '-7-21x-8x^2-10x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 3x^3 + 8x^2 + 3x^2 + 8 + 1x^3 + 11x^2 + 7x^3 + 7x $$</span>',
      'answer': ['11x^3+22x^2+7x+8', '11x^3+22x^2+8+7x', '11x^3+7x+22x^2+8', '11x^3+7x+8+22x^2', '11x^3+8+22x^2+7x', '11x^3+8+7x+22x^2', '22x^2+11x^3+7x+8', '22x^2+11x^3+8+7x', '22x^2+7x+11x^3+8', '22x^2+7x+8+11x^3', '22x^2+8+11x^3+7x', '22x^2+8+7x+11x^3', '7x+11x^3+22x^2+8', '7x+11x^3+8+22x^2', '7x+22x^2+11x^3+8', '7x+22x^2+8+11x^3', '7x+8+11x^3+22x^2', '7x+8+22x^2+11x^3', '8+11x^3+22x^2+7x', '8+11x^3+7x+22x^2', '8+22x^2+11x^3+7x', '8+22x^2+7x+11x^3', '8+7x+11x^3+22x^2', '8+7x+22x^2+11x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 1 - 4x^3 - 10x - 5 - 4x^3 - 8x^2 - 9x^3 - 6x^2 - 1 $$</span>',
      'answer': ['-17x^3-14x^2-10x-5', '-17x^3-14x^2-5-10x', '-17x^3-10x-14x^2-5', '-17x^3-10x-5-14x^2', '-17x^3-5-14x^2-10x', '-17x^3-5-10x-14x^2', '-14x^2-17x^3-10x-5', '-14x^2-17x^3-5-10x', '-14x^2-10x-17x^3-5', '-14x^2-10x-5-17x^3', '-14x^2-5-17x^3-10x', '-14x^2-5-10x-17x^3', '-10x-17x^3-14x^2-5', '-10x-17x^3-5-14x^2', '-10x-14x^2-17x^3-5', '-10x-14x^2-5-17x^3', '-10x-5-17x^3-14x^2', '-10x-5-14x^2-17x^3', '-5-17x^3-14x^2-10x', '-5-17x^3-10x-14x^2', '-5-14x^2-17x^3-10x', '-5-14x^2-10x-17x^3', '-5-10x-17x^3-14x^2', '-5-10x-14x^2-17x^3'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 11x - 2x - 8 - 4x - 10x - 10x - 3 - 6x^2 $$</span>',
      'answer': ['-6x^2-15x-11', '-6x^2-11-15x', '-15x-6x^2-11', '-15x-11-6x^2', '-11-6x^2-15x', '-11-15x-6x^2'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]},
     {'question': 'Réduis le polynôme suivant <span>$$ 2x^2 - 4x - 7x^2 - 1x - 8x - 3x^2 - 10 - 1x - 1x $$</span>',
      'answer': ['-8x^2-15x-10', '-8x^2-10-15x', '-15x-8x^2-10', '-15x-10-8x^2', '-10-8x^2-15x', '-10-15x-8x^2'],
      'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'}]
+     'feedbackClass': 'text-success',
+      "methods": ["enlever_espace"]}]
 }
 
 Ordonner_un_polynôme = {
@@ -545,56 +568,80 @@ Réduction_avec_coefficients_rationnels = {
     "nom": "Réduction avec coefficients rationnels",
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
-    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": [
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x^3 + 10x^3 + 8x^3 + 12x + 8x + 3x^3 + 12 + 11 + 4x^2 $$</span>',
-     'answer': ['31x^3+4x^2+20x+23', '31x^3+4x^2+23+20x', '31x^3+20x+4x^2+23', '31x^3+20x+23+4x^2', '31x^3+23+4x^2+20x', '31x^3+23+20x+4x^2', '4x^2+31x^3+20x+23', '4x^2+31x^3+23+20x', '4x^2+20x+31x^3+23', '4x^2+20x+23+31x^3', '4x^2+23+31x^3+20x', '4x^2+23+20x+31x^3', '20x+31x^3+4x^2+23', '20x+31x^3+23+4x^2', '20x+4x^2+31x^3+23', '20x+4x^2+23+31x^3', '20x+23+31x^3+4x^2', '20x+23+4x^2+31x^3', '23+31x^3+4x^2+20x', '23+31x^3+20x+4x^2', '23+4x^2+31x^3+20x', '23+4x^2+20x+31x^3', '23+20x+31x^3+4x^2', '23+20x+4x^2+31x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x + 8x^3 + 2x + 1x^2 + 8x + 11x + 10 + 11 $$</span>',
-     'answer': ['8x^3+1x^2+23x+21', '8x^3+1x^2+21+23x', '8x^3+23x+1x^2+21', '8x^3+23x+21+1x^2', '8x^3+21+1x^2+23x', '8x^3+21+23x+1x^2', '1x^2+8x^3+23x+21', '1x^2+8x^3+21+23x', '1x^2+23x+8x^3+21', '1x^2+23x+21+8x^3', '1x^2+21+8x^3+23x', '1x^2+21+23x+8x^3', '23x+8x^3+1x^2+21', '23x+8x^3+21+1x^2', '23x+1x^2+8x^3+21', '23x+1x^2+21+8x^3', '23x+21+8x^3+1x^2', '23x+21+1x^2+8x^3', '21+8x^3+1x^2+23x', '21+8x^3+23x+1x^2', '21+1x^2+8x^3+23x', '21+1x^2+23x+8x^3', '21+23x+8x^3+1x^2', '21+23x+1x^2+8x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 6x^3 - 10x - 11x^2 - 9x^3 - 6x^2 - 8x^3 - 7x - 7x - 12x^2 $$</span>',
-     'answer': ['-11x^3-29x^2-24x', '-11x^3-24x-29x^2', '-29x^2-11x^3-24x', '-29x^2-24x-11x^3', '-24x-11x^3-29x^2', '-24x-29x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x^2 - 7 - 2 - 6x - 2x^3 - 7x - 9x^3 $$</span>',
-     'answer': ['-11x^3+11x^2-13x-9', '-11x^3+11x^2-9-13x', '-11x^3-13x+11x^2-9', '-11x^3-13x-9+11x^2', '-11x^3-9+11x^2-13x', '-11x^3-9-13x+11x^2', '11x^2-11x^3-13x-9', '11x^2-11x^3-9-13x', '11x^2-13x-11x^3-9', '11x^2-13x-9-11x^3', '11x^2-9-11x^3-13x', '11x^2-9-13x-11x^3', '-13x-11x^3+11x^2-9', '-13x-11x^3-9+11x^2', '-13x+11x^2-11x^3-9', '-13x+11x^2-9-11x^3', '-13x-9-11x^3+11x^2', '-13x-9+11x^2-11x^3', '-9-11x^3+11x^2-13x', '-9-11x^3-13x+11x^2', '-9+11x^2-11x^3-13x', '-9+11x^2-13x-11x^3', '-9-13x-11x^3+11x^2', '-9-13x+11x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 + 6 + 2x + 8x^2 + 6 + 8x^2 + 8 + 7 $$</span>',
-     'answer': ['2x^3+16x^2+2x+27', '2x^3+16x^2+27+2x', '2x^3+2x+16x^2+27', '2x^3+2x+27+16x^2', '2x^3+27+16x^2+2x', '2x^3+27+2x+16x^2', '16x^2+2x^3+2x+27', '16x^2+2x^3+27+2x', '16x^2+2x+2x^3+27', '16x^2+2x+27+2x^3', '16x^2+27+2x^3+2x', '16x^2+27+2x+2x^3', '2x+2x^3+16x^2+27', '2x+2x^3+27+16x^2', '2x+16x^2+2x^3+27', '2x+16x^2+27+2x^3', '2x+27+2x^3+16x^2', '2x+27+16x^2+2x^3', '27+2x^3+16x^2+2x', '27+2x^3+2x+16x^2', '27+16x^2+2x^3+2x', '27+16x^2+2x+2x^3', '27+2x+2x^3+16x^2', '27+2x+16x^2+2x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 4x - 8x^3 - 10 - 9x^3 - 1x - 8x - 4x^3 $$</span>',
-     'answer': ['-21x^3-5x-10', '-21x^3-10-5x', '-5x-21x^3-10', '-5x-10-21x^3', '-10-21x^3-5x', '-10-5x-21x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x - 3x^2 - 2x^2 - 11 - 2x^2 - 3x^2 - 6x - 12 - 5x^2 $$</span>',
-     'answer': ['-15x^2+4x-23', '-15x^2-23+4x', '4x-15x^2-23', '4x-23-15x^2', '-23-15x^2+4x', '-23+4x-15x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 - 10x - 7 - 8x^2 - 12x^3 - 7x - 4x $$</span>',
-     'answer': ['-10x^3-8x^2-21x-7', '-10x^3-8x^2-7-21x', '-10x^3-21x-8x^2-7', '-10x^3-21x-7-8x^2', '-10x^3-7-8x^2-21x', '-10x^3-7-21x-8x^2', '-8x^2-10x^3-21x-7', '-8x^2-10x^3-7-21x', '-8x^2-21x-10x^3-7', '-8x^2-21x-7-10x^3', '-8x^2-7-10x^3-21x', '-8x^2-7-21x-10x^3', '-21x-10x^3-8x^2-7', '-21x-10x^3-7-8x^2', '-21x-8x^2-10x^3-7', '-21x-8x^2-7-10x^3', '-21x-7-10x^3-8x^2', '-21x-7-8x^2-10x^3', '-7-10x^3-8x^2-21x', '-7-10x^3-21x-8x^2', '-7-8x^2-10x^3-21x', '-7-8x^2-21x-10x^3', '-7-21x-10x^3-8x^2', '-7-21x-8x^2-10x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 3x^3 + 8x^2 + 3x^2 + 8 + 1x^3 + 11x^2 + 7x^3 + 7x $$</span>',
-     'answer': ['11x^3+22x^2+7x+8', '11x^3+22x^2+8+7x', '11x^3+7x+22x^2+8', '11x^3+7x+8+22x^2', '11x^3+8+22x^2+7x', '11x^3+8+7x+22x^2', '22x^2+11x^3+7x+8', '22x^2+11x^3+8+7x', '22x^2+7x+11x^3+8', '22x^2+7x+8+11x^3', '22x^2+8+11x^3+7x', '22x^2+8+7x+11x^3', '7x+11x^3+22x^2+8', '7x+11x^3+8+22x^2', '7x+22x^2+11x^3+8', '7x+22x^2+8+11x^3', '7x+8+11x^3+22x^2', '7x+8+22x^2+11x^3', '8+11x^3+22x^2+7x', '8+11x^3+7x+22x^2', '8+22x^2+11x^3+7x', '8+22x^2+7x+11x^3', '8+7x+11x^3+22x^2', '8+7x+22x^2+11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 1 - 4x^3 - 10x - 5 - 4x^3 - 8x^2 - 9x^3 - 6x^2 - 1 $$</span>',
-     'answer': ['-17x^3-14x^2-10x-5', '-17x^3-14x^2-5-10x', '-17x^3-10x-14x^2-5', '-17x^3-10x-5-14x^2', '-17x^3-5-14x^2-10x', '-17x^3-5-10x-14x^2', '-14x^2-17x^3-10x-5', '-14x^2-17x^3-5-10x', '-14x^2-10x-17x^3-5', '-14x^2-10x-5-17x^3', '-14x^2-5-17x^3-10x', '-14x^2-5-10x-17x^3', '-10x-17x^3-14x^2-5', '-10x-17x^3-5-14x^2', '-10x-14x^2-17x^3-5', '-10x-14x^2-5-17x^3', '-10x-5-17x^3-14x^2', '-10x-5-14x^2-17x^3', '-5-17x^3-14x^2-10x', '-5-17x^3-10x-14x^2', '-5-14x^2-17x^3-10x', '-5-14x^2-10x-17x^3', '-5-10x-17x^3-14x^2', '-5-10x-14x^2-17x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x - 2x - 8 - 4x - 10x - 10x - 3 - 6x^2 $$</span>',
-     'answer': ['-6x^2-15x-11', '-6x^2-11-15x', '-15x-6x^2-11', '-15x-11-6x^2', '-11-6x^2-15x', '-11-15x-6x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^2 - 4x - 7x^2 - 1x - 8x - 3x^2 - 10 - 1x - 1x $$</span>',
-     'answer': ['-8x^2-15x-10', '-8x^2-10-15x', '-15x-8x^2-10', '-15x-10-8x^2', '-10-8x^2-15x', '-10-15x-8x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'}]
+    "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire \( x^2 \)", "Pour insérer une fraction écrivez (/) exemple (4/3) veut dire \( \\frac{4}{3} \)"],
+    "questions": [{
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{9}{5}x + \\frac{6}{3} + \\frac{2}{6}x + \\frac{2}{3}x + \\frac{9}{5}x^2 + \\frac{6}{4}x $$</span>',
+	'answer': ['\\frac{9}{5}x^{2}+\\frac{43}{10}x+2', '\\frac{9}{5}x^{2}+2+\\frac{43}{10}x', '\\frac{43}{10}x+\\frac{9}{5}x^{2}+2', '\\frac{43}{10}x+2+\\frac{9}{5}x^{2}', '2+\\frac{9}{5}x^{2}+\\frac{43}{10}x', '2+\\frac{43}{10}x+\\frac{9}{5}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{3}{5}x - \\frac{5}{6}x - \\frac{3}{2}x - \\frac{8}{7} - \\frac{4}{6}x^2 - \\frac{8}{3} $$</span>',
+	'answer': ['-\\frac{2}{3}x^{2}-\\frac{26}{15}x-\\frac{80}{21}', '-\\frac{2}{3}x^{2}-\\frac{80}{21}-\\frac{26}{15}x', '-\\frac{26}{15}x-\\frac{2}{3}x^{2}-\\frac{80}{21}', '-\\frac{26}{15}x-\\frac{80}{21}-\\frac{2}{3}x^{2}', '-\\frac{80}{21}-\\frac{2}{3}x^{2}-\\frac{26}{15}x', '-\\frac{80}{21}-\\frac{26}{15}x-\\frac{2}{3}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{8}{7}x^2 + \\frac{4}{6}x + \\frac{8}{4}x + \\frac{2}{4}x^2 + \\frac{5}{7}x + \\frac{5}{2} + \\frac{5}{3}x^2 $$</span>',
+	'answer': ['\\frac{139}{42}x^{2}+\\frac{71}{21}x+\\frac{5}{2}', '\\frac{139}{42}x^{2}+\\frac{5}{2}+\\frac{71}{21}x', '\\frac{71}{21}x+\\frac{139}{42}x^{2}+\\frac{5}{2}', '\\frac{71}{21}x+\\frac{5}{2}+\\frac{139}{42}x^{2}', '\\frac{5}{2}+\\frac{139}{42}x^{2}+\\frac{71}{21}x', '\\frac{5}{2}+\\frac{71}{21}x+\\frac{139}{42}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{4}{4}x^2 - \\frac{5}{3} - \\frac{3}{7}x^2 - \\frac{6}{6} - \\frac{4}{4}x^2 - \\frac{7}{5}x^2 $$</span>',
+	'answer': ['-\\frac{64}{35}x^{2}-\\frac{8}{3}', '-\\frac{8}{3}-\\frac{64}{35}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{6}{6}x - \\frac{8}{2}x^2 - \\frac{3}{6}x - \\frac{7}{7}x - \\frac{4}{3}x - \\frac{2}{2}x^2 $$</span>',
+	'answer': ['\\frac{x\\left(-30x-11\\right)}{6}', '\\frac{x\\left(-11\\right)}{6}-30x', '-30x+\\frac{x\\left(-11\\right)}{6}', '-30x-11\\right)}{6}+\\frac{x\\left(', '-11\\right)}{6}+\\frac{x\\left(-30x', '-11\\right)}{6}-30x+\\frac{x\\left('],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{4}{2} - \\frac{2}{4}x - \\frac{3}{4} - \\frac{3}{2} - \\frac{7}{5}x $$</span>',
+	'answer': ['-\\frac{19}{10}x-\\frac{1}{4}', '-\\frac{1}{4}-\\frac{19}{10}x'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{5}{6}x + \\frac{7}{2}x^2 + \\frac{6}{2} + \\frac{2}{2} + \\frac{5}{5}x + \\frac{6}{2}x^2 + \\frac{6}{6}x $$</span>',
+	'answer': ['\\frac{13}{2}x^{2}+\\frac{17}{6}x+4', '\\frac{13}{2}x^{2}+4+\\frac{17}{6}x', '\\frac{17}{6}x+\\frac{13}{2}x^{2}+4', '\\frac{17}{6}x+4+\\frac{13}{2}x^{2}', '4+\\frac{13}{2}x^{2}+\\frac{17}{6}x', '4+\\frac{17}{6}x+\\frac{13}{2}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{9}{7} - \\frac{9}{7}x - \\frac{3}{6} - \\frac{8}{6} - \\frac{2}{4}x^2 - \\frac{6}{2}x - \\frac{5}{7} $$</span>',
+	'answer': ['-\\frac{1}{2}x^{2}-\\frac{30}{7}x-\\frac{53}{42}', '-\\frac{1}{2}x^{2}-\\frac{53}{42}-\\frac{30}{7}x', '-\\frac{30}{7}x-\\frac{1}{2}x^{2}-\\frac{53}{42}', '-\\frac{30}{7}x-\\frac{53}{42}-\\frac{1}{2}x^{2}', '-\\frac{53}{42}-\\frac{1}{2}x^{2}-\\frac{30}{7}x', '-\\frac{53}{42}-\\frac{30}{7}x-\\frac{1}{2}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{3}{4}x - \\frac{1}{7}x^2 - \\frac{8}{7}x - \\frac{5}{7} - \\frac{4}{3} - \\frac{9}{4}x^2 - \\frac{1}{7} $$</span>',
+	'answer': ['-\\frac{67}{28}x^{2}-\\frac{11}{28}x-\\frac{46}{21}', '-\\frac{67}{28}x^{2}-\\frac{46}{21}-\\frac{11}{28}x', '-\\frac{11}{28}x-\\frac{67}{28}x^{2}-\\frac{46}{21}', '-\\frac{11}{28}x-\\frac{46}{21}-\\frac{67}{28}x^{2}', '-\\frac{46}{21}-\\frac{67}{28}x^{2}-\\frac{11}{28}x', '-\\frac{46}{21}-\\frac{11}{28}x-\\frac{67}{28}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{9}{6}x^2 + \\frac{1}{7} + \\frac{1}{3}x + \\frac{9}{7} + \\frac{7}{5}x^2 + \\frac{3}{5}x^2 + \\frac{7}{6}x^2 $$</span>',
+	'answer': ['\\frac{14}{3}x^{2}+\\frac{1}{3}x+\\frac{10}{7}', '\\frac{14}{3}x^{2}+\\frac{10}{7}+\\frac{1}{3}x', '\\frac{1}{3}x+\\frac{14}{3}x^{2}+\\frac{10}{7}', '\\frac{1}{3}x+\\frac{10}{7}+\\frac{14}{3}x^{2}', '\\frac{10}{7}+\\frac{14}{3}x^{2}+\\frac{1}{3}x', '\\frac{10}{7}+\\frac{1}{3}x+\\frac{14}{3}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{6}{3}x^2 - \\frac{6}{5}x - \\frac{5}{3}x^2 - \\frac{6}{6}x - \\frac{1}{5} - \\frac{1}{5}x^2 $$</span>',
+	'answer': ['\\frac{2}{15}x^{2}-\\frac{11}{5}x-\\frac{1}{5}', '\\frac{2}{15}x^{2}-\\frac{1}{5}-\\frac{11}{5}x', '-\\frac{11}{5}x+\\frac{2}{15}x^{2}-\\frac{1}{5}', '-\\frac{11}{5}x-\\frac{1}{5}+\\frac{2}{15}x^{2}', '-\\frac{1}{5}+\\frac{2}{15}x^{2}-\\frac{11}{5}x', '-\\frac{1}{5}-\\frac{11}{5}x+\\frac{2}{15}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}, {
+	'question': 'Réduis le polynôme suivant <span>$$ \\frac{7}{6} + \\frac{1}{7} + \\frac{8}{6}x + \\frac{8}{6}x + \\frac{1}{6}x + \\frac{8}{7}x^2 $$</span>',
+	'answer': ['\\frac{8}{7}x^{2}+\\frac{17}{6}x+\\frac{55}{42}', '\\frac{8}{7}x^{2}+\\frac{55}{42}+\\frac{17}{6}x', '\\frac{17}{6}x+\\frac{8}{7}x^{2}+\\frac{55}{42}', '\\frac{17}{6}x+\\frac{55}{42}+\\frac{8}{7}x^{2}', '\\frac{55}{42}+\\frac{8}{7}x^{2}+\\frac{17}{6}x', '\\frac{55}{42}+\\frac{17}{6}x+\\frac{8}{7}x^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ["enlever_espace",'transforme_fraction_to_latex', 'transforme_puissance_to_latex']
+}]
 }
 
 Solution_d_une_équation_par_évaluation = {
