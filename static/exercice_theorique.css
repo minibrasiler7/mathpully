@@ -50,7 +50,12 @@
     color: #47B9FF;
     margin-left: 10px;
 
+}
 
+.section_chapitre img{
+display:block;
+margin:auto;
+margin-top: 20px;
 }
 
 

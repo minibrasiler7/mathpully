@@ -170,170 +170,323 @@ Ordonner_un_polynôme = {
     "body": "Ordonner un polynôme signifie que l’on va d’abord inscrire les polynômes avec les plus hauts degrés. Si deux monômes possèdent le même degré on va les inscrire par ordre alphabétique (x2 signifie xx). On doit toujours ordonner un polynôme après l’avoir réduit et pas avant!",
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": [
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x^3 + 10x^3 + 8x^3 + 12x + 8x + 3x^3 + 12 + 11 + 4x^2 $$</span>',
-     'answer': ['31x^3+4x^2+20x+23', '31x^3+4x^2+23+20x', '31x^3+20x+4x^2+23', '31x^3+20x+23+4x^2', '31x^3+23+4x^2+20x', '31x^3+23+20x+4x^2', '4x^2+31x^3+20x+23', '4x^2+31x^3+23+20x', '4x^2+20x+31x^3+23', '4x^2+20x+23+31x^3', '4x^2+23+31x^3+20x', '4x^2+23+20x+31x^3', '20x+31x^3+4x^2+23', '20x+31x^3+23+4x^2', '20x+4x^2+31x^3+23', '20x+4x^2+23+31x^3', '20x+23+31x^3+4x^2', '20x+23+4x^2+31x^3', '23+31x^3+4x^2+20x', '23+31x^3+20x+4x^2', '23+4x^2+31x^3+20x', '23+4x^2+20x+31x^3', '23+20x+31x^3+4x^2', '23+20x+4x^2+31x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x + 8x^3 + 2x + 1x^2 + 8x + 11x + 10 + 11 $$</span>',
-     'answer': ['8x^3+1x^2+23x+21', '8x^3+1x^2+21+23x', '8x^3+23x+1x^2+21', '8x^3+23x+21+1x^2', '8x^3+21+1x^2+23x', '8x^3+21+23x+1x^2', '1x^2+8x^3+23x+21', '1x^2+8x^3+21+23x', '1x^2+23x+8x^3+21', '1x^2+23x+21+8x^3', '1x^2+21+8x^3+23x', '1x^2+21+23x+8x^3', '23x+8x^3+1x^2+21', '23x+8x^3+21+1x^2', '23x+1x^2+8x^3+21', '23x+1x^2+21+8x^3', '23x+21+8x^3+1x^2', '23x+21+1x^2+8x^3', '21+8x^3+1x^2+23x', '21+8x^3+23x+1x^2', '21+1x^2+8x^3+23x', '21+1x^2+23x+8x^3', '21+23x+8x^3+1x^2', '21+23x+1x^2+8x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 6x^3 - 10x - 11x^2 - 9x^3 - 6x^2 - 8x^3 - 7x - 7x - 12x^2 $$</span>',
-     'answer': ['-11x^3-29x^2-24x', '-11x^3-24x-29x^2', '-29x^2-11x^3-24x', '-29x^2-24x-11x^3', '-24x-11x^3-29x^2', '-24x-29x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x^2 - 7 - 2 - 6x - 2x^3 - 7x - 9x^3 $$</span>',
-     'answer': ['-11x^3+11x^2-13x-9', '-11x^3+11x^2-9-13x', '-11x^3-13x+11x^2-9', '-11x^3-13x-9+11x^2', '-11x^3-9+11x^2-13x', '-11x^3-9-13x+11x^2', '11x^2-11x^3-13x-9', '11x^2-11x^3-9-13x', '11x^2-13x-11x^3-9', '11x^2-13x-9-11x^3', '11x^2-9-11x^3-13x', '11x^2-9-13x-11x^3', '-13x-11x^3+11x^2-9', '-13x-11x^3-9+11x^2', '-13x+11x^2-11x^3-9', '-13x+11x^2-9-11x^3', '-13x-9-11x^3+11x^2', '-13x-9+11x^2-11x^3', '-9-11x^3+11x^2-13x', '-9-11x^3-13x+11x^2', '-9+11x^2-11x^3-13x', '-9+11x^2-13x-11x^3', '-9-13x-11x^3+11x^2', '-9-13x+11x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 + 6 + 2x + 8x^2 + 6 + 8x^2 + 8 + 7 $$</span>',
-     'answer': ['2x^3+16x^2+2x+27', '2x^3+16x^2+27+2x', '2x^3+2x+16x^2+27', '2x^3+2x+27+16x^2', '2x^3+27+16x^2+2x', '2x^3+27+2x+16x^2', '16x^2+2x^3+2x+27', '16x^2+2x^3+27+2x', '16x^2+2x+2x^3+27', '16x^2+2x+27+2x^3', '16x^2+27+2x^3+2x', '16x^2+27+2x+2x^3', '2x+2x^3+16x^2+27', '2x+2x^3+27+16x^2', '2x+16x^2+2x^3+27', '2x+16x^2+27+2x^3', '2x+27+2x^3+16x^2', '2x+27+16x^2+2x^3', '27+2x^3+16x^2+2x', '27+2x^3+2x+16x^2', '27+16x^2+2x^3+2x', '27+16x^2+2x+2x^3', '27+2x+2x^3+16x^2', '27+2x+16x^2+2x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 4x - 8x^3 - 10 - 9x^3 - 1x - 8x - 4x^3 $$</span>',
-     'answer': ['-21x^3-5x-10', '-21x^3-10-5x', '-5x-21x^3-10', '-5x-10-21x^3', '-10-21x^3-5x', '-10-5x-21x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x - 3x^2 - 2x^2 - 11 - 2x^2 - 3x^2 - 6x - 12 - 5x^2 $$</span>',
-     'answer': ['-15x^2+4x-23', '-15x^2-23+4x', '4x-15x^2-23', '4x-23-15x^2', '-23-15x^2+4x', '-23+4x-15x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 - 10x - 7 - 8x^2 - 12x^3 - 7x - 4x $$</span>',
-     'answer': ['-10x^3-8x^2-21x-7', '-10x^3-8x^2-7-21x', '-10x^3-21x-8x^2-7', '-10x^3-21x-7-8x^2', '-10x^3-7-8x^2-21x', '-10x^3-7-21x-8x^2', '-8x^2-10x^3-21x-7', '-8x^2-10x^3-7-21x', '-8x^2-21x-10x^3-7', '-8x^2-21x-7-10x^3', '-8x^2-7-10x^3-21x', '-8x^2-7-21x-10x^3', '-21x-10x^3-8x^2-7', '-21x-10x^3-7-8x^2', '-21x-8x^2-10x^3-7', '-21x-8x^2-7-10x^3', '-21x-7-10x^3-8x^2', '-21x-7-8x^2-10x^3', '-7-10x^3-8x^2-21x', '-7-10x^3-21x-8x^2', '-7-8x^2-10x^3-21x', '-7-8x^2-21x-10x^3', '-7-21x-10x^3-8x^2', '-7-21x-8x^2-10x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 3x^3 + 8x^2 + 3x^2 + 8 + 1x^3 + 11x^2 + 7x^3 + 7x $$</span>',
-     'answer': ['11x^3+22x^2+7x+8', '11x^3+22x^2+8+7x', '11x^3+7x+22x^2+8', '11x^3+7x+8+22x^2', '11x^3+8+22x^2+7x', '11x^3+8+7x+22x^2', '22x^2+11x^3+7x+8', '22x^2+11x^3+8+7x', '22x^2+7x+11x^3+8', '22x^2+7x+8+11x^3', '22x^2+8+11x^3+7x', '22x^2+8+7x+11x^3', '7x+11x^3+22x^2+8', '7x+11x^3+8+22x^2', '7x+22x^2+11x^3+8', '7x+22x^2+8+11x^3', '7x+8+11x^3+22x^2', '7x+8+22x^2+11x^3', '8+11x^3+22x^2+7x', '8+11x^3+7x+22x^2', '8+22x^2+11x^3+7x', '8+22x^2+7x+11x^3', '8+7x+11x^3+22x^2', '8+7x+22x^2+11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 1 - 4x^3 - 10x - 5 - 4x^3 - 8x^2 - 9x^3 - 6x^2 - 1 $$</span>',
-     'answer': ['-17x^3-14x^2-10x-5', '-17x^3-14x^2-5-10x', '-17x^3-10x-14x^2-5', '-17x^3-10x-5-14x^2', '-17x^3-5-14x^2-10x', '-17x^3-5-10x-14x^2', '-14x^2-17x^3-10x-5', '-14x^2-17x^3-5-10x', '-14x^2-10x-17x^3-5', '-14x^2-10x-5-17x^3', '-14x^2-5-17x^3-10x', '-14x^2-5-10x-17x^3', '-10x-17x^3-14x^2-5', '-10x-17x^3-5-14x^2', '-10x-14x^2-17x^3-5', '-10x-14x^2-5-17x^3', '-10x-5-17x^3-14x^2', '-10x-5-14x^2-17x^3', '-5-17x^3-14x^2-10x', '-5-17x^3-10x-14x^2', '-5-14x^2-17x^3-10x', '-5-14x^2-10x-17x^3', '-5-10x-17x^3-14x^2', '-5-10x-14x^2-17x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x - 2x - 8 - 4x - 10x - 10x - 3 - 6x^2 $$</span>',
-     'answer': ['-6x^2-15x-11', '-6x^2-11-15x', '-15x-6x^2-11', '-15x-11-6x^2', '-11-6x^2-15x', '-11-15x-6x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^2 - 4x - 7x^2 - 1x - 8x - 3x^2 - 10 - 1x - 1x $$</span>',
-     'answer': ['-8x^2-15x-10', '-8x^2-10-15x', '-15x-8x^2-10', '-15x-10-8x^2', '-10-8x^2-15x', '-10-15x-8x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'}]
+    "questions": [{
+	'question': 'Ordonne le polynôme suivant: <span>$$ 4x+9x^{2}y+2x^{2}+7y^{2}z+2y+6+4y^{3} $$</span>',
+	'answer': '9x^{2}y+4y^{3}+7y^{2}z+2x^{2}+4x+2y+6',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 2xy^{2}+4y^{3}+4x+6xy+8xz^{2}+7z^{3} $$</span>',
+	'answer': '2xy^{2}+8xz^{2}+4y^{3}+7z^{3}+6xy+4x',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 4yz^{2}+8y^{2}+6y^{2}z+4x^{2}+7xyz+2x^{3} $$</span>',
+	'answer': '2x^{3}+7xyz+6y^{2}z+4yz^{2}+4x^{2}+8y^{2}',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 7+4xyz+8y^{3}+7x+8x^{2}+7y^{2}z $$</span>',
+	'answer': '4xyz+8y^{3}+7y^{2}z+8x^{2}+7x+7',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 2xz^{2}+7x+2yz^{2}+3x^{3}+9y^{2}+8y^{2}z $$</span>',
+	'answer': '3x^{3}+2xz^{2}+8y^{2}z+2yz^{2}+9y^{2}+7x',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 9x^{2}+4y^{2}z+7z^{3}+6xyz+3xy^{2}+4 $$</span>',
+	'answer': '3xy^{2}+6xyz+4y^{2}z+7z^{3}+9x^{2}+4',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 5y+7yz^{2}+8xyz+3x^{2}y+3z^{3}+9y^{2}+8x^{3} $$</span>',
+	'answer': '8x^{3}+3x^{2}y+8xyz+7yz^{2}+3z^{3}+9y^{2}+5y',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 4y+2xy^{2}+5xy+8x^{3}+6y^{2}+3xz^{2}+4y^{2}z $$</span>',
+	'answer': '8x^{3}+2xy^{2}+3xz^{2}+4y^{2}z+5xy+6y^{2}+4y',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 7y^{3}+5y+7xyz+3xy+5+5z^{3}+6x $$</span>',
+	'answer': '7xyz+7y^{3}+5z^{3}+3xy+6x+5y+5',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 9y+6xyz+3x+9xy+2z^{3}+9x^{2}+7y^{2} $$</span>',
+	'answer': '6xyz+2z^{3}+9x^{2}+9xy+7y^{2}+3x+9y',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 8+9xy^{2}+9xyz+5z^{3}+6x^{2}+7y^{2}z+7xy $$</span>',
+	'answer': '9xy^{2}+9xyz+7y^{2}z+5z^{3}+6x^{2}+7xy+8',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': 'Ordonne le polynôme suivant: <span>$$ 3y^{2}+2xy+8z^{3}+7y^{3}+2xy^{2}+8+3y^{2}z $$</span>',
+	'answer': '2xy^{2}+7y^{3}+3y^{2}z+8z^{3}+2xy+3y^{2}+8',
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}]
 }
 
 Distributivité = {
     "chapitres": ["_11VPcalcullitteral"],
     "nom": "Distributivité",
-    "body": "Lorsque l’on multiplie un polynôme par un monôme, on multiplie ce monôme avec chaque monôme du polynôme. <br> Lorsque l’on multiplie un polynôme par un polynôme on doit multiplier chaque monôme du premier polynôme avec chaque monôme du deuxième polynôme.",
-    "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
+    "body": "La distributivité s'utilise lorsqu'on a un terme qui multiplie une parenthèse. C'est une propriété mathématique qui dit que le produit d'une somme est égale à la somme des produits. En d'autres termes, on doit multiplier chaque monôme qu'il y a dans la parenthèse par le terme qui se trouve devant. <p> Imagine que tu as deux amis, et tu veux leur donner des cadeaux. Disons que tu veux donner 3 chocolats à chacun de tes amis et que tu as aussi 4 bonbons pour chacun d'eux. Au lieu de compter séparément combien de cadeaux tu as pour chaque ami, tu peux additionner les chocolats et les bonbons et ensuite multiplier le total par le nombre d'amis.</p> <p>Voici l'exemple concret : tu as 2 amis, et tu veux leur donner 3 chocolats et 4 bonbons chacun. Pour savoir combien de cadeaux tu dois préparer en tout, tu peux utiliser la distributivité :</p> <p>\( 2 \\text{ amis} \\times (3 \\text{ chocolats} + 4 \\text{ bonbons}) \)</p> <p>En appliquant la propriété distributive, tu vas multiplier le nombre d'amis par le nombre de chocolats, puis par le nombre de bonbons :</p> <p>$$ (2 \\text{ amis} \\times 3 \\text{ chocolats}) + (2 \\text{ amis} \\times 4 \\text{ bonbons}) $$</p> <p>Ce qui donne :</p> <p>\( (6 \\text{ chocolats}) + (8 \\text{ bonbons}) \)</p> <p>Ainsi, tu auras un total de 14 cadeaux à préparer pour tes amis.</p> <p>La distributivité est donc une méthode pour répartir, ou distribuer, une multiplication sur une addition ou une soustraction.",
+    "exemple":"<img src='static/images/distributivité.png' alt='Distributivité' width='300' height='120'>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": [
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x^3 + 10x^3 + 8x^3 + 12x + 8x + 3x^3 + 12 + 11 + 4x^2 $$</span>',
-     'answer': ['31x^3+4x^2+20x+23', '31x^3+4x^2+23+20x', '31x^3+20x+4x^2+23', '31x^3+20x+23+4x^2', '31x^3+23+4x^2+20x', '31x^3+23+20x+4x^2', '4x^2+31x^3+20x+23', '4x^2+31x^3+23+20x', '4x^2+20x+31x^3+23', '4x^2+20x+23+31x^3', '4x^2+23+31x^3+20x', '4x^2+23+20x+31x^3', '20x+31x^3+4x^2+23', '20x+31x^3+23+4x^2', '20x+4x^2+31x^3+23', '20x+4x^2+23+31x^3', '20x+23+31x^3+4x^2', '20x+23+4x^2+31x^3', '23+31x^3+4x^2+20x', '23+31x^3+20x+4x^2', '23+4x^2+31x^3+20x', '23+4x^2+20x+31x^3', '23+20x+31x^3+4x^2', '23+20x+4x^2+31x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x + 8x^3 + 2x + 1x^2 + 8x + 11x + 10 + 11 $$</span>',
-     'answer': ['8x^3+1x^2+23x+21', '8x^3+1x^2+21+23x', '8x^3+23x+1x^2+21', '8x^3+23x+21+1x^2', '8x^3+21+1x^2+23x', '8x^3+21+23x+1x^2', '1x^2+8x^3+23x+21', '1x^2+8x^3+21+23x', '1x^2+23x+8x^3+21', '1x^2+23x+21+8x^3', '1x^2+21+8x^3+23x', '1x^2+21+23x+8x^3', '23x+8x^3+1x^2+21', '23x+8x^3+21+1x^2', '23x+1x^2+8x^3+21', '23x+1x^2+21+8x^3', '23x+21+8x^3+1x^2', '23x+21+1x^2+8x^3', '21+8x^3+1x^2+23x', '21+8x^3+23x+1x^2', '21+1x^2+8x^3+23x', '21+1x^2+23x+8x^3', '21+23x+8x^3+1x^2', '21+23x+1x^2+8x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 6x^3 - 10x - 11x^2 - 9x^3 - 6x^2 - 8x^3 - 7x - 7x - 12x^2 $$</span>',
-     'answer': ['-11x^3-29x^2-24x', '-11x^3-24x-29x^2', '-29x^2-11x^3-24x', '-29x^2-24x-11x^3', '-24x-11x^3-29x^2', '-24x-29x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x^2 - 7 - 2 - 6x - 2x^3 - 7x - 9x^3 $$</span>',
-     'answer': ['-11x^3+11x^2-13x-9', '-11x^3+11x^2-9-13x', '-11x^3-13x+11x^2-9', '-11x^3-13x-9+11x^2', '-11x^3-9+11x^2-13x', '-11x^3-9-13x+11x^2', '11x^2-11x^3-13x-9', '11x^2-11x^3-9-13x', '11x^2-13x-11x^3-9', '11x^2-13x-9-11x^3', '11x^2-9-11x^3-13x', '11x^2-9-13x-11x^3', '-13x-11x^3+11x^2-9', '-13x-11x^3-9+11x^2', '-13x+11x^2-11x^3-9', '-13x+11x^2-9-11x^3', '-13x-9-11x^3+11x^2', '-13x-9+11x^2-11x^3', '-9-11x^3+11x^2-13x', '-9-11x^3-13x+11x^2', '-9+11x^2-11x^3-13x', '-9+11x^2-13x-11x^3', '-9-13x-11x^3+11x^2', '-9-13x+11x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 + 6 + 2x + 8x^2 + 6 + 8x^2 + 8 + 7 $$</span>',
-     'answer': ['2x^3+16x^2+2x+27', '2x^3+16x^2+27+2x', '2x^3+2x+16x^2+27', '2x^3+2x+27+16x^2', '2x^3+27+16x^2+2x', '2x^3+27+2x+16x^2', '16x^2+2x^3+2x+27', '16x^2+2x^3+27+2x', '16x^2+2x+2x^3+27', '16x^2+2x+27+2x^3', '16x^2+27+2x^3+2x', '16x^2+27+2x+2x^3', '2x+2x^3+16x^2+27', '2x+2x^3+27+16x^2', '2x+16x^2+2x^3+27', '2x+16x^2+27+2x^3', '2x+27+2x^3+16x^2', '2x+27+16x^2+2x^3', '27+2x^3+16x^2+2x', '27+2x^3+2x+16x^2', '27+16x^2+2x^3+2x', '27+16x^2+2x+2x^3', '27+2x+2x^3+16x^2', '27+2x+16x^2+2x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 4x - 8x^3 - 10 - 9x^3 - 1x - 8x - 4x^3 $$</span>',
-     'answer': ['-21x^3-5x-10', '-21x^3-10-5x', '-5x-21x^3-10', '-5x-10-21x^3', '-10-21x^3-5x', '-10-5x-21x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x - 3x^2 - 2x^2 - 11 - 2x^2 - 3x^2 - 6x - 12 - 5x^2 $$</span>',
-     'answer': ['-15x^2+4x-23', '-15x^2-23+4x', '4x-15x^2-23', '4x-23-15x^2', '-23-15x^2+4x', '-23+4x-15x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 - 10x - 7 - 8x^2 - 12x^3 - 7x - 4x $$</span>',
-     'answer': ['-10x^3-8x^2-21x-7', '-10x^3-8x^2-7-21x', '-10x^3-21x-8x^2-7', '-10x^3-21x-7-8x^2', '-10x^3-7-8x^2-21x', '-10x^3-7-21x-8x^2', '-8x^2-10x^3-21x-7', '-8x^2-10x^3-7-21x', '-8x^2-21x-10x^3-7', '-8x^2-21x-7-10x^3', '-8x^2-7-10x^3-21x', '-8x^2-7-21x-10x^3', '-21x-10x^3-8x^2-7', '-21x-10x^3-7-8x^2', '-21x-8x^2-10x^3-7', '-21x-8x^2-7-10x^3', '-21x-7-10x^3-8x^2', '-21x-7-8x^2-10x^3', '-7-10x^3-8x^2-21x', '-7-10x^3-21x-8x^2', '-7-8x^2-10x^3-21x', '-7-8x^2-21x-10x^3', '-7-21x-10x^3-8x^2', '-7-21x-8x^2-10x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 3x^3 + 8x^2 + 3x^2 + 8 + 1x^3 + 11x^2 + 7x^3 + 7x $$</span>',
-     'answer': ['11x^3+22x^2+7x+8', '11x^3+22x^2+8+7x', '11x^3+7x+22x^2+8', '11x^3+7x+8+22x^2', '11x^3+8+22x^2+7x', '11x^3+8+7x+22x^2', '22x^2+11x^3+7x+8', '22x^2+11x^3+8+7x', '22x^2+7x+11x^3+8', '22x^2+7x+8+11x^3', '22x^2+8+11x^3+7x', '22x^2+8+7x+11x^3', '7x+11x^3+22x^2+8', '7x+11x^3+8+22x^2', '7x+22x^2+11x^3+8', '7x+22x^2+8+11x^3', '7x+8+11x^3+22x^2', '7x+8+22x^2+11x^3', '8+11x^3+22x^2+7x', '8+11x^3+7x+22x^2', '8+22x^2+11x^3+7x', '8+22x^2+7x+11x^3', '8+7x+11x^3+22x^2', '8+7x+22x^2+11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 1 - 4x^3 - 10x - 5 - 4x^3 - 8x^2 - 9x^3 - 6x^2 - 1 $$</span>',
-     'answer': ['-17x^3-14x^2-10x-5', '-17x^3-14x^2-5-10x', '-17x^3-10x-14x^2-5', '-17x^3-10x-5-14x^2', '-17x^3-5-14x^2-10x', '-17x^3-5-10x-14x^2', '-14x^2-17x^3-10x-5', '-14x^2-17x^3-5-10x', '-14x^2-10x-17x^3-5', '-14x^2-10x-5-17x^3', '-14x^2-5-17x^3-10x', '-14x^2-5-10x-17x^3', '-10x-17x^3-14x^2-5', '-10x-17x^3-5-14x^2', '-10x-14x^2-17x^3-5', '-10x-14x^2-5-17x^3', '-10x-5-17x^3-14x^2', '-10x-5-14x^2-17x^3', '-5-17x^3-14x^2-10x', '-5-17x^3-10x-14x^2', '-5-14x^2-17x^3-10x', '-5-14x^2-10x-17x^3', '-5-10x-17x^3-14x^2', '-5-10x-14x^2-17x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x - 2x - 8 - 4x - 10x - 10x - 3 - 6x^2 $$</span>',
-     'answer': ['-6x^2-15x-11', '-6x^2-11-15x', '-15x-6x^2-11', '-15x-11-6x^2', '-11-6x^2-15x', '-11-15x-6x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^2 - 4x - 7x^2 - 1x - 8x - 3x^2 - 10 - 1x - 1x $$</span>',
-     'answer': ['-8x^2-15x-10', '-8x^2-10-15x', '-15x-8x^2-10', '-15x-10-8x^2', '-10-8x^2-15x', '-10-15x-8x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'}]
+    "questions": [{
+	'question': "Distribue l'expression littérale suivante: <span>$$ -1z(-2y+3z+2) $$</span>",
+	'answer': ['-3z^{2}-2z+2yz', '2yz-3z^{2}-2z', '-3z^{2}+2yz-2z', '-2z-3z^{2}+2yz', '-2z+2yz-3z^{2}', '2yz-2z-3z^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ 7x(3y-1x) $$</span>",
+	'answer': ['21xy-7x^{2}', '-7x^{2}+21xy'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ 3(-4x+2y+2z) $$</span>",
+	'answer': ['6z-12x+6y+', '-12x+6y+6z+', '6y-12x+6z+', '-12x++6z+6y', '6z++6y-12x', '6z-12x++6y', '6y-12x++6z', '+6y-12x+6z', '-12x+6z++6y', '6z+6y-12x+', '6y+6z+-12x', '6y++6z-12x', '6z+-12x+6y', '6z+6y+-12x', '-12x+6z+6y+', '+6z+6y-12x', '6y+6z-12x+', '-12x+6z+6y', '-12x+6y+6z', '-12x++6y+6z', '+6z-12x+6y', '6y+-12x+6z', '-12x+6y++6z', '+6y+6z-12x'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ -6y(7z-4) $$</span>",
+	'answer': ['24y+-42yz', '-42yz+24y+', '-42yz++24y', '+24y-42yz', '-42yz+24y', '24y-42yz+'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ -3y(-3y-2x+4z) $$</span>",
+	'answer': ['6xy-12yz+9y^{2}', '-12yz+9y^{2}+6xy', '6xy+9y^{2}-12yz', '-12yz+6xy+9y^{2}', '9y^{2}+6xy-12yz', '9y^{2}-12yz+6xy'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ -8x(-7z+6-1x) $$</span>",
+	'answer': ['8x^{2}-48x+56xz', '56xz-48x+8x^{2}', '56xz+8x^{2}-48x', '-48x+56xz+8x^{2}', '8x^{2}+56xz-48x', '-48x+8x^{2}+56xz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ -7z(-8y+7z) $$</span>",
+	'answer': ['-49z^{2}+56yz', '56yz-49z^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ 1z(5+5z) $$</span>",
+	'answer': ['5z^{2}+5z', '5z+5z^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ 5x(2y-4+7z) $$</span>",
+	'answer': ['10xy+35xz-20x', '35xz+10xy-20x', '10xy-20x+35xz', '-20x+35xz+10xy', '35xz-20x+10xy', '-20x+10xy+35xz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ 1(8y+6x) $$</span>",
+	'answer': ['8y+6x', '6x+8y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ -8(-7y-4-5x) $$</span>",
+	'answer': ['56y+32+40x', '32+56y+40x', '32+40x+56y', '40x+56y+32', '40x+32+56y', '56y+40x+32'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Distribue l'expression littérale suivante: <span>$$ 1z(4y-6x) $$</span>",
+	'answer': ['-6xz+4yz', '4yz-6xz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}]
+}
+
+Double_Distributivité = {
+    "chapitres": ["_11VPcalcullitteral"],
+    "nom": "Double Distributivité",
+    "body": "<p>Imaginons que tu as deux expressions algébriques entre parenthèses et que tu dois les multiplier ensemble. Par exemple, prenons les expressions suivantes: \( (a + b) \) et \( (c + d) \). La double distributivité consiste à distribuer chaque terme de la première parenthèse avec chaque terme de la seconde parenthèse, et ensuite à additionner les résultats obtenus.</p> <p>Dans notre exemple, voici comment on procède:</p><ol><li>Multiplie a par c: \( a * c = ac \)</li><li>Multiplie a par d: \( a * d = ad \)</li><li>Multiplie b par c: \( b * c = bc \)</li><li>Multiplie b par d: \( b * d = bd \)</li></ol><p>Maintenant, additionne les résultats obtenus:</p><p>\[ (ac) + (ad) + (bc) + (bd) \]</p><p>Donc, la double distributivité de \( (a + b)(c + d) \) est:</p><p>\[ (a + b)(c + d) = ac + ad + bc + bd \]</p><p>La double distributivité s'applique aussi bien pour les expressions avec des soustractions. Par exemple, si on a \( (a - b)(c - d) \), on obtient:</p><p>\[ (a - b)(c - d) = ac - ad - bc + bd \]</p><p>Ainsi lorsque tu fais une double distribution tu multiplies chaque terme de la première parenthèse avec chaque terme de la deuxième parenthèse et tu additionnes ou soustrais les différents produits obtenus.</p>",
+    "exemple":"<img src='static/images/double-distributivité.png' alt='Double Distributivité' width='450' height='180'>",
+    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
+    "questions": [{
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (-7x-5z)(2y+3z) $$</span>",
+	'answer': ['-21xz-14xy-10yz-15z^{2}+', '-14xy+-15z^{2}-10yz-21xz', '-21xz-15z^{2}-14xy-10yz', '-10yz-14xy-21xz-15z^{2}', '-10yz-14xy+-21xz-15z^{2}', '-14xy-21xz-10yz-15z^{2}+', '-10yz-14xy-21xz-15z^{2}+', '-21xz-14xy-15z^{2}-10yz+', '-14xy+-21xz-10yz-15z^{2}', '-15z^{2}-10yz-14xy-21xz', '-14xy+-15z^{2}-21xz-10yz', '-21xz-10yz-14xy+-15z^{2}', '-10yz-14xy+-15z^{2}-21xz', '-15z^{2}-21xz-10yz+-14xy', '-10yz-15z^{2}+-14xy-21xz', '-15z^{2}-21xz+-10yz-14xy', '-14xy-10yz-21xz-15z^{2}+', '-21xz-14xy-15z^{2}+-10yz', '-14xy-21xz-15z^{2}-10yz', '-14xy-15z^{2}-10yz-21xz', '-15z^{2}+-21xz-10yz-14xy', '-14xy-15z^{2}-21xz+-10yz', '-15z^{2}-21xz-14xy-10yz+', '-10yz-15z^{2}-14xy-21xz', '-14xy-21xz-15z^{2}-10yz+', '-21xz-10yz-14xy-15z^{2}+', '-14xy-21xz+-15z^{2}-10yz', '-14xy-10yz+-21xz-15z^{2}', '-15z^{2}-14xy+-21xz-10yz', '-15z^{2}+-10yz-21xz-14xy', '-14xy-10yz-21xz-15z^{2}', '-10yz+-15z^{2}-14xy-21xz', '-10yz-15z^{2}-21xz+-14xy', '-21xz+-10yz-14xy-15z^{2}', '-15z^{2}-10yz-14xy-21xz+', '-14xy-10yz+-15z^{2}-21xz', '-14xy-10yz-15z^{2}-21xz+', '-21xz-15z^{2}-10yz-14xy', '-10yz-21xz-15z^{2}-14xy', '-15z^{2}-14xy-21xz+-10yz', '-15z^{2}-10yz+-21xz-14xy', '-14xy-15z^{2}+-21xz-10yz', '-10yz-21xz-14xy-15z^{2}', '-21xz-15z^{2}-14xy+-10yz', '-10yz-14xy-15z^{2}-21xz+', '-14xy+-21xz-15z^{2}-10yz', '-14xy-21xz+-10yz-15z^{2}', '-21xz-14xy-15z^{2}-10yz', '-15z^{2}+-14xy-21xz-10yz', '-15z^{2}-14xy-10yz+-21xz', '-10yz-21xz-14xy-15z^{2}+', '-15z^{2}-10yz-21xz+-14xy', '-10yz-14xy-21xz+-15z^{2}', '-14xy+-10yz-15z^{2}-21xz', '-14xy+-10yz-21xz-15z^{2}', '-21xz+-10yz-15z^{2}-14xy', '-14xy-15z^{2}-10yz+-21xz', '-21xz-10yz-15z^{2}-14xy+', '-10yz-15z^{2}-21xz-14xy', '-21xz-10yz+-15z^{2}-14xy', '-10yz-21xz+-14xy-15z^{2}', '-14xy-21xz-10yz-15z^{2}', '-15z^{2}-14xy-21xz-10yz+', '-21xz-15z^{2}-14xy-10yz+', '-21xz-14xy-10yz+-15z^{2}', '-21xz+-14xy-15z^{2}-10yz', '-21xz+-15z^{2}-14xy-10yz', '-15z^{2}+-10yz-14xy-21xz', '-14xy-15z^{2}+-10yz-21xz', '-21xz-14xy-10yz-15z^{2}', '-14xy-21xz-15z^{2}+-10yz', '-15z^{2}+-14xy-10yz-21xz', '-15z^{2}-21xz+-14xy-10yz', '-15z^{2}-10yz-21xz-14xy', '-14xy-10yz-15z^{2}+-21xz', '-10yz-15z^{2}-21xz-14xy+', '-21xz-10yz-14xy-15z^{2}', '-14xy-10yz-15z^{2}-21xz', '-15z^{2}-21xz-10yz-14xy', '-21xz-15z^{2}-10yz-14xy+', '-15z^{2}-21xz-14xy-10yz', '-21xz-15z^{2}-10yz+-14xy', '-15z^{2}+-21xz-14xy-10yz', '-14xy-15z^{2}-10yz-21xz+', '-15z^{2}-14xy-10yz-21xz+', '-10yz-21xz-14xy+-15z^{2}', '-10yz-15z^{2}+-21xz-14xy', '-10yz-14xy-15z^{2}+-21xz', '-10yz+-14xy-15z^{2}-21xz', '-10yz-21xz-15z^{2}+-14xy', '-15z^{2}-10yz+-14xy-21xz', '-21xz+-14xy-10yz-15z^{2}', '-14xy-15z^{2}-21xz-10yz+', '-21xz-15z^{2}+-14xy-10yz', '-14xy-10yz-21xz+-15z^{2}', '-10yz+-14xy-21xz-15z^{2}', '-10yz-14xy-15z^{2}-21xz', '-10yz-21xz+-15z^{2}-14xy', '-15z^{2}-21xz-14xy+-10yz', '-21xz-15z^{2}+-10yz-14xy', '-21xz-14xy+-15z^{2}-10yz', '-15z^{2}-14xy-10yz-21xz', '-15z^{2}-10yz-21xz-14xy+', '-10yz-21xz-15z^{2}-14xy+', '-21xz-10yz-15z^{2}-14xy', '-10yz+-15z^{2}-21xz-14xy', '-10yz-15z^{2}-14xy-21xz+', '-10yz-15z^{2}-14xy+-21xz', '-14xy-21xz-10yz+-15z^{2}', '-14xy-15z^{2}-21xz-10yz', '-15z^{2}-14xy+-10yz-21xz', '-21xz-10yz-15z^{2}+-14xy', '-21xz-14xy+-10yz-15z^{2}', '-10yz+-21xz-15z^{2}-14xy', '-15z^{2}-21xz-10yz-14xy+', '-15z^{2}-14xy-21xz-10yz', '-10yz+-21xz-14xy-15z^{2}', '-15z^{2}-10yz-14xy+-21xz', '-21xz-10yz+-14xy-15z^{2}', '-21xz+-15z^{2}-10yz-14xy'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (4-8z)(-8x-7y) $$</span>",
+	'answer': ['-32x+64xz++56yz-28y', '-32x+64xz+56yz-28y+', '64xz-32x+-28y+56yz', '-28y+64xz+56yz-32x+', '-28y+64xz+56yz-32x', '-28y+-32x+56yz+64xz', '-28y+56yz++64xz-32x', '-28y++56yz-32x+64xz', '-28y-32x++64xz+56yz', '56yz-32x+64xz-28y+', '-32x-28y+56yz++64xz', '+64xz+56yz-32x-28y', '56yz+64xz-32x-28y+', '-28y-32x+64xz++56yz', '56yz-32x+-28y+64xz', '+56yz-32x-28y+64xz', '56yz+64xz-28y-32x+', '-28y+-32x+64xz+56yz', '-32x+56yz-28y+64xz+', '64xz+56yz+-28y-32x', '64xz-28y+56yz+-32x', '56yz-32x-28y++64xz', '64xz+-32x+56yz-28y', '-28y+56yz-32x++64xz', '56yz-32x+64xz+-28y', '+64xz-28y-32x+56yz', '-28y+56yz-32x+64xz', '64xz-28y+56yz-32x+', '56yz+64xz-28y+-32x', '56yz+64xz+-32x-28y', '-28y+64xz-32x++56yz', '56yz+-32x+64xz-28y', '-32x+64xz-28y++56yz', '64xz-32x+56yz+-28y', '-32x+64xz-28y+56yz+', '56yz++64xz-28y-32x', '64xz-32x++56yz-28y', '-32x-28y+64xz+56yz', '64xz+-28y-32x+56yz', '-32x-28y+56yz+64xz', '64xz+-32x-28y+56yz', '56yz+64xz-32x+-28y', '56yz++64xz-32x-28y', '-28y++56yz+64xz-32x', '56yz+-32x-28y+64xz', '-32x+56yz+64xz+-28y', '56yz-32x-28y+64xz+', '-28y+64xz-32x+56yz', '-32x-28y+64xz++56yz', '-32x+64xz+56yz+-28y', '64xz-28y++56yz-32x', '-32x++64xz+56yz-28y', '56yz+-28y-32x+64xz', '-32x-28y++64xz+56yz', '64xz+-28y+56yz-32x', '56yz+-28y+64xz-32x', '-32x-28y+56yz+64xz+', '-28y-32x+56yz+64xz', '56yz-32x++64xz-28y', '56yz-28y+64xz+-32x', '64xz+56yz-28y-32x+', '-32x+-28y+56yz+64xz', '+64xz-28y+56yz-32x', '-32x+64xz-28y+56yz', '-32x+64xz+56yz-28y', '-32x++64xz-28y+56yz', '-28y+56yz+64xz-32x', '56yz-28y-32x++64xz', '+56yz-28y-32x+64xz', '-32x-28y+64xz+56yz+', '-28y-32x+56yz++64xz', '-32x++56yz-28y+64xz', '-28y+64xz+-32x+56yz', '-28y+56yz+64xz-32x+', '56yz-28y+64xz-32x+', '+56yz-28y+64xz-32x', '-28y-32x+56yz+64xz+', '-28y-32x+64xz+56yz+', '64xz++56yz-28y-32x', '-28y++64xz+56yz-32x', '+56yz-32x+64xz-28y', '56yz-28y++64xz-32x', '-28y++64xz-32x+56yz', '-32x+56yz-28y++64xz', '+64xz-32x+56yz-28y', '56yz+64xz+-28y-32x', '-28y+64xz-32x+56yz+', '-28y-32x++56yz+64xz', '56yz-28y+-32x+64xz', '+56yz+64xz-32x-28y', '+64xz-32x-28y+56yz', '+64xz+56yz-28y-32x', '+56yz+64xz-28y-32x', '64xz-32x+56yz-28y+', '-28y+56yz+64xz+-32x', '-32x+56yz-28y+64xz', '-32x+-28y+64xz+56yz', '-32x++56yz+64xz-28y', '-28y+56yz+-32x+64xz', '64xz-32x-28y++56yz', '64xz-28y-32x++56yz', '-32x+56yz+64xz-28y', '64xz+56yz-28y+-32x', '64xz-32x-28y+56yz+', '64xz-28y-32x+56yz+', '64xz++56yz-32x-28y', '-28y+56yz-32x+64xz+', '64xz+56yz-32x+-28y', '56yz-28y-32x+64xz+', '64xz+56yz+-32x-28y', '-28y-32x+64xz+56yz', '-32x+56yz+-28y+64xz', '-28y+64xz++56yz-32x', '64xz-28y+-32x+56yz', '-32x+64xz+-28y+56yz', '-28y+64xz+56yz+-32x', '-32x+56yz+64xz-28y+', '64xz+56yz-32x-28y+', '-32x+56yz++64xz-28y', '-32x-28y++56yz+64xz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (-4y-4)(-7x+7z) $$</span>",
+	'answer': ['-28z-28yz+28xy+28x', '28xy-28yz+28x-28z', '28xy-28z-28yz+28x', '-28yz+28x-28z+28xy', '-28yz-28z+28xy+28x', '-28yz-28z+28x+28xy', '28x+28xy-28z-28yz', '-28z-28yz+28x+28xy', '28x-28z-28yz+28xy', '28xy-28z+28x-28yz', '-28yz+28xy-28z+28x', '-28yz+28xy+28x-28z', '28x-28yz+28xy-28z', '28x-28z+28xy-28yz', '28xy+28x-28z-28yz', '-28yz+28x+28xy-28z', '28x+28xy-28yz-28z', '28x-28yz-28z+28xy', '-28z+28x+28xy-28yz', '-28z+28x-28yz+28xy', '28xy+28x-28yz-28z', '-28z+28xy-28yz+28x', '-28z+28xy+28x-28yz', '28xy-28yz-28z+28x'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (8y+1z)(-7y-3z) $$</span>",
+	'answer': ['-3z^{2}-7yz-24yz+-56y^{2}', '-24yz+-56y^{2}-3z^{2}-7yz', '-56y^{2}-7yz-3z^{2}-24yz+', '-56y^{2}-3z^{2}-7yz-24yz+', '-56y^{2}-24yz+-7yz-3z^{2}', '-3z^{2}-7yz-24yz-56y^{2}', '-3z^{2}-24yz-56y^{2}-7yz', '-3z^{2}-7yz-24yz-56y^{2}+', '-56y^{2}-3z^{2}+-7yz-24yz', '-7yz-24yz+-56y^{2}-3z^{2}', '-3z^{2}-24yz-7yz-56y^{2}', '-56y^{2}+-24yz-3z^{2}-7yz', '-7yz-3z^{2}-56y^{2}+-24yz', '-7yz-56y^{2}-24yz-3z^{2}', '-56y^{2}-7yz-24yz+-3z^{2}', '-7yz-56y^{2}+-24yz-3z^{2}', '-24yz-7yz-56y^{2}-3z^{2}+', '-24yz-3z^{2}+-56y^{2}-7yz', '-3z^{2}+-24yz-56y^{2}-7yz', '-3z^{2}-56y^{2}-24yz+-7yz', '-56y^{2}-24yz+-3z^{2}-7yz', '-24yz-56y^{2}-3z^{2}-7yz+', '-24yz-56y^{2}-7yz+-3z^{2}', '-7yz-3z^{2}-56y^{2}-24yz+', '-3z^{2}-56y^{2}+-7yz-24yz', '-3z^{2}-56y^{2}-24yz-7yz', '-24yz-7yz-3z^{2}-56y^{2}', '-24yz+-56y^{2}-7yz-3z^{2}', '-24yz-56y^{2}+-7yz-3z^{2}', '-7yz-56y^{2}-3z^{2}+-24yz', '-3z^{2}+-56y^{2}-24yz-7yz', '-24yz-56y^{2}-3z^{2}-7yz', '-7yz-24yz-3z^{2}-56y^{2}', '-24yz-56y^{2}-7yz-3z^{2}', '-24yz-7yz+-56y^{2}-3z^{2}', '-56y^{2}-24yz-7yz-3z^{2}+', '-7yz+-56y^{2}-3z^{2}-24yz', '-24yz-3z^{2}-7yz-56y^{2}+', '-7yz-3z^{2}-24yz-56y^{2}+', '-7yz+-3z^{2}-56y^{2}-24yz', '-56y^{2}-24yz-3z^{2}+-7yz', '-56y^{2}-24yz-7yz-3z^{2}', '-3z^{2}-56y^{2}-7yz-24yz', '-56y^{2}+-7yz-24yz-3z^{2}', '-24yz-56y^{2}+-3z^{2}-7yz', '-56y^{2}-7yz-24yz-3z^{2}+', '-3z^{2}+-24yz-7yz-56y^{2}', '-3z^{2}-56y^{2}+-24yz-7yz', '-24yz+-7yz-56y^{2}-3z^{2}', '-7yz-3z^{2}-24yz+-56y^{2}', '-3z^{2}-56y^{2}-7yz-24yz+', '-3z^{2}+-7yz-56y^{2}-24yz', '-7yz-24yz-56y^{2}-3z^{2}', '-56y^{2}-3z^{2}-7yz-24yz', '-56y^{2}-3z^{2}+-24yz-7yz', '-56y^{2}-7yz-3z^{2}+-24yz', '-56y^{2}-7yz-24yz-3z^{2}', '-3z^{2}-24yz-56y^{2}+-7yz', '-7yz-3z^{2}-24yz-56y^{2}', '-7yz+-24yz-56y^{2}-3z^{2}', '-24yz-7yz+-3z^{2}-56y^{2}', '-56y^{2}-24yz-3z^{2}-7yz+', '-7yz-3z^{2}-56y^{2}-24yz', '-7yz-56y^{2}-3z^{2}-24yz+', '-56y^{2}-3z^{2}-24yz-7yz', '-56y^{2}-24yz-3z^{2}-7yz', '-7yz-24yz-56y^{2}-3z^{2}+', '-56y^{2}-7yz-3z^{2}-24yz', '-24yz-3z^{2}-7yz+-56y^{2}', '-3z^{2}-24yz-7yz-56y^{2}+', '-24yz+-3z^{2}-56y^{2}-7yz', '-56y^{2}-7yz+-24yz-3z^{2}', '-7yz-56y^{2}-24yz+-3z^{2}', '-56y^{2}-3z^{2}-7yz+-24yz', '-3z^{2}+-7yz-24yz-56y^{2}', '-7yz-56y^{2}+-3z^{2}-24yz', '-56y^{2}+-3z^{2}-7yz-24yz', '-7yz-24yz+-3z^{2}-56y^{2}', '-7yz+-56y^{2}-24yz-3z^{2}', '-3z^{2}-56y^{2}-7yz+-24yz', '-3z^{2}-56y^{2}-24yz-7yz+', '-56y^{2}-3z^{2}-24yz+-7yz', '-7yz-56y^{2}-24yz-3z^{2}+', '-3z^{2}-7yz+-24yz-56y^{2}', '-3z^{2}+-56y^{2}-7yz-24yz', '-3z^{2}-7yz-56y^{2}-24yz', '-7yz-24yz-3z^{2}+-56y^{2}', '-7yz-56y^{2}-3z^{2}-24yz', '-24yz+-3z^{2}-7yz-56y^{2}', '-3z^{2}-7yz-56y^{2}+-24yz', '-24yz-7yz-3z^{2}-56y^{2}+', '-56y^{2}-3z^{2}-24yz-7yz+', '-24yz-56y^{2}-7yz-3z^{2}+', '-24yz+-7yz-3z^{2}-56y^{2}', '-3z^{2}-24yz-7yz+-56y^{2}', '-24yz-7yz-56y^{2}+-3z^{2}', '-56y^{2}-7yz+-3z^{2}-24yz', '-24yz-3z^{2}-56y^{2}-7yz+', '-24yz-3z^{2}-56y^{2}+-7yz', '-7yz-24yz-56y^{2}+-3z^{2}', '-3z^{2}-24yz+-56y^{2}-7yz', '-3z^{2}-7yz-56y^{2}-24yz+', '-7yz-24yz-3z^{2}-56y^{2}+', '-56y^{2}+-3z^{2}-24yz-7yz', '-3z^{2}-24yz+-7yz-56y^{2}', '-24yz-3z^{2}-56y^{2}-7yz', '-24yz-56y^{2}-3z^{2}+-7yz', '-24yz-3z^{2}-7yz-56y^{2}', '-24yz-7yz-3z^{2}+-56y^{2}', '-7yz-3z^{2}+-56y^{2}-24yz', '-7yz+-24yz-3z^{2}-56y^{2}', '-56y^{2}+-24yz-7yz-3z^{2}', '-7yz-3z^{2}+-24yz-56y^{2}', '-56y^{2}+-7yz-3z^{2}-24yz', '-24yz-3z^{2}+-7yz-56y^{2}', '-24yz-7yz-56y^{2}-3z^{2}', '-56y^{2}-24yz-7yz+-3z^{2}', '-3z^{2}-24yz-56y^{2}-7yz+', '-3z^{2}-7yz+-56y^{2}-24yz', '-7yz+-3z^{2}-24yz-56y^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (4y+5x)(-2x+7) $$</span>",
+	'answer': ['-10x^{2}+35x+28y-8xy', '-8xy+28y-10x^{2}++35x', '28y-8xy+-10x^{2}+35x', '-10x^{2}+28y-8xy+35x', '-8xy+35x++28y-10x^{2}', '28y-8xy+35x-10x^{2}+', '28y+-8xy+35x-10x^{2}', '+35x-8xy+28y-10x^{2}', '-10x^{2}-8xy+28y+35x+', '-10x^{2}+-8xy+35x+28y', '35x+28y-8xy-10x^{2}+', '28y++35x-10x^{2}-8xy', '+28y-8xy-10x^{2}+35x', '-8xy+28y+-10x^{2}+35x', '-8xy-10x^{2}+35x++28y', '35x+28y-10x^{2}-8xy+', '35x++28y-8xy-10x^{2}', '-10x^{2}++35x+28y-8xy', '-10x^{2}+-8xy+28y+35x', '-10x^{2}+35x+-8xy+28y', '28y-10x^{2}-8xy++35x', '-8xy+35x-10x^{2}++28y', '28y-10x^{2}++35x-8xy', '35x-8xy+28y+-10x^{2}', '35x-8xy+-10x^{2}+28y', '35x+-10x^{2}+28y-8xy', '-8xy+-10x^{2}+28y+35x', '28y-10x^{2}-8xy+35x+', '-8xy-10x^{2}+28y+35x', '35x-10x^{2}+28y-8xy+', '35x-8xy++28y-10x^{2}', '28y-8xy-10x^{2}++35x', '-8xy+35x-10x^{2}+28y+', '-8xy+28y+35x+-10x^{2}', '28y+35x+-8xy-10x^{2}', '+28y+35x-8xy-10x^{2}', '-8xy-10x^{2}+35x+28y+', '-8xy+35x+28y-10x^{2}+', '-8xy+28y-10x^{2}+35x', '-10x^{2}+35x-8xy++28y', '-10x^{2}+35x+28y-8xy+', '-10x^{2}+28y++35x-8xy', '35x+28y+-8xy-10x^{2}', '+35x+28y-10x^{2}-8xy', '-8xy+28y+35x-10x^{2}', '-10x^{2}+28y-8xy+35x+', '28y-8xy+35x+-10x^{2}', '28y+35x-8xy+-10x^{2}', '35x-8xy-10x^{2}+28y+', '28y++35x-8xy-10x^{2}', '+35x-10x^{2}+28y-8xy', '-8xy+35x+28y-10x^{2}', '-10x^{2}-8xy+35x+28y+', '-8xy-10x^{2}+28y+35x+', '-8xy++28y-10x^{2}+35x', '-8xy++28y+35x-10x^{2}', '-8xy+35x+28y+-10x^{2}', '-10x^{2}+35x+28y+-8xy', '28y+35x-8xy-10x^{2}+', '35x+28y-8xy+-10x^{2}', '35x+28y-10x^{2}+-8xy', '-8xy+28y-10x^{2}+35x+', '+35x+28y-8xy-10x^{2}', '28y+-10x^{2}-8xy+35x', '-8xy+35x-10x^{2}+28y', '-10x^{2}+28y+35x+-8xy', '-8xy+28y+35x-10x^{2}+', '35x-8xy+28y-10x^{2}+', '35x-10x^{2}-8xy++28y', '28y-8xy++35x-10x^{2}', '-10x^{2}+28y+35x-8xy+', '-10x^{2}+35x-8xy+28y', '35x++28y-10x^{2}-8xy', '-10x^{2}-8xy++35x+28y', '35x-8xy-10x^{2}++28y', '-10x^{2}++28y+35x-8xy', '35x+-8xy-10x^{2}+28y', '+28y-10x^{2}-8xy+35x', '28y+35x-10x^{2}-8xy+', '35x+28y+-10x^{2}-8xy', '-8xy+28y++35x-10x^{2}', '35x+-10x^{2}-8xy+28y', '28y-10x^{2}+35x-8xy+', '+28y-10x^{2}+35x-8xy', '-10x^{2}++28y-8xy+35x', '+28y+35x-10x^{2}-8xy', '-10x^{2}+28y+-8xy+35x', '35x+-8xy+28y-10x^{2}', '28y+-10x^{2}+35x-8xy', '-10x^{2}+28y-8xy++35x', '-8xy-10x^{2}+28y++35x', '-8xy+35x+-10x^{2}+28y', '-10x^{2}+28y+35x-8xy', '-8xy++35x+28y-10x^{2}', '35x-10x^{2}+-8xy+28y', '-10x^{2}+35x++28y-8xy', '-8xy+-10x^{2}+35x+28y', '+28y-8xy+35x-10x^{2}', '-10x^{2}-8xy++28y+35x', '+35x-10x^{2}-8xy+28y', '-8xy++35x-10x^{2}+28y', '-10x^{2}-8xy+28y+35x', '35x-10x^{2}-8xy+28y+', '-10x^{2}-8xy+28y++35x', '+35x-8xy-10x^{2}+28y', '-8xy-10x^{2}++28y+35x', '28y-10x^{2}+-8xy+35x', '-10x^{2}-8xy+35x+28y', '-8xy-10x^{2}++35x+28y', '28y+-8xy-10x^{2}+35x', '-10x^{2}++35x-8xy+28y', '28y-10x^{2}+35x+-8xy', '35x-10x^{2}+28y+-8xy', '28y+35x+-10x^{2}-8xy', '28y+35x-10x^{2}+-8xy', '35x-10x^{2}++28y-8xy', '-10x^{2}-8xy+35x++28y', '28y-8xy-10x^{2}+35x+', '-10x^{2}+35x-8xy+28y+', '-8xy-10x^{2}+35x+28y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (-5y-8x)(-1y+1z) $$</span>",
+	'answer': ['-5yz+8xy+5y^{2}-8xz', '-5yz-8xz+5y^{2}+8xy', '-8xz-5yz+5y^{2}+8xy', '5y^{2}+8xy-8xz-5yz', '8xy-5yz+5y^{2}-8xz', '-8xz+5y^{2}-5yz+8xy', '-8xz-5yz+8xy+5y^{2}', '-5yz+8xy-8xz+5y^{2}', '8xy-8xz+5y^{2}-5yz', '8xy+5y^{2}-8xz-5yz', '-5yz+5y^{2}-8xz+8xy', '5y^{2}-8xz-5yz+8xy', '-8xz+8xy+5y^{2}-5yz', '8xy-8xz-5yz+5y^{2}', '8xy+5y^{2}-5yz-8xz', '-5yz+5y^{2}+8xy-8xz', '5y^{2}-5yz+8xy-8xz', '-5yz-8xz+8xy+5y^{2}', '8xy-5yz-8xz+5y^{2}', '5y^{2}-5yz-8xz+8xy', '5y^{2}-8xz+8xy-5yz', '-8xz+8xy-5yz+5y^{2}', '-8xz+5y^{2}+8xy-5yz', '5y^{2}+8xy-5yz-8xz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (-6z-1y)(4z-4x) $$</span>",
+	'answer': ['-24z^{2}+-4yz+4xy+24xz', '+24xz+4xy-4yz-24z^{2}', '+4xy-24z^{2}+24xz-4yz', '-4yz-24z^{2}+24xz+4xy+', '24xz+-24z^{2}-4yz+4xy', '-4yz++4xy-24z^{2}+24xz', '24xz-4yz-24z^{2}+4xy+', '+24xz-4yz-24z^{2}+4xy', '4xy+24xz+-4yz-24z^{2}', '-4yz+4xy+-24z^{2}+24xz', '+4xy+24xz-4yz-24z^{2}', '-24z^{2}-4yz+24xz+4xy+', '24xz-4yz+-24z^{2}+4xy', '-24z^{2}-4yz+4xy+24xz+', '-4yz-24z^{2}+4xy+24xz', '4xy-4yz-24z^{2}+24xz+', '24xz+-4yz+4xy-24z^{2}', '-24z^{2}+24xz++4xy-4yz', '+4xy-4yz+24xz-24z^{2}', '4xy-4yz+24xz+-24z^{2}', '-24z^{2}-4yz+24xz++4xy', '4xy+-4yz+24xz-24z^{2}', '-4yz-24z^{2}+4xy+24xz+', '-4yz+4xy+24xz+-24z^{2}', '-24z^{2}-4yz+4xy++24xz', '4xy++24xz-4yz-24z^{2}', '-4yz-24z^{2}++24xz+4xy', '4xy-4yz++24xz-24z^{2}', '-4yz-24z^{2}+24xz+4xy', '-4yz+24xz-24z^{2}+4xy+', '-4yz+4xy-24z^{2}++24xz', '-24z^{2}+4xy-4yz++24xz', '+24xz-24z^{2}-4yz+4xy', '-24z^{2}++24xz-4yz+4xy', '+4xy-24z^{2}-4yz+24xz', '-4yz+4xy+24xz-24z^{2}', '24xz+4xy-24z^{2}+-4yz', '-4yz+-24z^{2}+4xy+24xz', '4xy-24z^{2}+24xz-4yz+', '-24z^{2}+24xz-4yz++4xy', '-24z^{2}-4yz++24xz+4xy', '-24z^{2}+-4yz+24xz+4xy', '24xz-4yz++4xy-24z^{2}', '4xy++24xz-24z^{2}-4yz', '24xz+-24z^{2}+4xy-4yz', '24xz-4yz+4xy-24z^{2}+', '4xy+24xz-4yz-24z^{2}+', '24xz-24z^{2}+4xy+-4yz', '-4yz-24z^{2}+4xy++24xz', '-4yz+4xy-24z^{2}+24xz+', '-24z^{2}+4xy++24xz-4yz', '+24xz+4xy-24z^{2}-4yz', '+24xz-24z^{2}+4xy-4yz', '4xy-4yz+24xz-24z^{2}+', '-24z^{2}+24xz+4xy+-4yz', '4xy+-24z^{2}+24xz-4yz', '-24z^{2}+24xz-4yz+4xy', '4xy-4yz-24z^{2}++24xz', '24xz-4yz-24z^{2}++4xy', '24xz+4xy-4yz+-24z^{2}', '4xy+24xz-4yz+-24z^{2}', '24xz-24z^{2}-4yz+4xy+', '-24z^{2}+4xy-4yz+24xz', '24xz+4xy-24z^{2}-4yz+', '-4yz+4xy-24z^{2}+24xz', '4xy+24xz-24z^{2}+-4yz', '-4yz+24xz+4xy+-24z^{2}', '-24z^{2}+4xy+24xz+-4yz', '24xz-24z^{2}+-4yz+4xy', '-24z^{2}+24xz+4xy-4yz+', '-4yz+24xz+-24z^{2}+4xy', '4xy-4yz+-24z^{2}+24xz', '-4yz+24xz+4xy-24z^{2}+', '+4xy-4yz-24z^{2}+24xz', '4xy-24z^{2}++24xz-4yz', '-24z^{2}++4xy-4yz+24xz', '-24z^{2}+24xz+4xy-4yz', '24xz+-4yz-24z^{2}+4xy', '24xz++4xy-24z^{2}-4yz', '-4yz++24xz-24z^{2}+4xy', '-24z^{2}+24xz-4yz+4xy+', '-4yz-24z^{2}+24xz++4xy', '24xz+4xy-4yz-24z^{2}+', '4xy-24z^{2}+24xz+-4yz', '+24xz-4yz+4xy-24z^{2}', '24xz+4xy+-24z^{2}-4yz', '-24z^{2}+4xy+-4yz+24xz', '-4yz+24xz++4xy-24z^{2}', '4xy-24z^{2}-4yz+24xz+', '24xz-24z^{2}+4xy-4yz+', '4xy+-4yz-24z^{2}+24xz', '-24z^{2}+4xy-4yz+24xz+', '4xy+24xz-24z^{2}-4yz+', '-4yz+4xy++24xz-24z^{2}', '-4yz-24z^{2}++4xy+24xz', '-24z^{2}++4xy+24xz-4yz', '-24z^{2}-4yz+4xy+24xz', '-4yz+24xz-24z^{2}++4xy', '24xz++4xy-4yz-24z^{2}', '4xy-24z^{2}+-4yz+24xz', '24xz-4yz+4xy+-24z^{2}', '-24z^{2}+4xy+24xz-4yz+', '-4yz+24xz+4xy-24z^{2}', '-24z^{2}+4xy+24xz-4yz', '-4yz++4xy+24xz-24z^{2}', '4xy+-24z^{2}-4yz+24xz', '-24z^{2}-4yz++4xy+24xz', '4xy+24xz+-24z^{2}-4yz', '-24z^{2}-4yz+24xz+4xy', '-24z^{2}+24xz+-4yz+4xy', '24xz-24z^{2}++4xy-4yz', '24xz+4xy+-4yz-24z^{2}', '+4xy+24xz-24z^{2}-4yz', '4xy-24z^{2}-4yz++24xz', '-4yz+4xy+24xz-24z^{2}+', '-4yz+24xz-24z^{2}+4xy', '-24z^{2}++24xz+4xy-4yz', '-4yz+-24z^{2}+24xz+4xy', '24xz-24z^{2}-4yz++4xy', '-4yz++24xz+4xy-24z^{2}'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (-4y-6z)(-4z+4x) $$</span>",
+	'answer': ['24z^{2}-16xy+16yz-24xz', '-24xz-16xy+24z^{2}+16yz', '24z^{2}+16yz-24xz-16xy', '-16xy+16yz+24z^{2}-24xz', '24z^{2}-24xz+16yz-16xy', '-24xz+16yz+24z^{2}-16xy', '24z^{2}-24xz-16xy+16yz', '-24xz+24z^{2}+16yz-16xy', '16yz-16xy-24xz+24z^{2}', '-16xy-24xz+24z^{2}+16yz', '24z^{2}+16yz-16xy-24xz', '16yz-16xy+24z^{2}-24xz', '16yz-24xz+24z^{2}-16xy', '-24xz-16xy+16yz+24z^{2}', '16yz-24xz-16xy+24z^{2}', '-16xy+24z^{2}-24xz+16yz', '-16xy-24xz+16yz+24z^{2}', '-24xz+24z^{2}-16xy+16yz', '16yz+24z^{2}-16xy-24xz', '24z^{2}-16xy-24xz+16yz', '-16xy+16yz-24xz+24z^{2}', '-24xz+16yz-16xy+24z^{2}', '-16xy+24z^{2}+16yz-24xz', '16yz+24z^{2}-24xz-16xy'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (1y+4x)(1z-4y) $$</span>",
+	'answer': ['-16xy-4y^{2}+1yz+4xz', '-4y^{2}+4xz+1yz-16xy', '4xz+1yz-4y^{2}-16xy', '1yz+4xz-16xy-4y^{2}', '4xz+1yz-16xy-4y^{2}', '-4y^{2}-16xy+4xz+1yz', '1yz-16xy+4xz-4y^{2}', '-16xy+4xz+1yz-4y^{2}', '-16xy+4xz-4y^{2}+1yz', '-16xy-4y^{2}+4xz+1yz', '-4y^{2}+1yz+4xz-16xy', '-4y^{2}+4xz-16xy+1yz', '-4y^{2}-16xy+1yz+4xz', '4xz-4y^{2}+1yz-16xy', '1yz-4y^{2}-16xy+4xz', '4xz-4y^{2}-16xy+1yz', '-16xy+1yz-4y^{2}+4xz', '1yz+4xz-4y^{2}-16xy', '-16xy+1yz+4xz-4y^{2}', '-4y^{2}+1yz-16xy+4xz', '4xz-16xy+1yz-4y^{2}', '1yz-4y^{2}+4xz-16xy', '1yz-16xy-4y^{2}+4xz', '4xz-16xy-4y^{2}+1yz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (7x+6)(-8y-2) $$</span>",
+	'answer': ['-48y-56xy-12-14x', '-14x+-56xy-48y-12', '-48y-12-56xy-14x+', '-14x+-48y-12-56xy', '-48y-14x-56xy-12', '-56xy-12-14x-48y+', '-48y-56xy-14x+-12', '-48y+-12-56xy-14x', '-48y-14x-12-56xy', '-12+-48y-14x-56xy', '-14x-12+-56xy-48y', '-56xy-48y-14x-12', '-48y-14x-56xy-12+', '-48y+-56xy-14x-12', '-48y-14x+-56xy-12', '-56xy+-12-14x-48y', '-14x-48y-12-56xy', '-56xy-12-14x-48y', '-14x+-12-56xy-48y', '-14x-56xy-12+-48y', '-48y-56xy-12-14x+', '-56xy-48y-12-14x+', '-48y-56xy-12+-14x', '-12-48y-56xy+-14x', '-14x-56xy+-48y-12', '-56xy-14x-12+-48y', '-48y-56xy+-12-14x', '-56xy+-48y-14x-12', '-48y-12+-56xy-14x', '-14x-48y-56xy+-12', '-48y-14x-12-56xy+', '-56xy-14x-12-48y+', '-12+-48y-56xy-14x', '-14x-48y-56xy-12+', '-14x-48y+-56xy-12', '-56xy-12-14x+-48y', '-48y-12-14x-56xy+', '-14x-12-48y-56xy', '-12-14x+-48y-56xy', '-12-56xy-14x-48y+', '-14x-48y-12-56xy+', '-12-56xy-48y-14x', '-56xy-12-48y-14x+', '-12-56xy-48y+-14x', '-56xy-12-48y+-14x', '-12-48y-56xy-14x', '-56xy-48y+-12-14x', '-14x-12-48y-56xy+', '-12+-14x-48y-56xy', '-12-56xy+-48y-14x', '-14x-12-56xy-48y', '-56xy-48y-14x-12+', '-48y-12-14x-56xy', '-12-56xy+-14x-48y', '-14x+-48y-56xy-12', '-56xy-12+-14x-48y', '-12+-14x-56xy-48y', '-48y-14x-12+-56xy', '-56xy-12+-48y-14x', '-12-48y-14x-56xy', '-12-48y+-14x-56xy', '-56xy-14x+-48y-12', '-48y-56xy+-14x-12', '-12-56xy-14x+-48y', '-12+-56xy-48y-14x', '-12-48y-56xy-14x+', '-56xy+-12-48y-14x', '-56xy-48y-12+-14x', '-48y+-14x-56xy-12', '-56xy-48y-14x+-12', '-14x-56xy-48y+-12', '-56xy+-48y-12-14x', '-48y+-14x-12-56xy', '-56xy-14x-48y-12+', '-12-14x-48y+-56xy', '-12-48y+-56xy-14x', '-14x-56xy-48y-12', '-56xy-14x-12-48y', '-12-14x-48y-56xy', '-12-56xy-14x-48y', '-14x-48y-56xy-12', '-48y-14x-56xy+-12', '-14x-12-56xy+-48y', '-56xy-48y-12-14x', '-14x-12-56xy-48y+', '-14x+-12-48y-56xy', '-12-14x-56xy-48y', '-48y-12+-14x-56xy', '-56xy+-14x-12-48y', '-14x-56xy-12-48y+', '-14x-48y-12+-56xy', '-12-14x-56xy-48y+', '-12-14x-56xy+-48y', '-14x-48y+-12-56xy', '-12-14x+-56xy-48y', '-14x-56xy-48y-12+', '-48y-12-56xy-14x', '-48y+-56xy-12-14x', '-48y-12-56xy+-14x', '-56xy-12-48y-14x', '-12-48y-14x-56xy+', '-14x-12+-48y-56xy', '-56xy+-14x-48y-12', '-48y-14x+-12-56xy', '-14x+-56xy-12-48y', '-56xy-14x+-12-48y', '-14x-56xy+-12-48y', '-48y+-12-14x-56xy', '-56xy-48y+-14x-12', '-48y-12-14x+-56xy', '-12-48y-14x+-56xy', '-12+-56xy-14x-48y', '-56xy-14x-48y+-12', '-48y-56xy-14x-12+', '-48y-56xy-14x-12', '-14x-56xy-12-48y', '-12-14x-48y-56xy+', '-14x-12-48y+-56xy', '-12-56xy-48y-14x+', '-56xy-14x-48y-12'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (4z-3)(2y-3) $$</span>",
+	'answer': ['-12z+8yz-6y+9', '-6y+9+8yz-12z', '9+8yz-6y-12z', '-12z+8yz+9-6y', '-6y+8yz-12z+9', '-6y+9-12z+8yz', '-12z+9-6y+8yz', '-6y-12z+8yz+9', '-12z+9+8yz-6y', '8yz+9-6y-12z', '8yz-12z-6y+9', '9+8yz-12z-6y', '-12z-6y+8yz+9', '9-6y+8yz-12z', '8yz-6y+9-12z', '9-12z-6y+8yz', '8yz+9-12z-6y', '-6y-12z+9+8yz', '9-12z+8yz-6y', '-12z-6y+9+8yz', '8yz-6y-12z+9', '8yz-12z+9-6y', '9-6y-12z+8yz', '-6y+8yz+9-12z'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}, {
+	'question': "Effectue la double distribution dans l'expression littérale suivante: <span>$$ (-6z+8y)(-6z-6) $$</span>",
+	'answer': ['36z-48yz+36z^{2}-48y', '-48y+36z^{2}-48yz+36z', '-48yz+36z^{2}-48y+36z', '-48y+36z+36z^{2}-48yz', '-48yz+36z-48y+36z^{2}', '36z^{2}+36z-48y-48yz', '36z^{2}-48yz+36z-48y', '-48yz-48y+36z+36z^{2}', '36z^{2}-48y-48yz+36z', '-48y-48yz+36z^{2}+36z', '36z+36z^{2}-48y-48yz', '-48yz+36z+36z^{2}-48y', '36z-48y-48yz+36z^{2}', '36z^{2}-48yz-48y+36z', '36z+36z^{2}-48yz-48y', '-48y-48yz+36z+36z^{2}', '-48y+36z-48yz+36z^{2}', '-48yz-48y+36z^{2}+36z', '36z^{2}+36z-48yz-48y', '-48y+36z^{2}+36z-48yz', '-48yz+36z^{2}+36z-48y', '36z^{2}-48y+36z-48yz', '36z-48yz-48y+36z^{2}', '36z-48y+36z^{2}-48yz'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': ['transforme_puissance_to_latex']
+}]
 }
 
 Addition_et_soustraction_de_polynômes = {
     "chapitres": ["_11VPcalcullitteral"],
     "nom": "Addition et soustraction de polynômes",
-    "body": "Lorsque l’on additionne deux polynômes on peut simplement enlever les parenthèses et ensuite réduire l’expression littérale obtenue. Lorsque l’on soustrait deux polynômes on doit inverser les signes de chaque monôme du polynôme qui suit le signe de soustraction. On enlève ensuite le signe de soustraction ainsi que les parenthèses.",
-    "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
+    "body": "Lorsque l’on additionne deux polynômes on peut simplement enlever les parenthèses et ensuite réduire l’expression littérale obtenue. Lorsque l’on soustrait deux polynômes on doit inverser les signes de chaque monôme du polynôme qui suit le signe de soustraction. On enlève ensuite le signe de soustraction ainsi que les parenthèses. C'est exactement comme si il y'avait -1 devant la parenthèse et que l'on distribue ce -1 dans celle-ci",
+    "exemple":"<span>$$ (3x-5)+(3-8x) $$</span><br><p>Comme il y a une addition entre les deux polynôme on peut directement enlever les parenthèses. Mon expression devient alors :</p><span>$$ 3x-5+3-8x $$</span><br><p>Je réduis ensuite l'expression ce qui me donne : </p> $$ -5x-2 $$ <p>Dans le cas ou on a une soustraction comme ici </p> $$ (3x+12)-(4x-16)$$ <br> <p> On doit d'abord inverser le signe des monômes qui se trouvent dans la deuxième parenthèse ainsi \( 4x \) devient \( -4x \) et \( -16 \) devient \( +16 \). On finit par enlever le - devant la parenthèse ainsi que les parenthèses et on trouve: </p>  $$ $$ 3x+12-4x+16)$$ $$ <p> Si on réduis notre expression littérale se transforme en : </p> $$ -x+28 $$ <p class='attention'>Attention dans le cas où on a un + devant une parenthèse qui commence par un - comme dans \( +(-5x+12) \) on peut directement retirer les parenthèse cela nous donne \( +-5x+12 \). On voit que l'on a + et - qui se suivent. On utlise alors la règle des signes: + et - donne - donc cela devient : -5x+12</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": [
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x^3 + 10x^3 + 8x^3 + 12x + 8x + 3x^3 + 12 + 11 + 4x^2 $$</span>',
-     'answer': ['31x^3+4x^2+20x+23', '31x^3+4x^2+23+20x', '31x^3+20x+4x^2+23', '31x^3+20x+23+4x^2', '31x^3+23+4x^2+20x', '31x^3+23+20x+4x^2', '4x^2+31x^3+20x+23', '4x^2+31x^3+23+20x', '4x^2+20x+31x^3+23', '4x^2+20x+23+31x^3', '4x^2+23+31x^3+20x', '4x^2+23+20x+31x^3', '20x+31x^3+4x^2+23', '20x+31x^3+23+4x^2', '20x+4x^2+31x^3+23', '20x+4x^2+23+31x^3', '20x+23+31x^3+4x^2', '20x+23+4x^2+31x^3', '23+31x^3+4x^2+20x', '23+31x^3+20x+4x^2', '23+4x^2+31x^3+20x', '23+4x^2+20x+31x^3', '23+20x+31x^3+4x^2', '23+20x+4x^2+31x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x + 8x^3 + 2x + 1x^2 + 8x + 11x + 10 + 11 $$</span>',
-     'answer': ['8x^3+1x^2+23x+21', '8x^3+1x^2+21+23x', '8x^3+23x+1x^2+21', '8x^3+23x+21+1x^2', '8x^3+21+1x^2+23x', '8x^3+21+23x+1x^2', '1x^2+8x^3+23x+21', '1x^2+8x^3+21+23x', '1x^2+23x+8x^3+21', '1x^2+23x+21+8x^3', '1x^2+21+8x^3+23x', '1x^2+21+23x+8x^3', '23x+8x^3+1x^2+21', '23x+8x^3+21+1x^2', '23x+1x^2+8x^3+21', '23x+1x^2+21+8x^3', '23x+21+8x^3+1x^2', '23x+21+1x^2+8x^3', '21+8x^3+1x^2+23x', '21+8x^3+23x+1x^2', '21+1x^2+8x^3+23x', '21+1x^2+23x+8x^3', '21+23x+8x^3+1x^2', '21+23x+1x^2+8x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 6x^3 - 10x - 11x^2 - 9x^3 - 6x^2 - 8x^3 - 7x - 7x - 12x^2 $$</span>',
-     'answer': ['-11x^3-29x^2-24x', '-11x^3-24x-29x^2', '-29x^2-11x^3-24x', '-29x^2-24x-11x^3', '-24x-11x^3-29x^2', '-24x-29x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x^2 - 7 - 2 - 6x - 2x^3 - 7x - 9x^3 $$</span>',
-     'answer': ['-11x^3+11x^2-13x-9', '-11x^3+11x^2-9-13x', '-11x^3-13x+11x^2-9', '-11x^3-13x-9+11x^2', '-11x^3-9+11x^2-13x', '-11x^3-9-13x+11x^2', '11x^2-11x^3-13x-9', '11x^2-11x^3-9-13x', '11x^2-13x-11x^3-9', '11x^2-13x-9-11x^3', '11x^2-9-11x^3-13x', '11x^2-9-13x-11x^3', '-13x-11x^3+11x^2-9', '-13x-11x^3-9+11x^2', '-13x+11x^2-11x^3-9', '-13x+11x^2-9-11x^3', '-13x-9-11x^3+11x^2', '-13x-9+11x^2-11x^3', '-9-11x^3+11x^2-13x', '-9-11x^3-13x+11x^2', '-9+11x^2-11x^3-13x', '-9+11x^2-13x-11x^3', '-9-13x-11x^3+11x^2', '-9-13x+11x^2-11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 + 6 + 2x + 8x^2 + 6 + 8x^2 + 8 + 7 $$</span>',
-     'answer': ['2x^3+16x^2+2x+27', '2x^3+16x^2+27+2x', '2x^3+2x+16x^2+27', '2x^3+2x+27+16x^2', '2x^3+27+16x^2+2x', '2x^3+27+2x+16x^2', '16x^2+2x^3+2x+27', '16x^2+2x^3+27+2x', '16x^2+2x+2x^3+27', '16x^2+2x+27+2x^3', '16x^2+27+2x^3+2x', '16x^2+27+2x+2x^3', '2x+2x^3+16x^2+27', '2x+2x^3+27+16x^2', '2x+16x^2+2x^3+27', '2x+16x^2+27+2x^3', '2x+27+2x^3+16x^2', '2x+27+16x^2+2x^3', '27+2x^3+16x^2+2x', '27+2x^3+2x+16x^2', '27+16x^2+2x^3+2x', '27+16x^2+2x+2x^3', '27+2x+2x^3+16x^2', '27+2x+16x^2+2x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 4x - 8x^3 - 10 - 9x^3 - 1x - 8x - 4x^3 $$</span>',
-     'answer': ['-21x^3-5x-10', '-21x^3-10-5x', '-5x-21x^3-10', '-5x-10-21x^3', '-10-21x^3-5x', '-10-5x-21x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 10x - 3x^2 - 2x^2 - 11 - 2x^2 - 3x^2 - 6x - 12 - 5x^2 $$</span>',
-     'answer': ['-15x^2+4x-23', '-15x^2-23+4x', '4x-15x^2-23', '4x-23-15x^2', '-23-15x^2+4x', '-23+4x-15x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^3 - 10x - 7 - 8x^2 - 12x^3 - 7x - 4x $$</span>',
-     'answer': ['-10x^3-8x^2-21x-7', '-10x^3-8x^2-7-21x', '-10x^3-21x-8x^2-7', '-10x^3-21x-7-8x^2', '-10x^3-7-8x^2-21x', '-10x^3-7-21x-8x^2', '-8x^2-10x^3-21x-7', '-8x^2-10x^3-7-21x', '-8x^2-21x-10x^3-7', '-8x^2-21x-7-10x^3', '-8x^2-7-10x^3-21x', '-8x^2-7-21x-10x^3', '-21x-10x^3-8x^2-7', '-21x-10x^3-7-8x^2', '-21x-8x^2-10x^3-7', '-21x-8x^2-7-10x^3', '-21x-7-10x^3-8x^2', '-21x-7-8x^2-10x^3', '-7-10x^3-8x^2-21x', '-7-10x^3-21x-8x^2', '-7-8x^2-10x^3-21x', '-7-8x^2-21x-10x^3', '-7-21x-10x^3-8x^2', '-7-21x-8x^2-10x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 3x^3 + 8x^2 + 3x^2 + 8 + 1x^3 + 11x^2 + 7x^3 + 7x $$</span>',
-     'answer': ['11x^3+22x^2+7x+8', '11x^3+22x^2+8+7x', '11x^3+7x+22x^2+8', '11x^3+7x+8+22x^2', '11x^3+8+22x^2+7x', '11x^3+8+7x+22x^2', '22x^2+11x^3+7x+8', '22x^2+11x^3+8+7x', '22x^2+7x+11x^3+8', '22x^2+7x+8+11x^3', '22x^2+8+11x^3+7x', '22x^2+8+7x+11x^3', '7x+11x^3+22x^2+8', '7x+11x^3+8+22x^2', '7x+22x^2+11x^3+8', '7x+22x^2+8+11x^3', '7x+8+11x^3+22x^2', '7x+8+22x^2+11x^3', '8+11x^3+22x^2+7x', '8+11x^3+7x+22x^2', '8+22x^2+11x^3+7x', '8+22x^2+7x+11x^3', '8+7x+11x^3+22x^2', '8+7x+22x^2+11x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 1 - 4x^3 - 10x - 5 - 4x^3 - 8x^2 - 9x^3 - 6x^2 - 1 $$</span>',
-     'answer': ['-17x^3-14x^2-10x-5', '-17x^3-14x^2-5-10x', '-17x^3-10x-14x^2-5', '-17x^3-10x-5-14x^2', '-17x^3-5-14x^2-10x', '-17x^3-5-10x-14x^2', '-14x^2-17x^3-10x-5', '-14x^2-17x^3-5-10x', '-14x^2-10x-17x^3-5', '-14x^2-10x-5-17x^3', '-14x^2-5-17x^3-10x', '-14x^2-5-10x-17x^3', '-10x-17x^3-14x^2-5', '-10x-17x^3-5-14x^2', '-10x-14x^2-17x^3-5', '-10x-14x^2-5-17x^3', '-10x-5-17x^3-14x^2', '-10x-5-14x^2-17x^3', '-5-17x^3-14x^2-10x', '-5-17x^3-10x-14x^2', '-5-14x^2-17x^3-10x', '-5-14x^2-10x-17x^3', '-5-10x-17x^3-14x^2', '-5-10x-14x^2-17x^3'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 11x - 2x - 8 - 4x - 10x - 10x - 3 - 6x^2 $$</span>',
-     'answer': ['-6x^2-15x-11', '-6x^2-11-15x', '-15x-6x^2-11', '-15x-11-6x^2', '-11-6x^2-15x', '-11-15x-6x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'},
-    {'question': 'Réduis le polynôme suivant <span>$$ 2x^2 - 4x - 7x^2 - 1x - 8x - 3x^2 - 10 - 1x - 1x $$</span>',
-     'answer': ['-8x^2-15x-10', '-8x^2-10-15x', '-15x-8x^2-10', '-15x-10-8x^2', '-10-8x^2-15x', '-10-15x-8x^2'],
-     'feedback': "Bravo, c'est la bonne réponse !",
-     'feedbackClass': 'text-success'}]
-}
+    "questions": [{
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (-8-3x-1y)-(6-7y-5x) $$</span>",
+	'answer': ['2x-14+6y', '-14+6y+2x', '2x+6y-14', '6y-14+2x', '6y+2x-14', '-14+2x+6y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (-1x-1y-2)+(4x-6y) $$</span>",
+	'answer': ['-7y-2+3x', '3x-7y-2', '-2+3x-7y', '-2-7y+3x', '-7y+3x-2', '3x-2-7y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (6x-6+1y)+(5x-4) $$</span>",
+	'answer': ['11x-10+1y', '-10+1y+11x', '1y-10+11x', '1y+11x-10', '11x+1y-10', '-10+11x+1y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (8y+2)+(5x+2y) $$</span>",
+	'answer': ['10y+5x+2', '5x+10y+2', '10y+2+5x', '5x+2+10y', '2+10y+5x', '2+5x+10y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (2+5x)-(2x+7y) $$</span>",
+	'answer': ['-7y+3x', '3x-7y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (-3y-4)+(-2+7y) $$</span>",
+	'answer': ['4y-6', '-6+4y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (-2y+8x)-(-3x+3) $$</span>",
+	'answer': ['-2y-3+11x', '-2y+11x-3', '11x-2y-3', '11x-3-2y', '-3-2y+11x', '-3+11x-2y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (3y-4x-6)-(-7-5x) $$</span>",
+	'answer': ['1+1x+3y', '1x+1+3y', '3y+1+1x', '1x+3y+1', '3y+1x+1', '1+3y+1x'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (7x-4-4y)+(-8y-5x-7) $$</span>",
+	'answer': ['2x-12y-11', '-11-12y+2x', '2x-11-12y', '-11+2x-12y', '-12y-11+2x', '-12y+2x-11'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (6x+7y+6)-(-8x+1y-8) $$</span>",
+	'answer': ['14x+6y+14', '6y+14x+14', '14x+14+6y', '6y+14+14x', '14+14x+6y', '14+6y+14x'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (-5x-2+6y)-(4y-7x) $$</span>",
+	'answer': ['2y+2x-2', '2x-2+2y', '2y-2+2x', '-2+2y+2x', '2x+2y-2', '-2+2x+2y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}, {
+	'question': "Effectue l'addition/soustraction dans l'expression suivante: <span>$$ (3y-6)+(6y-4) $$</span>",
+	'answer': ['9y-10', '-10+9y'],
+	'feedback': "Bravo, c'est la bonne réponse !",
+	'feedbackClass': 'text-success',
+	'methods': []
+}]}
+
 
 Identité_remarquables = {
     "chapitres": ["_11VPcalcullitteral"],
