@@ -45,9 +45,37 @@
     {% for point in souschapitre %}
     <section id="section_{{point.nom}}" class="section_chapitre">
         <h2 class="section_chapitre_titre">{{point.nom}}</h2>
+        <h4 class="section_chapitre_theorie">Théorie</h4>
         <p class="section_chapitre_body">{{point.body|safe}}</p>
         <h4 class="section_chapitre_exemple">Exemple</h4>
         <p class="exemple_chapitre_body">{{point.exemple|safe}}</p>
+        {% if 'body2' in point %}
+        <br>
+        <h4 class="section_chapitre_theorie">Théorie 2</h4>
+        <p class="section_chapitre_body">{{point.body2|safe}}</p>
+        {% endif %}
+        {% if 'exemple2' in point %}
+        <h4 class="section_chapitre_exemple">Exemple 2</h4>
+        <p class="exemple_chapitre_body">{{point.exemple2|safe}}</p>
+        {% endif %}
+        {% if 'body3' in point %}
+        <br>
+         <h4 class="section_chapitre_theorie">Théorie 3</h4>
+        <p class="section_chapitre_body">{{point.body3|safe}}</p>
+        {% endif %}
+        {% if 'exemple3' in point %}
+        <h4 class="section_chapitre_exemple">Exemple 3</h4>
+        <p class="exemple_chapitre_body">{{point.exemple3|safe}}</p>
+        {% endif %}
+        {% if 'body4' in point %}
+        <br>
+         <h4 class="section_chapitre_theorie">Théorie 4</h4>
+        <p class="section_chapitre_body">{{point.body4|safe}}</p>
+        {% endif %}
+        {% if 'exemple4' in point %}
+        <h4 class="section_chapitre_exemple">Exemple 4</h4>
+        <p class="exemple_chapitre_body">{{point.exemple4|safe}}</p>
+        {% endif %}
         {% include 'exercice_theorie.html' %}
     </section>
     {% endfor %}

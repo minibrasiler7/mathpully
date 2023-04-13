@@ -11,8 +11,6 @@ import sujet
 import points
 
 port = int(os.environ.get("PORT", 5000))
-
-
 app = Flask(__name__)
 app.secret_key = 'jhbviug75765drtxzbiu'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'

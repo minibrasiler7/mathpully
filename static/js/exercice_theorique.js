@@ -142,7 +142,7 @@ function selectionSansRemise(tableau) {
   list_objet = [];
   const exercicesInteractifs = document.querySelectorAll('.exercice-interactif');
   exercicesInteractifs.forEach((exerciceInteractif) => {
-    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a"));
+    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i"));
     const questionText = exerciceInteractif.querySelector('.question-text');
     const answerInput = exerciceInteractif.querySelector('.answer-input');
     const feedbackText = exerciceInteractif.querySelector('.feedback-text');
