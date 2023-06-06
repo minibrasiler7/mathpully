@@ -9,6 +9,9 @@ from flask_mail import Mail, Message
 import os
 import sujet
 import points
+import calcullittéralbrain
+
+
 
 port = int(os.environ.get("PORT", 5000))
 app = Flask(__name__)
@@ -76,7 +79,6 @@ def personnalisation():
     if request.method == 'POST':
         selected_avatar = request.form['avatar']
         user = User.query.get(current_user.id)
-        print(selected_avatar)
         user.avatar = selected_avatar
         user.personnalisation = True
         db.session.commit()
@@ -95,8 +97,17 @@ def chapitre():
     for souschapitre in sujet_selectionne['points']:
         souschapitre = souschapitre.replace(" ", "_")
         souschapitre = souschapitre.replace("'", "_")
-        print(souschapitre)
         dic_point.append(getattr(points, souschapitre))
+
+    for i in range(len(dic_point)):
+        nom_fonction = dic_point[i]["questions"]
+        if hasattr(calcullittéralbrain, nom_fonction):
+            questions = [getattr(calcullittéralbrain, nom_fonction)(), getattr(calcullittéralbrain, nom_fonction)(), getattr(calcullittéralbrain, nom_fonction)(), getattr(calcullittéralbrain, nom_fonction)()]
+            dic_point[i]["questions"] = questions
+        else:
+            print("no function")
+
+
 
 
 
