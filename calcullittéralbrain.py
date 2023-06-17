@@ -95,8 +95,7 @@ def reduire_expression(expression):
 
 
 polynome = créer_expression_literale_nonreduite_nonordonnee(4,8,6)
-print(polynome)
-print(reduire_expression(polynome))
+
 
 
 

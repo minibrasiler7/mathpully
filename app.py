@@ -1,3 +1,5 @@
+import copy
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -93,11 +95,15 @@ def personnalisation():
 def chapitre():
     nom_chapitre = request.args.get('nom_chapitre')
     sujet_selectionne = getattr(sujet, f"_{nom_chapitre}")
+
     dic_point=[]
+
     for souschapitre in sujet_selectionne['points']:
         souschapitre = souschapitre.replace(" ", "_")
         souschapitre = souschapitre.replace("'", "_")
-        dic_point.append(getattr(points, souschapitre))
+        copie_souschapitre = copy.deepcopy(getattr(points, souschapitre))
+        dic_point.append(copie_souschapitre)
+
 
     for i in range(len(dic_point)):
         nom_fonction = dic_point[i]["questions"]
@@ -106,10 +112,6 @@ def chapitre():
             dic_point[i]["questions"] = questions
         else:
             print("no function")
-
-
-
-
 
     # Code pour récupérer les données du chapitre correspondant à nom_chapitre depuis la base de données
     return render_template(f"{nom_chapitre}.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user)
