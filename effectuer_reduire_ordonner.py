@@ -226,6 +226,8 @@ class Expression_litteral:
 
         self.polynome_reduit_ordonne = traduire_dico_chaine_to_dico_power(self.polynome_reduit_ordonne)
 
+        self.polynome_reduit_ordonne = retirer_all_zero_value_dico(self.polynome_reduit_ordonne)
+
         self.chaine_polynome_reduit_ordonne =transform_dictionnaire_to_polynome(self.polynome_reduit_ordonne)
 
 
@@ -315,6 +317,12 @@ class Expression_litteral:
                 result = multiplication_polynome(dico1, dico2)
             liste_result.append(result)
         return liste_result
+
+    def retirer_all_zero_value_dico(self, dico):
+        dico_non_zero = {key:value for (key,value) in dico.items() if value != 0.0}
+        return dico_non_zero
+
+
 
 
     # Pernet de séparer (4-x)(4-x)(4-x)+(4-x)(4-x)+3(5x-2y+4z) en [[4-x, 4-x, 4-x], [+1, 4-x, 4-x], [+3, 5x-2y+4z]]

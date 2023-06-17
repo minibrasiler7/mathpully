@@ -89,6 +89,7 @@ def générer_liste_combinaison_possible_polynome(poly_dict):
 
 def reduire_expression(expression):
     polynome = effectuer_reduire_ordonner.Expression_litteral(expression)
+
     liste_polynome_possible = générer_liste_combinaison_possible_polynome(polynome.polynome_reduit_ordonne)
     return liste_polynome_possible
 
@@ -98,7 +99,8 @@ polynome = créer_expression_literale_nonreduite_nonordonnee(4,8,6)
 
 
 
-
+print(polynome)
+print(reduire_expression(polynome))
 
 
 
@@ -127,11 +129,11 @@ def generer_Evaluer_une_expression_littérale():
 
 def generer_reduire_une_expression_littérale():
     for i in range(0,4):
-
-        effectuer_reduire_ordonner.Expression_litteral()
+        polynome = créer_expression_literale_nonreduite_nonordonnee(4,8,6)
+        reponse = reduire_expression(polynome)
         question = {
-        "question": f"Réduire l'expression: <span>$$  $$</span>",
-        "answer": [f""],
+        "question": f"Réduire l'expression: <span>$$ {polynome} $$</span>",
+        "answer": reponse,
         "feedback": random.choice(congratulations_messages),
         "feedbackClass": "text-success",
         "methods": ["enlever_espace"]
