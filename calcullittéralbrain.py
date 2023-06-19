@@ -87,10 +87,26 @@ def générer_liste_combinaison_possible_polynome(poly_dict):
 
     return polynomials
 
+def changer_nombre_virgule_en_entier(expression):
+    expression = expression.replace(".0", "")
+    return expression
+
+def enlever_puissance_un(expression):
+    expression = expression.replace("^{1}", "")
+    return expression
+
 def reduire_expression(expression):
     polynome = effectuer_reduire_ordonner.Expression_litteral(expression)
-
+    print(polynome)
     liste_polynome_possible = générer_liste_combinaison_possible_polynome(polynome.polynome_reduit_ordonne)
+    for i in range(len(liste_polynome_possible)):
+        liste_polynome_possible[i] = changer_nombre_virgule_en_entier(liste_polynome_possible[i])
+        #liste_polynome_possible[i] = enlever_puissance_un(liste_polynome_possible[i])
+        if liste_polynome_possible[i][0] == "+":
+            liste_polynome_possible[i] = liste_polynome_possible[i][1:]
+
+
+
     return liste_polynome_possible
 
 

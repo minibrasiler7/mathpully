@@ -170,6 +170,10 @@ def traduire_dico_chaine_to_dico_power(dico):
 def trier_dictionnaire_par_cle(dictionnaire):
     return {cle: dictionnaire[cle] for cle in sorted(dictionnaire, key=lambda x: (-len(x), x))}
 
+def retirer_all_zero_value_dico(dico):
+    dico_non_zero = {key:value for (key,value) in dico.items() if value != 0.0}
+    return dico_non_zero
+
 
 # transforme x^{3}y^{2} en xxxyy
 def transformer_puissance_en_chaine(chaine):
@@ -318,9 +322,6 @@ class Expression_litteral:
             liste_result.append(result)
         return liste_result
 
-    def retirer_all_zero_value_dico(self, dico):
-        dico_non_zero = {key:value for (key,value) in dico.items() if value != 0.0}
-        return dico_non_zero
 
 
 
