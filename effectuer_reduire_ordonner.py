@@ -1,4 +1,11 @@
 import re
+from fractions import Fraction
+
+def decimal_to_fraction(decimal):
+    return Fraction(decimal).limit_denominator()
+
+# Exemple d'utilisation
+
 def remove_all_zeros_non_significatif(nombre):
     if nombre.is_integer():
         nombre = int(nombre)
@@ -23,8 +30,7 @@ def expand_powers(input_string):
 
     return expanded_str
 
-def transform_fraction_in_decimal():
-    pass
+
 
 def transform_dico_in_list(dico):
     return [f"{value}{key}" for key, value in dico.items() if value != 0]
@@ -212,6 +218,7 @@ class Expression_litteral:
         self.chaine_no_power = self.transforme_carre_to_multiplication()
         self.dico_monome_without_distribution = keep_only_non_distributive_terme(self.chaine_no_power)
         self.dico_monome_without_distribution = self.transformer_liste_matrice_dictionnaire(self.dico_monome_without_distribution)
+        self.before_reduction = self.dico_monome_without_distribution
         self.dico_monome_without_distribution = reduire_dictionnaire(self.dico_monome_without_distribution)
         self.liste_facteur_distributivite = self.trouver_expression_distributivite()
         if self.liste_facteur_distributivite != []:
@@ -232,7 +239,7 @@ class Expression_litteral:
 
         self.polynome_reduit_ordonne = retirer_all_zero_value_dico(self.polynome_reduit_ordonne)
 
-        self.chaine_polynome_reduit_ordonne =transform_dictionnaire_to_polynome(self.polynome_reduit_ordonne)
+        self.chaine_polynome_reduit_ordonne = transform_dictionnaire_to_polynome(self.polynome_reduit_ordonne)
 
 
 
@@ -396,6 +403,32 @@ def multiplication_polynome(dico1,dico2):
                 result_dico[chaine_triee_puissance] = multiplication_coefficient
     return result_dico
 
+import re
+
+def replace_fractions_with_decimal(s):
+    # Trouver toutes les fractions dans la chaîne de caractères
+    fractions = re.findall(r'\\frac\{(\d+)\}\{(\d+)\}', s)
+
+    # Pour chaque fraction trouvée
+    for fraction in fractions:
+        # Calculer la valeur décimale
+        decimal_value = float(fraction[0]) / float(fraction[1])
+
+        # Remplacer la fraction par sa valeur décimale dans la chaîne de caractères
+        s = s.replace('\\frac{' + fraction[0] + '}{' + fraction[1] + '}', str(decimal_value))
+
+    return s
+
+def change_reduit_ordonnee_to_fraction_dict(dict):
+    for key, value in dict.items():
+       dict[key] = decimal_to_fraction(value)
+    return dict
 
 
+
+
+
+expression = replace_fractions_with_decimal("\\frac{3}{4}x-\\frac{5}{3}x^{2}+\\frac{1}{4}x-\\frac{4}{6}x^{2}")
+polynome = Expression_litteral(expression)
+reduit  = polynome.polynome_reduit_ordonne
 
