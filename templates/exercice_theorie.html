@@ -1,6 +1,6 @@
 <div class="container">
     <h3 class="my-4">Exercice interactif de math</h3>
-    <div class="row exercice-interactif" data-questions="{{point.questions}}" data-score="0" data-exercice-courant="0">
+    <div class="row exercice-interactif" data-questions="{{point.questions}}" data-name="{{point.name}}" data-score="0" data-exercice-courant="0">
         <div class="col-12 col-lg-6">
             <div class="card">
                 <div class="card-body" >
@@ -23,6 +23,20 @@
                         <div class="feedback-text"></div>
                     </div>
                     <button class="btn btn-primary mt-2 valider" type="submit" name="action">Valider</button>
+                    {% for exercise in badge_user %}
+                        {% if exercise.exercise_name == point.name %}
+                        <div>
+                        {% if exercise.is_completed %}
+                             <img src=static/images/{{point.badge}} class="badge_image">
+                        {% else %}
+                             <img src=static/images/{{point.badge}} class="badge_image grayscale">
+                        {% endif %}
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+
+
+
                     <div class="score-text"></div>
                     <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>

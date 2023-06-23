@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const pointsUtilisateurNav = document.getElementById('points_utilisateurs_nav');
 
 class Exercices {
-
-  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html) {
+  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name) {
     this.questions = questions;
     this.index_question = 0;
     this.currentQuestion = this.questions[this.index_question]
@@ -14,6 +13,7 @@ class Exercices {
     this.score_html = score_html;
     this.valider_html = valider_html;
     this.progress_html = progress_html;
+    this.name = name;
     this.valider_html.addEventListener('click', () => this.checkAnswer());
     this.input_html.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
@@ -28,8 +28,30 @@ class Exercices {
       this.feedback_html.textContent = "";
       this.score_html.textContent = `Score : ${this.index_question * 10}`;
       this.updateMathJax();
-
   }
+  completeExercise(exerciseName) {
+    fetch('/update_exercise', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'exercise_name': exerciseName,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Exercise updated successfully") {
+            console.log('Success:', data);
+        } else {
+            console.error('Error:', data);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    }
+
   transforme_fraction_to_latex(userAnswer){
     const fractionRegex = /\((\d+)\/(\d+)\)/g;
     return userAnswer.replace(fractionRegex, '\\frac{$1}{$2}');
@@ -76,6 +98,8 @@ class Exercices {
           this.donnee_problem_html.textContent = "Vous avez terminé toutes les questions !";
           this.input_html.style.display = "none";
           this.valider_html.style.display = "none";
+          this.completeExercise(this.name);
+
         } else {
           this.showQuestion();
         }
@@ -126,8 +150,8 @@ class Exercices {
     MathJax.typesetPromise();
   }
 }
-
 }
+
 
 function selectionSansRemise(tableau) {
     questions = []
@@ -144,6 +168,7 @@ function selectionSansRemise(tableau) {
   exercicesInteractifs.forEach((exerciceInteractif) => {
 
     const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e"));
+    const name = exerciceInteractif.dataset.name;
     const questionText = exerciceInteractif.querySelector('.question-text');
     const answerInput = exerciceInteractif.querySelector('.answer-input');
     const feedbackText = exerciceInteractif.querySelector('.feedback-text');
@@ -151,7 +176,7 @@ function selectionSansRemise(tableau) {
     const valider = exerciceInteractif.querySelector('.valider');
     const progressbar = exerciceInteractif.querySelector('.progress-bar');
     choose_question = selectionSansRemise(questions)
-    var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar)
+    var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name)
     exercice.showQuestion()
     list_objet.push(exercice)
 

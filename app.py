@@ -1,5 +1,4 @@
 import copy
-
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -12,8 +11,7 @@ import os
 import sujet
 import points
 import calcullittéralbrain
-
-
+import liste_badge_db
 
 port = int(os.environ.get("PORT", 5000))
 app = Flask(__name__)
@@ -29,6 +27,7 @@ login_manager.init_app(app)
 db = SQLAlchemy(app)
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)
@@ -38,6 +37,15 @@ class User(UserMixin, db.Model):
     personnalisation = db.Column(db.Boolean, default=False)
     avatar = db.Column(db.String(50), nullable = True)
     points = db.Column(db.Integer, default=0)
+    exercises = db.relationship('Exercise', backref='user', lazy='dynamic')
+class Exercise(db.Model):
+    __tablename__ = 'exercises'
+    id = db.Column(db.Integer, primary_key=True)
+    exercise_name = db.Column(db.String(128))
+    is_completed = db.Column(db.Boolean)
+
+    # Clé étrangère vers l'utilisateur
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def is_active(self):
         """Return True if the user is active, else False."""
@@ -59,7 +67,7 @@ def login():
     username = request.form['username']
     password = request.form['password']
     user = User.query.filter_by(username=username).first()
-    if user is not None and check_password_hash(user.password_hash, password) and user.is_confirmed:
+    if user is not None and check_password_hash(user.password_hash, password) :
         login_user(user)
         if user.personnalisation:
             return redirect(url_for('dashboard'))
@@ -83,6 +91,10 @@ def personnalisation():
         user = User.query.get(current_user.id)
         user.avatar = selected_avatar
         user.personnalisation = True
+        db.session.commit()
+        for i in range(len(liste_badge_db.liste_name_sous_chapitre)):
+            new_exercise = Exercise(exercise_name=liste_badge_db.liste_name_sous_chapitre[i], is_completed=False, user=current_user)
+            db.session.add(new_exercise)
         db.session.commit()
         return render_template('dashboard.html', user=user)
 
@@ -112,9 +124,11 @@ def chapitre():
             dic_point[i]["questions"] = questions
         else:
             print("no function")
+    badge_user = Exercise.query.filter_by(user_id=current_user.id).all()
+
 
     # Code pour récupérer les données du chapitre correspondant à nom_chapitre depuis la base de données
-    return render_template(f"{nom_chapitre}.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user)
+    return render_template(f"{nom_chapitre}.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user, badge_user = badge_user)
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -183,6 +197,22 @@ def confirmation(username, token):
     flash('Le lien de confirmation est invalide ou a expiré.', 'error')
     return redirect(url_for('index'))
 
+@app.route('/update_exercise', methods=['POST'])
+def update_exercise():
+    data = request.get_json()
+    exercise_name = data.get('exercise_name')
+    user_id = current_user.id
+
+    # Trouver l'exercice pour l'utilisateur actuel
+    exercise = Exercise.query.filter_by(exercise_name=exercise_name, user_id=user_id).first()
+
+    if exercise:
+        exercise.is_completed = 1
+        db.session.commit()
+        return jsonify({"message": "Exercise updated successfully"}), 200
+
+    else:
+        return jsonify({"message": "Exercise not found"}), 404
 
 if __name__ == '__main__':
     with app.app_context():

@@ -24,3 +24,10 @@
   text-decoration: none;
   color: #f7df1e;
 }
+.badge_image{
+    width:100px;
+    border-radius:100%;
+}
+.grayscale {
+    filter: grayscale(100%);
+}

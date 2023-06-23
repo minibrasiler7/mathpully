@@ -132,6 +132,24 @@ def enlever_puissance_un(expression):
     expression = expression.replace("^{1}", "")
     return expression
 
+def enlever_denominateur_un(expression):
+    nouvelle_expression = ""
+    for i in range(len(expression)):
+        if i>0:
+            if expression[i] == "1" and expression[i-1] == "/":
+                if i != len(expression)-1:
+                    if not expression[i+1].isdigit():
+                        nouvelle_expression = nouvelle_expression[:-1]
+                    else:
+                        nouvelle_expression += expression[i]
+                else:
+                    nouvelle_expression = nouvelle_expression[:-1]
+            else:
+                nouvelle_expression += expression[i]
+        else:
+            nouvelle_expression += expression[i]
+    return nouvelle_expression
+
 def enlever_crochet_puissance(expression):
     expression = expression.replace("{", "")
     expression = expression.replace("}", "")
@@ -154,12 +172,7 @@ def reduire_expression(expression):
         liste_polynome_possible[i] = enlever_crochet_puissance(liste_polynome_possible[i])
         if liste_polynome_possible[i][0] == "+":
             liste_polynome_possible[i] = liste_polynome_possible[i][1:]
-
-
-
     return liste_polynome_possible
-
-
 
 polynome = créer_expression_literale_nonreduite_nonordonnee(4,8,6)
 
@@ -168,7 +181,6 @@ def remove_power_one(expression):
     return expression.replace("^1", "")
 
 def remove_coefficient_1_from_chaine(chaine):
-
     newchaine = ""
     for i in range(len(chaine)-1):
         if chaine[i] == "1":
@@ -176,6 +188,8 @@ def remove_coefficient_1_from_chaine(chaine):
                 if chaine[i-1] == "+" or chaine[i-1] == "-":
                     if not chaine[i+1].isdigit():
                         pass
+                    else:
+                        newchaine += chaine[i]
                 else:
                     newchaine += chaine[i]
             else:
@@ -187,18 +201,6 @@ def remove_coefficient_1_from_chaine(chaine):
             newchaine += chaine[i]
     newchaine += chaine[-1]
     return newchaine
-
-
-
-
-
-
-
-
-
-
-
-
 
 def generer_Evaluer_une_expression_littérale():
     for i in range(0,4):
@@ -243,6 +245,9 @@ def generer_reduire_une_expression_littérale_fraction():
     for i in range(len(liste_possible_polyome)):
         liste_possible_polyome[i]= effectuer_reduire_ordonner.remove_plus_in_first_position(liste_possible_polyome[i])
         liste_possible_polyome[i] = effectuer_reduire_ordonner.remove_power_one(liste_possible_polyome[i])
+        liste_possible_polyome[i] = remove_coefficient_1_from_chaine(liste_possible_polyome[i])
+        liste_possible_polyome[i] = enlever_denominateur_un(liste_possible_polyome[i])
+        liste_possible_polyome[i] = enlever_crochet_puissance(liste_possible_polyome[i])
     question = {
         "question": f"Réduire l'expression: <span>$$ {remove_coefficient_1_from_chaine(polynome)} $$</span>",
         "answer": liste_possible_polyome,
