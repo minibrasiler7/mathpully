@@ -59,6 +59,8 @@ def creer_expression_litteral_ordonnee_aleatoire(degree, coefficient_max):
     if expression[0] == "+":
         expression = expression[1:]
     return expression
+
+
 def créer_expression_literale_nonreduite_nonordonnee_fraction(nombre_partie_litteral_differente, nombre_termes):
     partie_litteral = liste_partie_litteral[:nombre_partie_litteral_differente]
     expression = ""
@@ -170,12 +172,29 @@ def reduire_expression(expression):
         liste_polynome_possible[i] = changer_nombre_virgule_en_entier(liste_polynome_possible[i])
         liste_polynome_possible[i] = enlever_puissance_un(liste_polynome_possible[i])
         liste_polynome_possible[i] = enlever_crochet_puissance(liste_polynome_possible[i])
-        if liste_polynome_possible[i][0] == "+":
-            liste_polynome_possible[i] = liste_polynome_possible[i][1:]
+        if len(liste_polynome_possible[i])>0:
+            if liste_polynome_possible[i][0] == "+":
+                liste_polynome_possible[i] = liste_polynome_possible[i][1:]
     return liste_polynome_possible
 
-polynome = créer_expression_literale_nonreduite_nonordonnee(4,8,6)
+def generer_expression_distributivite():
+    coefficient = random.randint(1,8)
+    signe = signe_aleatoire()
+    partie_litteral_avant_p = random.choice(liste_partie_litteral[:6])
+    nombre_terme_parenthèse = random.randint(2,3)
 
+    chaine= f"{signe}{coefficient}{partie_litteral_avant_p}("
+    for i in range(nombre_terme_parenthèse):
+        coeff = coefficient = random.randint(1,8)
+        signe = signe_aleatoire()
+        if signe == "+" and i == 0:
+            signe = ""
+        partie_litteral = random.choice(liste_partie_litteral[:6])
+        chaine += f"{signe}{coefficient}{partie_litteral}"
+    chaine+= ")"
+    if chaine[0] == "+":
+        chaine = chaine[1:]
+    return chaine
 
 def remove_power_one(expression):
     return expression.replace("^1", "")
@@ -186,7 +205,7 @@ def remove_coefficient_1_from_chaine(chaine):
         if chaine[i] == "1":
             if i>0:
                 if chaine[i-1] == "+" or chaine[i-1] == "-":
-                    if not chaine[i+1].isdigit():
+                    if not chaine[i+1].isdigit() or chaine[i+1] == ")":
                         pass
                     else:
                         newchaine += chaine[i]
@@ -256,6 +275,43 @@ def generer_reduire_une_expression_littérale_fraction():
         "methods": ["enlever_espace"]}
     return question
 
-generer_reduire_une_expression_littérale()
+def generer_ordonner_une_expression_littérale():
+    polynome = créer_expression_literale_nonreduite_nonordonnee(8,4,4)
+    polynome = remove_coefficient_1_from_chaine(polynome)
+    expression = effectuer_reduire_ordonner.Expression_litteral(polynome)
+    reponse = expression.chaine_polynome_reduit_ordonne
+
+    reponse= effectuer_reduire_ordonner.remove_plus_in_first_position(reponse)
+    reponse = effectuer_reduire_ordonner.remove_power_one(reponse)
+    reponse = remove_coefficient_1_from_chaine(reponse)
+    reponse = enlever_crochet_puissance(reponse)
+    question = {
+        "question": f"Réduis et ordonne l'expression: <span>$$ {polynome} $$</span>",
+        "answer": [reponse],
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+
+
+def generer_distribution():
+    polynome = generer_expression_distributivite()
+
+    polynome = remove_coefficient_1_from_chaine(polynome)
+
+    reponse = reduire_expression(polynome)
+
+    question = {
+        "question": f"Distribue et réduis: <span>$$ {polynome} $$</span>",
+        "answer": reponse,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+print(generer_distribution())
+
+
+
+
 
 

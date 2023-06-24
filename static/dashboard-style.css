@@ -1,59 +1,76 @@
+body {
+  background-color: #f5f5f5;
+}
+
 #welcome {
-  background-color: #f7df1e;
+  background-color: #98ff98; /* Vert menthe */
   padding: 100px 0;
 }
 
 #welcome h2 {
   font-size: 48px;
-  color: #007bff;
+  color: #2e8b57; /* Vert plus foncé pour le contraste */
   font-weight: bold;
 }
 
 #welcome p {
   font-size: 24px;
-  color: #fff;
+  color: #006400; /* Vert encore plus foncé pour le contraste */
 }
 
 #welcome button {
   margin-top: 30px;
   font-size: 24px;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #2e8b57; /* Vert plus foncé pour le contraste */
+  border-color: #2e8b57; /* Vert plus foncé pour le contraste */
+  color:white;
 }
 
 #welcome button:hover {
-  background-color: #fff;
-  color: #ff6b6b;
+  background-color: #f5f5f5; /* Gris pour le hover */
+  color: #2e8b57; /* Vert plus foncé pour le contraste */
 }
+#welcome button a {
+  color: #fff; /* Blanc */
+}
+
 
 #welcome img {
   border-radius: 50%;
   border: 10px solid #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  width: 300px; /* taille initiale */
+  width: 300px;
   height: 300px;
-  position: relative; /* position relative pour permettre la translation */
-  animation-name: zoomInAndTranslate; /* nom de l'animation */
-  animation-duration: 2s; /* durée de l'animation */
-  animation-fill-mode: forwards; /* conserve l'état final de l'animation */
+  position: relative;
+  animation-name: zoomInAndTranslate;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 }
 
-a{
-text-decoration:none;
-color:white;
-}
-a:hover{
-
-text-decoration:none;
-color:pink;
+a {
+  text-decoration:none;
+  color:#2e8b57; /* Vert plus foncé pour le contraste */
 }
 
+a:hover {
+  text-decoration:none;
+  color:#98ff98; /* Vert menthe pour le hover */
+}
 
-@keyframes zoomInAndTranslate {
-  from {
-    transform: scale(0.2) translate(-60px, -60px); /* taille et position initiales */
-  }
-  to {
-    transform: scale(1) translate(200, 0); /* taille et position finales */
-  }
+/* Nouvelle section pour les badges */
+#badges {
+  background-color: #f5f5f5;
+  padding: 50px 0;
+}
+
+#badges h3 {
+  font-size: 32px;
+  color: #2e8b57; /* Vert plus foncé pour le contraste */
+  font-weight: bold;
+}
+
+#badges .badge {
+  margin: 10px;
+  font-size: 18px;
+  background-color: #2e8b57; /* Vert plus foncé pour le contraste */
 }

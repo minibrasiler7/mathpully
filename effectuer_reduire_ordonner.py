@@ -188,25 +188,19 @@ def transformer_puissance_en_chaine(chaine):
     nouvelle_chaine = ""
     caractere_courant = ""
     i=0
-    nombre=0
     while i < len(chaine):
         if chaine[i].isalpha():
             caractere_courant = chaine[i]
             i+=1
         else:
             debut = i
-            j=i
-            while chaine[j].isdigit():
-                j += 1
+            while i < len(chaine) and chaine[i].isdigit():
                 i += 1
-                if j==len(chaine):
-                    break
-            nombre = int(chaine[debut:j+1])
+            nombre = int(chaine[debut:i])
             for k in range(nombre):
                 nouvelle_chaine += caractere_courant
-
-
     return nouvelle_chaine
+
 
 
 
@@ -230,9 +224,7 @@ class Expression_litteral:
         self.liste_all_multiplication_done.append(self.dico_monome_without_distribution)
 
         self.liste_all_multiplication_done = merge_dictionnaire(self.liste_all_multiplication_done)
-
         self.polynome_reduit_ordonne = traduire_dico_power_to_dico_chaine(self.liste_all_multiplication_done)
-
         self.polynome_reduit_ordonne = trier_dictionnaire_par_cle(self.polynome_reduit_ordonne)
 
         self.polynome_reduit_ordonne = traduire_dico_chaine_to_dico_power(self.polynome_reduit_ordonne)
@@ -333,7 +325,7 @@ class Expression_litteral:
 
 
 
-    # Pernet de séparer (4-x)(4-x)(4-x)+(4-x)(4-x)+3(5x-2y+4z) en [[4-x, 4-x, 4-x], [+1, 4-x, 4-x], [+3, 5x-2y+4z]]
+    # Permet de séparer (4-x)(4-x)(4-x)+(4-x)(4-x)+3(5x-2y+4z) en [[4-x, 4-x, 4-x], [+1, 4-x, 4-x], [+3, 5x-2y+4z]]
     def separer_termes_principaux(self):
         liste_separer_principale = []
         new_terme = []
@@ -378,9 +370,15 @@ class Expression_litteral:
                         dic[add_power_one(separer[j][1])].append(float(separer[j][0]))
                 else:
                     if "" not in dic:
-                        dic[""] = [float(separer[j][0])]
+                        if separer[j][0] == "-":
+                            dic[""] = [float(-1)]
+                        else:
+                            dic[""] = [float(separer[j][0])]
                     else:
-                        dic[""].append(float(separer[j][0]))
+                        if separer[j][0] == "-":
+                             dic[""].append(float(-1))
+                        else:
+                            dic[""].append(float(separer[j][0]))
             else:
                 dic[""].append(float(separer[j][0]))
         return dic
@@ -428,7 +426,7 @@ def change_reduit_ordonnee_to_fraction_dict(dict):
 
 
 
-expression = replace_fractions_with_decimal("\\frac{3}{4}x-\\frac{5}{3}x^{2}+\\frac{1}{4}x-\\frac{4}{6}x^{2}")
+expression = replace_fractions_with_decimal("2x^{2}+3x^{2}+2x^{1}y^{1}-2+3y^{2}")
 polynome = Expression_litteral(expression)
 reduit  = polynome.polynome_reduit_ordonne
 

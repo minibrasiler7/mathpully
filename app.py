@@ -10,8 +10,9 @@ from flask_mail import Mail, Message
 import os
 import sujet
 import points
-import calcullittéralbrain
 import liste_badge_db
+import calcullittéralbrain
+from datetime import datetime
 
 port = int(os.environ.get("PORT", 5000))
 app = Flask(__name__)
@@ -92,10 +93,14 @@ def personnalisation():
         user.avatar = selected_avatar
         user.personnalisation = True
         db.session.commit()
-        for i in range(len(liste_badge_db.liste_name_sous_chapitre)):
-            new_exercise = Exercise(exercise_name=liste_badge_db.liste_name_sous_chapitre[i], is_completed=False, user=current_user)
-            db.session.add(new_exercise)
-        db.session.commit()
+        try:
+
+            for i in range(len(charger_nom_badge())):
+                new_exercise = Exercise(exercise_name=charger_nom_badge()[i], is_completed=False, user=current_user)
+                db.session.add(new_exercise)
+            db.session.commit()
+        except Exception as e:
+            print("An error occurred while adding exercises:", e)
         return render_template('dashboard.html', user=user)
 
     images =['avatar1.png', 'avatar2.png', 'avatar3.png']
@@ -208,11 +213,27 @@ def update_exercise():
 
     if exercise:
         exercise.is_completed = 1
+        exercise.completed_at = datetime.utcnow()
         db.session.commit()
         return jsonify({"message": "Exercise updated successfully"}), 200
 
     else:
         return jsonify({"message": "Exercise not found"}), 404
+
+def charger_nom_badge():
+    liste_badge_db =[]
+    liste_name_sous_chapitre =[]
+    for nom_variable in dir(points):
+    # Obtenez l'objet associé au nom de variable
+        variable = getattr(points, nom_variable)
+    # Vérifiez si la variable est un dictionnaire
+        if isinstance(variable, dict):
+            # Vérifiez si la clé "name" existe dans le dictionnaire
+            if "name" in variable:
+                # Ajoutez la valeur de la clé "name" à la liste des noms
+                liste_name_sous_chapitre.append(variable["name"])
+
+    return liste_name_sous_chapitre
 
 if __name__ == '__main__':
     with app.app_context():

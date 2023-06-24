@@ -1,5 +1,12 @@
 import calcullittéralbrain
-import liste_badge_db as bdg
+
+
+
+nom_defaut_badge = "badge_"
+bdg=[]
+for i in range(1,32):
+    bdg.append(f"{nom_defaut_badge}{i}.png")
+
 
 Evaluer_une_expression_littérale = {
     "chapitres": ["_11VPcalcullitteral"],
@@ -8,9 +15,9 @@ Evaluer_une_expression_littérale = {
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
     "exemple":"<span>$$ 3x^2+2x-15 $$</span><br>Si on évalue l'expression pour x=3 alors notre expression devient:<br><span>$$ 3\cdot 3^2+2 \cdot 3-15 = 18 $$</span><br>"
               " Si on évalue l'expression pour x=-2 notre expression devient: <br> <span>$$ 3\cdot (-2)^2+2 \cdot (-2)-15 = 18 $$</span><br> <p class='attention'>Attention à bien mettre en parenthèse la valeur que prends x si celui-ci est un nombre négatif! </p>",
-    "message_aide":[],
+    "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$" ],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[0]
+    "badge": bdg[0]
 }
 
 Réduction_de_polynômes = {
@@ -19,20 +26,20 @@ Réduction_de_polynômes = {
     "nom": "Réduction de polynômes",
     "body": "Réduire un polynôme signifie que l’on va mettre ensemble les monômes avec la même partie littérale. Avant de réduire un polynôme, il faut s’assurer que l’on a bien effectué toutes les opérations de puissances, racines, multiplications et divisions.<br> <strong>1ère étape </strong> <br> On sépare le polynôme en ses monômes. Dès que l’on voit un signe d’addition ou de soustraction on place une séparation avant ce dernier.<br><strong>2ème étape </strong> <br> On reconnaît les monômes qui ont la même partie littérale. On réorganise le polynôme afin de mettre ensemble les mônomes qui ont les mêmes parties littérales. <br><strong>3ème étape</strong> <br> On les additionne entre eux pour cela on fait la somme des coefficients et on réécrit la partie littérale sans la modifier",
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <br> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . <br> Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
-    "message_aide":[],
+    "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "questions": "generer_reduire_une_expression_littérale",
-    "badge": bdg.adressebadge[1]
+    "badge": bdg[1]
 }
 
 Ordonner_un_polynôme = {
     "chapitres": ["_11VPcalcullitteral"],
     "name": "ordonner_un_polynome",
     "nom": "Ordonner un polynôme",
-    "body": "Ordonner un polynôme signifie que l’on va d’abord inscrire les polynômes avec les plus hauts degrés. Si deux monômes possèdent le même degré on va les inscrire par ordre alphabétique (x2 signifie xx). On doit toujours ordonner un polynôme après l’avoir réduit et pas avant!",
+    "body": "Ordonner un polynôme signifie que l’on va d’abord inscrire les polynômes avec les plus hauts degrés. Si deux monômes possèdent le même degré on va les inscrire par ordre alphabétique (\( x^2 \) signifie xx). Ainsi \( x^2 \) viendra avant xy et xy viendra avant \( y^2 \). On doit toujours ordonner un polynôme après l’avoir réduit et pas avant!",
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <br> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . <br> Notre expression devient alors:  $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br>  On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <br> On trouve finalement:  $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[2]
+    "questions": "generer_ordonner_une_expression_littérale",
+    "badge": bdg[2]
 }
 
 Distributivité = {
@@ -42,8 +49,8 @@ Distributivité = {
     "body": "La distributivité s'utilise lorsqu'on a un terme qui multiplie une parenthèse. C'est une propriété mathématique qui dit que le produit d'une somme est égale à la somme des produits. En d'autres termes, on doit multiplier chaque monôme qu'il y a dans la parenthèse par le terme qui se trouve devant. <br> Imagine que tu as deux amis, et tu veux leur donner des cadeaux. Disons que tu veux donner 3 chocolats à chacun de tes amis et que tu as aussi 4 bonbons pour chacun d'eux. Au lieu de compter séparément combien de cadeaux tu as pour chaque ami, tu peux additionner les chocolats et les bonbons et ensuite multiplier le total par le nombre d'amis. <br> Voici l'exemple concret : tu as 2 amis, et tu veux leur donner 3 chocolats et 4 bonbons chacun. Pour savoir combien de cadeaux tu dois préparer en tout, tu peux utiliser la distributivité : <br>\( 2 \\text{ amis} \\times (3 \\text{ chocolats} + 4 \\text{ bonbons}) \) <br> En appliquant la propriété distributive, tu vas multiplier le nombre d'amis par le nombre de chocolats, puis par le nombre de bonbons : <br>$$ (2 \\text{ amis} \\times 3 \\text{ chocolats}) + (2 \\text{ amis} \\times 4 \\text{ bonbons}) $$ <br> Ce qui donne :<br> \( (6 \\text{ chocolats}) + (8 \\text{ bonbons}) \) <br>Ainsi, tu auras un total de 14 cadeaux à préparer pour tes amis.<br> La distributivité est donc une méthode pour répartir, ou distribuer, une multiplication sur une addition ou une soustraction.",
     "exemple":"<img src='static/images/distributivité.png' alt='Distributivité' width='300' height='120'>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[3]
+    "questions": "generer_distribution",
+    "badge": bdg[3]
 
 }
 
@@ -55,7 +62,7 @@ Double_Distributivité = {
     "exemple":"<img src='static/images/double-distributivité.png' alt='Double Distributivité' width='450' height='180'>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[4]
+    "badge": bdg[4]
 }
 
 Addition_et_soustraction_de_polynômes = {
@@ -66,7 +73,7 @@ Addition_et_soustraction_de_polynômes = {
     "exemple":"<span>$$ (3x-5)+(3-8x) $$</span><br> Comme il y a une addition entre les deux polynôme on peut directement enlever les parenthèses. Mon expression devient alors :<span>$$ 3x-5+3-8x $$</span><br> Je réduis ensuite l'expression ce qui me donne :  $$ -5x-2 $$ <br>Dans le cas ou on a une soustraction comme ici  $$ (3x+12)-(4x-16)$$ <br> On doit d'abord inverser le signe des monômes qui se trouvent dans la deuxième parenthèse ainsi \( 4x \) devient \( -4x \) et \( -16 \) devient \( +16 \). On finit par enlever le - devant la parenthèse ainsi que les parenthèses et on trouve:  $$ 3x+12-4x+16 $$  <br> Si on réduis notre expression littérale se transforme en :  $$ -x+28 $$ <p class='attention'>Attention dans le cas où on a un + devant une parenthèse qui commence par un - comme dans \( +(-5x+12) \) on peut directement retirer les parenthèse cela nous donne \( +-5x+12 \). On voit que l'on a + et - qui se suivent. On utlise alors la règle des signes: + et - donne - donc cela devient : -5x+12</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[5]
+    "badge": bdg[5]
 }
 
 
@@ -80,7 +87,7 @@ Identité_remarquables = {
 	"exemple2": "Voici un exemple de développement: <br> $$ (x+3)^2 = x^2 +6x+9$$  <br> Voici un exemple de factorisation : $$ x^2 -10 +25 = (x-5)^2$$",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[6]
+    "badge": bdg[6]
 }
 
 Factorisation = {
@@ -98,7 +105,7 @@ Factorisation = {
 	"body5": "Il arrive que l'expression que l'on nous donne soit partiellement factorisé par exemple: $$ 3(5+x)-8(5+x) $$ On remarque ici qu'il y a deux termes. Le premier est \( 3(5+x) \) et le deuxième est \( -8(5+x) \). On peut observer qu'ils ont en commun le (5+x) c'est donc cette partie qui va être en facteur. On additionne ensuite les coeffients qui se trouvent devant les parenthèses 3 et -8 ce qui donne -5. L'expression finale sera alors -5(5+x).",
 	"exemple5":"$$ -4(x^2+2) + 18(x^2+2)$$ On remarque ici qu'il y a deux termes: \( -4(x^2+2) \) et \(18(x^2+2)\). Ils ont en communs (x^2+2). On fait donc la somme des coefficients qui se trouvent devant la parenthèse: -4 et 18 ce qui nous donne 14. L'expression factorisée est donc 14(x^2+2) ",
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[7]
+    "badge": bdg[7]
 }
 
 Preuve_avec_le_calcul_littéral = {
@@ -109,7 +116,7 @@ Preuve_avec_le_calcul_littéral = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[8]
+    "badge": bdg[8]
 }
 
 Equation_équivalente = {
@@ -119,18 +126,18 @@ Equation_équivalente = {
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[9]
+    "badge": bdg[9]
 }
 
 Réduction_avec_coefficients_rationnels = {
     "chapitres": ["_11VPcalcullitteral"],
     "name": "reduction_avec_coefficients_rationnels",
     "nom": "Réduction avec coefficients rationnels",
-    "body": "Pour réduire une polynôme qui possède des coefficients rationnels il faut en premier lieu regrouper les termes qui ont la même partie littérale puis modifier les fractions pour qu'elles soient sous le même dénominateur. Pour cela, on trouve le multiple commun entre les dénominateur et on amplifie les fractions de telles sorte d'avoir ce multiple commun au dénominateur. On additionne ou soustrait ensuite les coefficients qui se trouve devant les même parties littérales. Pour cela, on additionne/soustrait les numérateurs de chaque fractions. On oublie pas en dernier lieu de réduire au maximum chaque fraction pour avoir seulement des fractions irréductibles.",
-    "exemple":"<span>$$ \\frac{3}{4}x-\\frac{4}{5}x^{2}+\\frac{2}{7}x+3x^2 $$</span><br><p>On sépare en premier lieu notre polynôme en deux parties pour regrouper les termes qui ont la même partie littérale ce qui devient: <span>$$ \\frac{3}{4}x +\\frac{2}{7}x$$<br></span>$$ -\\frac{4}{5}x^{2}+3x^2  $$ <span> </span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
-    "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire \( x^2 \)", "Pour insérer une fraction écrivez / exemple 4/3 veut dire \( \\frac{4}{3} \)"],
+    "body": "Pour réduire un polynôme qui possède des coefficients rationnels il faut en premier lieu regrouper les termes qui ont la même partie littérale puis modifier les fractions pour qu'elles soient sous le même dénominateur. Pour cela, on trouve le multiple commun entre les dénominateur et on amplifie les fractions de telles sorte d'avoir ce multiple commun au dénominateur. On additionne ou soustrait ensuite les coefficients qui se trouve devant les même parties littérales. Pour cela, on additionne/soustrait les numérateurs de chaque fractions. On oublie pas en dernier lieu de réduire au maximum chaque fraction pour avoir seulement des fractions irréductibles.",
+    "exemple":"<span>$$ \\frac{3}{4}x-\\frac{4}{5}x^{2}+\\frac{2}{7}x+3x^2 $$</span><br><p>On sépare en premier lieu notre polynôme en deux parties pour regrouper les termes qui ont la même partie littérale ce qui devient: <span>$$ \\frac{3}{4}x +\\frac{2}{7}x$$<br></span>$$ -\\frac{4}{5}x^{2}+3x^2  $$ <br><p> Je trouve en premier lieu le mutiple commun de 4 et 7 les dénominateurs devant x. Je prends 28 comme mutiple commun. J'amplifie donc les deux fractions pour avoir 28 au dénominateur. Autrement dit, je mutiplie en haut en en bas par 7 la première fraction et par 4 la deuxième et j'obtiens.</p> <br> <span>$$ \\frac{21}{28}x +\\frac{8}{28}x $$</span><br> <p> je peux maintenant additioner les deux fractions et j'obtiens: </p><br> <span>$$ \\frac{29}{28}x$$</span> <p>Je fais ensuite la même chose pour les termes qui contiennent \( x^2 \). Avant cela je dois juste transformer le coefficent 3 en fraction :  \( \\frac{3}{1} \)</p> <span>$$ -\\frac{4}{5}x^{2}+\\frac{3}{1}x^{2}$$</span><br> <p>On peut prendre 5 comme mutiple commun. On va donc simplement amplifier la deuxième fraction par 5 et on obtient : </p><br><span>$$ -\\frac{4}{5}x^{2}+\\frac{15}{5}x^{2}$$</span><p>On peut maintenant additionner les deux fractions cela nous donne</p><br> <span>$$ \\frac{11}{5}x^{2}$$</span><p> On vérifie que les deux fractions que l'on a trouvé sont irréductibles. C'est le cas ici. Notre expression finale est donc : </p><span>$$ \\frac{11}{5}x^{2} +\\frac{29}{28}x$$</span>",
+    "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire \( x^2 \)", "Pour insérer une fraction écrivez / exemple 4/3 veut dire \( \\frac{4}{3} \)", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "questions": "generer_reduire_une_expression_littérale_fraction",
-    "badge": bdg.adressebadge[10]
+    "badge": bdg[10]
 }
 
 Solution_d_une_équation_par_évaluation = {
@@ -141,7 +148,7 @@ Solution_d_une_équation_par_évaluation = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[11]
+    "badge": bdg[11]
 }
 
 Résolution_d_équation_du_premier_degré_à_une_inconnue = {
@@ -152,7 +159,7 @@ Résolution_d_équation_du_premier_degré_à_une_inconnue = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions":"generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[12]
+    "badge": bdg[12]
 }
 
 Poser_une_équation = {
@@ -163,7 +170,7 @@ Poser_une_équation = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[13]
+    "badge": bdg[13]
 }
 
 Solution_par_voie_graphique = {
@@ -174,7 +181,7 @@ Solution_par_voie_graphique = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[14]
+    "badge": bdg[14]
 }
 Equation_avec_Fraction = {
     "chapitres": ["_11VPcalcullitteral"],
@@ -184,7 +191,7 @@ Equation_avec_Fraction = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[15]
+    "badge": bdg[15]
 }
 Equation_du_deuxième_degré = {
     "chapitres": ["_11VPcalcullitteral"],
@@ -194,7 +201,7 @@ Equation_du_deuxième_degré = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
-    "badge": bdg.adressebadge[16]
+    "badge": bdg[16]
 }
 
 
