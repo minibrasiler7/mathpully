@@ -43,7 +43,7 @@ class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exercise_name = db.Column(db.String(128))
     is_completed = db.Column(db.Boolean)
-
+    completed_at = db.Column(db.DateTime, nullable=True)
     # Clé étrangère vers l'utilisateur
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
