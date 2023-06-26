@@ -10,7 +10,6 @@ from flask_mail import Mail, Message
 import os
 import sujet
 import points
-import liste_badge_db
 import calcullittéralbrain
 from datetime import datetime
 
@@ -220,8 +219,9 @@ def update_exercise():
     else:
         return jsonify({"message": "Exercise not found"}), 404
 
+
+
 def charger_nom_badge():
-    liste_badge_db =[]
     liste_name_sous_chapitre =[]
     for nom_variable in dir(points):
     # Obtenez l'objet associé au nom de variable

@@ -19,7 +19,8 @@ congratulations_messages = [
     "Incroyable ! Vous avez trouvé la bonne réponse. Vos compétences en maths sont impressionnantes !",
 ]
 liste_partie_litteral = ["x", "x^{2}", "y", "", "y^{2}", "xy", "xz", "yz", "z", "x^{2}y", "xy^{2}", "z^{2}", "xz^{2}", "x^{2}z", "y^{2}z", "yz^{2}", "xyz"]
-
+liste_partie_litteral_degre_0_1 = ["x", "y", "","z"]
+liste_partie_litteral_sans_degre_3 = ["x", "x^{2}", "y", "", "y^{2}", "xy", "xz", "yz", "z", "z^{2}"]
 def signe_aleatoire():
     nombre = random.randint(0,1)
     if nombre==0:
@@ -60,6 +61,72 @@ def creer_expression_litteral_ordonnee_aleatoire(degree, coefficient_max):
         expression = expression[1:]
     return expression
 
+def créer_identite_remarquable(type = "default"):
+    type_identite = ["(a+b)^2", "(a-b)^2", "(a+b)(a-b)"]
+    if type == "default":
+        identite_choisi = random.choice(type_identite)
+    else:
+        identite_choisi = type
+    expression = ""
+
+    coefficient_1 = random.randint(1,4)
+    coefficient_2 = random.randint(1,4)
+
+    elements = random.choices(liste_partie_litteral_degre_0_1, k=2)
+
+    # Vérification si les deux éléments sont différents
+    while elements[0] == elements[1]:
+        elements = random.choices(liste_partie_litteral_degre_0_1, k=2)
+    # Extraction des éléments choisis
+    partie_litteral_1, partie_litteral_2 = elements
+    if coefficient_1==1 and partie_litteral_1!="":
+        coefficient_1 = ""
+    if identite_choisi == "(a+b)^2" :
+        expression = "("+str(coefficient_1)+partie_litteral_1+"+"+str(coefficient_2)+partie_litteral_2+")^{2}"
+    elif identite_choisi == "(a-b)^2":
+        expression = "("+str(coefficient_1)+partie_litteral_1+"-"+str(coefficient_2)+partie_litteral_2+")^{2}"
+    elif identite_choisi == "(a+b)(a-b)":
+        expression = "("+str(coefficient_1)+partie_litteral_1+"+"+str(coefficient_2)+partie_litteral_2+")("+str(coefficient_1)+partie_litteral_1+"-"+str(coefficient_2)+partie_litteral_2+")"
+
+    return expression
+
+def créer_expression_literale_pour_factorisation():
+
+    type_factorisation = ["diviseurcommun", "(a+b)^2", "(a-b)^2", "(a+b)(a-b)", "(a+b)(a+c)"]
+    choix = random.choice(type_factorisation)
+    # type 1 diviseur commun 3x^2 + 3x + 6xy _> 3x(x+1+2y)
+    if choix == "diviseurcommun":
+        expression = ""
+        coefficient = random.randint(1,9)
+        if coefficient==1:
+            coefficient = ""
+            choice = random.choice(liste_partie_litteral_sans_degre_3)
+            while choice == "":
+                 choice = random.choice(liste_partie_litteral_sans_degre_3)
+        else:
+            choice = random.choice(liste_partie_litteral_sans_degre_3)
+        coefficient_parenhese = [random.randint(1,9), random.randint(1,9), random.randint(1,9)]
+        while coefficient_parenhese[0] % coefficient_parenhese[1]== 0 or coefficient_parenhese[0] % coefficient_parenhese[2]== 0 or coefficient_parenhese[1] % coefficient_parenhese[2]== 0 :
+            coefficient_parenhese = [random.randint(1,9), random.randint(1,9), random.randint(1,9)]
+        partie_litteral_parenthese = [random.choice(liste_partie_litteral_degre_0_1), random.choice(liste_partie_litteral_degre_0_1), random.choice(liste_partie_litteral_degre_0_1)]
+        while partie_litteral_parenthese[0] == partie_litteral_parenthese[1] and partie_litteral_parenthese[1] == partie_litteral_parenthese[2]:
+            partie_litteral_parenthese = [random.choice(liste_partie_litteral_degre_0_1), random.choice(liste_partie_litteral_degre_0_1), random.choice(liste_partie_litteral_degre_0_1)]
+        if coefficient_parenhese[0] == 1 and partie_litteral_parenthese[0]!="":
+            coefficient_parenhese[0] == ""
+        expression = f"{coefficient}{choice}({coefficient_parenhese[0]}{partie_litteral_parenthese[0]}+{coefficient_parenhese[1]}{partie_litteral_parenthese[1]}+{coefficient_parenhese[2]}{partie_litteral_parenthese[2]})"
+        return expression
+    else:
+        return 2
+
+    # type 2 identité (a+b)^2 = a^2+2ab+b^2
+
+    # type 3 identité (a-b)^2 = a^2-2ab+b^2
+
+    # type 4 identité (a+b)(a-b) = a^2-b^2
+
+    #type 5 ressemle à x^2 + 2ab + b^2 (a+-b)(a+-d)
+
+
 
 def créer_expression_literale_nonreduite_nonordonnee_fraction(nombre_partie_litteral_differente, nombre_termes):
     partie_litteral = liste_partie_litteral[:nombre_partie_litteral_differente]
@@ -88,6 +155,52 @@ def créer_expression_literale_nonreduite_nonordonnee(nombre_partie_litteral_dif
     if expression[0] == "+":
         expression = expression[1:]
     return expression
+
+def créer_expression_litterale_double_distributivite():
+    expression = "("
+    deux_first_partie_litteral = random.sample(liste_partie_litteral[:5], 2)
+    deux_second_partie_litteral = random.sample(liste_partie_litteral[:5], 2)
+    four_partie_litteral = [deux_first_partie_litteral[0], deux_first_partie_litteral[1] ,deux_second_partie_litteral[0], deux_second_partie_litteral[1]]
+    four_coefficient = []
+    four_signe = []
+    for i in range(4):
+        four_coefficient.append(random.randint(1,9))
+        four_signe.append(signe_aleatoire())
+        if four_signe[i] == "+" and (i == 0 or i==2):
+            expression += f"{four_coefficient[i]}{four_partie_litteral[i]}"
+        else:
+            expression += f"{four_signe[i]}{four_coefficient[i]}{four_partie_litteral[i]}"
+        if i==1:
+            expression+= ")("
+
+    expression += ")"
+    return expression
+
+def créer_expression_litterale_add_sous_polynome():
+    expression = "("
+    nombre_terme_1 = random.randint(2,3)
+    nombre_terme_2 = random.randint(2,3)
+    first_partie_litteral = random.sample(liste_partie_litteral[:3], nombre_terme_1)
+    second_partie_litteral = random.sample(liste_partie_litteral[:3], nombre_terme_2)
+    for i in range(nombre_terme_1):
+        signe = signe_aleatoire()
+        if signe == "+" and i == 0:
+            expression += f"{random.randint(1,9)}{first_partie_litteral[i]}"
+        else:
+            expression += f"{signe}{random.randint(1,9)}{first_partie_litteral[i]}"
+    expression += f"){signe_aleatoire()}("
+    for i in range(nombre_terme_2):
+        signe = signe_aleatoire()
+        if signe == "+" and i == 0:
+            expression += f"{random.randint(1,9)}{second_partie_litteral[i]}"
+        else:
+            expression += f"{signe}{random.randint(1,9)}{second_partie_litteral[i]}"
+
+    expression += ")"
+
+    return expression
+
+
 
 def générer_liste_combinaison_possible_polynome(poly_dict):
     poly_list = []
@@ -185,7 +298,7 @@ def generer_expression_distributivite():
 
     chaine= f"{signe}{coefficient}{partie_litteral_avant_p}("
     for i in range(nombre_terme_parenthèse):
-        coeff = coefficient = random.randint(1,8)
+        coefficient = random.randint(1,8)
         signe = signe_aleatoire()
         if signe == "+" and i == 0:
             signe = ""
@@ -204,22 +317,19 @@ def remove_coefficient_1_from_chaine(chaine):
     for i in range(len(chaine)-1):
         if chaine[i] == "1":
             if i>0:
-                if chaine[i-1] == "+" or chaine[i-1] == "-":
-                    if not chaine[i+1].isdigit() or chaine[i+1] == ")":
-                        pass
-                    else:
+                if chaine[i-1] in ["+", "-"]:
+                    if chaine[i+1].isdigit() or chaine[i+1] in ["+", "-", "*", "/",")"] :
                         newchaine += chaine[i]
                 else:
                     newchaine += chaine[i]
             else:
-                 if not chaine[i+1].isdigit():
-                     pass
-                 else:
+                 if chaine[i+1].isdigit() or chaine[i+1] in ["+", "-", "*", "/",")"] :
                      newchaine += chaine[i]
         else:
             newchaine += chaine[i]
     newchaine += chaine[-1]
     return newchaine
+
 
 def generer_Evaluer_une_expression_littérale():
     for i in range(0,4):
@@ -240,11 +350,11 @@ def generer_Evaluer_une_expression_littérale():
 
 
 def generer_reduire_une_expression_littérale():
-
     polynome = créer_expression_literale_nonreduite_nonordonnee(4,8,6)
     reponse = reduire_expression(polynome)
+    polynome = remove_coefficient_1_from_chaine(polynome)
     question = {
-        "question": f"Réduire l'expression: <span>$$ {remove_coefficient_1_from_chaine(polynome)} $$</span>",
+        "question": f"Réduire l'expression: <span>$$ {polynome} $$</span>",
         "answer": reponse,
         "feedback": random.choice(congratulations_messages),
         "feedbackClass": "text-success",
@@ -280,7 +390,6 @@ def generer_ordonner_une_expression_littérale():
     polynome = remove_coefficient_1_from_chaine(polynome)
     expression = effectuer_reduire_ordonner.Expression_litteral(polynome)
     reponse = expression.chaine_polynome_reduit_ordonne
-
     reponse= effectuer_reduire_ordonner.remove_plus_in_first_position(reponse)
     reponse = effectuer_reduire_ordonner.remove_power_one(reponse)
     reponse = remove_coefficient_1_from_chaine(reponse)
@@ -296,11 +405,8 @@ def generer_ordonner_une_expression_littérale():
 
 def generer_distribution():
     polynome = generer_expression_distributivite()
-
     polynome = remove_coefficient_1_from_chaine(polynome)
-
     reponse = reduire_expression(polynome)
-
     question = {
         "question": f"Distribue et réduis: <span>$$ {polynome} $$</span>",
         "answer": reponse,
@@ -308,10 +414,43 @@ def generer_distribution():
         "feedbackClass": "text-success",
         "methods": ["enlever_espace"]}
     return question
-print(generer_distribution())
 
+def generer_double_distribution():
+    polynome = créer_expression_litterale_double_distributivite()
+    polynome = remove_coefficient_1_from_chaine(polynome)
+    reponse = reduire_expression(polynome)
+    question = {
+        "question": f"Distribue et réduis: <span>$$ {polynome} $$</span>",
+        "answer": reponse,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
 
+def generer_identites_remarquables():
+    polynome = créer_identite_remarquable()
+    polynome = remove_coefficient_1_from_chaine(polynome)
+    reponse = reduire_expression(polynome)
+    question = {
+        "question": f"Développe l'identité remarquable suivante : <span>$$ {polynome} $$</span>",
+        "answer": reponse,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
 
+def generer_sous_add_poly():
+    polynome = créer_expression_litterale_add_sous_polynome()
+    polynome = remove_coefficient_1_from_chaine(polynome)
+    reponse = reduire_expression(polynome)
+    question = {
+        "question": f"Enlève les parenthèses et réduis: <span>$$ {polynome} $$</span>",
+        "answer": reponse,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
 
+print(créer_expression_literale_pour_factorisation())
 
 
