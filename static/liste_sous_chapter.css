@@ -27,6 +27,11 @@
 .badge_image{
     width:100px;
     border-radius:100%;
+    transition: filter 0.2s ease-in-out; /* Transition fluide */
+}
+
+.badge_image.reussite {
+  filter: grayscale(0%) !important; /* Image en couleur */
 }
 .grayscale {
     filter: grayscale(100%);

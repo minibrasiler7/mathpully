@@ -1,10 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 const pointsUtilisateurNav = document.getElementById('points_utilisateurs_nav');
+var image_badge = document.querySelector('.badge_image');
+
 
 class Exercices {
-  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name) {
+  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge) {
     this.questions = questions;
+    this.image_badge = image_badge;
     this.index_question = 0;
     this.currentQuestion = this.questions[this.index_question]
     this.donnee_problem_html = donnee_problem_html;
@@ -29,6 +32,11 @@ class Exercices {
       this.score_html.textContent = `Score : ${this.index_question * 10}`;
       this.updateMathJax();
   }
+
+  toggleReussiteClass() {
+  this.image_badge.classList.add('reussite');
+}
+
   completeExercise(exerciseName) {
     fetch('/update_exercise', {
     method: 'POST',
@@ -85,20 +93,22 @@ class Exercices {
 
       }}
       const correctAnswer = this.currentQuestion.answer;
-      console.log(correctAnswer)
+
       if (correctAnswer.includes(userAnswer)) {
         this.feedback_html.textContent = this.currentQuestion.feedback;
         this.feedback_html.classList.add(this.currentQuestion.feedbackClass);
         this.index_question++;
         this.updateScore();
         this.upScore();
-        this.currentQuestion = this.questions[this.index_question]
+        this.currentQuestion = this.questions[this.index_question];
 
         if (this.index_question === 4) {
           this.donnee_problem_html.textContent = "Vous avez terminé toutes les questions !";
           this.input_html.style.display = "none";
           this.valider_html.style.display = "none";
           this.completeExercise(this.name);
+          this.toggleReussiteClass();
+           this.score_html.textContent = `Score : ${this.index_question * 10}`;
 
         } else {
           this.showQuestion();
@@ -110,7 +120,7 @@ class Exercices {
       }
   }
   updateScore(){
-      this.score_html.textContent = `Score : ${this.index_question * 10}`;
+
       var width = parseInt(this.progress_html.style.width) || 0;
       width += 25;
       this.progress_html.style.width = width + '%';
@@ -151,7 +161,146 @@ class Exercices {
   }
 }
 }
+class QCMExercices {
+  constructor(questions, donnee_problem_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, boutonRadio, quizzForm) {
+    this.questions = questions;
+    this.image_badge = image_badge;
+    this.index_question = 0;
+    this.faute = 0;
+    this.currentQuestion = this.questions[this.index_question]
+    this.donnee_problem_html = donnee_problem_html;
+    this.feedback_html = feedback_html;
+    this.score_html = score_html;
+    this.valider_html = valider_html;
+    this.progress_html = progress_html;
+    this.name = name;
+    this.boutonRadio = boutonRadio;
+    this.quizzForm = quizzForm;
 
+    this.quizzForm.addEventListener('submit', (e) => {
+    e.preventDefault();  // Empêche l'envoi du formulaire.
+    this.checkAnswer();
+    });
+      }
+
+  showQuestion() {
+      this.donnee_problem_html.innerHTML = this.currentQuestion.question;
+      this.feedback_html.textContent = "";
+      this.score_html.textContent = `Score : ${this.index_question * 10 - this.faute *10}`;
+      this.updateMathJax();
+  }
+
+
+  toggleReussiteClass() {
+  this.image_badge.classList.add('reussite');
+}
+
+  completeExercise(exerciseName) {
+    fetch('/update_exercise', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'exercise_name': exerciseName,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Exercise updated successfully") {
+            console.log('Success:', data);
+        } else {
+            console.error('Error:', data);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    }
+
+  checkAnswer(){
+      var selectedLabel;
+    // Parcourir chaque bouton radio pour trouver celui qui est sélectionné
+        for (var i = 0; i < this.boutonRadio.length; i++) {
+        if (this.boutonRadio[i].checked) {
+            // Si le bouton radio est sélectionné, stocker le label associé dans la variable
+            selectedLabel = this.boutonRadio[i].nextSibling.textContent.trim();
+            break;
+            }
+        }
+
+      const correctAnswer = this.currentQuestion.answer;
+
+      if (correctAnswer === selectedLabel) {
+        this.feedback_html.textContent = this.currentQuestion.feedback;
+        this.feedback_html.classList.add(this.currentQuestion.feedbackClass);
+        this.index_question++;
+        this.updateScore();
+        this.upScore(10);
+        this.currentQuestion = this.questions[this.index_question];
+
+        if (this.index_question === 4) {
+          this.donnee_problem_html.textContent = "Vous avez terminé toutes les questions !";
+          this.valider_html.style.display = "none";
+          this.completeExercise(this.name);
+          this.toggleReussiteClass();
+          this.score_html.textContent = `Score : ${this.index_question * 10 - this.faute *10}`;
+
+
+        } else {
+          this.showQuestion();
+        }
+      } else {
+        this.feedback_html.textContent = "Dommage, ce n'est pas la bonne réponse. Veuillez réessayer";
+        this.faute = this.faute + 1;
+        this.upScore(-10);
+        this.showQuestion();
+        this.feedback_html.classList.add("text-danger");
+        setTimeout(() => {this.feedback_html.textContent = ""; this.feedback_html.classList.remove("text-danger");}, 1000);
+      }
+  }
+  updateScore(){
+      var width = parseInt(this.progress_html.style.width) || 0;
+      width += 25;
+      this.progress_html.style.width = width + '%';
+      this.progress_html.setAttribute('aria-valuenow', width);
+  }
+  upScore(up) {
+  fetch('/update_score', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      score: up
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Score updated:', data);
+    const pointsUtilisateursNav = document.getElementById('points_utilisateurs_nav');
+    // Met à jour le nombre de points de l'utilisateur dans la balise HTML
+    const currentScore = parseInt(pointsUtilisateurNav.textContent, 10);
+
+    pointsUtilisateurNav.textContent = `${currentScore + up} points`;
+    pointsUtilisateursNav.classList.add('blink-green');
+
+      // Supprimez la classe 'blink-green' une fois l'animation terminée.
+      setTimeout(() => {
+        pointsUtilisateursNav.classList.remove('blink-green');
+      }, 1500); // La durée totale de l'animation est de 0.5s * 3 = 1.5s (1500ms).
+    })
+  .catch((error) => {
+    console.error('Error updating score:', error);
+  });
+}
+
+  updateMathJax() {
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+}
+}
 
 function selectionSansRemise(tableau) {
     questions = []
@@ -166,19 +315,33 @@ function selectionSansRemise(tableau) {
   list_objet = [];
   const exercicesInteractifs = document.querySelectorAll('.exercice-interactif');
   exercicesInteractifs.forEach((exerciceInteractif) => {
-
-    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e"));
+    console.log(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e").replaceAll('d"u',"d'u").replaceAll('l"é',"l'é"));
+    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e").replaceAll('d"u',"d'u").replaceAll('l"é',"l'é").replaceAll('l"o',"l'o"));
     const name = exerciceInteractif.dataset.name;
+    const type = exerciceInteractif.dataset.type;
     const questionText = exerciceInteractif.querySelector('.question-text');
-    const answerInput = exerciceInteractif.querySelector('.answer-input');
+    const image_badge = exerciceInteractif.querySelector('.badge_image');
     const feedbackText = exerciceInteractif.querySelector('.feedback-text');
     const scoreText = exerciceInteractif.querySelector('.score-text');
     const valider = exerciceInteractif.querySelector('.valider');
     const progressbar = exerciceInteractif.querySelector('.progress-bar');
-    choose_question = selectionSansRemise(questions)
-    var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name)
-    exercice.showQuestion()
-    list_objet.push(exercice)
+    choose_question = selectionSansRemise(questions);
 
+
+    if (type === 'question') {
+        const answerInput = exerciceInteractif.querySelector('.answer-input');
+        var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name, image_badge);
+        console.log(exercice);
+    }
+    else if (type === 'qcm') {
+        const quizzForm = exerciceInteractif.querySelector('.quizForm');
+        const radios = exerciceInteractif.querySelectorAll('.qcm-option');
+        var exercice = new QCMExercices(choose_question, questionText, feedbackText, scoreText, valider, progressbar, name, image_badge, radios,quizzForm);
+        console.log(exercice);
+
+  }
+    exercice.showQuestion();
+    list_objet.push(exercice);
   });
-});
+  });
+

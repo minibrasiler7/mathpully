@@ -1,6 +1,7 @@
 <div class="container">
+    {% if point.type == "question" %}
     <h3 class="my-4">Exercice interactif de math</h3>
-    <div class="row exercice-interactif" data-questions="{{point.questions}}" data-name="{{point.name}}" data-score="0" data-exercice-courant="0">
+    <div class="row exercice-interactif" data-questions="{{point.questions}}" data-name="{{point.name}}" data-score="0" data-exercice-courant="0" data-type="{{point.type}}">
         <div class="col-12 col-lg-6">
             <div class="card">
                 <div class="card-body" >
@@ -34,9 +35,6 @@
                         </div>
                     {% endif %}
                     {% endfor %}
-
-
-
                     <div class="score-text"></div>
                     <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -45,6 +43,55 @@
             </div>
         </div>
     </div>
+    {% endif %}
+    {% if point.type == 'qcm' %}
+    <h3 class="my-4">Exercice interactif de math</h3>
+    <div class="row exercice-interactif" data-questions="{{point.questions}}" data-name="{{point.name}}" data-score="0" data-exercice-courant="0" data-type="{{point.type}}">
+        <div class="col-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Bloc pour le QCM -->
+                     <div class="question-text"></div>
+                    <form class="quizForm">
+                         <div class="form-group btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="qcm-option" id="qcm-option-1" class="qcm-option" autocomplete="off"> {{point.questions[0]["answer_user"][0]}}
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="qcm-option" id="qcm-option-2" autocomplete="off" class="qcm-option"> {{point.questions[0]["answer_user"][1]}}
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="qcm-option" id="qcm-option-3" autocomplete="off" class="qcm-option"> {{point.questions[0]["answer_user"][2]}}
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="qcm-option" id="qcm-option-4" autocomplete="off" class="qcm-option"> {{point.questions[0]["answer_user"][3]}}
+                            </label>
+                            <div class="feedback-text"></div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-primary mt-2 valider" type="submit" name="action">Valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="score-text"></div>
+            <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            {% for exercise in badge_user %}
+                {% if exercise.exercise_name == point.name %}
+                <div>
+                {% if exercise.is_completed %}
+                     <img src=static/images/{{point.badge}} class="badge_image">
+                {% else %}
+                     <img src=static/images/{{point.badge}} class="badge_image grayscale">
+                {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 
