@@ -58,7 +58,6 @@ class Equation:
     def operation_chaque_cote(self,operation, partie_litteral=""):
 
         expression_lit = el.Expression_litteral(partie_litteral).polynome_reduit_ordonne
-        print(expression_lit)
         if operation=="-":
             expression_lit = inverser_dictionnaire(expression_lit)
         if operation=="+" or operation=="-":
@@ -111,10 +110,7 @@ class Equation:
             else:
                 return -b/(2*a)
 
-eq = Equation("3x+6","2x+4")
-print(eq.afficher())
-eq2 = eq.operation_chaque_cote("*", "2")
-print(eq2.afficher())
+
 
 
 

@@ -181,8 +181,6 @@ def update_score():
     # Utilisez jsonify pour renvoyer la réponse JSON.
     return jsonify(response)
 
-
-
 @app.route('/confirmation/<username>/<token>')
 def confirmation(username, token):
     # Vérifier si l'utilisateur existe dans la base de données et que le token est valide

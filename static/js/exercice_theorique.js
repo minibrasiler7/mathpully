@@ -1,7 +1,13 @@
-
 document.addEventListener('DOMContentLoaded', function () {
 const pointsUtilisateurNav = document.getElementById('points_utilisateurs_nav');
 var image_badge = document.querySelector('.badge_image');
+const radio = document.querySelector('input[type=radio][name="qcm-options"]');
+
+  if (radio !== null) {
+    console.log(radio.checked);
+  } else {
+    console.log("L'élément n'a pas été trouvé");
+  }
 
 
 class Exercices {
@@ -162,7 +168,7 @@ class Exercices {
 }
 }
 class QCMExercices {
-  constructor(questions, donnee_problem_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, boutonRadio, quizzForm) {
+  constructor(questions, donnee_problem_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, labelRadio, boutonRadio, quizzForm) {
     this.questions = questions;
     this.image_badge = image_badge;
     this.index_question = 0;
@@ -174,9 +180,9 @@ class QCMExercices {
     this.valider_html = valider_html;
     this.progress_html = progress_html;
     this.name = name;
+    this.labelRadio = labelRadio;
     this.boutonRadio = boutonRadio;
     this.quizzForm = quizzForm;
-
     this.quizzForm.addEventListener('submit', (e) => {
     e.preventDefault();  // Empêche l'envoi du formulaire.
     this.checkAnswer();
@@ -184,17 +190,23 @@ class QCMExercices {
       }
 
   showQuestion() {
+
+
+       for (var i = 0; i < this.labelRadio.length; i++) {
+        var span = this.labelRadio[i].querySelector('.label-text');
+            if (span) {
+            span.textContent = this.currentQuestion.answer_user[i];
+        }
+      }
       this.donnee_problem_html.innerHTML = this.currentQuestion.question;
       this.feedback_html.textContent = "";
       this.score_html.textContent = `Score : ${this.index_question * 10 - this.faute *10}`;
       this.updateMathJax();
   }
 
-
   toggleReussiteClass() {
   this.image_badge.classList.add('reussite');
 }
-
   completeExercise(exerciseName) {
     fetch('/update_exercise', {
     method: 'POST',
@@ -224,13 +236,12 @@ class QCMExercices {
         for (var i = 0; i < this.boutonRadio.length; i++) {
         if (this.boutonRadio[i].checked) {
             // Si le bouton radio est sélectionné, stocker le label associé dans la variable
-            selectedLabel = this.boutonRadio[i].nextSibling.textContent.trim();
+            selectedLabel = this.boutonRadio[i].parentNode.querySelector('.label-text').textContent;
+            console.log(selectedLabel)
             break;
             }
         }
-
-      const correctAnswer = this.currentQuestion.answer;
-
+    const correctAnswer = this.currentQuestion.answer;
       if (correctAnswer === selectedLabel) {
         this.feedback_html.textContent = this.currentQuestion.feedback;
         this.feedback_html.classList.add(this.currentQuestion.feedbackClass);
@@ -245,7 +256,6 @@ class QCMExercices {
           this.completeExercise(this.name);
           this.toggleReussiteClass();
           this.score_html.textContent = `Score : ${this.index_question * 10 - this.faute *10}`;
-
 
         } else {
           this.showQuestion();
@@ -312,6 +322,7 @@ function selectionSansRemise(tableau) {
     return questions
     }
 
+
   list_objet = [];
   const exercicesInteractifs = document.querySelectorAll('.exercice-interactif');
   exercicesInteractifs.forEach((exerciceInteractif) => {
@@ -331,16 +342,26 @@ function selectionSansRemise(tableau) {
     if (type === 'question') {
         const answerInput = exerciceInteractif.querySelector('.answer-input');
         var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name, image_badge);
-        console.log(exercice);
+
     }
     else if (type === 'qcm') {
         const quizzForm = exerciceInteractif.querySelector('.quizForm');
-        const radios = exerciceInteractif.querySelectorAll('.qcm-option');
-        var exercice = new QCMExercices(choose_question, questionText, feedbackText, scoreText, valider, progressbar, name, image_badge, radios,quizzForm);
+        const labels = exerciceInteractif.querySelectorAll('label.qcm-option');
+        const boutonRadio = [];
+
+// Parcourez les étiquettes pour récupérer les boutons radio associés
+       labels.forEach((label) => {
+       const input = label.querySelector('.qcm-radios');
+       boutonRadio.push(input);
+       });
+
+
+        var exercice = new QCMExercices(choose_question, questionText, feedbackText, scoreText, valider, progressbar, name, image_badge, labels, boutonRadio, quizzForm);
         console.log(exercice);
 
   }
     exercice.showQuestion();
+
     list_objet.push(exercice);
   });
   });

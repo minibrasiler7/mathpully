@@ -667,8 +667,101 @@ def trouver_diviseur_commun_de_coefficients(liste_coefficient):
             liste_diviseurs.append(i)
     return liste_diviseurs
 
+def créer_équation_2_degré_solution_entière():
+    print("hello")
+    a = random.randint(1,9)
+    a= signe_aleatoire()+str(a)
+    b= random.randint(1,9)
+    b = signe_aleatoire()+str(b)
+    if a!=b:
+        chaine = f"(x{a})(x{b})"
+        if a[0] == "+":
+            a = f"-{a[1:]}"
+        else:
+            a = a[1:]
+        if b[0] == "+":
+            b = f"-{b[1:]}"
+        else:
+            b = b[1:]
 
+        solution = [a,b]
+    else:
+        chaine = "(x+"+a+")^{2}"
+        chaine = f"(x{a})(x{b})"
+        if a[0] == "+":
+            a = f"-{a[1:]}"
+        else:
+            a = a[1:]
+        solution = [a]
+    expression = expressionlitteral.Expression_litteral(chaine).chaine_polynome_reduit_ordonne
+    equ = equation.Equation(expression, "0")
 
+    return (equ,solution)
+def créer_équation_1_ou_2_degré_solution_entiere():
+    degre = random.randint(1,2)
+    if degre == 1:
+        solution = random.randint(-9,9)
+        equ = equation.Equation("x",str(solution))
+        exp_a_ajouter = creer_expression_litteral_ordonnee_aleatoire(1,8)
+        exp_a_ajouter = exp_a_ajouter.replace("^1","")
+        equ2 = equ.operation_chaque_cote("+", exp_a_ajouter)
+        return (equ2, [solution])
+    else:
+        equ, solution = créer_équation_2_degré_solution_entière()
+        exp_a_ajouter = creer_expression_litteral_ordonnee_aleatoire(2,3)
+        print(exp_a_ajouter)
+        exp_a_ajouter = exp_a_ajouter.replace("^1","").replace("^2", "^{2}")
+        equ2 = equ.operation_chaque_cote("+", exp_a_ajouter)
+        return(equ2, solution)
+def transform_liste_solution_into_chaine_S(liste):
+    solution = "S={"
+    for i in range(len(liste)):
+        solution += f"{liste[i]};"
+    solution = solution[:-1]+"}"
+    return solution
+def generer_trouver_par_evaluation():
+    equ, solution = créer_équation_1_ou_2_degré_solution_entiere()
+    print("equation : "+equ.afficher())
+    print(f"solution : {solution}")
+    solution_propose = []
+    solution_propose.append(solution)
+    for j in range(3):
+        new_solution = []
+        for i in range(len(solution)):
+            sol = random.randint(-9,9)
+            if i != 0:
+                while sol == new_solution[0]:
+                    sol = random.randint(-9,9)
+            new_solution.append(sol)
+        solution_propose.append(new_solution)
+
+    solution_propose = verifier_et_rendre_uniques(solution_propose)
+    random.shuffle(solution_propose)
+    for i in range(len(solution_propose)):
+        solution_propose[i] = transform_liste_solution_into_chaine_S(solution_propose[i])
+
+    question = {
+        "question": f"Trouve la solution de l'équation par évaluation: <span>$$ {equ.afficher()} $$</span>",
+        "answer_user": solution_propose,
+        "answer": transform_liste_solution_into_chaine_S(solution),
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+def est_unique(liste):
+    # Vérifie si la liste contient des sous-listes identiques, peu importe l'ordre
+    return len(set(tuple(sorted(subliste)) for subliste in liste)) == len(liste)
+def verifier_et_rendre_uniques(liste):
+    while not est_unique(liste):
+        for i in range(len(liste)):
+            for j in range(i + 1, len(liste)):
+                if sorted(liste[i]) == sorted(liste[j]):
+                    for k in range(len(liste[j])):
+                        liste[j][k] = random.randint(-9,9)
+                    # Les deux éléments ont des sous-listes avec les mêmes nombres
+                    # Retirer des nombres au hasard jusqu'à ce qu'ils soient uniques
+
+    return liste
 def generer_equation_equivalente():
     equation, liste_diviseur = creer_equation_premier_degre_effectuer_ordonner()
 
@@ -713,7 +806,18 @@ def generer_equation_equivalente():
         "feedbackClass": "text-success",
         "methods": ["enlever_espace"]}
     return question
-def generer_Evaluer_une_expression_littérale():
-    pass
 
-print(generer_equation_equivalente())
+liste1 = [[3,4],[4,8],[-3,-2],[4,3]]
+liste2 = [[3,4],[4,8],[3,4],[4,3]]
+liste3 = [[3,4],[4,8],[-3,-2],[12,-5]]
+liste4 = [[1,2],[4,8],[-3,-2],[2,-5]]
+liste5 = [[4],[5],[4],[-5]]
+
+print(generer_trouver_par_evaluation())
+
+
+
+
+
+
+
