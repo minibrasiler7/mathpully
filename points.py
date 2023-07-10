@@ -15,6 +15,7 @@ Evaluer_une_expression_littérale = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$" ],
     "type": "question",
     "questions": "generer_Evaluer_une_expression_littérale",
+    "method": "aucune",
     "badge": bdg[0]
 }
 
@@ -27,6 +28,7 @@ Réduction_de_polynômes = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "type": "question",
     "questions": "generer_reduire_une_expression_littérale",
+    "method": "aucune",
     "badge": bdg[1]
 }
 
@@ -39,6 +41,7 @@ Ordonner_un_polynôme = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "type": "question",
     "questions": "generer_ordonner_une_expression_littérale",
+    "method": "aucune",
     "badge": bdg[2]
 }
 
@@ -51,6 +54,7 @@ Distributivité = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "type": "question",
     "questions": "generer_distribution",
+    "method": "aucune",
     "badge": bdg[3]
 
 }
@@ -64,6 +68,7 @@ Double_Distributivité = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "type": "question",
     "questions": "generer_double_distribution",
+    "method": "aucune",
     "badge": bdg[4]
 }
 
@@ -76,6 +81,7 @@ Addition_et_soustraction_de_polynômes = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "type": "question",
     "questions": "generer_sous_add_poly",
+    "method": "aucune",
     "badge": bdg[5]
 }
 
@@ -91,6 +97,7 @@ Identité_remarquables = {
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire $$ x^2 $$", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "type": "question",
     "questions": "generer_identites_remarquables",
+    "method": "aucune",
     "badge": bdg[6]
 }
 
@@ -110,6 +117,7 @@ Factorisation = {
 	"exemple5":"$$ -4(x^2+2) + 18(x^2+2)$$ On remarque ici qu'il y a deux termes: \( -4(x^2+2) \) et \(18(x^2+2)\). Ils ont en communs (x^2+2). On fait donc la somme des coefficients qui se trouvent devant la parenthèse: -4 et 18 ce qui nous donne 14. L'expression factorisée est donc 14(x^2+2) ",
     "type": "question",
     "questions": "generer_factorisation",
+    "method": "aucune",
     "badge": bdg[7]
 }
 
@@ -121,6 +129,7 @@ Preuve_avec_le_calcul_littéral = {
     "exemple":"<p>Considérons un nombre pair exprimé en calcul littéral : $$ n = 2k $$, où k est un entier.</p><p>Si nous mettons n au carré, nous obtenons :</p><span>$$ n^2 = (2k)^2 $$</span><p>Qui se simplifie en :</p><span>$$ n^2 = 4k^2 $$</span><p>C'est aussi un nombre pair, car il est divisible par 2. Cela prouve que le carré d'un nombre pair est toujours pair.</p><br><p>De même, pour un nombre impair, on peut exprimer : $$ m = 2l + 1 $$, où l est un entier.</p><p>Si nous mettons m au carré, nous obtenons :</p><span>$$ m^2 = (2l+1)^2 $$</span><p>En se développant, cela donne :</p><span>$$ m^2 = 4l^2 + 4l + 1 $$</span><p>Ce qui est également un nombre impair, car il on ne peut pas factoriser l'expression par 2 à cause du dernier terme (+1) et donc comme il n'est pas divisible par 2 il n'est pas pair donc il est impair.</p>",
     "type":"question",
     "questions": "generer_preuve_calcul_litteral",
+    "method": "aucune",
     "badge": bdg[8]
 }
 
@@ -134,6 +143,7 @@ Equation_équivalente = {
     "exemple": "<p>Voici comment ces opérations fonctionnent avec une équation. Supposons que nous ayons l'équation :</p><span>$$ x + 3 = 7 $$</span><p>Nous pouvons soustraire 3 des deux côtés de l'équation pour isoler x :</p><span>$$ x + 3 - 3 = 7 - 3 $$</span><p>ce qui simplifie en :</p><span>$$ x = 4 $$</span><p>Maintenant, si nous avons l'équation :</p><span>$$ 2x = 8 $$</span><p>Nous pouvons diviser les deux côtés de l'équation par 2 pour isoler x :</p><span>$$ \\frac{2x}{2} = \\frac{8}{2} $$</span><p>ce qui simplifie en :</p><span>$$ x = 4 $$</span><p>De même, nous pouvons effectuer une addition ou une multiplication sur les deux côtés d'une équation pour la modifier tout en maintenant les mêmes solutions.</p>",
     "questions": "generer_equation_equivalente",
     "type":"question",
+    "method": "aucune",
     "badge": bdg[9],
 }
 
@@ -145,6 +155,8 @@ Réduction_avec_coefficients_rationnels = {
     "exemple":"<span>$$ \\frac{3}{4}x-\\frac{4}{5}x^{2}+\\frac{2}{7}x+3x^2 $$</span><br><p>On sépare en premier lieu notre polynôme en deux parties pour regrouper les termes qui ont la même partie littérale ce qui devient: <span>$$ \\frac{3}{4}x +\\frac{2}{7}x$$<br></span>$$ -\\frac{4}{5}x^{2}+3x^2  $$ <br><p> Je trouve en premier lieu le mutiple commun de 4 et 7 les dénominateurs devant x. Je prends 28 comme mutiple commun. J'amplifie donc les deux fractions pour avoir 28 au dénominateur. Autrement dit, je mutiplie en haut en en bas par 7 la première fraction et par 4 la deuxième et j'obtiens.</p> <br> <span>$$ \\frac{21}{28}x +\\frac{8}{28}x $$</span><br> <p> je peux maintenant additioner les deux fractions et j'obtiens: </p><br> <span>$$ \\frac{29}{28}x$$</span> <p>Je fais ensuite la même chose pour les termes qui contiennent \( x^2 \). Avant cela je dois juste transformer le coefficent 3 en fraction :  \( \\frac{3}{1} \)</p> <span>$$ -\\frac{4}{5}x^{2}+\\frac{3}{1}x^{2}$$</span><br> <p>On peut prendre 5 comme mutiple commun. On va donc simplement amplifier la deuxième fraction par 5 et on obtient : </p><br><span>$$ -\\frac{4}{5}x^{2}+\\frac{15}{5}x^{2}$$</span><p>On peut maintenant additionner les deux fractions cela nous donne</p><br> <span>$$ \\frac{11}{5}x^{2}$$</span><p> On vérifie que les deux fractions que l'on a trouvé sont irréductibles. C'est le cas ici. Notre expression finale est donc : </p><span>$$ \\frac{11}{5}x^{2} +\\frac{29}{28}x$$</span>",
     "message_aide":["Pour insérer un exposant tapper ^ exemple: x^2 veut dire \( x^2 \)", "Pour insérer une fraction écrivez / exemple 4/3 veut dire \( \\frac{4}{3} \)", "Ne pas inscrire les coefficients de 1 ou -1 par exemple inscrire x et non pas 1x"],
     "questions": "generer_reduire_une_expression_littérale_fraction",
+    "type": "question",
+    "method": "aucune",
     "badge": bdg[10]
 }
 
@@ -157,6 +169,7 @@ Solution_d_une_équation_par_évaluation = {
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "type":"qcm",
     "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
     "badge": bdg[11]
 }
 
@@ -170,8 +183,9 @@ Résolution_d_équation_du_premier_degré_à_une_inconnue = {
     "exemple2": "<p>Considérons l'équation : $$3x + 5 = 3x + 7.$$</p><p>La première étape consiste à simplifier et réduire de chaque côté de l'équation. Ici, rien ne peut être simplifié.</p><p>Ensuite, nous passons tous les termes avec x d'un côté et tous les termes constants de l'autre. Nous obtenons donc : $$3x - 3x = 7 - 5.$$</p><p>Après avoir simplifié, nous obtenons : $$0 = 2.$$ C'est une contradiction, donc l'équation n'a pas de solution.</p><p>La solution de cette équation est donc : $$S = \emptyset.$$</p>",
     "body3": "<p>Une équation du premier degré peut parfois avoir une infinité de solutions. C'est le cas lorsque, après avoir réduit et simplifié l'équation, nous obtenons une identité, c'est-à-dire une égalité qui est toujours vraie, quel que soit le choix de la variable.</p><p>Par exemple, considérons l'équation : $$2x + 3 = 2x + 3.$$</p><p>Après avoir réduit et simplifié l'équation, nous obtenons $$0 = 0.$$ Ceci est clairement une identité car cette égalité est toujours vraie, quelle que soit la valeur de x.</p><p>Dans un tel cas, nous disons que l'équation a une infinité de solutions, et nous notons la solution par $$S = \\mathbb{R}.$$</p><p>En d'autres termes, toute valeur réelle de x est une solution de l'équation.</p>",
     "exemple3": "<p>Considérons l'équation : $$4(x - 2) = 4x - 8.$$</p><p>La première étape consiste à simplifier et réduire de chaque côté de l'équation. Nous obtenons : $$4x - 8 = 4x - 8.$$</p><p>Ensuite, nous passons tous les termes avec x d'un côté et tous les termes constants de l'autre. Nous obtenons donc : $$4x - 4x = -8 + 8.$$</p><p>Après avoir simplifié, nous obtenons : $$0 = 0.$$ C'est une identité, donc l'équation a une infinité de solutions.</p><p>La solution de cette équation est donc : $$S = \mathbb{R}.$$</p>",
-    "questions":"generer_Evaluer_une_expression_littérale",
+    "questions" : "generer_resoudre_equation_degre_1",
     "type": "question",
+    "method": "aucune",
     "badge": bdg[12]
 }
 
@@ -179,10 +193,11 @@ Poser_une_équation = {
     "chapitres": ["_11VPcalcullitteral"],
     "name": "poser_une_equation",
     "nom": "Poser une équation",
-    "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
-    "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
-    "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
-    "questions": "generer_Evaluer_une_expression_littérale",
+    "body": "<p>Pour poser une équation, il est nécessaire de traduire les informations données dans l'énoncé en une expression mathématique ou littérale. Cette étape implique souvent de convertir des phrases ou des idées en mathématiques à l'aide de variables.</p><p>Une fois que vous avez une expression littérale, la prochaine étape consiste à trouver une équivalence ou une égalité qui peut être posée. Cela peut souvent être trouvé en cherchant une situation dans l'énoncé où deux quantités sont définies comme étant égales ou équivalentes.</p><p>En combinant ces deux étapes, vous pouvez poser une équation qui peut être résolue pour trouver la solution à la question posée.</p>",
+    "exemple": "<p><strong>Exemple:</strong> Supposons que l'énoncé du problème soit le suivant : Julien a deux fois l'âge qu'avait Claire il y a 4 ans. Si l'âge de Julien est de 24 ans, quel est l'âge de Claire ?</p><p>1. Définition de l'inconnue : On définit l'âge de Claire comme $$x$$</p><p>2. Mise sous forme littérale : Julien a deux fois l'âge qu'avait Claire il y a 4 ans. C'est donc $$2(x - 4)$$</p><p>3. Pose de l'équation : On sait que l'âge de Julien est de 24 ans, on peut donc poser l'équation suivante $$2(x - 4) = 24$$</p><p>En résolvant cette équation, on peut déterminer l'âge de Claire.</p>",
+    "questions": "generer_poser_une_equation",
+    "type": "question",
+    "method": "method_resoudre_equation_1_degre",
     "badge": bdg[13]
 }
 
@@ -194,6 +209,8 @@ Solution_par_voie_graphique = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
+    "method": "aucune",
+    "type": "graphique",
     "badge": bdg[14]
 }
 Equation_avec_Fraction = {
@@ -204,6 +221,7 @@ Equation_avec_Fraction = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
+    "method": "aucune",
     "badge": bdg[15]
 }
 Equation_du_deuxième_degré = {
@@ -214,6 +232,7 @@ Equation_du_deuxième_degré = {
     "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
     "question_id":["Evaluer_une_expression_littérale1", "Evaluer_une_expression_littérale2", "Evaluer_une_expression_littérale3"],
     "questions": "generer_Evaluer_une_expression_littérale",
+    "method": "aucune",
     "badge": bdg[16]
 }
 

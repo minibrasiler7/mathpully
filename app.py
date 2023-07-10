@@ -12,6 +12,7 @@ import sujet
 import points
 import calcullittéralbrain
 from datetime import datetime
+import method
 
 port = int(os.environ.get("PORT", 5000))
 app = Flask(__name__)
@@ -41,7 +42,9 @@ class User(UserMixin, db.Model):
 class Exercise(db.Model):
     __tablename__ = 'exercises'
     id = db.Column(db.Integer, primary_key=True)
+    image_name = db.Column(db.String(128), nullable=True)
     exercise_name = db.Column(db.String(128))
+    exercise_nom = db.Column(db.String(128), nullable=True)
     is_completed = db.Column(db.Boolean)
     completed_at = db.Column(db.DateTime, nullable=True)
     # Clé étrangère vers l'utilisateur
@@ -80,8 +83,8 @@ def login():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-     user = current_user
-     return render_template('dashboard.html',user=current_user)
+     badge_user = Exercise.query.filter_by(user_id=current_user.id, is_completed=1).order_by(Exercise.completed_at.desc()).limit(5).all()
+     return render_template('dashboard.html',user=current_user, badges= badge_user)
 
 @app.route('/personnalisation', methods=["GET","POST"])
 @login_required
@@ -129,8 +132,6 @@ def chapitre():
         else:
             print("no function")
     badge_user = Exercise.query.filter_by(user_id=current_user.id).all()
-
-
     # Code pour récupérer les données du chapitre correspondant à nom_chapitre depuis la base de données
     return render_template(f"{nom_chapitre}.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user, badge_user = badge_user)
 
@@ -151,9 +152,6 @@ def inscription():
 
 @app.route('/verifier_mail/<email>')
 def verifier_mail(email):
-    # Adresse e-mail de l'expéditeur et mot de passe
-
-    # Adresse e-mail du destinataire
 
     user = User.query.filter_by(email=email).first()
     # Sujet et corps du message
@@ -207,9 +205,20 @@ def update_exercise():
 
     # Trouver l'exercice pour l'utilisateur actuel
     exercise = Exercise.query.filter_by(exercise_name=exercise_name, user_id=user_id).first()
+    all_dicts = [attr for attr in dir(points) if isinstance(getattr(points, attr), dict)]
+
+# Recherchez parmi ces dictionnaires celui qui a la valeur exercise_name pour la clé "name"
+    for d in all_dicts:
+        dict_obj = getattr(points, d)
+        if dict_obj.get("name") == exercise_name:
+            dic_exercice = dict_obj
+            break
+
 
     if exercise:
         exercise.is_completed = 1
+        exercise.exercise_nom = dic_exercice['nom']
+        exercise.image_name = dic_exercice['badge']
         exercise.completed_at = datetime.utcnow()
         db.session.commit()
         return jsonify({"message": "Exercise updated successfully"}), 200
@@ -230,8 +239,17 @@ def charger_nom_badge():
             if "name" in variable:
                 # Ajoutez la valeur de la clé "name" à la liste des noms
                 liste_name_sous_chapitre.append(variable["name"])
-
     return liste_name_sous_chapitre
+
+@app.route('/methodpython', methods=['POST'])
+def methodpython():
+    methode = request.form.get('method')
+    userAnswer = request.form.get('userAnswer')
+    fonction = method.METHOD.get(methode)
+    reponse = fonction(userAnswer)
+    # Vous pouvez écrire ici votre logique basée sur 'method' et 'userAnswer'
+    # Pour cet exemple, nous renvoyons simplement la valeur 2
+    return jsonify({'value': reponse})
 
 if __name__ == '__main__':
     with app.app_context():

@@ -77,23 +77,32 @@ class Equation:
 
 
     def degree_equation(self):
-        first_key = next(iter(self.equal_zero))
-        numbers = re.findall(r'\{(\d+)\}', first_key)
+        try:
+            first_key = next(iter(self.equal_zero))
+            numbers = re.findall(r'\{(\d+)\}', first_key)
+            return sum(int(num) for num in numbers)
+        except StopIteration:
+            return 0
         # Convertit les nombres en entiers et les somme
-        return sum(int(num) for num in numbers)
+
 
     def resoudre(self):
-        if self.degre==0:
-            if self.equal_zero[''] != 0:
-                return "impossible"
+        if self.degre == 0:
+            if '' in self.equal_zero:
+                if self.equal_zero[''] != 0:
+                    return "impossible"
+                else:
+                    return "reel"
             else:
-                return "reel"
-
-        if self.degre == 1:
-            if self.equal_zero[''] == 0:
                 return 0
+        if self.degre == 1:
+            if '' in self.equal_zero:
+                if self.equal_zero[''] == 0:
+                    return 0
+                else:
+                    return -(self.equal_zero['']/self.equal_zero['x^{1}'])
             else:
-                return -(self.equal_zero['']/self.equal_zero['x^{1}'])
+                return 0
         if self.degre == 2:
             a = self.equal_zero['x^{2}']
             b = self.equal_zero['x^{1}']
@@ -112,7 +121,8 @@ class Equation:
 
 
 
-
+eq = Equation("3x+2","2(x+2)")
+print(eq.resoudre())
 
 
 

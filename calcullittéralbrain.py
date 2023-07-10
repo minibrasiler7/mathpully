@@ -713,6 +713,62 @@ def créer_équation_1_ou_2_degré_solution_entiere():
         exp_a_ajouter = exp_a_ajouter.replace("^1","").replace("^2", "^{2}")
         equ2 = equ.operation_chaque_cote("+", exp_a_ajouter)
         return(equ2, solution)
+
+def generer_distributivite_coefficient_degre_0():
+    coeff_devant_parenthese = random.randint(-9,9)
+    while coeff_devant_parenthese == 0:
+        coeff_devant_parenthese = random.randint(-9,9)
+    first_coeff_parenthese = random.randint(-9,9)
+    while first_coeff_parenthese == 0:
+        first_coeff_parenthese = random.randint(-9,9)
+    second_coeff_parenthese = random.randint(-9,9)
+    while second_coeff_parenthese == 0:
+        second_coeff_parenthese = random.randint(-9,9)
+    if second_coeff_parenthese>0:
+        second_coeff_parenthese = f"+{second_coeff_parenthese}"
+    if random.randint(1,2)==1:
+        expression = f"{coeff_devant_parenthese}({first_coeff_parenthese}x{second_coeff_parenthese})"
+    else:
+        expression = f"{coeff_devant_parenthese}({first_coeff_parenthese}{second_coeff_parenthese}x)"
+    return expression
+
+def generer_expression_degre_1():
+    coefficient_1 = random.randint(-9,9)
+    while coefficient_1 == 0:
+        coefficient_1 = random.randint(-9,9)
+    coefficient_2 = random.randint(-9,9)
+    while coefficient_2 == 0:
+        coefficient_2 = random.randint(-9,9)
+    if coefficient_2 >0:
+        coefficient_2 = f"+{coefficient_2}"
+    if random.randint(1,2) == 1:
+        return f"{coefficient_1}x{coefficient_2}"
+    else:
+        return f"{coefficient_1}{coefficient_2}x"
+
+def créer_équation_1_solution_fraction():
+        type_equation = random.randint(1,3)
+        if type_equation == 1:
+            solution = random.randint(-9,9)
+            equ = equation.Equation("x",str(solution))
+            exp_a_ajouter = creer_expression_litteral_ordonnee_aleatoire(1,8)
+            exp_a_ajouter = exp_a_ajouter.replace("^1","")
+            equ = equ.operation_chaque_cote("+", exp_a_ajouter)
+        elif type_equation == 2:
+            gauche = generer_distributivite_coefficient_degre_0()
+            droite = generer_expression_degre_1()
+            equ = equation.Equation(gauche, droite)
+            solution = equ.resoudre()
+
+        else:
+            gauche = generer_distributivite_coefficient_degre_0()
+            droite = generer_distributivite_coefficient_degre_0()
+            equ = equation.Equation(gauche, droite)
+            solution = equ.resoudre()
+
+        return (equ, [solution])
+
+
 def transform_liste_solution_into_chaine_S(liste):
     solution = "S={"
     for i in range(len(liste)):
@@ -807,13 +863,100 @@ def generer_equation_equivalente():
         "methods": ["enlever_espace"]}
     return question
 
-liste1 = [[3,4],[4,8],[-3,-2],[4,3]]
-liste2 = [[3,4],[4,8],[3,4],[4,3]]
-liste3 = [[3,4],[4,8],[-3,-2],[12,-5]]
-liste4 = [[1,2],[4,8],[-3,-2],[2,-5]]
-liste5 = [[4],[5],[4],[-5]]
+def generer_resoudre_equation_degre_1():
+    equ = créer_équation_1_solution_fraction()
+    if equ[1][0] != "impossible" and equ[1][0] != "reel":
+        if type(equ[1][0]) == int:
+            solution = ["S={"+str(equ[1][0])+"}", str(equ[1][0])]
+        else:
+            equ[1][0] = Fraction(equ[1][0]).limit_denominator()
+            sol = f"{equ[1][0].numerator}/{equ[1][0].denominator}"
+            solution = ["S={"+sol+"}", sol]
+    else:
+        solution = [equ[1][0]]
+    question = {
+        "question": f"Résous l'équation $${equ[0].afficher()}$$ Si la solution est un nombre entier note-la telle quelle si c'est un nombre à virgule inscrit la fraction irréductible comme par exemple -2/3",
+        "answer": solution,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
 
-print(generer_trouver_par_evaluation())
+def generer_poser_une_equation():
+    poser_equation_liste = [{
+    "question": "Un père est trois fois plus âgé que son fils. Dans 2 ans, il sera deux fois plus âgé que son fils. Si x représente l'âge actuel du fils, quelle est l'équation qui décrit cette situation ?",
+    "answer": [equation.Equation("3x+2", "2(x+2)").resoudre()],
+    "type": "question",
+    "feedback": "Excellent travail ! Vous avez bien compris comment poser l'équation.",
+    "feedbackClass": "text-success",
+    "methods": []
+},
+        {
+    "question": "Un train roule à une vitesse qui est quatre fois supérieure à celle d'une voiture. Si la voiture augmente sa vitesse de 3 km/h, la vitesse du train ne sera que trois fois celle de la voiture. Si x représente la vitesse actuelle de la voiture en km/h, quelle est l'équation qui décrit cette situation ?",
+    "answer": [equation.Equation("4x+3", "3(x+3)").resoudre()],
+    "type": "question",
+    "feedback": "Bravo! Vous avez correctement posé et résolu l'équation.",
+    "feedbackClass": "text-success",
+    "methods": []
+},
+        {
+    "question": "Un parc d'attractions facture un tarif qui est deux fois plus élevé pour les adultes que pour les enfants. Si le tarif pour les enfants augmente de 5€, le tarif pour les adultes ne sera plus que 1.5 fois le tarif pour les enfants. Si x représente le tarif actuel pour les enfants en €, quelle est l'équation qui décrit cette situation ?",
+    "answer": [equation.Equation("2x+5", "1.5(x+5)").resoudre()],
+    "type": "question",
+    "feedback": "Très bien! Vous avez su poser correctement l'équation et la résoudre.",
+    "feedbackClass": "text-success",
+    "methods": []
+},
+        {
+    "question": "Une entreprise produit des chaises. Le coût de production de chaque chaise est deux fois plus élevé que le coût de production de chaque table. Si le coût de production de chaque table augmente de 7€, le coût de production pour chaque chaise ne sera plus que 1.5 fois le coût de production pour chaque table. Si x représente le coût de production actuel pour chaque table en €, quelle est l'équation qui décrit cette situation ?",
+    "answer": [equation.Equation("2x+7", "1.5(x+7)").resoudre()],
+    "type": "question",
+    "feedback": "Excellent ! Vous avez correctement formulé et résolu l'équation.",
+    "feedbackClass": "text-success",
+    "methods": []
+},
+        {
+    "question": "Une personne économise de l'argent. Chaque mois, elle met de côté deux fois plus d'argent que le mois précédent. Après 3 mois, elle aura économisé 150€ de plus que si elle avait mis de côté le même montant chaque mois. Si x représente le montant en € qu'elle met de côté le premier mois, quelle est l'équation qui décrit cette situation ?",
+    "answer": [equation.Equation("2x+2x+2x", "3x+150").resoudre()],
+    "type": "question",
+    "feedback": "Très bien ! Vous avez correctement posé et résolu l'équation.",
+    "feedbackClass": "text-success",
+    "methods": []
+},
+        {
+    "question": "Un joueur de basketball marque des points. Si il marquait 2 paniers de 3 points de plus par match, il aurait un total de 6 points de plus par match. Si x représente le nombre de paniers de 3 points qu'il marque actuellement par match, quelle est l'équation qui décrit cette situation ?",
+    "answer": [equation.Equation("3x", "3(x+2)+6").resoudre()],
+    "type": "question",
+    "feedback": "Excellent travail ! Vous avez correctement posé et résolu l'équation.",
+    "feedbackClass": "text-success",
+    "methods": []
+}]
+    return random.choice(poser_equation_liste)
+
+def method_resoudre_equation_1_degre(user_answer):
+    print(user_answer)
+    if "=" in user_answer:
+        answer_split = user_answer.split("=")
+        print(answer_split)
+        if len(answer_split) == 2:
+            if len(answer_split[0])>0 and len(answer_split[1])>0 :
+                if "x" in answer_split[0] or "x" in answer_split[1]:
+                    try:
+                        eq = equation.Equation(answer_split[0], answer_split[1])
+                        solution = eq.resoudre()
+                        return solution
+                    except:
+                        return "FAUX"
+            else:
+                return "FAUX"
+        else:
+            return "FAUX"
+    else:
+        return "FAUX"
+
+
+
+
 
 
 

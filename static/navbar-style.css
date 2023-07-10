@@ -1,13 +1,13 @@
 /* Couleurs des onglets */
-#nav-9VG1 { background-color: #FFB6C1; }
-#nav-9VG2 { background-color: #FFA500; }
-#nav-9VP { background-color: #FFFF00; }
-#nav-10VG1 { background-color: #00FF00; }
-#nav-10VG2 { background-color: #87CEFA; }
+#nav-9VG1 { background-color: #4169E1;; }
+#nav-9VG2 { background-color: #4169E1; }
+#nav-9VP { background-color: #4169E1; }
+#nav-10VG1 { background-color: #4169E1; }
+#nav-10VG2 { background-color: #4169E1; }
 #nav-10VP { background-color: #4169E1; }
-#nav-11VG1 { background-color: #EE82EE; }
-#nav-11VG2 { background-color: #FF69B4; }
-#nav-11VP { background-color: #DC143C; }
+#nav-11VG1 { background-color: #4169E1; }
+#nav-11VG2 { background-color: #4169E1; }
+#nav-11VP { background-color: #4169E1; }
 
 /* Couleur de la barre de navigation */
 .navbar { background-color: #87CEFA;
@@ -23,15 +23,15 @@ color: #007bff !important;
 .dropdown-menu a { color: white; }
 
 /* Couleur de fond des menus déroulants */
-._9VG1menu { background-color: #FFB6C1; }
-._9VG2menu { background-color: #FFA500; }
-._9VPmenu { background-color: #159895; }
-._10VG1menu{ background-color: #C7E8CA; }
-._10VG2menu { background-color: #87CEFA; }
+._9VG1menu { background-color: #4169E1; }
+._9VG2menu { background-color: #4169E1;  }
+._9VPmenu { background-color: #4169E1;  }
+._10VG1menu{ background-color: #4169E1;  }
+._10VG2menu { background-color: #4169E1;  }
 ._10VPmenu{ background-color: #4169E1; }
-._11VG1menu{ background-color: #EE82EE; }
-._11VG2menu { background-color: #FF69B4; }
-._11VPmenu { background-color: #DC143C; }
+._11VG1menu{ background-color: #4169E1;  }
+._11VG2menu { background-color: #4169E1;  }
+._11VPmenu { background-color: #4169E1;  }
 
 .user-menu {
   position: relative;

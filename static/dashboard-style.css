@@ -3,32 +3,32 @@ body {
 }
 
 #welcome {
-  background-color: #98ff98; /* Vert menthe */
+  background-color: #4169E1;
   padding: 100px 0;
 }
 
 #welcome h2 {
   font-size: 48px;
-  color: #2e8b57; /* Vert plus foncé pour le contraste */
+  color: #47B9FF;
   font-weight: bold;
 }
 
 #welcome p {
   font-size: 24px;
-  color: #006400; /* Vert encore plus foncé pour le contraste */
+  color: #47B9FF;
 }
 
 #welcome button {
   margin-top: 30px;
   font-size: 24px;
-  background-color: #2e8b57; /* Vert plus foncé pour le contraste */
-  border-color: #2e8b57; /* Vert plus foncé pour le contraste */
+  background-color: #68C2FF; /* Vert plus foncé pour le contraste */
+  border-color: #4169E1; /* Vert plus foncé pour le contraste */
   color:white;
 }
 
 #welcome button:hover {
   background-color: #f5f5f5; /* Gris pour le hover */
-  color: #2e8b57; /* Vert plus foncé pour le contraste */
+  color: white; /* Vert plus foncé pour le contraste */
 }
 #welcome button a {
   color: #fff; /* Blanc */
@@ -65,12 +65,22 @@ a:hover {
 
 #badges h3 {
   font-size: 32px;
-  color: #2e8b57; /* Vert plus foncé pour le contraste */
+  color: #4169E1; /* Vert plus foncé pour le contraste */
   font-weight: bold;
 }
 
 #badges .badge {
   margin: 10px;
   font-size: 18px;
-  background-color: #2e8b57; /* Vert plus foncé pour le contraste */
+  background-color: #4169E1; /* Vert plus foncé pour le contraste */
 }
+.card-img-top{
+    margin-top:30px;
+    margin:auto;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+
+
