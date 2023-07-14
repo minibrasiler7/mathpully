@@ -87,6 +87,7 @@ class Equation:
 
 
     def resoudre(self):
+        print("degre "+ str(self.degre))
         if self.degre == 0:
             if '' in self.equal_zero:
                 if self.equal_zero[''] != 0:
@@ -105,19 +106,25 @@ class Equation:
                 return 0
         if self.degre == 2:
             a = self.equal_zero['x^{2}']
-            b = self.equal_zero['x^{1}']
-            c = self.equal_zero['']
-
+            if "x^{1}" in self.equal_zero:
+                b = self.equal_zero['x^{1}']
+            else:
+                b=0
+            if "" in self.equal_zero:
+                c = self.equal_zero['']
+            else:
+                c=0
             discriminant = b**2-4*a*c
             if discriminant<0:
-                return "impossible"
+                return ["impossible"]
             elif discriminant>0:
                 racine_dis = math.sqrt(discriminant)
                 reponse_x1 = (-b+racine_dis)/(2*a)
                 reponse_x2 = (-b-racine_dis)/(2*a)
-                return (reponse_x1, reponse_x2)
+                return [reponse_x1, reponse_x2]
             else:
-                return -b/(2*a)
+                reponse = -b/(2*a)
+                return [reponse]
 
 
 

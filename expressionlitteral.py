@@ -426,7 +426,10 @@ def change_reduit_ordonnee_to_fraction_dict(dict):
 
 
 
-expression = replace_fractions_with_decimal("2x^{2}+3x^{2}+2x^{1}y^{1}-2+3y^{2}")
+expression = replace_fractions_with_decimal("\\frac{5}{3}x+\\frac{3}{2}x^{2}")
 polynome = Expression_litteral(expression)
 reduit  = polynome.polynome_reduit_ordonne
+
+print(reduit)
+print(change_reduit_ordonnee_to_fraction_dict(reduit))
 

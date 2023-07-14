@@ -1,11 +1,9 @@
 import itertools
+import math
 import random
 import expressionlitteral
 import equation
 from fractions import Fraction
-import re
-
-
 congratulations_messages = [
     "Félicitations, c'est la bonne réponse ! Continuez comme ça !",
     "Bravo ! Votre réponse est correcte. Vous êtes doué en maths !",
@@ -20,7 +18,7 @@ congratulations_messages = [
     "Incroyable ! Vous avez trouvé la bonne réponse. Vos compétences en maths sont impressionnantes !",
 ]
 liste_partie_litteral = ["x", "x^{2}", "y", "", "y^{2}", "xy", "xz", "yz", "z", "x^{2}y", "xy^{2}", "z^{2}", "xz^{2}", "x^{2}z", "y^{2}z", "yz^{2}", "xyz"]
-liste_partie_litteral_degre_0_1 = ["x", "y", "","z"]
+liste_partie_litteral_degre_0_1 = ["x", "", "y","z"]
 liste_partie_litteral_degre_1 = ["x","y","z"]
 liste_partie_litteral_sans_degre_3 = ["x", "x^{2}", "y", "", "y^{2}", "xy", "xz", "yz", "z", "z^{2}"]
 def signe_aleatoire():
@@ -75,9 +73,6 @@ def creer_equation_premier_degre_effectuer_ordonner():
     return (equ, liste_diviseur)
 
 
-
-
-
 def creer_expression_litteral_ordonnee_aleatoire(degree, coefficient_max):
     expression = ""
     for i in range(degree+1):
@@ -93,7 +88,7 @@ def creer_expression_litteral_ordonnee_aleatoire(degree, coefficient_max):
         expression = expression[1:]
     return expression
 
-def créer_identite_remarquable(type = "default"):
+def créer_identite_remarquable(type = "default", liste_partie_litteral = liste_partie_litteral_degre_0_1):
     type_identite = ["(a+b)^2", "(a-b)^2", "(a+b)(a-b)"]
     if type == "default":
         identite_choisi = random.choice(type_identite)
@@ -104,11 +99,11 @@ def créer_identite_remarquable(type = "default"):
     coefficient_1 = random.randint(1,4)
     coefficient_2 = random.randint(1,4)
 
-    elements = random.choices(liste_partie_litteral_degre_0_1, k=2)
+    elements = random.choices(liste_partie_litteral, k=2)
 
     # Vérification si les deux éléments sont différents
     while elements[0] == elements[1]:
-        elements = random.choices(liste_partie_litteral_degre_0_1, k=2)
+        elements = random.choices(liste_partie_litteral, k=2)
     # Extraction des éléments choisis
     partie_litteral_1, partie_litteral_2 = elements
     if coefficient_1==1 and partie_litteral_1!="":
@@ -406,6 +401,7 @@ def remove_coefficient_1_from_chaine(chaine):
                      newchaine += chaine[i]
         else:
             newchaine += chaine[i]
+    print("BUG"+chaine)
     newchaine += chaine[-1]
     return newchaine
 
@@ -953,6 +949,247 @@ def method_resoudre_equation_1_degre(user_answer):
             return "FAUX"
     else:
         return "FAUX"
+
+def creer_équations_degre_1_ou_2_solution_entiere():
+    if random.randint(1,2) == 1:
+        solution = random.randint(-9,9)
+        eq_depart = equation.Equation("x", f"{solution}")
+        multiplicateur = random.randint(1,4)
+        eq_depart = eq_depart.operation_chaque_cote("*", f"{multiplicateur}")
+        coefficient_x = random.randint(-5,5)
+        if coefficient_x<0:
+            eq_depart = eq_depart.operation_chaque_cote("-", f"{math.fabs(coefficient_x)}x")
+        else:
+            eq_depart = eq_depart.operation_chaque_cote("+", f"{coefficient_x}x")
+        ajout_coef_0 = random.randint(-9,9)
+        if ajout_coef_0<0:
+            eq_depart = eq_depart.operation_chaque_cote("-", f"{math.fabs(ajout_coef_0)}")
+        else:
+            eq_depart = eq_depart.operation_chaque_cote("+", f"{ajout_coef_0}")
+
+        liste_coeff = [eq_depart.dico_left,eq_depart.dico_right]
+        return liste_coeff, solution
+    else:
+        equ_debut, solution = créer_équation_2_degré_solution_entière()
+        degre1 = generer_expression_degre_1()
+        equ_debut = equ_debut.operation_chaque_cote("+", degre1)
+        liste_coeff = [equ_debut.dico_left,equ_debut.dico_right]
+        return liste_coeff, solution
+
+
+def generer_Solution_par_voie_graphique():
+    dico_coeff, solution = creer_équations_degre_1_ou_2_solution_entiere()
+    chaine_solution = ""
+    if type(solution) != int:
+        if len(solution)==2:
+            chaine_solution = [f"{solution[0]};{solution[1]}",f"{solution[1]};{solution[0]}"]
+        else:
+            chaine_solution = solution
+
+    else:
+        chaine_solution = [str(solution)]
+
+    question = {
+        "question": f"Les deux fonctions dessinées représentent la partie gauche et droite d'une équation. Trouve la/les valeur de x pour laquel/lesquelles les deux fonctions sont égales. Si il y a deux réponses inscrit un ; entre les deux comme par exemple 2;3",
+        "fonctions":[dico_coeff[0], dico_coeff[1]],
+        "answer": chaine_solution,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+
+def generer_degre_1_avec_fraction():
+    partie_litterale=["x^{1}", ""]
+    expression = ""
+    for i in range(2):
+        coefficient = generer_fraction_aléatoire()
+        if type(coefficient) != float:
+            coefficient = "\\frac"+"{"+str(coefficient.numerator)+"}{"+str(coefficient.denominator)+"}"
+
+        if signe_aleatoire() == "+":
+            expression += f"+{coefficient}{partie_litterale[i]}"
+        else:
+            expression += f"-{coefficient}{partie_litterale[i]}"
+        if expression[0] == "+":
+            expression = expression[1:]
+    expression2 = ""
+    for i in range(2):
+        coefficient = generer_fraction_aléatoire()
+        if type(coefficient) != float:
+            coefficient = "\\frac"+"{"+str(coefficient.numerator)+"}{"+str(coefficient.denominator)+"}"
+        if signe_aleatoire() == "+":
+            expression2 += f"+{coefficient}{partie_litterale[i]}"
+        else:
+            expression2 += f"-{coefficient}{partie_litterale[i]}"
+        if expression2[0] == "+":
+            expression2 = expression2[1:]
+    expression = expression.replace("^{1}", "")
+    expression2 = expression2.replace("^{1}", "")
+    chaine = f"{expression}={expression2}"
+    expression = expressionlitteral.replace_fractions_with_decimal(expression)
+    expression2 = expressionlitteral.replace_fractions_with_decimal(expression2)
+    return (chaine, equation.Equation(expression,expression2))
+
+
+def generer_equation_avec_fraction():
+    equ = generer_degre_1_avec_fraction()
+    chaine_equ = equ[0]
+    solution = equ[1].resoudre()
+    if solution != "impossible" and solution != "reel":
+
+        solution = Fraction(solution).limit_denominator()
+        if type(solution) != float:
+            solution = f"{solution.numerator}/{solution.denominator}"
+
+    question = {
+        "question": f"<p>Trouve la solution de l'équation ci-dessous. Inscris la fraction irréductible si la réponse est décimale comme 4/5 par exemple si la réponse est entière inscris celle-ci sous forme de nombre entier.</p><p>$$ {chaine_equ.replace('.0','')} $$</p>",
+        "answer": [solution],
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+def arrondir_si_possible(dictionnaire):
+    for cle, valeur in dictionnaire.items():
+        str_valeur = str(valeur)  # Convertir la valeur en chaîne de caractères
+        if '99999' in str_valeur:
+            index = str_valeur.find('99999')
+            index_virgule = str_valeur.find('.')
+            index_a_arrondir = index-index_virgule# Trouver l'index de la première occurrence de '99999'
+            valeur_arrondie = round(valeur, index_a_arrondir)
+            dictionnaire[cle] = valeur_arrondie
+        elif '00000' in str_valeur:
+            index = str_valeur.find('00000')
+            index_virgule = str_valeur.find('.')
+            index_a_arrondir = index-index_virgule# Trouver l'index de la première occurrence de '99999'
+            valeur_arrondie = round(valeur, index_a_arrondir)
+            dictionnaire[cle] = valeur_arrondie
+
+    return dictionnaire
+
+
+
+def creer_equation_second_degrer():
+    if random.randint(1,2)==1 :
+        expression = expressionlitteral.Expression_litteral(créer_identite_remarquable(liste_partie_litteral=["x", ""])).chaine_polynome_reduit_ordonne
+        eq_depart = equation.Equation(expression, "0")
+        print(f"choix 1 {eq_depart.afficher()}")
+        return eq_depart
+    else:
+        choix_discriminant = random.randint(1,3)
+        if choix_discriminant == 1:
+            a = random.randint(1,10)
+            if signe_aleatoire() == "-":
+                a=-a
+            c = random.randint(-100,100)
+            if signe_aleatoire() == "-":
+                c = -c
+            b = 4*a*c
+            if b<0:
+                b = b+1
+            else:
+                b = b-1
+                b = f"+{b}"
+            if c>0:
+                c = f"+{c}"
+            equ = equation.Equation(str(a)+"x^{2}"+str(b)+"x^{1}"+str(c), "0")
+            print(f"choix 2.1 {equ.afficher()}")
+
+        elif choix_discriminant == 2:
+            solution_chaine = round(random.randint(1,100)/100,2)
+            if signe_aleatoire() == "-":
+                solution_chaine = -solution_chaine
+            else:
+                solution_chaine = f"+{solution_chaine}"
+
+            dico = expressionlitteral.Expression_litteral("(x"+str(solution_chaine)+")^{2}").polynome_reduit_ordonne
+            dico = arrondir_si_possible(dico)
+            expression = ""
+            for (key, value) in dico.items():
+                if value >0:
+                    expression += f"+{value}{key}"
+                else:
+                    expression += f"{value}{key}"
+                if expression[0] == "+":
+                    expression = expression[1:]
+            equ = equation.Equation(expression, "0")
+            print(f"choix 2.2 {equ.afficher()}")
+        else:
+            solution_1 = round(random.randint(1,100)/100,2)
+            solution_2 = round(random.randint(1,100)/100,2)
+            if signe_aleatoire()=="-":
+                solution_1 = -solution_1
+            else:
+                solution_1 = f"+{solution_1}"
+            if signe_aleatoire() == "-":
+                solution_2 = -solution_2
+            else:
+                solution_2 = f"+{solution_2}"
+            dico = expressionlitteral.Expression_litteral(f"(x{solution_1})(x{solution_2})").polynome_reduit_ordonne
+            dico = arrondir_si_possible(dico)
+            expression = ""
+            for (key, value) in dico.items():
+                if value >0:
+                    expression += f"+{value}{key}"
+                else:
+                    expression += f"{value}{key}"
+                if expression[0] == "+":
+                    expression = expression[1:]
+            equ = equation.Equation(expression, "0")
+            print(f"choix 2.3 {equ.afficher()}")
+        return equ
+
+def generer_resoudre_equation_degre_2():
+    eq = creer_equation_second_degrer()
+    print(f"avant: {eq.afficher()}")
+    eq = eq.operation_chaque_cote("+", str(random.randint(1,15)))
+    eq = eq.operation_chaque_cote("-", str(random.randint(1,15)))
+    eq = eq.operation_chaque_cote("+", str(random.randint(1,15))+"x")
+    eq = eq.operation_chaque_cote("-", str(random.randint(1,15))+"x")
+    dico = arrondir_si_possible(eq.dico_left)
+    expression = ""
+    for (key, value) in dico.items():
+        if value % 1 == 0:
+            value = int(value)
+        if value ==1:
+            expression += f"+{key}"
+        elif value ==-1:
+            expression += f"-{key}"
+        elif value>0:
+            expression += f"+{value}{key}"
+        else:
+            expression += f"{value}{key}"
+        if expression[0] == "+":
+            expression = expression[1:]
+    expression = expression.replace("^{1}", "")
+    eq = equation.Equation(expression, eq.chaine_right)
+    print(f"après: {eq.afficher()}")
+
+    solution = eq.resoudre()
+    for i in range(len(solution)):
+        if solution[0] == "impossible":
+            pass
+        elif solution[i] % 1 == 0:
+            solution[i] = (int(solution[i]))
+        elif type(solution[i]) == float:
+            solution[i] = round(solution[i], 2)
+
+    if len(solution) == 2:
+        solution = [f"{solution[0]};{solution[1]}",f"{solution[1]};{solution[0]}"]
+    else:
+        solution = [str(solution[0])]
+
+    question = {
+        "question": f"<p>Trouve la/les solution(s) de l'équation ci-dessous. Si c'est un nombre entier inscris le sans virgule sinon si c'est un nombre décimal, inscris le avec deux chiffres après la virgule</p><p>$$ {eq.afficher()} $$</p>",
+        "answer": solution,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+
+
+print(generer_resoudre_equation_degre_2())
+
+
 
 
 

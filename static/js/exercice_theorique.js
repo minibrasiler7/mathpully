@@ -340,8 +340,8 @@ class QCMExercices {
 }
 }
 class GraphiqueExercice {
-  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method, donnee_graphique) {
-    this.donnee_graphique = donnee_graphique;
+  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method, element_graphique) {
+    this.element_graphique = element_graphique;
     this.questions = questions;
     this.image_badge = image_badge;
     this.index_question = 0;
@@ -364,6 +364,10 @@ class GraphiqueExercice {
   }
   showQuestion() {
       this.donnee_problem_html.innerHTML = this.currentQuestion.question;
+      var graphique = this.currentQuestion.fonctions;
+      var membredroite = graphique[0]
+      var membregauche = graphique[1]
+      console.log(membredroite);
       // Supposons que vos coefficients sont a, b et c.
      let a = 1; // coefficient a
      let b = 2; // coefficient b
@@ -371,15 +375,24 @@ class GraphiqueExercice {
 
         // Générer une gamme de valeurs x
         let xValues = [];
-        for (let x=-10; x<=10; x+=0.1) {
+        for (let x=-20; x<=20; x+=0.1) {
         xValues.push(x);
        }
+    const nombreElements = Object.keys(membredroite).length;
+    var yValues1 = null;
+    if (nombreElements <= 2) {
+        var yValues1 = xValues.map(x => membredroite["x^{1}"]*x + membredroite[""]);
+    } else {
+        var yValues1 = xValues.map(x => membredroite["x^{2}"]*Math.pow(x, 2) + membredroite["x^{1}"]*x + membredroite[""]);
+    }
+    const nombreElements2 = Object.keys(membregauche).length;
+    var yValues2 = null;
+    if (nombreElements2 <= 2) {
+        var yValues2 = xValues.map(x => membregauche["x^{1}"]*x + membregauche[""]);
+    } else {
+        var yValues2 = xValues.map(x => membregauche["x^{2}"]*Math.pow(x, 2) + membregauche["x^{1}"]*x + membregauche[""]);
+    }
 
-    // Calculer les valeurs y pour chaque valeur x pour la fonction du premier degré (y = ax + b)
-    let yValues1 = xValues.map(x => a*x + b);
-
-    // Calculer les valeurs y pour chaque valeur x pour la fonction du deuxième degré (y = ax^2 + bx + c)
-    let yValues2 = xValues.map(x => a*Math.pow(x, 2) + b*x + c);
 
     let trace1 = {
      x: xValues,
@@ -397,7 +410,7 @@ class GraphiqueExercice {
 
     let data = [trace1, trace2];
 
-    Plotly.newPlot(this.donnee_graphique, data);
+    Plotly.newPlot(this.element_graphique, data);
       this.input_html.value = "";
       this.feedback_html.textContent = "";
       this.score_html.textContent = `Score : ${this.index_question * 10}`;
@@ -577,7 +590,6 @@ function selectionSansRemise(tableau) {
     const name = exerciceInteractif.dataset.name;
     const type = exerciceInteractif.dataset.type;
     const method = exerciceInteractif.dataset.method;
-    console.log(method)
     const questionText = exerciceInteractif.querySelector('.question-text');
     const image_badge = exerciceInteractif.querySelector('.badge_image');
     const feedbackText = exerciceInteractif.querySelector('.feedback-text');
