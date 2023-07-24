@@ -1176,6 +1176,37 @@ def generer_resoudre_equation_degre_2():
     return question
 
 
+def reconnaissance_fonction():
+    choix = random.randint(1,4)
+    if choix == 1:
+        solution = "constante"
+    elif choix == 2:
+        solution = "linéaire"
+    elif choix == 3:
+        solution = "affine"
+    else:
+        solution = "quadratique"
+
+    chaine_solution = ""
+    if type(solution) != int:
+        if len(solution)==2:
+            chaine_solution = [f"{solution[0]};{solution[1]}",f"{solution[1]};{solution[0]}"]
+        else:
+            chaine_solution = solution
+
+    else:
+        chaine_solution = [str(solution)]
+
+    question = {
+        "question": f"Les deux fonctions dessinées représentent la partie gauche et droite d'une équation. Trouve la/les valeur de x pour laquel/lesquelles les deux fonctions sont égales. Si il y a deux réponses inscrit un ; entre les deux comme par exemple 2;3",
+        "fonctions":[dico_coeff[0], dico_coeff[1]],
+        "answer": chaine_solution,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+
+
 
 
 

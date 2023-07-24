@@ -3,12 +3,6 @@ const pointsUtilisateurNav = document.getElementById('points_utilisateurs_nav');
 var image_badge = document.querySelector('.badge_image');
 const radio = document.querySelector('input[type=radio][name="qcm-options"]');
 
-  if (radio !== null) {
-    console.log(radio.checked);
-  } else {
-    console.log("L'élément n'a pas été trouvé");
-  }
-
 
 class Exercices {
   constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method) {
@@ -367,18 +361,18 @@ class GraphiqueExercice {
       var graphique = this.currentQuestion.fonctions;
       var membredroite = graphique[0]
       var membregauche = graphique[1]
-      // Supposons que vos coefficients sont a, b et c.
-     let a = 1; // coefficient a
-     let b = 2; // coefficient b
-     let c = 1; // coefficient c pour les fonctions du deuxième degré
 
         // Générer une gamme de valeurs x
         let xValues = [];
         for (let x=-20; x<=20; x+=0.1) {
         xValues.push(x);
        }
-    const nombreElements = Object.keys(membredroite).length;
-    var yValues1 = null;
+
+
+
+    if (!('x^{3}' in membredroite)){
+        membredroite['x^{3}'] = 0
+        }
     if (!('x^{2}' in membredroite)){
         membredroite['x^{2}'] = 0
         }
@@ -388,6 +382,9 @@ class GraphiqueExercice {
     if (!('' in membredroite)){
         membredroite[''] = 0
     }
+    if (!('x^{3}' in membregauche)){
+        membregauche['x^{3}'] = 0
+        }
      if (!('x^{2}' in membregauche)){
         membregauche['x^{2}'] = 0
         }
@@ -398,19 +395,10 @@ class GraphiqueExercice {
         membregauche[''] = 0;
         }
 
-    if (nombreElements <= 2) {
-        var yValues1 = xValues.map(x => membredroite["x^{1}"]*x + membredroite[""]);
-    } else {
-        var yValues1 = xValues.map(x => membredroite["x^{2}"]*Math.pow(x, 2) + membredroite["x^{1}"]*x + membredroite[""]);
-    }
-    const nombreElements2 = Object.keys(membregauche).length;
+    var yValues1 = null;
+    var yValues1 = xValues.map(x => membredroite["x^{3}"]*Math.pow(x, 3) + membredroite["x^{2}"]*Math.pow(x, 2) + membredroite["x^{1}"]*x + membredroite[""]);
     var yValues2 = null;
-    if (nombreElements2 <= 2) {
-        var yValues2 = xValues.map(x => membregauche["x^{1}"]*x + membregauche[""]);
-    } else {
-        var yValues2 = xValues.map(x => membregauche["x^{2}"]*Math.pow(x, 2) + membregauche["x^{1}"]*x + membregauche[""]);
-    }
-
+    var yValues2 = xValues.map(x => membregauche["x^{3}"]*Math.pow(x, 3) + membregauche["x^{2}"]*Math.pow(x, 2) + membregauche["x^{1}"]*x + membregauche[""]);
 
     let trace1 = {
      x: xValues,
@@ -427,7 +415,6 @@ class GraphiqueExercice {
     };
 
     let data = [trace1, trace2];
-
     Plotly.newPlot(this.element_graphique, data);
       this.input_html.value = "";
       this.feedback_html.textContent = "";
