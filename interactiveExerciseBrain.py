@@ -1176,31 +1176,52 @@ def generer_resoudre_equation_degre_2():
     return question
 
 
-def reconnaissance_fonction():
-    choix = random.randint(1,4)
+def generer_reconnaissance_fonction():
+    choix = random.randint(1,5)
     if choix == 1:
+        coeff_0 = random.randint(-5, 5)
+        while coeff_0 == 0:
+            coeff_0 = random.randint(-5, 5)
+        dico_coeff = {"": coeff_0}
         solution = "constante"
     elif choix == 2:
+        coeff_1 = random.randint(-5, 5)
+        while coeff_1 == 0:
+            coeff_1 = random.randint(-5, 5)
+        dico_coeff = {"x^{1}": coeff_1}
         solution = "linéaire"
     elif choix == 3:
+        coeff_0 = random.randint(-5, 5)
+        while coeff_0 == 0:
+            coeff_0 = random.randint(-5, 5)
+        coeff_1 = random.randint(-5, 5)
+        while coeff_1 == 0:
+            coeff_1 = random.randint(-5, 5)
+        dico_coeff = {"": coeff_0, "x^{1}": coeff_1}
         solution = "affine"
-    else:
+    elif choix == 4:
+        coeff_0 = random.randint(-5, 5)
+        coeff_1 = random.randint(-5, 5)
+        coeff_2 = random.randint(-2, 2)
+        while coeff_2 == 0:
+            coeff_2 = random.randint(-2, 2)
+        dico_coeff = {"": coeff_0, "x^{1}": coeff_1, "x^{2}": coeff_2}
         solution = "quadratique"
-
-    chaine_solution = ""
-    if type(solution) != int:
-        if len(solution)==2:
-            chaine_solution = [f"{solution[0]};{solution[1]}",f"{solution[1]};{solution[0]}"]
-        else:
-            chaine_solution = solution
-
     else:
-        chaine_solution = [str(solution)]
+        coeff_0 = random.randint(-2, 2)
+        coeff_1 = random.randint(-2, 2)
+        coeff_2 = random.randint(-1, 1)
+        coeff_3 = random.randint(-1, 1)
+        while coeff_3 == 0:
+            coeff_3 = random.randint(-1, 1)
+        dico_coeff = {"": coeff_0, "x^{1}": coeff_1, "x^{2}": coeff_2, "x^{3}":coeff_3}
+        solution = "cubique"
+
 
     question = {
-        "question": f"Les deux fonctions dessinées représentent la partie gauche et droite d'une équation. Trouve la/les valeur de x pour laquel/lesquelles les deux fonctions sont égales. Si il y a deux réponses inscrit un ; entre les deux comme par exemple 2;3",
-        "fonctions":[dico_coeff[0], dico_coeff[1]],
-        "answer": chaine_solution,
+        "question": f"Quelle est le type de la fonction représentée ci-dessous?",
+        "fonctions":[dico_coeff, {}],
+        "answer": solution,
         "feedback": random.choice(congratulations_messages),
         "feedbackClass": "text-success",
         "methods": ["enlever_espace"]}

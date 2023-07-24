@@ -248,8 +248,8 @@ Différents_type_de_fonctions = {
     "nom": "Différents type de fonctions",
     "body": "",
     "exemple":"",
-    "type":"question",
-    "questions": "generer_trouver_par_evaluation",
+    "type":"graphique",
+    "questions": "generer_reconnaissance_fonction",
     "method": "aucune",
     "badge": bdg[17]
 }

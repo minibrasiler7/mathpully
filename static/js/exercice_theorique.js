@@ -413,8 +413,16 @@ class GraphiqueExercice {
     mode: 'lines',
 
     };
+    var data;
+    console.log(membregauche)
+    if (membregauche[""] == 0 && membregauche["x^{1}"] == 0 && membregauche["x^{2}"] == 0 && membregauche["x^{3}"] == 0) {
+       data = [trace1];
+   }else{
+       data = [trace1, trace2];
+    }
+    console.log(data)
 
-    let data = [trace1, trace2];
+
     Plotly.newPlot(this.element_graphique, data);
       this.input_html.value = "";
       this.feedback_html.textContent = "";
