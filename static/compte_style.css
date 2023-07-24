@@ -1,0 +1,17 @@
+.titre_compte{
+margin-top:70px;
+
+}
+
+#search-results {
+    z-index: 9999;
+    height: auto;
+    min-height: 50px;
+    overflow-y: auto;
+    display:block;
+}
+
+.table tbody tr:hover {
+    background-color: #ff7f7f;
+    color: white;
+}

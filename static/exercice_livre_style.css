@@ -1,0 +1,108 @@
+
+body {
+    font-family: Arial, sans-serif;
+
+}
+#background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: cover;
+        }
+
+.titre_exercice_livre {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.exercise-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+.exercise-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.exercise-form h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.exercise-form label,
+.exercise-form input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.exercise-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.indices {
+    margin-top: 30px;
+}
+
+.submit-button {
+    display: block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.message_aide{
+    margin-top:20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Style pour le span contenant les éléments déplaçables */
+.one_element {
+    margin: 10px;
+
+}
+
+
+/* Style pour les éléments déplaçables */
+.element_draggable {
+    padding: 5px 5px 5px 9px; /* Espace intérieur autour du texte */
+    margin: 1px;/* Espace entre les éléments déplaçables */
+    background-color: #98FB98; /* Fond vert clair */
+    border: 1px solid #006400; /* Bordure verte */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: move; /* Change le curseur pour indiquer que l'élément peut être déplacé */
+}
+
+/* Style pour la zone de dépôt */
+.dropzone {
+    min-height: 50px;
+    border: 2px solid black;
+    padding: 10px ;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.row {
+    margin: 10px -25px; /* Ajoute une marge négative à la rangée pour contrer la marge des colonnes */
+}
+
+[class*="col-"] {
+    padding: 10px 5px; /* Utilisez padding au lieu de margin pour éviter le problème de débordement */
+}
+/* Bordure pointillée pour indiquer la zone de dépôt */
+

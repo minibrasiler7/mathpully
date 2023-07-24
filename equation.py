@@ -87,7 +87,7 @@ class Equation:
 
 
     def resoudre(self):
-        print("degre "+ str(self.degre))
+
         if self.degre == 0:
             if '' in self.equal_zero:
                 if self.equal_zero[''] != 0:
@@ -126,10 +126,6 @@ class Equation:
                 reponse = -b/(2*a)
                 return [reponse]
 
-
-
-eq = Equation("3x+2","2(x+2)")
-print(eq.resoudre())
 
 
 

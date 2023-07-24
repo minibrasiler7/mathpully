@@ -367,7 +367,6 @@ class GraphiqueExercice {
       var graphique = this.currentQuestion.fonctions;
       var membredroite = graphique[0]
       var membregauche = graphique[1]
-      console.log(membredroite);
       // Supposons que vos coefficients sont a, b et c.
      let a = 1; // coefficient a
      let b = 2; // coefficient b
@@ -380,6 +379,25 @@ class GraphiqueExercice {
        }
     const nombreElements = Object.keys(membredroite).length;
     var yValues1 = null;
+    if (!('x^{2}' in membredroite)){
+        membredroite['x^{2}'] = 0
+        }
+    if (!('x^{1}' in membredroite)){
+        membredroite['x^{1}'] = 0
+        }
+    if (!('' in membredroite)){
+        membredroite[''] = 0
+    }
+     if (!('x^{2}' in membregauche)){
+        membregauche['x^{2}'] = 0
+        }
+    if (!('x^{1}' in membregauche)){
+        membregauche['x^{1}'] = 0
+        }
+    if (!('' in membregauche)){
+        membregauche[''] = 0;
+        }
+
     if (nombreElements <= 2) {
         var yValues1 = xValues.map(x => membredroite["x^{1}"]*x + membredroite[""]);
     } else {
@@ -585,8 +603,8 @@ function selectionSansRemise(tableau) {
   list_objet = [];
   const exercicesInteractifs = document.querySelectorAll('.exercice-interactif');
   exercicesInteractifs.forEach((exerciceInteractif) => {
-    console.log(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e").replaceAll('d"u',"d'u").replaceAll('l"é',"l'é").replaceAll('l"â', "l'â").replaceAll('d"a', "d'a"));
-    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e").replaceAll('d"u',"d'u").replaceAll('l"é',"l'é").replaceAll('l"o',"l'o").replaceAll('l"â', "l'â").replaceAll('S"i', "S'i").replaceAll('d"a', "d'a").replaceAll('u"i', "u'i").replaceAll('u"e', "u'e"));
+
+    const questions = JSON.parse(exerciceInteractif.dataset.questions.replaceAll("'", '"').replaceAll('c"e', "c'e").replaceAll('d"e', "d'e").replaceAll('t"e', "t'e").replaceAll('l"e', "l'e").replaceAll('l"a',"l'a").replaceAll('l"i',"l'i").replaceAll('C"e',"C'e").replaceAll('d"u',"d'u").replaceAll('l"é',"l'é").replaceAll('l"o',"l'o").replaceAll('l"â', "l'â").replaceAll('S"i', "S'i").replaceAll('d"a', "d'a").replaceAll('u"i', "u'i").replaceAll('u"e', "u'e").replaceAll('N"o', "N'o").replaceAll('L"a', "L'a").replaceAll('d"é', "d'é").replaceAll('n"a', "n'a").replaceAll('l"ê', "l'ê").replaceAll('n"i', "n'i").replaceAll('n"o', "n'o").replaceAll('n"e', "n'e"));
     const name = exerciceInteractif.dataset.name;
     const type = exerciceInteractif.dataset.type;
     const method = exerciceInteractif.dataset.method;

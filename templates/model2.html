@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <title>Mathematicus</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/navbar-style.css">
-    <link rel="stylesheet" href="static/souschapitre.css">
-    <link rel="stylesheet" href="static/liste_sous_chapter.css">
-    <link rel="stylesheet" href="static/exercice_theorique.css">
-    <link rel="stylesheet" href="static/table_exercices.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='exercice_livre_style.css') }}">
     <script type="text/x-mathjax-config">
 
   MathJax.Hub.Config({
@@ -17,35 +14,29 @@
       processEscapes: true
     }
   });
-</script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.5.1"></script>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
 <body>
     {% include 'navbar.html' %}
     <header>
-        <h1 class="titre_chapitre">{% block heading %} {% endblock %}</h1>
+        <h1 class="classe_annee">{% block annee %} {% endblock %}</h1>
+        <h2 class="titre_exercice">{% block titre %} {% endblock %}</h2>
     </header>
-    <nav class="nav_subchapters">
-        <ul class="ul_subchapters">
-            {% block subchapters %}
-            {% endblock %}
-        </ul>
-    </nav>
-    {% block exercises %}
+
+    {% block exercise %}
     {% endblock %}
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='js/exercice_theorique.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/exercice_livre.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
 </body>
 </html>

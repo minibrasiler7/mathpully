@@ -39,3 +39,9 @@
 .td_exercice a:hover {
   text-decoration: none;
 }
+.fait {
+    color: darkgreen !important; /* Un vert plus foncé */
+    font-weight: bold; /* Texte en gras */
+}
+
+

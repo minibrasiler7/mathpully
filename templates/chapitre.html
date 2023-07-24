@@ -1,7 +1,10 @@
 {% extends "model.html" %}
 
 {% block heading %}
-    {{chapitre.chapitre}}
+    <div class="heading_chapitre">
+    <h1 class="titre_class">{{chapitre.chapitre}}</h1>
+    <h2 class="titre_class">{{chapitre.classe}}</h2>
+    </div>
 {% endblock %}
 
     {% block subchapters %}
@@ -15,9 +18,6 @@
             {% endfor %}
         </ul>
     </div>
-
-
-
 {% endblock %}
 
 {% block exercises %}
@@ -28,7 +28,10 @@
         <tr class="tr_exercice">
         {% for j in range(i, i+8) %}
         {% if j < chapitre['exercices']|length %}
-          <td class="td_exercice"><a href="#">{{ chapitre['exercices'][j] }}</a></td>
+
+          {% set exercices_fait = chapitre['exercices'][j] in exercice_fait %}
+
+          <td class="td_exercice"><a href="{{ url_for('exercice', classe=chapitre.classe, titre_exercice=chapitre['exercices'][j]) }}" class="{% if exercices_fait %}fait{% endif %}">{{ chapitre['exercices'][j] }}</a></td>
         {% else %}
           <td></td>
         {% endif %}
@@ -36,8 +39,7 @@
         </tr>
     {% endfor %}
     </table>
-</div>>
-
+</div>
 {% endblock %}
 
 {% block content %}

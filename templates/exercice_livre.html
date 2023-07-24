@@ -1,0 +1,75 @@
+{% extends "model2.html" %}
+
+{% block exercise %}
+    <div id="background"></div>
+    <h1 class="titre_exercice_livre">{{ exercice.annee }} - {{ exercice.titre }}</h1>
+    {% for message in exercice.message_aide %}
+    <p class="message_aide">{{message}}</p>
+    {% endfor %}
+{% if exercice.type is not defined %}
+  <form class="exercise-form" data-donnee="{{ exercice }}">
+        {% for i in range(exercice.donnee|length) %}
+            <h2>Partie {{ i+1 }}</h2>
+            {% for j in range(exercice.donnee[i]|length) %}
+                <label for="response_part{{i+1}}-input{{j+1}}">{{ exercice.donnee[i][j] }}</label>
+                <input type="text" id="response_part{{i+1}}-input{{j+1}}" class="exercise-input">
+            {% endfor %}
+        {% endfor %}
+        <div class="indices">
+        <ul class="nav nav-tabs" id="indiceTab" role="tablist">
+        {% for i in range(exercice.indices|length) %}
+            <li class="nav-item">
+                <a class="nav-link" id="indice{{i+1}}-tab" data-toggle="tab" href="#indice{{i+1}}" role="tab" aria-controls="indice{{i+1}}" aria-selected="false">Indice {{ i+1 }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <div class="tab-content" id="indiceTabContent">
+        {% for i in range(exercice.indices|length) %}
+            <div class="tab-pane fade" id="indice{{i+1}}" role="tabpanel" aria-labelledby="indice{{i+1}}-tab">{{ exercice.indices[i] }}</div>
+        {% endfor %}
+        </div>
+        </div>
+
+        <input type="submit" value="Vérifier" class="submit-button" id="submit">
+    </form>
+{% elif exercice.type == "glisser-déposer" %}
+    <form class="exercise-form" data-donnee="{{ exercice }}">
+        {% for i in range(exercice.donnee|length) %}
+            <h2>Partie {{ i+1 }}</h2>
+            <div class="row">
+                <div class="col-12">
+                    {% for j in range(exercice.donnee[i]|length) %}
+                    <span id="element_part{{i+1}}_{{j+1}}" class="one_element">
+                    {% for k in range(exercice.donnee[i][j]|length) %}
+                        <span id="drag{{i+1}}_{{j+1}}_{{k+1}}" class="element_draggable" draggable="true" ondragstart="drag(event)" data-part="{{i+1}}">
+                            {{ exercice.donnee[i][j][k] }}
+                        </span>
+                    {% endfor %}
+                    </span>
+                    {% endfor %}
+                </div>
+                    {% for l in range(exercice.reponses[i]|length) %}
+                <div class="col-5 dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" id="dropzone_{{i+1}}{{l+1}}" data-part="{{i+1}}">
+                    <!-- Cette zone est destinée à recevoir les spans -->
+                </div>
+                    {% endfor %}
+            </div>
+        {% endfor %}
+         <div class="indices">
+        <ul class="nav nav-tabs" id="indiceTab" role="tablist">
+        {% for i in range(exercice.indices|length) %}
+            <li class="nav-item">
+                <a class="nav-link" id="indice{{i+1}}-tab" data-toggle="tab" href="#indice{{i+1}}" role="tab" aria-controls="indice{{i+1}}" aria-selected="false">Indice {{ i+1 }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <div class="tab-content" id="indiceTabContent">
+        {% for i in range(exercice.indices|length) %}
+            <div class="tab-pane fade" id="indice{{i+1}}" role="tabpanel" aria-labelledby="indice{{i+1}}-tab">{{ exercice.indices[i] }}</div>
+        {% endfor %}
+        </div>
+        </div>
+        <input type="submit" value="Vérifier" class="submit-button" id="submit">
+    </form>
+{% endif %}
+{% endblock %}

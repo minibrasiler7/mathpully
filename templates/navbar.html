@@ -138,9 +138,9 @@
             <a class="dropdown-item" href="#">ES Figures géométriques planes</a>
             <a class="dropdown-item" href="#">NO Situations aléatoires</a>
             <a class="dropdown-item" href="#">ES Transformations géométriques</a>
-            <a class="dropdown-item" href="#">FA Fonctions et diagrammes</a>
+            <a class="dropdown-item" href="/chapitre?nom_chapitre=11VGfonctions">FA Fonctions et diagrammes</a>
             <a class="dropdown-item" href="#">GM Lignes, surfaces et théorèmes</a>
-            <a class="dropdown-item" href="#">FA Equations</a>
+            <a class="dropdown-item" href="/chapitre?nom_chapitre=11VGequations">FA Equations</a>
             <a class="dropdown-item" href="#">ES Représentations de solides</a>
             <a class="dropdown-item" href="#">GM Solides et diverses mesures</a>
           </div>
@@ -157,7 +157,7 @@
             <a class="dropdown-item" href="#">NO Situations aléatoires</a>
             <a class="dropdown-item" href="#">FA Fonctions et diagrammes</a>
             <a class="dropdown-item" href="#">GM Lignes, surfaces et théorèmes, trigonométrie</a>
-            <a class="dropdown-item" href="#">FA Système d'équation, fonction</a>
+            <a class="dropdown-item" href="/chapitre?nom_chapitre=11VPsystemes">FA Systèmes d'équations, fonctions</a>
             <a class="dropdown-item" href="#">ES Représentations de solides</a>
             <a class="dropdown-item" href="#">GM Solides et diverses mesures</a>
           </div>
@@ -167,14 +167,14 @@
 
       <div class="user-menu">
         <a href="#" class="user-link">
-        <img src="static/images/{{user.avatar}}" alt="User Image" class="user-image">
+       <img src="{{ url_for('static', filename='images/' + user.avatar) }}" alt="User Image" class="user-image">
        {{ user.username }}
         <i class="fas fa-chevron-down"></i>
+        </a>
         <span class="points-nav" id="points_utilisateurs_nav">{{user.points}} points</span>
 
-        </a>
       <div class="user-dropdown">
-        <a href="#">Mon compte</a>
+        <a href="/compte">Mon compte</a>
         <a href="#">Se déconnecter</a>
       </div>
     </div>

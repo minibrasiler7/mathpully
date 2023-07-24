@@ -10,9 +10,11 @@ from flask_mail import Mail, Message
 import os
 import sujet
 import points
-import calcullittéralbrain
+import interactiveExerciseBrain
 from datetime import datetime
 import method
+import donnee_exercices_livre
+
 
 port = int(os.environ.get("PORT", 5000))
 app = Flask(__name__)
@@ -38,7 +40,18 @@ class User(UserMixin, db.Model):
     personnalisation = db.Column(db.Boolean, default=False)
     avatar = db.Column(db.String(50), nullable = True)
     points = db.Column(db.Integer, default=0)
+    enseignant = db.Column(db.Boolean, default=False)
+    nom_enseignant = db.Column(db.String(50), default="")
+    validation_enseignant = db.Column(db.Boolean, default=False)
     exercises = db.relationship('Exercise', backref='user', lazy='dynamic')
+    def is_active(self):
+        """Return True if the user is active, else False."""
+        return self.is_active
+    @login_manager.user_loader
+    def load_user(user_id):
+        return db.session.get(User,(int(user_id)))
+    def __repr__(self):
+        return f'<User {self.id}>'
 class Exercise(db.Model):
     __tablename__ = 'exercises'
     id = db.Column(db.Integer, primary_key=True)
@@ -50,6 +63,16 @@ class Exercise(db.Model):
     # Clé étrangère vers l'utilisateur
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    def __repr__(self):
+        return f'<Exercice {self.exercise_name}>'
+class Exercice_livre(db.Model):
+    __tablename__ = 'exercise_livres'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    titre = db.Column(db.String(120))
+    classe = db.Column(db.String(120))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
     def is_active(self):
         """Return True if the user is active, else False."""
         return self.is_active
@@ -58,7 +81,7 @@ class Exercise(db.Model):
         return db.session.get(User,(int(user_id)))
 
     def __repr__(self):
-        return f'<User {self.username}>'
+        return f'<Titre {self.titre}>'
 
 
 @app.route('/')
@@ -93,6 +116,8 @@ def personnalisation():
         selected_avatar = request.form['avatar']
         user = User.query.get(current_user.id)
         user.avatar = selected_avatar
+        if request.form['enseignant'] ==  "enseignant":
+            user.enseignant = True
         user.personnalisation = True
         db.session.commit()
         try:
@@ -109,12 +134,16 @@ def personnalisation():
     return render_template('personnaliser-utilisateur.html', user=current_user, images = images)
 
 
+
 @login_required
 @app.route('/chapitre')
 def chapitre():
     nom_chapitre = request.args.get('nom_chapitre')
     sujet_selectionne = getattr(sujet, f"_{nom_chapitre}")
-
+    annee = sujet_selectionne['annee']
+     # Récupérer tous les exercices effectués par l'utilisateur courant pour l'année spécifiée
+    exercices_fait = Exercice_livre.query.filter_by(user_id=current_user.id, classe=annee).all()
+    titres_exercices = [exercice.titre for exercice in exercices_fait]
     dic_point=[]
 
     for souschapitre in sujet_selectionne['points']:
@@ -126,14 +155,14 @@ def chapitre():
 
     for i in range(len(dic_point)):
         nom_fonction = dic_point[i]["questions"]
-        if hasattr(calcullittéralbrain, nom_fonction):
-            questions = [getattr(calcullittéralbrain, nom_fonction)(), getattr(calcullittéralbrain, nom_fonction)(), getattr(calcullittéralbrain, nom_fonction)(), getattr(calcullittéralbrain, nom_fonction)()]
+        if hasattr(interactiveExerciseBrain, nom_fonction):
+            questions = [getattr(interactiveExerciseBrain, nom_fonction)(), getattr(interactiveExerciseBrain, nom_fonction)(), getattr(interactiveExerciseBrain, nom_fonction)(), getattr(interactiveExerciseBrain, nom_fonction)()]
             dic_point[i]["questions"] = questions
         else:
             print("no function")
     badge_user = Exercise.query.filter_by(user_id=current_user.id).all()
     # Code pour récupérer les données du chapitre correspondant à nom_chapitre depuis la base de données
-    return render_template(f"{nom_chapitre}.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user, badge_user = badge_user)
+    return render_template(f"chapitre.html", chapitre=sujet_selectionne, souschapitre=dic_point, user=current_user, badge_user = badge_user, exercice_fait = titres_exercices)
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -250,6 +279,101 @@ def methodpython():
     # Vous pouvez écrire ici votre logique basée sur 'method' et 'userAnswer'
     # Pour cet exemple, nous renvoyons simplement la valeur 2
     return jsonify({'value': reponse})
+@login_required
+@app.route('/exercice/<classe>/<titre_exercice>', methods=['GET'])
+def exercice(classe, titre_exercice):
+    titre = titre_exercice.replace(" ", "_").replace(".","_").replace("-", "_")
+    chaine_exercice = titre+"_"+classe[:-2]+"H"
+    donnee_exercice = getattr(donnee_exercices_livre, chaine_exercice)
+    return render_template(f"exercice_livre.html", exercice=donnee_exercice, user=current_user)
+
+
+@login_required
+@app.route('/exercice_termine', methods=['POST'])
+def exercice_termine():
+    data = request.get_json()
+    titre = data['titre']
+    classe = data['classe']
+
+    # Vérifiez si l'exercice a déjà été fait par l'utilisateur
+    exercice = Exercice_livre.query.filter_by(user_id=current_user.id, titre=titre, classe=classe).first()
+    if exercice:
+        return jsonify({'success': False, 'message': 'Cet exercice a déjà été effectué'})
+
+    # Ajoutez l'exercice à la base de données
+    exercice = Exercice_livre(user_id=current_user.id, titre=titre, classe=classe, date=datetime.now())
+    db.session.add(exercice)
+
+    # Ajoutez 50 points à l'utilisateur
+    current_user.points += 50
+    db.session.commit()
+
+    return jsonify({'success': True, 'points': current_user.points})
+
+
+@login_required
+@app.route('/compte', methods=['GET'])
+def compte():
+    if current_user.enseignant :
+        users = User.query.filter_by(nom_enseignant=current_user.username).all()
+        eleves=[]
+        for user in users:
+            completed_interactif_exercices = Exercise.query.filter_by(user_id = user.id, is_completed=True).all()
+            completed_livre_exercice = Exercice_livre.query.filter_by(user_id = user.id).all()
+            eleves.append({
+                'username': user.username,
+                'id': user.id,
+                'avatar': user.avatar,
+                'validation': user.validation_enseignant,
+                'enseignant': user.nom_enseignant,
+                'points': user.points,
+                'exercices': completed_interactif_exercices,
+                'exercices_livre': completed_livre_exercice,
+            })
+
+        return render_template(f"compte.html", user=current_user, eleves = eleves)
+    else:
+        enseignant = current_user.nom_enseignant
+        exercices = Exercise.query.filter_by(user_id = current_user.id, is_completed=True).all()
+        exercices_livre = Exercice_livre.query.filter_by(user_id = current_user.id).all()
+        return render_template(f"compte.html", user=current_user, enseignant = enseignant, exercices = exercices, exercices_livre = exercices_livre)
+@app.route('/search_teacher', methods=['GET'])
+def search_teacher():
+    print("Je recherche un enseignant")
+    search_string = request.args.get('q', '')
+    teachers = User.query.filter(User.username.like(f'{search_string}%'), User.enseignant.is_(True)).all()
+    print([teacher.username for teacher in teachers])
+    return jsonify([teacher.username for teacher in teachers])
+
+@app.route('/add_teacher', methods=['POST'])
+def add_teacher():
+    teacher_username = request.form.get('teacher_username')
+    teacher = User.query.filter_by(username=teacher_username, enseignant=True).first()
+    if teacher is not None and current_user.validation_enseignant==False:
+        current_user.nom_enseignant = teacher_username
+        db.session.commit()
+        return jsonify({'status': 'success', 'message': 'Enseignant ajouté avec succès.'})
+    else:
+        return jsonify({'status': 'error', 'message': 'L\'enseignant n\'a pas pu être ajouté.'}), 400
+
+@app.route('/validate_student', methods=['POST'])
+def validate_student():
+    student_id = request.form.get('student_id')
+    print("student_id: "+student_id)
+    if not student_id:
+        return jsonify(success=False, message='No student ID provided.')
+    try:
+        student = User.query.get(student_id)
+        if student:
+            student.validation_enseignant = True
+            db.session.commit()
+            return jsonify(success=True, message='Student validated successfully.')
+        else:
+            return jsonify(success=False, message='No student found with the provided ID.')
+    except Exception as e:
+        return jsonify(success=False, message=str(e))
+
+
 
 if __name__ == '__main__':
     with app.app_context():

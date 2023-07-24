@@ -430,6 +430,3 @@ expression = replace_fractions_with_decimal("\\frac{5}{3}x+\\frac{3}{2}x^{2}")
 polynome = Expression_litteral(expression)
 reduit  = polynome.polynome_reduit_ordonne
 
-print(reduit)
-print(change_reduit_ordonnee_to_fraction_dict(reduit))
-

@@ -1,7 +1,7 @@
-import calcullittéralbrain
+import interactiveExerciseBrain
 nom_defaut_badge = "badge_"
 bdg=[]
-for i in range(1,32):
+for i in range(1,46):
     bdg.append(f"{nom_defaut_badge}{i}.png")
 
 
@@ -216,8 +216,8 @@ Equation_avec_fraction = {
     "chapitres": ["_11VPcalcullitteral"],
     "nom": "Equation avec fraction",
     "name": "equation_avec_fraction",
-    "body": "<p>Pour résoudre une équation qui contient des fractions, l'objectif est d'éliminer les fractions afin de simplifier l'équation. Voici les étapes à suivre :</p><p>1. <strong>Trouver le dénominateur commun</strong> : Il s'agit du plus petit nombre qui peut être divisé par tous les dénominateurs de la fraction dans l'équation. C'est également connu sous le nom de plus petit multiple commun (PPCM). Par exemple, si vos dénominateurs sont 2, 3 et 6, le PPCM serait 6.</p><p>2. <strong>Multiplier tous les termes de l'équation par le dénominateur commun</strong> : Cela permet d'éliminer les fractions de l'équation. Par exemple, si vous avez l'équation $$\\frac{1}{2} + \\frac{x}{3} = \\frac{1}{6}$$ et que vous multipliez tous les termes par 6 (le PPCM), vous obtenez $$3 + 2x = 1$$</p><p>3. <strong>Résoudre l'équation</strong> : Maintenant que l'équation n'a plus de fractions, vous pouvez la résoudre comme une équation normale. Dans l'exemple précédent, vous pouvez soustraire 3 des deux côtés pour obtenir $$2x = -2$$puis diviser les deux côtés par 2 pour obtenir $$x = -1$$</p><p>En suivant ces étapes, vous pouvez résoudre n'importe quelle équation qui contient des fractions. Cependant, il est important de se rappeler que lors de la résolution d'équations, tout ce que vous faites d'un côté de l'équation doit être fait de l'autre côté aussi afin de maintenir l'égalité.</p>",
-    "exemple": "<p>Supposons que nous avons l'équation suivante : $$\\frac{x}{2} - \\frac{3}{4} = \\frac{1}{8}$$.</p> <p>1. La première étape est de <strong>trouver le dénominateur commun</strong>. Dans ce cas, le dénominateur commun de 2, 4 et 8 est 8.</p><p>2. Ensuite, nous <strong>multiplions tous les termes par le dénominateur commun</strong>, ce qui nous donne : $$4x - 6 = 1$$.</p><p>3. Maintenant que nous avons une équation linéaire sans fractions, nous pouvons la résoudre normalement. Ajoutons 6 des deux côtés de l'équation pour isoler le terme avec x : $$4x = 7$$.</p><p>4. Enfin, divisons les deux côtés de l'équation par 4 pour obtenir la solution : $$x = \\frac{7}{4}$$.</p><p>Donc, la solution de l'équation $$\\frac{x}{2} - \\frac{3}{4} = \\frac{1}{8}$$ est $$x = \\frac{7}{4}$$.</p>",
+    "body": "<p>Pour résoudre une équation qui contient des fractions, l'objectif est d'éliminer les fractions afin de simplifier l'équation. Voici les étapes à suivre :</p><p>1. <strong>Trouver le dénominateur commun</strong> : Il s'agit du plus petit nombre qui peut être divisé par tous les dénominateurs de la fraction dans l'équation. C'est également connu sous le nom de plus petit multiple commun (PPCM). Par exemple, si vos dénominateurs sont 2, 3 et 6, le PPCM serait 6.</p><p>2. <strong>Multiplier tous les termes de l'équation par le dénominateur commun</strong> : Cela permet d'éliminer les fractions de l'équation. Par exemple, si vous avez l'équation $$\\frac{1}{2} + \\frac{x}{3} = \\frac{1}{6}$$ et que vous multipliez tous les termes par 6 (le PPCM), vous obtenez $$3 + 2x = 1$$</p><p>3. <strong>Résoudre l'équation</strong> : Maintenant que l'équation n'a plus de fractions, vous pouvez la résoudre comme une équation normale. Dans l'exemple précédent, vous pouvez soustraire 3 des deux côtés pour obtenir $$2x = -2$$ puis diviser les deux côtés par 2 pour obtenir $$x = -1$$</p><p>En suivant ces étapes, vous pouvez résoudre n'importe quelle équation qui contient des fractions. Cependant, il est important de se rappeler que lors de la résolution d'équations, tout ce que vous faites d'un côté de l'équation doit être fait de l'autre côté aussi afin de maintenir l'égalité.</p>",
+    "exemple": "<p>Supposons que nous avons l'équation suivante : $$\\frac{x}{2} - \\frac{3}{4} = \\frac{1}{8}$$</p> <p>1. La première étape est de <strong>trouver le dénominateur commun</strong>. Dans ce cas, le dénominateur commun de 2, 4 et 8 est 8.</p><p>2. Ensuite, nous <strong>multiplions tous les termes par le dénominateur commun</strong>, ce qui nous donne : $$4x - 6 = 1$$</p><p>3. Maintenant que nous avons une équation linéaire sans fractions, nous pouvons la résoudre normalement. Ajoutons 6 des deux côtés de l'équation pour isoler le terme avec x : $$4x = 7$$</p><p>4. Enfin, divisons les deux côtés de l'équation par 4 pour obtenir la solution : $$x = \\frac{7}{4}$$</p><p>Donc, la solution de l'équation $$\\frac{x}{2} - \\frac{3}{4} = \\frac{1}{8}$$ est $$x = \\frac{7}{4}$$</p>",
     "questions": "generer_equation_avec_fraction",
     "method": "aucune",
     "type": "question",
@@ -227,12 +227,225 @@ Equation_du_deuxième_degré = {
     "chapitres": ["_11VPcalcullitteral"],
     "name": "equation_du_deuxieme_degre",
     "nom": "Equation du deuxième degré",
-    "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
-    "exemple":"<span>$$ x^2-4+5x^2-12x+6-3x-x+1 $$</span><br><p>On sépare en premier lieu notre polynôme ce qui devient: <span>$$ x^2\mid -4\mid +5x^2 \mid -12x \mid +6 \mid -3x \mid -x \mid +1 $$</span><br><p> Je regroupe les \( x^2 \) ensemble les \( x \) ensemble et les monômes sans partie littérale ensemble: $$ x^2 \mid +5x^2 \mid -12x \mid -3x \mid -x \mid -4 \mid +6 \mid +1$$ <p> On peut ajouter un coefficient de 1 devient les parties littérales qui n'ont rien et de -1 devant les parties littérales qui ont juste un signe - . Notre expression devient alors: </p> $$ 1x^2 \mid +5x^2 \mid -12x \mid -3x \mid -1x \mid -4 \mid +6 \mid +1$$ <br> <p> On finit par faire la somme des coefficients pour chaque monômes possédant la même partie littérale </p>  $$ (1+5)x^2 \mid (-12-3-1)x  \mid (-4+6+1) $$ <p> On trouve finalement: </p> $$ 6x^2-16x+3 $$ <p class='attention'>Attention si deux monômes sont composés des mêmes lettres il faut aussi qu'elles aient les mêmes puissance pour chaque lettre ainsi \( xy^2 \) et \( x^2y \) n'ont pas la même partie littérale et ne peut donc pas s'additionner</p>",
+    'body': "<p>La résolution d'une équation du second degré, c'est-à-dire une équation de la forme $$ax^2 + bx + c = 0$$ passe par plusieurs étapes.</p><p>La première étape consiste à rassembler tous les termes de l'équation d'un même côté pour obtenir une expression de la forme : $$ ax^2 + bx + c = 0 $$</p><p>Ensuite, il faut chercher à factoriser l'expression obtenue. Pour cela, on peut chercher si l'expression correspond à une identité remarquable par exemple:  \( (x+b)^2 = x^2 + 2xb + b^2 \) ou \( (x-b)^2 = x^2 - 2xb + b^2 \) ou \( (x+b)(x-b) = x^2 - b^2 \)  qui permettrait de simplifier la résolution. Ensuite il suffit de trouver le ou les \( x \) qui permet/permettent de faire en sorte qu'une parenthèse soit égal à 0</p>",
+    "exemple":"<p>Voici deux exemples de résolution d'équations du second degré avec utilisation d'identités remarquables.</p><p><strong>Exemple 1:</strong> Soit l'équation \( x^2 - 64 = 0\). On reconnaît une différence de deux carrés, donc on peut factoriser l'expression: $$x^2 - 64 = (x - 8)(x + 8) = 0$$ L'équation est alors équivalente à deux équations du premier degré: $$x - 8 = 0$$ et $$x + 8 = 0$$ Les solutions sont donc : </p><p> $$ x = 8 $$ et $$ x = -8 $$</p><p><strong>Exemple 2:</strong> Soit l'équation \( x^2 - 6x + 9 = 0\). On reconnaît un carré parfait, donc on peut factoriser l'expression: $$x^2 - 6x + 9 = (x - 3)^2 = 0$$ L'équation est alors équivalente à une équation du premier degré: $$x - 3 = 0$$ La solution est donc \( x = 3 \).</p>",
+    'body2':"<p>Dans certaines équations du second degré, on peut reconnaître une expression de la forme $$ax^2 + bx + c$$ qui peut se factoriser en $$(x+\\alpha)(x+\\beta)$$</p><p>Pour cela, on cherche deux nombres  \( \\alpha \) et \( \\beta \) tels que le produit $$\\alpha * \\beta$$ soit égal au terme constant 'c' de l'équation, et que la somme $$\\alpha+\\beta$$ soit égal au coefficient du terme de degré 1, 'b'.</p><p>Si on trouve de tels nombres \( \\alpha \) et \( \\beta \), alors l'équation $$ax^2 + bx + c = 0$$ peut se factoriser en $$(x+\\alpha)(x+\\beta) = 0$$ L'équation du second degré est alors réduite à deux équations du premier degré : $$x+\\alpha = 0$$ et $$x+\\beta = 0$$ On peut ainsi trouver les solutions de l'équation du second degré.</p>",
+    "exemple2": "<p>Considérons l'équation: $$x^2 - x - 6 = 0$$ Pour la factoriser, nous devons chercher deux nombres \( \\alpha \) et \( \\beta \) tels que le produit : $$ \\alpha * \\beta$$ soit égal à -6 (le terme constant de l'équation) et que la somme:  $$ \\alpha + \\beta$$ soit égale à -1 (le coefficient du terme en 'x').</p><p>Les diviseurs de 6 sont 1, 2, 3 et 6. Comme le produit doit être négatif, un des nombres doit être négatif. Si nous testons les différentes combinaisons, nous constatons que les nombres -3 et 2 satisfont les deux conditions : $$-3 * 2 = -6$$ et $$-3 + 2 = -1$$ </p><p>Donc, nous pouvons factoriser l'équation $$x^2 - x - 6$$ en $$(x - 3)(x + 2)$$ Les solutions de l'équation sont alors les valeurs de 'x' qui annulent chacune des parenthèses. On a donc : $$x - 3 = 0$$ soit $$x = 3$$ et $$x + 2 = 0$$ soit $$x = -2$$ Les solutions de l'équation :  $$x^2 - x - 6 = 0$$ sont donc : $$x = 3$$ et $$x = -2$$</p>",
+    "body3":"Quand une équation du second degré n'est pas facilement factorisable, nous pouvons utiliser la méthode du discriminant, grâce à la formule de Viète. Dans l'équation générale $$ax^2 + bx + c = 0$$ le discriminant est donné par $$\\Delta = b^2 - 4ac$$ En fonction du signe de $$\\Delta$$ nous avons différentes solutions pour l'équation : Si $$\\Delta > 0$$ l'équation a deux solutions réelles distinctes données par $$x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$$ Si $$\\Delta = 0$$ l'équation a une unique solution réelle donnée par $$x = \\frac{-b}{2a}$$ Si $$\\Delta < 0$$ l'équation n'a pas de solution réelle. Ces formules sont connues sous le nom de formules de Viète. Elles permettent de trouver les solutions d'une équation du second degré quelle que soit sa forme.",
+    "exemple3": "Considérons l'équation $$2x^2 - 3x - 2 = 0$$ Pour résoudre cette équation à l'aide de la formule de Viète, nous devons d'abord calculer le discriminant. Dans notre cas, $$a = 2$$ $$b = -3$$ $$c = -2$$ Nous insérons ces valeurs dans la formule du discriminant pour obtenir : $$\\Delta = (-3)^2 - 4*2*(-2) = 9 + 16 = 25$$ Comme $$\\Delta > 0$$ l'équation a deux solutions réelles distinctes. Nous pouvons donc utiliser la formule de Viète pour les trouver : $$x_{1,2} = \\frac{-(-3) \\pm \\sqrt{25}}{2*2} = \\frac{3 \\pm 5}{4}$$ Ainsi, les solutions de l'équation sont $$x_1 = \\frac{3+5}{4} = 2$$ et $$x_2 = \\frac{3-5}{4} = -0.5$$",
     "type":"question",
     "questions": "generer_resoudre_equation_degre_2",
     "method": "aucune",
     "badge": bdg[16]
 }
 
+
+###
+
+Différents_type_de_fonctions = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "differents_type_de_fonctions",
+    "nom": "Différents type de fonctions",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[17]
+}
+
+
+Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degré = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degré",
+    "nom": "Trouver l'expression fonctionnelle à partir d'un tableau de valeur premier degré",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[18]
+}
+
+Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_2ème_degré = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_deuxième_degré",
+    "nom": "Trouver l'expression fonctionnelle à partir d'un tableau de valeur deuxième degré",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[19]
+}
+
+Trouver_l_expression_fonctionnelle_à_partir_d_un_graphique_premier_degré = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "trouver_l_expression_fonctionnelle_a_partir_d_un_graphique_premier_degre",
+    "nom": "Trouver l'expression fonctionnelle à partir d'un graphique premier degré",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[20]
+}
+Dessiner_le_graphe_d_une_fonction_du_premier_degré = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "dessiner_le_graphe_d_une_fonction_du_premier_degre",
+    "nom": "Dessiner le graphe d'une fonction du premier degré",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[21]
+}
+
+Trouver_la_préimage = {
+   "chapitres": ["_11VPsystemes"],
+    "name": "trouver_la_preimage",
+    "nom": "Trouver la pré-image",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[22]
+}
+
+Trouver_le_domaine_de_définition = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "trouver_le_domaine_de_definition",
+    "nom": "Trouver le domaine de définition",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[23]
+}
+
+Echelle = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "echelle",
+    "nom": "Echelle",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[24]
+
+}
+
+Pourcentage = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "pourcentage",
+    "nom": "Pourcentage",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[25]
+}
+Pente = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "pente",
+    "nom": "Pente",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[26]
+}
+
+Débit = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "debit",
+    "nom": "Débit",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[27]
+
+}
+
+Masse_volumique = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "masse_volumique",
+    "nom": "Masse volumique",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[28]
+
+
+}
+
+Substitution = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "substitution",
+    "nom": "Substitution",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[29]
+}
+
+Combinaison_linéaire = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "combinaison_lineaire",
+    "nom": "Combinaison linéaire",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[30]
+}
+
+Absence_de_solution_infinité_de_solution_et_1_solution = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "absence_de_solution_infinite_de_solutions_et_1_solution",
+    "nom": "Absence de solution, infinité de solutions et unique solution",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[31]
+}
+
+Proportionnalité = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "proportionnalite",
+    "nom": "Proportionnalité",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[32]
+}
+
+Diagramme = {
+    "chapitres": ["_11VPsystemes"],
+    "name": "diagramme",
+    "nom": "Diagramme",
+    "body": "",
+    "exemple":"",
+    "type":"question",
+    "questions": "generer_trouver_par_evaluation",
+    "method": "aucune",
+    "badge": bdg[33]
+}
 

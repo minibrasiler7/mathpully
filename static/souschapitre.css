@@ -49,6 +49,9 @@ nav.nav_subchapters {
   padding: 10px; /* espace intérieur */
   margin-bottom: 20px; /* marge en bas pour aérer le contenu */
 }
+.heading_chapitre{
+    margin-top:70px;
+}
 
 
 

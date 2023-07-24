@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mathematicus</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/navbar-style.css">
+    <link rel="stylesheet" href="static/compte_style.css">
+    <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.5.1"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container mt-4">
+        {% if user.enseignant %}
+<header>
+    <h1 class="titre_compte">Mon compte : {{user.username}}</h1>
+    <h2>Compte enseignant</h2>
+    <h3>Mes élèves</h3>
+</header>
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Demandes des élèves
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+
+                {% for eleve in eleves %}
+                    {% if eleve.validation == False and eleve.enseignant == current_user.username %}
+                        <button class="btn btn-primary add-student-button" data-student="{{ eleve.id }}">
+                        <i class="fas fa-plus"></i> Ajouter {{ eleve.username }}
+                        </button>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+            <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Avatar</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Points</th>
+            <th scope="col">Nombre d'exercices réalisés</th>
+            <th scope="col">Nombre de bases obtenus</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for eleve in eleves %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='images/'+eleve.avatar) }}" alt="Avatar de l'élève" style="width: 50px; height: 50px;"></td>
+                <td>{{ eleve.username }}</td>
+                <td>{{ eleve.points }}</td>
+                <td>{{ eleve.exercices|length }}</td>
+                <td>{{ eleve.exercices_livre|length }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        {% else %}
+        <h1 class="mb-4">Mon compte : {{user.username}}</h1>
+        <h2>Compte élève</h2>
+        <h3>Ajout d'enseignant</h3>
+        <div class="position-relative">
+            <div class="row mb-3">
+                <div class="col-8">
+                    <input type="text" id="teacher-search" class="form-control" placeholder="Rechercher un enseignant..." onkeyup="searchTeacher()" />
+                    <div id="search-results" class="d-flex flex-column position-absolute bg-white w-100"></div>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary w-100" id = "add-teacher-button" >Envoyer la demande</button>
+                    <p id="message"></p>
+                </div>
+            </div>
+        </div>
+        {% if nom_enseignant %}
+            <p>J'ai un enseignant qui se nomme {{nom_enseignant}}</p>
+        {% else %}
+            <p>Je n'ai pas encore d'enseignant</p>
+        {% endif %}
+        {% endif %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/compte.js') }}"></script>
+</body>
+</html>

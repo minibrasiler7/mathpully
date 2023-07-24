@@ -401,7 +401,6 @@ def remove_coefficient_1_from_chaine(chaine):
                      newchaine += chaine[i]
         else:
             newchaine += chaine[i]
-    print("BUG"+chaine)
     newchaine += chaine[-1]
     return newchaine
 
@@ -664,7 +663,7 @@ def trouver_diviseur_commun_de_coefficients(liste_coefficient):
     return liste_diviseurs
 
 def créer_équation_2_degré_solution_entière():
-    print("hello")
+
     a = random.randint(1,9)
     a= signe_aleatoire()+str(a)
     b= random.randint(1,9)
@@ -705,7 +704,6 @@ def créer_équation_1_ou_2_degré_solution_entiere():
     else:
         equ, solution = créer_équation_2_degré_solution_entière()
         exp_a_ajouter = creer_expression_litteral_ordonnee_aleatoire(2,3)
-        print(exp_a_ajouter)
         exp_a_ajouter = exp_a_ajouter.replace("^1","").replace("^2", "^{2}")
         equ2 = equ.operation_chaque_cote("+", exp_a_ajouter)
         return(equ2, solution)
@@ -773,8 +771,6 @@ def transform_liste_solution_into_chaine_S(liste):
     return solution
 def generer_trouver_par_evaluation():
     equ, solution = créer_équation_1_ou_2_degré_solution_entiere()
-    print("equation : "+equ.afficher())
-    print(f"solution : {solution}")
     solution_propose = []
     solution_propose.append(solution)
     for j in range(3):
@@ -930,10 +926,8 @@ def generer_poser_une_equation():
     return random.choice(poser_equation_liste)
 
 def method_resoudre_equation_1_degre(user_answer):
-    print(user_answer)
     if "=" in user_answer:
         answer_split = user_answer.split("=")
-        print(answer_split)
         if len(answer_split) == 2:
             if len(answer_split[0])>0 and len(answer_split[1])>0 :
                 if "x" in answer_split[0] or "x" in answer_split[1]:
@@ -1072,7 +1066,6 @@ def creer_equation_second_degrer():
     if random.randint(1,2)==1 :
         expression = expressionlitteral.Expression_litteral(créer_identite_remarquable(liste_partie_litteral=["x", ""])).chaine_polynome_reduit_ordonne
         eq_depart = equation.Equation(expression, "0")
-        print(f"choix 1 {eq_depart.afficher()}")
         return eq_depart
     else:
         choix_discriminant = random.randint(1,3)
@@ -1092,7 +1085,6 @@ def creer_equation_second_degrer():
             if c>0:
                 c = f"+{c}"
             equ = equation.Equation(str(a)+"x^{2}"+str(b)+"x^{1}"+str(c), "0")
-            print(f"choix 2.1 {equ.afficher()}")
 
         elif choix_discriminant == 2:
             solution_chaine = round(random.randint(1,100)/100,2)
@@ -1112,7 +1104,6 @@ def creer_equation_second_degrer():
                 if expression[0] == "+":
                     expression = expression[1:]
             equ = equation.Equation(expression, "0")
-            print(f"choix 2.2 {equ.afficher()}")
         else:
             solution_1 = round(random.randint(1,100)/100,2)
             solution_2 = round(random.randint(1,100)/100,2)
@@ -1135,12 +1126,10 @@ def creer_equation_second_degrer():
                 if expression[0] == "+":
                     expression = expression[1:]
             equ = equation.Equation(expression, "0")
-            print(f"choix 2.3 {equ.afficher()}")
         return equ
 
 def generer_resoudre_equation_degre_2():
     eq = creer_equation_second_degrer()
-    print(f"avant: {eq.afficher()}")
     eq = eq.operation_chaque_cote("+", str(random.randint(1,15)))
     eq = eq.operation_chaque_cote("-", str(random.randint(1,15)))
     eq = eq.operation_chaque_cote("+", str(random.randint(1,15))+"x")
@@ -1150,9 +1139,9 @@ def generer_resoudre_equation_degre_2():
     for (key, value) in dico.items():
         if value % 1 == 0:
             value = int(value)
-        if value ==1:
+        if value ==1 and key!="":
             expression += f"+{key}"
-        elif value ==-1:
+        elif value ==-1 and key!="":
             expression += f"-{key}"
         elif value>0:
             expression += f"+{value}{key}"
@@ -1162,7 +1151,7 @@ def generer_resoudre_equation_degre_2():
             expression = expression[1:]
     expression = expression.replace("^{1}", "")
     eq = equation.Equation(expression, eq.chaine_right)
-    print(f"après: {eq.afficher()}")
+
 
     solution = eq.resoudre()
     for i in range(len(solution)):
@@ -1187,7 +1176,9 @@ def generer_resoudre_equation_degre_2():
     return question
 
 
-print(generer_resoudre_equation_degre_2())
+
+
+
 
 
 
