@@ -6,7 +6,8 @@ for i in range(1,46):
 
 
 Evaluer_une_expression_littérale = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "evaluer_une_expression_litterale",
     "nom": "Evaluer une expression littérale",
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
@@ -20,7 +21,8 @@ Evaluer_une_expression_littérale = {
 }
 
 Réduction_de_polynômes = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "reduction_de_polynomes",
     "nom": "Réduction de polynômes",
     "body": "Réduire un polynôme signifie que l’on va mettre ensemble les monômes avec la même partie littérale. Avant de réduire un polynôme, il faut s’assurer que l’on a bien effectué toutes les opérations de puissances, racines, multiplications et divisions.<br> <strong>1ère étape </strong> <br> On sépare le polynôme en ses monômes. Dès que l’on voit un signe d’addition ou de soustraction on place une séparation avant ce dernier.<br><strong>2ème étape </strong> <br> On reconnaît les monômes qui ont la même partie littérale. On réorganise le polynôme afin de mettre ensemble les mônomes qui ont les mêmes parties littérales. <br><strong>3ème étape</strong> <br> On les additionne entre eux pour cela on fait la somme des coefficients et on réécrit la partie littérale sans la modifier",
@@ -33,7 +35,8 @@ Réduction_de_polynômes = {
 }
 
 Ordonner_un_polynôme = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "ordonner_un_polynome",
     "nom": "Ordonner un polynôme",
     "body": "Ordonner un polynôme signifie que l’on va d’abord inscrire les polynômes avec les plus hauts degrés. Si deux monômes possèdent le même degré on va les inscrire par ordre alphabétique (\( x^2 \) signifie xx). Ainsi \( x^2 \) viendra avant xy et xy viendra avant \( y^2 \). On doit toujours ordonner un polynôme après l’avoir réduit et pas avant!",
@@ -46,7 +49,8 @@ Ordonner_un_polynôme = {
 }
 
 Distributivité = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "distributivite",
     "nom": "Distributivité",
     "body": "La distributivité s'utilise lorsqu'on a un terme qui multiplie une parenthèse. C'est une propriété mathématique qui dit que le produit d'une somme est égale à la somme des produits. En d'autres termes, on doit multiplier chaque monôme qu'il y a dans la parenthèse par le terme qui se trouve devant. <br> Imagine que tu as deux amis, et tu veux leur donner des cadeaux. Disons que tu veux donner 3 chocolats à chacun de tes amis et que tu as aussi 4 bonbons pour chacun d'eux. Au lieu de compter séparément combien de cadeaux tu as pour chaque ami, tu peux additionner les chocolats et les bonbons et ensuite multiplier le total par le nombre d'amis. <br> Voici l'exemple concret : tu as 2 amis, et tu veux leur donner 3 chocolats et 4 bonbons chacun. Pour savoir combien de cadeaux tu dois préparer en tout, tu peux utiliser la distributivité : <br>\( 2 \\text{ amis} \\times (3 \\text{ chocolats} + 4 \\text{ bonbons}) \) <br> En appliquant la propriété distributive, tu vas multiplier le nombre d'amis par le nombre de chocolats, puis par le nombre de bonbons : <br>$$ (2 \\text{ amis} \\times 3 \\text{ chocolats}) + (2 \\text{ amis} \\times 4 \\text{ bonbons}) $$ <br> Ce qui donne :<br> \( (6 \\text{ chocolats}) + (8 \\text{ bonbons}) \) <br>Ainsi, tu auras un total de 14 cadeaux à préparer pour tes amis.<br> La distributivité est donc une méthode pour répartir, ou distribuer, une multiplication sur une addition ou une soustraction.",
@@ -60,7 +64,8 @@ Distributivité = {
 }
 
 Double_Distributivité = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "double_distributivite",
     "nom": "Double Distributivité",
     "body": "Imaginons que tu as deux expressions algébriques entre parenthèses et que tu dois les multiplier ensemble. Par exemple, prenons les expressions suivantes: \( (a + b) \) et \( (c + d) \). La double distributivité consiste à distribuer chaque terme de la première parenthèse avec chaque terme de la seconde parenthèse, et ensuite à additionner les résultats obtenus. <br>Dans notre exemple, voici comment on procède:<ol><li>Multiplie a par c: \( a * c = ac \)</li><li>Multiplie a par d: \( a * d = ad \)</li><li>Multiplie b par c: \( b * c = bc \)</li><li>Multiplie b par d: \( b * d = bd \)</li></ol><br>Maintenant, additionne les résultats obtenus:<br>\[ (ac) + (ad) + (bc) + (bd) \]<br>Donc, la double distributivité de \( (a + b)(c + d) \) est:<br> \[ (a + b)(c + d) = ac + ad + bc + bd \] <br> La double distributivité s'applique aussi bien pour les expressions avec des soustractions. Par exemple, si on a \( (a - b)(c - d) \), on obtient:<br>\[ (a - b)(c - d) = ac - ad - bc + bd \]<br>Ainsi lorsque tu fais une double distribution tu multiplies chaque terme de la première parenthèse avec chaque terme de la deuxième parenthèse et tu additionnes ou soustrais les différents produits obtenus.",
@@ -73,7 +78,8 @@ Double_Distributivité = {
 }
 
 Addition_et_soustraction_de_polynômes = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "addition_et_soustraction_de_polynomes",
     "nom": "Addition et soustraction de polynômes",
     "body": "Lorsque l’on additionne deux polynômes on peut simplement enlever les parenthèses et ensuite réduire l’expression littérale obtenue. Lorsque l’on soustrait deux polynômes on doit inverser les signes de chaque monôme du polynôme qui suit le signe de soustraction. On enlève ensuite le signe de soustraction ainsi que les parenthèses. C'est exactement comme si il y'avait -1 devant la parenthèse et que l'on distribue ce -1 dans celle-ci",
@@ -87,7 +93,8 @@ Addition_et_soustraction_de_polynômes = {
 
 
 Identité_remarquables = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "identite_remarquables",
     "nom": "Identité remarquables",
     "body": "Une identité remarquable est une expression mathématique qui sert de base pour faire un calcul littéral. Les identités remarquables sont utiles notamment pour résoudre une équation. En mathématiques, ces expressions algébriques permettent de simplifier les calculs en tout genre. <br> Il existe 3 identités remarquables pour les polynômes de degré 2. Vous devez connaître par coeur ses formules!",
@@ -103,6 +110,7 @@ Identité_remarquables = {
 
 Factorisation = {
     "chapitres": ["_11VPcalcullitteral"],
+    "theme": "FA",
     "name": "factorisation",
     "nom": "Factorisation",
     "body": "Factoriser cela veut dire que l'on va transformer une somme en un produit. C'est l'inverse de développer où l'a on transforme un produit en somme. En d'autres termes, on cherche à trouver les termes qui, lorsqu'on les multiplie ensemble, donnent l'expression initiale. Il faut passer par plusieurs étapes si on veut être sûr que notre expression est factoriser au maximum. <br> La première étape consiste à regarder chaque terme de notre polynôme et voir si ceux-ci possède un diviseur commun que l'on puisse mettre en évidence (en facteur).",
@@ -122,7 +130,8 @@ Factorisation = {
 }
 
 Preuve_avec_le_calcul_littéral = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "preuve_avec_le_calcul_litteral",
     "nom": "Preuve avec le calcul littéral",
     "body": "Le calcul littéral est un outil essentiel en mathématiques. Il nous permet de travailler avec des valeurs générales plutôt que des valeurs spécifiques. Dans le calcul littéral, nous utilisons des lettres pour représenter des nombres. Ces lettres sont appelées variables.<br>Un aspect clé du calcul littéral est de pouvoir exprimer des structures générales. Par exemple, tous les nombres pairs peuvent être exprimés sous la forme 2n, où n est un entier. De même, tous les nombres impairs peuvent être exprimés sous la forme 2n+1. Cela nous permet de prouver des propriétés qui sont vraies pour une infinité de cas sans avoir à les vérifier un par un, ce qui serait impossible.<br>En effet, sans le calcul littéral, nous devrions vérifier chaque cas individuellement, ce qui signifie que nous aurions à vérifier une infinité de cas pour des propriétés générales. Le calcul littéral nous permet d'éviter ce travail fastidieux et infini en nous permettant de prouver des propriétés pour tous les nombres pairs ou impairs, par exemple, en une seule fois.<br>Dans cette section, nous allons explorer comment utiliser le calcul littéral pour prouver certaines propriétés des nombres pairs et impairs.",
@@ -136,7 +145,8 @@ Preuve_avec_le_calcul_littéral = {
 
 
 Equation_équivalente = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGequations"],
+    "theme": "FA",
     "name": "equation_equivalente",
     "nom": "Equation équivalente",
     "body": "Une équation est une proposition mathématique indiquant que deux quantités sont égales. Il est important de noter qu'une équation maintient son équilibre même si nous effectuons la même opération des deux côtés. En d'autres termes, les solutions de l'équation resteront les mêmes.<br>Quatre opérations de base peuvent être effectuées sur une équation : l'addition, la soustraction, la multiplication et la division. Chaque opération doit être effectuée de manière équilibrée, c'est-à-dire qu'elle doit être effectuée des deux côtés de l'équation.<br>Ce principe est fondamental pour résoudre les équations, car il nous permet de manipuler une équation pour isoler la variable et trouver sa valeur.",
@@ -148,7 +158,8 @@ Equation_équivalente = {
 }
 
 Réduction_avec_coefficients_rationnels = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGcalcullitteral"],
+    "theme": "FA",
     "name": "reduction_avec_coefficients_rationnels",
     "nom": "Réduction avec coefficients rationnels",
     "body": "Pour réduire un polynôme qui possède des coefficients rationnels il faut en premier lieu regrouper les termes qui ont la même partie littérale puis modifier les fractions pour qu'elles soient sous le même dénominateur. Pour cela, on trouve le multiple commun entre les dénominateur et on amplifie les fractions de telles sorte d'avoir ce multiple commun au dénominateur. On additionne ou soustrait ensuite les coefficients qui se trouve devant les même parties littérales. Pour cela, on additionne/soustrait les numérateurs de chaque fractions. On oublie pas en dernier lieu de réduire au maximum chaque fraction pour avoir seulement des fractions irréductibles.",
@@ -161,7 +172,8 @@ Réduction_avec_coefficients_rationnels = {
 }
 
 Solution_d_une_équation_par_évaluation = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGequations"],
+    "theme": "FA",
     "name": "solution_d_une_equation_par_evaluation",
     "nom": "Solution d'une équation par évaluation",
     "body": "Lorsqu'on évalue une expression littérale, on remplace la variable (souvent notée x) par une valeur numérique, puis on simplifie l'expression en effectuant les opérations arithmétiques indiquées. L'objectif final est d'obtenir une valeur numérique unique, qui représente le résultat de l'expression évaluée. Il est donc important de respecter les règles mathématiques pour garantir une réponse précise et exacte.",
@@ -174,7 +186,8 @@ Solution_d_une_équation_par_évaluation = {
 }
 
 Résolution_d_équation_du_premier_degré_à_une_inconnue = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGequations"],
+    "theme": "FA",
     "name": "resolution_d_equation_du_premier_degre_a_une_inconnue",
     "nom": "Résolution d'équation du premier degré à une inconnue",
     "body": "La résolution d'une équation du premier degré se fait en trois étapes. La première étape consiste à simplifier et réduire l'expression de chaque côté de l'équation. Cela implique d'effectuer toutes les opérations d'addition, de soustraction, de multiplication et de division nécessaires. La deuxième étape consiste à réorganiser l'équation de manière à ce que tous les termes contenant la variable (souvent notée x) soient d'un côté de l'équation, et tous les termes constants soient de l'autre. Enfin, la troisième étape consiste à isoler la variable en divisant le terme constant par le coefficient qui se trouve devant la variable. Cela donne la solution de l'équation, c'est-à-dire la valeur de la variable qui rend l'équation vraie. N'oubliez pas de noter la solution avec la bonne notation : S={...}.",
@@ -190,7 +203,8 @@ Résolution_d_équation_du_premier_degré_à_une_inconnue = {
 }
 
 Poser_une_équation = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGequations"],
+    "theme": "FA",
     "name": "poser_une_equation",
     "nom": "Poser une équation",
     "body": "<p>Pour poser une équation, il est nécessaire de traduire les informations données dans l'énoncé en une expression mathématique ou littérale. Cette étape implique souvent de convertir des phrases ou des idées en mathématiques à l'aide de variables.</p><p>Une fois que vous avez une expression littérale, la prochaine étape consiste à trouver une équivalence ou une égalité qui peut être posée. Cela peut souvent être trouvé en cherchant une situation dans l'énoncé où deux quantités sont définies comme étant égales ou équivalentes.</p><p>En combinant ces deux étapes, vous pouvez poser une équation qui peut être résolue pour trouver la solution à la question posée.</p>",
@@ -202,7 +216,8 @@ Poser_une_équation = {
 }
 
 Solution_par_voie_graphique = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGequations"],
+    "theme": "FA",
     "name": "solution_par_voie_graphique",
     "nom": "Solution par voie graphique",
     "body": "Résoudre une équation en utilisant un graphique est une méthode qui peut parfois simplifier les choses. Pour cela, on peut considérer le membre de gauche de l'équation et le membre de droite comme deux fonctions distinctes. Par exemple, si l'on a une équation du type $$3x-2 = -x+4$$ On peut tracer les deux fonctions $$y = 3x-2$$ et $$y = -x+4$$ sur le même graphique. L'abscisse du ou des points d'intersection de ces deux courbes correspond à la solution de l'équation. En d'autres termes, le ou les points où les deux courbes se rencontrent sont les solutions de l'équation car à ces points, les deux fonctions ont la même valeur. C'est une approche visuelle qui peut aider à comprendre comment fonctionne la résolution d'équations.",
@@ -213,7 +228,8 @@ Solution_par_voie_graphique = {
     "badge": bdg[14]
 }
 Equation_avec_fraction = {
-    "chapitres": ["_11VPcalcullitteral"],
+    "chapitres": ["_11VPcalcullitteral", "_11VGequations"],
+    "theme": "FA",
     "nom": "Equation avec fraction",
     "name": "equation_avec_fraction",
     "body": "<p>Pour résoudre une équation qui contient des fractions, l'objectif est d'éliminer les fractions afin de simplifier l'équation. Voici les étapes à suivre :</p><p>1. <strong>Trouver le dénominateur commun</strong> : Il s'agit du plus petit nombre qui peut être divisé par tous les dénominateurs de la fraction dans l'équation. C'est également connu sous le nom de plus petit multiple commun (PPCM). Par exemple, si vos dénominateurs sont 2, 3 et 6, le PPCM serait 6.</p><p>2. <strong>Multiplier tous les termes de l'équation par le dénominateur commun</strong> : Cela permet d'éliminer les fractions de l'équation. Par exemple, si vous avez l'équation $$\\frac{1}{2} + \\frac{x}{3} = \\frac{1}{6}$$ et que vous multipliez tous les termes par 6 (le PPCM), vous obtenez $$3 + 2x = 1$$</p><p>3. <strong>Résoudre l'équation</strong> : Maintenant que l'équation n'a plus de fractions, vous pouvez la résoudre comme une équation normale. Dans l'exemple précédent, vous pouvez soustraire 3 des deux côtés pour obtenir $$2x = -2$$ puis diviser les deux côtés par 2 pour obtenir $$x = -1$$</p><p>En suivant ces étapes, vous pouvez résoudre n'importe quelle équation qui contient des fractions. Cependant, il est important de se rappeler que lors de la résolution d'équations, tout ce que vous faites d'un côté de l'équation doit être fait de l'autre côté aussi afin de maintenir l'égalité.</p>",
@@ -225,6 +241,7 @@ Equation_avec_fraction = {
 }
 Equation_du_deuxième_degré = {
     "chapitres": ["_11VPcalcullitteral"],
+    "theme": "FA",
     "name": "equation_du_deuxieme_degre",
     "nom": "Equation du deuxième degré",
     'body': "<p>La résolution d'une équation du second degré, c'est-à-dire une équation de la forme $$ax^2 + bx + c = 0$$ passe par plusieurs étapes.</p><p>La première étape consiste à rassembler tous les termes de l'équation d'un même côté pour obtenir une expression de la forme : $$ ax^2 + bx + c = 0 $$</p><p>Ensuite, il faut chercher à factoriser l'expression obtenue. Pour cela, on peut chercher si l'expression correspond à une identité remarquable par exemple:  \( (x+b)^2 = x^2 + 2xb + b^2 \) ou \( (x-b)^2 = x^2 - 2xb + b^2 \) ou \( (x+b)(x-b) = x^2 - b^2 \)  qui permettrait de simplifier la résolution. Ensuite il suffit de trouver le ou les \( x \) qui permet/permettent de faire en sorte qu'une parenthèse soit égal à 0</p>",
@@ -239,11 +256,9 @@ Equation_du_deuxième_degré = {
     "badge": bdg[16]
 }
 
-
-###
-
 Différents_type_de_fonctions = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "differents_type_de_fonctions",
     "nom": "Différents type de fonctions",
     "body": "",
@@ -256,7 +271,8 @@ Différents_type_de_fonctions = {
 
 
 Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degré = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degré",
     "nom": "Trouver l'expression fonctionnelle à partir d'un tableau de valeur premier degré",
     "body": "",
@@ -268,7 +284,8 @@ Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degr
 }
 
 Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_2ème_degré = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_deuxième_degré",
     "nom": "Trouver l'expression fonctionnelle à partir d'un tableau de valeur deuxième degré",
     "body": "",
@@ -280,7 +297,8 @@ Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_2ème_degré
 }
 
 Trouver_l_expression_fonctionnelle_à_partir_d_un_graphique_premier_degré = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "trouver_l_expression_fonctionnelle_a_partir_d_un_graphique_premier_degre",
     "nom": "Trouver l'expression fonctionnelle à partir d'un graphique premier degré",
     "body": "",
@@ -291,7 +309,8 @@ Trouver_l_expression_fonctionnelle_à_partir_d_un_graphique_premier_degré = {
     "badge": bdg[20]
 }
 Dessiner_le_graphe_d_une_fonction_du_premier_degré = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "dessiner_le_graphe_d_une_fonction_du_premier_degre",
     "nom": "Dessiner le graphe d'une fonction du premier degré",
     "body": "",
@@ -303,7 +322,8 @@ Dessiner_le_graphe_d_une_fonction_du_premier_degré = {
 }
 
 Trouver_la_préimage = {
-   "chapitres": ["_11VPsystemes"],
+   "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "trouver_la_preimage",
     "nom": "Trouver la pré-image",
     "body": "",
@@ -315,7 +335,8 @@ Trouver_la_préimage = {
 }
 
 Trouver_le_domaine_de_définition = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "trouver_le_domaine_de_definition",
     "nom": "Trouver le domaine de définition",
     "body": "",
@@ -327,7 +348,8 @@ Trouver_le_domaine_de_définition = {
 }
 
 Echelle = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "echelle",
     "nom": "Echelle",
     "body": "",
@@ -340,7 +362,8 @@ Echelle = {
 }
 
 Pourcentage = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "pourcentage",
     "nom": "Pourcentage",
     "body": "",
@@ -351,7 +374,8 @@ Pourcentage = {
     "badge": bdg[25]
 }
 Pente = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "pente",
     "nom": "Pente",
     "body": "",
@@ -363,7 +387,8 @@ Pente = {
 }
 
 Débit = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "debit",
     "nom": "Débit",
     "body": "",
@@ -376,7 +401,8 @@ Débit = {
 }
 
 Masse_volumique = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions", "_11VGfonctions"],
+    "theme": "FA",
     "name": "masse_volumique",
     "nom": "Masse volumique",
     "body": "",
@@ -390,7 +416,8 @@ Masse_volumique = {
 }
 
 Substitution = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPsystemes", "_11VGequations"],
+    "theme": "FA",
     "name": "substitution",
     "nom": "Substitution",
     "body": "",
@@ -402,7 +429,8 @@ Substitution = {
 }
 
 Combinaison_linéaire = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPsystemes", "_11VGequations"],
+    "theme": "FA",
     "name": "combinaison_lineaire",
     "nom": "Combinaison linéaire",
     "body": "",
@@ -414,7 +442,8 @@ Combinaison_linéaire = {
 }
 
 Absence_de_solution_infinité_de_solution_et_1_solution = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPsystemes", "_11VGequations"],
+    "theme": "FA",
     "name": "absence_de_solution_infinite_de_solutions_et_1_solution",
     "nom": "Absence de solution, infinité de solutions et unique solution",
     "body": "",
@@ -426,7 +455,8 @@ Absence_de_solution_infinité_de_solution_et_1_solution = {
 }
 
 Proportionnalité = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions"],
+    "theme": "FA",
     "name": "proportionnalite",
     "nom": "Proportionnalité",
     "body": "",
@@ -438,7 +468,8 @@ Proportionnalité = {
 }
 
 Diagramme = {
-    "chapitres": ["_11VPsystemes"],
+    "chapitres": ["_11VPfonctions"],
+    "theme": "FA",
     "name": "diagramme",
     "nom": "Diagramme",
     "body": "",

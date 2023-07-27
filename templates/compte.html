@@ -14,97 +14,203 @@
       processEscapes: true
     }
   });
-</script>
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.5.1"></script>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    {% include 'navbar.html' %}
-    <div class="container mt-4">
-        {% if user.enseignant %}
-<header>
-    <h1 class="titre_compte">Mon compte : {{user.username}}</h1>
-    <h2>Compte enseignant</h2>
-    <h3>Mes élèves</h3>
-</header>
+{% include 'navbar.html' %}
+<div class="container mt-4">
+    {% if user.enseignant %}
+    <header>
+        <h1 class="titre_compte">Mon compte : {{user.username}}</h1>
+        <h2>Compte enseignant</h2>
+        <h3>Mes élèves</h3>
+    </header>
 
-<div class="accordion" id="accordionExample">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Demandes des élèves
-                </button>
-            </h2>
-        </div>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne" id="demande_eleve">
+                        Demandes des élèves <span id="nombre_demande" class="badge badge-info">{{eleves|length}}</span>
+                    </button>
+                </h2>
+            </div>
 
-        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
 
-                {% for eleve in eleves %}
+                    {% for eleve in eleves %}
                     {% if eleve.validation == False and eleve.enseignant == current_user.username %}
-                        <button class="btn btn-primary add-student-button" data-student="{{ eleve.id }}">
+                    <button class="btn btn-primary add-student-button" data-student="{{ eleve.id }}">
                         <i class="fas fa-plus"></i> Ajouter {{ eleve.username }}
-                        </button>
+                    </button>
                     {% endif %}
 
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Avatar</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Classe</th>
+            <th scope="col">Changer classe</th>
+            <th scope="col">Points</th>
+            <th scope="col">Nombre d'exercices réalisés</th>
+            <th scope="col">Nombre de bases obtenus</th>
+            <th scope="col">Supprimer élève</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for eleve in eleves %}
+        {% if eleve.validation %}
+        <tr>
+            <td><img src="{{ url_for('static', filename='images/'+eleve.avatar) }}" alt="Avatar de l'élève"
+                     style="width: 50px; height: 50px;"></td>
+            <td>{{ eleve.username }}</td>
+            <td> {{ eleve.niveau }}</td>
+            <td id="numero_classe" data-user="{{ eleve.username }}">{{ eleve.classe }} </td>
+            <td>
+                <button class="btn btn-success btn-change" data-username="{{ eleve.username }}" data-class="{{ eleve.classe }}" data-action="plus">+</button>
+                <button class="btn btn-danger btn-change" data-username="{{ eleve.username }}" data-class="{{ eleve.classe }}" data-action="minus">-</button>
+            </td>
+            <td>{{ eleve.points }}</td>
+            <td>{{ eleve.exercices|length }}</td>
+            <td>{{ eleve.exercices_livre|length }}</td>
+            <td><button class="btn btn-danger btn-change" data-username="{{ eleve.username }}" data-class="{{ eleve.classe }}" data-action="delete">x</button></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+    <h1 class="mb-4">Mon compte : {{user.username}}</h1>
+    <h2>Compte élève</h2>
+    <h3>Ajout d'enseignant</h3>
+    <div class="recherche_enseignant">
+        <div class="row mb-3">
+            <div class="col-8">
+                <input type="text" id="teacher-search" class="form-control" placeholder="Rechercher un enseignant..."
+                       onkeyup="searchTeacher()"/>
+                <div id="search-results" class="d-flex flex-column position-absolute bg-white w-100"></div>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary w-100" id="add-teacher-button">Envoyer la demande</button>
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+    <div id="info-compte">
+        <h2>Mes statistiques</h2>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="info-image d-flex justify-content-center align-items-center">
+                    <img src="static/images/{{user.avatar}}" alt="Bienvenue" class="img-fluid rounded-circle"
+                         style="width: 100px; height: 100px;">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex flex-column">
+                    <h4 class="info-username">{{user.username}}</h4>
+                    <h4 class="info-niveau">Niveau : {{user.niveau}}</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex flex-column">
+                    <h4 class="info-nombre_exercice">Badge : {{exercices|length}}</h4>
+                    <h4 class="info-nombre_exercice_livre">Exercices livre {{exercices_livre|length}}</h4>
+                    <h4 class></h4>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="d-flex flex-column">
+                    <h4 class="info-nombre_classe">{{user.classe}}</h4>
+                    <h4 class="info-enseignant">Enseignant: {{user.nom_enseignant}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <h2>Badges obtenus</h2>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                {% for onglet in onglets %}
+                <li class="nav-item">
+                    <a class="nav-link {% if onglet.active %}active{% endif %}" id="{{ onglet.id }}-tab"
+                       data-toggle="tab" href="#{{ onglet.id }}" role="tab" aria-controls="{{ onglet.id }}"
+                       aria-selected="{{ onglet.active | lower }}">{{ onglet.nom }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- Contenu des onglets -->
+                {% for onglet in onglets %}
+                <div class="tab-pane fade {% if onglet.active %}show active{% endif %}" id="{{ onglet.id }}"
+                     role="tabpanel" aria-labelledby="{{ onglet.id }}-tab">
+                    <div class="row">
+                        {% for point in points %}
+                        {% if point.theme == onglet.nom %}
+                        <div class="col-md-3 mb-3 d-flex">
+                            <div class="card flex-grow-1">
+                                <img class="card-img-top {% if point.nom in exercice_nom %}color-image{% else %}bw-image{% endif %}"
+                                     src="static/images/{{ point.badge }}" alt="{{ point.nom }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ point.nom }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container mt-4">
+            <h2>Exercices du livre fait</h2>
+            <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                {% for onglet in onglets %}
+                <li class="nav-item">
+                    <a class="nav-link {% if onglet.active %}active{% endif %}" id="{{ onglet.id }}-tab2"
+                       data-toggle="tab" href="#{{ onglet.id }}2" role="tab" aria-controls="{{ onglet.id }}2"
+                       aria-selected="{{ onglet.active | lower }}">{{ onglet.nom }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content" id="myTabContent2">
+                <!-- Contenu des onglets -->
+                {% for onglet in onglets %}
+                <div class="tab-pane fade {% if onglet.active %}show active{% endif %}" id="{{ onglet.id }}2"
+                     role="tabpanel" aria-labelledby="{{ onglet.id }}-tab2">
+                    <div class="row">
+                        {% for exercice in exercices_livre %}
+                        {% if onglet.nom in exercice.titre %}
+                        <div class="col-md-1 mb-1 d-flex">
+                            <h5>{{ exercice.titre }}</h5>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+    {% endif %}
 </div>
-            <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Avatar</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Points</th>
-            <th scope="col">Nombre d'exercices réalisés</th>
-            <th scope="col">Nombre de bases obtenus</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for eleve in eleves %}
-            <tr>
-                <td><img src="{{ url_for('static', filename='images/'+eleve.avatar) }}" alt="Avatar de l'élève" style="width: 50px; height: 50px;"></td>
-                <td>{{ eleve.username }}</td>
-                <td>{{ eleve.points }}</td>
-                <td>{{ eleve.exercices|length }}</td>
-                <td>{{ eleve.exercices_livre|length }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-        {% else %}
-        <h1 class="mb-4">Mon compte : {{user.username}}</h1>
-        <h2>Compte élève</h2>
-        <h3>Ajout d'enseignant</h3>
-        <div class="position-relative">
-            <div class="row mb-3">
-                <div class="col-8">
-                    <input type="text" id="teacher-search" class="form-control" placeholder="Rechercher un enseignant..." onkeyup="searchTeacher()" />
-                    <div id="search-results" class="d-flex flex-column position-absolute bg-white w-100"></div>
-                </div>
-                <div class="col-4">
-                    <button class="btn btn-primary w-100" id = "add-teacher-button" >Envoyer la demande</button>
-                    <p id="message"></p>
-                </div>
-            </div>
-        </div>
-        {% if nom_enseignant %}
-            <p>J'ai un enseignant qui se nomme {{nom_enseignant}}</p>
-        {% else %}
-            <p>Je n'ai pas encore d'enseignant</p>
-        {% endif %}
-        {% endif %}
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='js/compte.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="{{ url_for('static', filename='js/compte.js') }}"></script>
 </body>
 </html>

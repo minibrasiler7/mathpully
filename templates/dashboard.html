@@ -1,57 +1,130 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard</title>
-  <!-- lien vers les fichiers CSS de Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="static/navbar-style.css">
-  <link rel="stylesheet" href="static/dashboard-style.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/navbar-style.css">
+    <link rel="stylesheet" href="static/dashboard-style.css">
 </head>
 <body>
-  {% include 'navbar.html' %}
-  <section id="welcome">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 text-center">
-        <h2 class="mb-4">Bienvenue sur notre site {{user.username}}!</h2>
-        <p class="lead mb-4">Nous sommes heureux de vous accueillir ici.</p>
-        <button class="btn btn-primary btn-lg"><a href="#">Aller à la dernière section visité</a></button>
-      </div>
-      <div class="col-md-6">
-        <img src=static/images/{{user.avatar}} alt="Bienvenue" class="img-fluid">
-      </div>
-    </div>
+{% include 'navbar.html' %}
+<div id="popup" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p>Vous avez changé de niveau</p>
+    <button onclick="closePopup()">OK</button>
   </div>
-  </section>
-  <!-- Nouvelle section pour les badges -->
-<section id="badges">
-    <div class="container">
-        <div class="row align-items-center justify-content-around">
-            <div class="col-md-12 text-center">
-                <h3 class="mb-4">Vos derniers badges obtenus</h3>
-                <div class="row">
-                    {% for badge in badges %}
-                    <div class="col-4 col-md-2 mb-4">
-                        <div class="card">
-                            <img src="static/images/{{ badge.image_name }}" class="card-img-top rounded-circle" alt="{{ badge.exercise_nom }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ badge.exercise_nom }}</h5>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+</div>
+
+<section id="welcome">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 text-center message-welcome">
+                <h2 class="mb-4">Bienvenue sur notre site {{user.username}}!</h2>
+                <p class="lead mb-4">Nous sommes heureux de vous accueillir ici.</p>
+            </div>
+            <div class="col-md-6 part-right align-items-center">
+                <img src=static/images/{{user.avatar}} alt="Bienvenue" class="img-fluid">
+                <h2 class="mb-4" id="niveau">Niveau : {{user.niveau}}</h2>
             </div>
         </div>
     </div>
 </section>
+<div class="row">
+    <section id="badges" class="col-md-6">
+        <h3>MES BADGES</h3>
+        <div id="badgeCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for badge in badges %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <img src="static/images/{{ badge.image_name }}" class="d-block mx-auto"
+                         alt="{{ badge.exercise_nom }}">
+                    <div class="badge-title">{{ badge.exercise_nom }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-target="#badgeCarousel" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-target="#badgeCarousel" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <section id="classe_eleve" class="col-md-6">
+        <h3 id="maclasse_titre">MA CLASSE</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Avatar</th>
+                <th>Nom de l'élève</th>
+                <th>Classe</th>
+                <th>Nombre de points</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for eleve in eleves_classe %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='images/'+eleve.avatar) }}" alt="Avatar de l'élève"
+                         style="width: 50px; height: 50px;"></td>
+                <td>{{ eleve.username }}</td>
+                <td>{{ eleve.classe }}</td>
+                <td>{{ eleve.points }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="container-fluid">
+    <!-- Autres éléments existants -->
+    <div class="row">
+        <section class="ma-progression col-md-6">
+            <h3 class="titre-ma-progression">MA PROGRESSION</h3>
+        <div class="progress">
+            <div class="progress-label">Points</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated points-progress bg-success"></div>
+            <div class="progress-value points-value">0</div>
+        </div>
+        <div class="progress">
+            <div class="progress-label">Badges</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated badges-progress bg-info"></div>
+            <div class="progress-value badges-value">0</div>
+        </div>
+        <div class="progress">
+            <div class="progress-label">Exercices</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated exercices-progress bg-warning"></div>
+            <div class="progress-value exercices-value">0</div>
+        </div>
+        </section>
+        <section class="niveau-statistiques col-md-6">
+            <h3 class="titre-ma-progression">PROCHAIN NIVEAU</h3>
+        <ul class="liste-progression">
+            <li class="item-progression">Points : {{ niveau["point"] }}</li>
+            <li class="item-progression">Badges : {{ niveau["badge"] }}</li>
+            <li class="item-progression">Exercices : {{ niveau["exercice_livre"] }}</li>
+        </ul>
+        </section>
+        <!-- Nouvelle section "Ma progression" -->
 
+    </div>
+</div>
+<script id="niveau-data" type="application/json">
+    {{niveau|tojson|safe}}
+</script>
 
+<script id="user_stat" type="application/json">
+    {{user_stat|tojson|safe}}
+</script>
+<script id="niveau-avertissement" type="application/json">
+    {{avertissement_niveau|tojson|safe}}
+</script>
 
-
-  <!-- lien vers les fichiers JS de Bootstrap -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>

@@ -652,7 +652,7 @@ FA210_11H = {'titre': 'FA210',
 
 
 FA211_11H = {'titre': 'FA211',
-             'annee': '11H',
+            'annee': '11H',
             'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
             'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
             'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],

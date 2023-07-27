@@ -1,6 +1,6 @@
 import copy
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 import secrets
 from flask_login import login_user, login_required
@@ -14,6 +14,7 @@ import interactiveExerciseBrain
 from datetime import datetime
 import method
 import donnee_exercices_livre
+import niveau
 
 
 port = int(os.environ.get("PORT", 5000))
@@ -44,6 +45,8 @@ class User(UserMixin, db.Model):
     nom_enseignant = db.Column(db.String(50), default="")
     validation_enseignant = db.Column(db.Boolean, default=False)
     exercises = db.relationship('Exercise', backref='user', lazy='dynamic')
+    classe = db.Column(db.String(50), default="")
+    niveau = db.Column(db.Integer, default=0)
     def is_active(self):
         """Return True if the user is active, else False."""
         return self.is_active
@@ -102,12 +105,36 @@ def login():
     flash('Invalid username or password.')
     return redirect(url_for('index'))
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return render_template('index.html')
+
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
-     badge_user = Exercise.query.filter_by(user_id=current_user.id, is_completed=1).order_by(Exercise.completed_at.desc()).limit(5).all()
-     return render_template('dashboard.html',user=current_user, badges= badge_user)
+     global niveau
+     avertissement_niveau = {"changement de niveau": 0}
+     eleves_classe = User.query.filter_by(classe=current_user.classe, nom_enseignant=current_user.nom_enseignant, validation_enseignant=True).order_by(User.points.desc()).all()
+     badge_user = Exercise.query.filter_by(user_id=current_user.id, is_completed=1).order_by(Exercise.completed_at.desc()).all()
+     niveau_eleve = niveau.niveaux[current_user.niveau]
+     completed_interactif_exercices = len(Exercise.query.filter_by(user_id = current_user.id, is_completed=True).all())
+     completed_livre_exercice = len(Exercice_livre.query.filter_by(user_id = current_user.id).all())
+     user_stat = {
+         "point": current_user.points,
+         "badge": completed_interactif_exercices,
+         "exercice": completed_livre_exercice
+     }
+     if user_stat['point'] >= niveau.niveaux[current_user.niveau]['point'] and user_stat['badge'] >= niveau.niveaux[current_user.niveau]['badge'] and user_stat['exercice'] >= niveau.niveaux[current_user.niveau]['exercice_livre']:
+         current_user.niveau += 1
+         db.session.commit()
+         avertissement_niveau["changement de niveau"] = 1
+
+     print(user_stat)
+     print(avertissement_niveau)
+     print(type(avertissement_niveau))
+     return render_template('dashboard.html',user=current_user, badges= badge_user, eleves_classe=eleves_classe, niveau=niveau_eleve, user_stat=user_stat, avertissement_niveau=avertissement_niveau)
 
 @app.route('/personnalisation', methods=["GET","POST"])
 @login_required
@@ -116,8 +143,11 @@ def personnalisation():
         selected_avatar = request.form['avatar']
         user = User.query.get(current_user.id)
         user.avatar = selected_avatar
-        if request.form['enseignant'] ==  "enseignant":
+        if request.form['enseignant'] == "enseignant":
             user.enseignant = True
+        else:
+            classe = request.form['classe'].upper()
+            user.classe = classe
         user.personnalisation = True
         db.session.commit()
         try:
@@ -132,8 +162,6 @@ def personnalisation():
 
     images =['avatar1.png', 'avatar2.png', 'avatar3.png']
     return render_template('personnaliser-utilisateur.html', user=current_user, images = images)
-
-
 
 @login_required
 @app.route('/chapitre')
@@ -151,7 +179,6 @@ def chapitre():
         souschapitre = souschapitre.replace("'", "_")
         copie_souschapitre = copy.deepcopy(getattr(points, souschapitre))
         dic_point.append(copie_souschapitre)
-
 
     for i in range(len(dic_point)):
         nom_fonction = dic_point[i]["questions"]
@@ -175,20 +202,18 @@ def inscription():
         user = User(username=username, password_hash=password_hash, email=email, token = token)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('verifier_mail', email=email))
+        return redirect(url_for('index'))
     else:
         return render_template('inscription.html')
 
 @app.route('/verifier_mail/<email>')
 def verifier_mail(email):
-
     user = User.query.filter_by(email=email).first()
     # Sujet et corps du message
     mail = Mail(app)
     subject = 'Confirmation d\'inscription'
     body = f'Cliquez sur ce lien pour activer votre compte : http://127.0.0.1:5000/confirmation/{user.username}/{user.token}'
     # Créer un message multipart et ajouter le sujet et le corps du message
-
     msg = Message('Votre confirmation', sender = 'loic_strauch_19@msn.com', recipients=[email])
     msg.body=body
     mail.send(msg)
@@ -242,8 +267,6 @@ def update_exercise():
         if dict_obj.get("name") == exercise_name:
             dic_exercice = dict_obj
             break
-
-
     if exercise:
         exercise.is_completed = 1
         exercise.exercise_nom = dic_exercice['nom']
@@ -323,6 +346,8 @@ def compte():
             eleves.append({
                 'username': user.username,
                 'id': user.id,
+                'niveau':user.niveau,
+                'classe': user.classe,
                 'avatar': user.avatar,
                 'validation': user.validation_enseignant,
                 'enseignant': user.nom_enseignant,
@@ -330,13 +355,41 @@ def compte():
                 'exercices': completed_interactif_exercices,
                 'exercices_livre': completed_livre_exercice,
             })
+        # Trie les élèves par ordre alphabétique de la clé "classe"
+        eleves = sorted(eleves, key=lambda x: x["classe"])
 
+# Trie les classes par ordre décroissant de la clé "points"
+        eleves = sorted(eleves, key=lambda x: x["points"], reverse=True)
         return render_template(f"compte.html", user=current_user, eleves = eleves)
     else:
         enseignant = current_user.nom_enseignant
+        liste_points = []
+        #Parcourir tous les attributs du module point.py
+        for attr_name in dir(points):
+        # Récupérer l'objet associé à l'attribut
+            attr = getattr(points, attr_name)
+        # Vérifier si l'objet est un dictionnaire
+            if isinstance(attr, dict):
+                if "theme" in attr and "name" in attr and "nom" in attr and "badge" in attr:
+                    new_dict = {"theme": attr["theme"], "name": attr["name"], "nom": attr["nom"], "badge": attr["badge"]}
+                    liste_points.append(new_dict)
+
+        onglets = [
+        {"id": "no", "nom": "NO", "active": False},
+        {"id": "fa", "nom": "FA", "active": False},
+        {"id": "es", "nom": "ES", "active": False},
+        {"id": "gm", "nom": "GM", "active": False},
+        ]
+        # Afficher la liste des dictionnaires
         exercices = Exercise.query.filter_by(user_id = current_user.id, is_completed=True).all()
+        exercice_nom = []
+        for exercice in exercices:
+            exercice_nom.append(exercice.exercise_nom)
+
         exercices_livre = Exercice_livre.query.filter_by(user_id = current_user.id).all()
-        return render_template(f"compte.html", user=current_user, enseignant = enseignant, exercices = exercices, exercices_livre = exercices_livre)
+
+        print(exercices)
+        return render_template(f"compte.html", user=current_user, enseignant = enseignant, exercices = exercices, exercice_nom=exercice_nom, exercices_livre = exercices_livre, points=liste_points, onglets=onglets)
 @app.route('/search_teacher', methods=['GET'])
 def search_teacher():
     print("Je recherche un enseignant")
@@ -372,6 +425,45 @@ def validate_student():
             return jsonify(success=False, message='No student found with the provided ID.')
     except Exception as e:
         return jsonify(success=False, message=str(e))
+
+
+@app.route('/modifier_utilisateur', methods=['POST'])
+def modifier_utilisateur():
+    data = request.get_json()
+    classe = data.get("classe")
+    action = data.get("action")
+    username = data.get("username")
+    if action=="plus" or action=="minus":
+        annee =""
+        for i in range(len(classe)):
+            if classe[i].isdigit():
+                annee += classe[i]
+            else:
+                reste = classe[i:]
+                break
+        if action == "plus":
+            new_annee = str(int(annee)+1)
+        elif action == "minus":
+            new_annee = str(int(annee)-1)
+        new_classe = new_annee+reste
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            # Mettre à jour la classe de l'utilisateur
+            user.classe = new_classe
+            db.session.commit()
+            return jsonify({"success": True, "message": "Classe mise à jour avec succès."})
+        else:
+            return jsonify({"success": False, "message": "Utilisateur non trouvé."})
+    elif action=="delete":
+        user = User.query.filter_by(username=username).first()
+        if user:
+            # Supprimer l'utilisateur de la base de données
+            db.session.delete(user)
+            db.session.commit()
+            return jsonify({"success": True, "message": "Utilisateur supprimé avec succès."})
+        else:
+            return jsonify({"success": False, "message": "Utilisateur non trouvé."})
 
 
 

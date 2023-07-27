@@ -5,7 +5,8 @@ const radio = document.querySelector('input[type=radio][name="qcm-options"]');
 
 
 class Exercices {
-  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method) {
+  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method, interactiveExercise) {
+    this.interactiveExercise = interactiveExercise;
     this.questions = questions;
     this.image_badge = image_badge;
     this.index_question = 0;
@@ -78,7 +79,7 @@ class Exercices {
  checkAnswer = async function(){
 
       var userAnswer =  this.input_html.value.toLowerCase();
-      console.log(userAnswer)
+
       // Initialiser la requête AJAX
       if (this.method !== 'aucune') {
         let response = await fetch('/methodpython', {
@@ -100,7 +101,6 @@ class Exercices {
           alert('Request failed.  Returned status of ' + response.status);
         }
       }
-
 
       if (this.currentQuestion.methods.length !== 0){
 
@@ -135,7 +135,9 @@ class Exercices {
           this.valider_html.style.display = "none";
           this.completeExercise(this.name);
           this.toggleReussiteClass();
-           this.score_html.textContent = `Score : ${this.index_question * 10}`;
+          this.score_html.textContent = `Score : ${this.index_question * 10}`;
+          playConfetti(this.interactiveExercise);
+
 
         } else {
           this.showQuestion();
@@ -189,7 +191,8 @@ class Exercices {
 }
 }
 class QCMExercices {
-  constructor(questions, donnee_problem_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, labelRadio, boutonRadio, quizzForm, method) {
+  constructor(questions, donnee_problem_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, labelRadio, boutonRadio, quizzForm, method, interactiveExercise) {
+    this.interactiveExercise = interactiveExercise;
     this.questions = questions;
     this.image_badge = image_badge;
     this.index_question = 0;
@@ -212,8 +215,6 @@ class QCMExercices {
       }
 
   showQuestion() {
-
-
        for (var i = 0; i < this.labelRadio.length; i++) {
         var span = this.labelRadio[i].querySelector('.label-text');
             if (span) {
@@ -278,7 +279,7 @@ class QCMExercices {
           this.completeExercise(this.name);
           this.toggleReussiteClass();
           this.score_html.textContent = `Score : ${this.index_question * 10 - this.faute *10}`;
-
+          playConfetti(this.interactiveExercise);
         } else {
           this.showQuestion();
         }
@@ -334,7 +335,8 @@ class QCMExercices {
 }
 }
 class GraphiqueExercice {
-  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method, element_graphique) {
+  constructor(questions, donnee_problem_html, input_html, feedback_html, score_html, valider_html, progress_html, name, image_badge, method, element_graphique, interactiveExercise) {
+    this.interactiveExercise = interactiveExercise;
     this.element_graphique = element_graphique;
     this.questions = questions;
     this.image_badge = image_badge;
@@ -367,9 +369,6 @@ class GraphiqueExercice {
         for (let x=-20; x<=20; x+=0.1) {
         xValues.push(x);
        }
-
-
-
     if (!('x^{3}' in membredroite)){
         membredroite['x^{3}'] = 0
         }
@@ -472,7 +471,6 @@ class GraphiqueExercice {
     return userAnswer
   }
  checkAnswer = async function(){
-
       var userAnswer =  this.input_html.value.toLowerCase();
       console.log(userAnswer)
       // Initialiser la requête AJAX
@@ -531,7 +529,8 @@ class GraphiqueExercice {
           this.valider_html.style.display = "none";
           this.completeExercise(this.name);
           this.toggleReussiteClass();
-           this.score_html.textContent = `Score : ${this.index_question * 10}`;
+          this.score_html.textContent = `Score : ${this.index_question * 10}`;
+          playConfetti(this.interactiveExercise);
 
         } else {
           this.showQuestion();
@@ -543,7 +542,6 @@ class GraphiqueExercice {
       }
   }
   updateScore(){
-
       var width = parseInt(this.progress_html.style.width) || 0;
       width += 25;
       this.progress_html.style.width = width + '%';
@@ -584,6 +582,14 @@ class GraphiqueExercice {
   }
 }
 }
+function playConfetti(interactifExercise) {
+      // Ajouter la classe confetti-container au conteneur interactifExercise
+
+      interactifExercise.classList.add("confetti-container");
+
+
+
+    }
 function selectionSansRemise(tableau) {
     questions = []
     for (i=0; i<4; i++) {
@@ -593,8 +599,6 @@ function selectionSansRemise(tableau) {
     }
     return questions
     }
-
-
   list_objet = [];
   const exercicesInteractifs = document.querySelectorAll('.exercice-interactif');
   exercicesInteractifs.forEach((exerciceInteractif) => {
@@ -612,9 +616,11 @@ function selectionSansRemise(tableau) {
     choose_question = selectionSansRemise(questions);
 
 
+
     if (type === 'question') {
         const answerInput = exerciceInteractif.querySelector('.answer-input');
-        var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name, image_badge, method);
+        var exercice = new Exercices(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name, image_badge, method, exerciceInteractif);
+
     }
     else if (type === 'qcm') {
         const quizzForm = exerciceInteractif.querySelector('.quizForm');
@@ -626,14 +632,14 @@ function selectionSansRemise(tableau) {
        const input = label.querySelector('.qcm-radios');
        boutonRadio.push(input);
        });
-        var exercice = new QCMExercices(choose_question, questionText, feedbackText, scoreText, valider, progressbar, name, image_badge, labels, boutonRadio, quizzForm);
-        console.log(exercice);
+        var exercice = new QCMExercices(choose_question, questionText, feedbackText, scoreText, valider, progressbar, name, image_badge, labels, boutonRadio, quizzForm, exerciceInteractif);
+
 
   }
     else if(type === "graphique"){
         const answerInput = exerciceInteractif.querySelector('.answer-input');
         const graphique = exerciceInteractif.querySelector('.question-graphique');
-        var exercice = new GraphiqueExercice(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name, image_badge, method, graphique);
+        var exercice = new GraphiqueExercice(choose_question, questionText, answerInput, feedbackText, scoreText, valider, progressbar, name, image_badge, method, graphique, exerciceInteractif);
     }
     exercice.showQuestion();
 

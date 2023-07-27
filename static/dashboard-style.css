@@ -1,13 +1,17 @@
 body {
-  background-color: #f5f5f5;
+  background-color: white;
 }
 
 #welcome {
-  background-color: #4169E1;
-  padding: 100px 0;
-}
 
+  background-color: #4169E1;
+
+}
+.message-welcome{
+  height:400px;
+}
 #welcome h2 {
+  margin-top:200px;
   font-size: 48px;
   color: #47B9FF;
   font-weight: bold;
@@ -18,33 +22,19 @@ body {
   color: #47B9FF;
 }
 
-#welcome button {
-  margin-top: 30px;
-  font-size: 24px;
-  background-color: #68C2FF; /* Vert plus foncé pour le contraste */
-  border-color: #4169E1; /* Vert plus foncé pour le contraste */
-  color:white;
-}
 
-#welcome button:hover {
-  background-color: #f5f5f5; /* Gris pour le hover */
-  color: white; /* Vert plus foncé pour le contraste */
+.part-right{
+    margin-top:100px;
+    text-align:center;
 }
-#welcome button a {
-  color: #fff; /* Blanc */
-}
-
 
 #welcome img {
   border-radius: 50%;
+  margin: auto !important;
   border: 10px solid #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   width: 300px;
   height: 300px;
-  position: relative;
-  animation-name: zoomInAndTranslate;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
 }
 
 a {
@@ -54,33 +44,263 @@ a {
 
 a:hover {
   text-decoration:none;
-  color:#98ff98; /* Vert menthe pour le hover */
+ /* Vert menthe pour le hover */
 }
 
 /* Nouvelle section pour les badges */
 #badges {
-  background-color: #f5f5f5;
+  background-color: white;
   padding: 50px 0;
+  border-bottom: solid 1px #4169E1;
 }
 
 #badges h3 {
+  text-align:center;
   font-size: 32px;
   color: #4169E1; /* Vert plus foncé pour le contraste */
   font-weight: bold;
 }
 
-#badges .badge {
-  margin: 10px;
-  font-size: 18px;
-  background-color: #4169E1; /* Vert plus foncé pour le contraste */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Invert the color of the svg icons */
 }
-.card-img-top{
-    margin-top:30px;
-    margin:auto;
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
+
+.carousel-control-prev,
+.carousel-control-next {
+    border: 0;
+    background-color: white; /* Remove the borders from the control buttons */
 }
+
+.carousel-item img {
+    border-radius: 100%;
+    max-height: 200px; /* Change this to whatever height you want */
+    object-fit: contain; /* This makes sure the aspect ratio of the image is preserved */
+}
+
+#niveau{
+    font-size: 20px !important;
+    color: #47B9FF;
+    font-weight: bold;
+    margin: 20px 0 20px 0 !important;
+
+}
+
+.carousel-item .badge-title {
+    color: black; /* Change text color to black */
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* CSS pour la section Ma classe */
+#classe_eleve {
+  background-color: white !important; /* Couleur de fond */
+  padding: 20px; /* Espacement intérieur */
+  border-left: 1px solid #4169E1;
+  border-bottom: solid 1px #4169E1;
+  /* Coins arrondis */
+}
+
+#maclasse_titre {
+  text-align:center;
+  font-size: 32px;
+  color: #4169E1; /* Vert plus foncé pour le contraste */
+  font-weight: bold;
+  /* Couleur du titre */
+}
+
+table {
+  width: 100%; /* Tableau occupe toute la largeur de la section */
+  margin-top: 20px;
+  background-color: white !important;/* Espacement en haut du tableau */
+}
+
+thead th {
+  background-color: #3498db; /* Couleur de fond des en-têtes de colonnes */
+  color: white; /* Couleur du texte des en-têtes de colonnes */
+  padding: 10px; /* Espacement intérieur des en-têtes de colonnes */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2; /* Couleur de fond des lignes impaires du tableau */
+}
+
+tbody tr:hover {
+  background-color: #e6e6e6; /* Couleur de fond lors du survol des lignes */
+}
+
+td {
+  padding: 10px; /* Espacement intérieur des cellules */
+}
+
+img {
+  border-radius: 50%; /* Forme circulaire pour l'avatar */
+  display: block;
+  margin: 0 auto; /* Centrage horizontal de l'avatar */
+}
+
+/* Media query pour ajuster le tableau sur les petits écrans */
+@media (max-width: 767px) {
+  th {
+    font-size: 14px; /* Réduire la taille de la police des en-têtes de colonnes */
+  }
+  td {
+    font-size: 14px; /* Réduire la taille de la police des cellules */
+  }
+}
+
+#info-compte{
+    margin-top:10%;
+}
+
+/* Votre code CSS existant */
+.titre-ma-progression{
+    margin-top:20px;
+    font-size: 32px;
+    color: #4169E1; /* Vert plus foncé pour le contraste */
+    font-weight: bold;
+    text-align:center;
+}
+
+.ma-progression {
+  margin: auto;
+  margin-top: 30px;
+  background-color:white;
+
+}
+
+.progress {
+  margin-bottom: 30px;
+  position: relative;
+  height: 30px;
+  border-radius: 5px;
+  border:solid 1px black;
+}
+
+.progress-label {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  font-weight: bold;
+
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.progress-value {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-weight: bold;
+}
+/* CSS pour la section "Niveau actuel et statistiques" */
+.niveau-statistiques {
+  border-left: 1px solid #4169E1;
+}
+
+/* Style pour le titre "Ma progression" */
+.titre-ma-progression {
+  margin:auto;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  color: #4169E1;
+
+}
+
+/* Style pour le sous-titre "Niveau actuel et statistiques" */
+.sous-titre-progression {
+  text-align: center;
+  color: #4169E1;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Style pour le paragraphe de la progression */
+.progression-paragraphe {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4169E1;
+  font-size: 1.5rem;
+}
+
+/* Style pour la liste des statistiques */
+.liste-progression {
+  list-style-type: none;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+}
+
+/* Style pour chaque élément de la liste */
+/* Style pour chaque élément de la liste */
+.item-progression {
+  width: 40%;
+  margin:auto;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-image: linear-gradient(to right, #4a90e2, #63c2ff);
+  padding: 10px;
+  color: white;
+}
+/* Style pour le popup modale */
+.modal {
+  display: none; /* Par défaut, le popup est masqué */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour couvrir le reste de la page */
+}
+
+/* Style pour le contenu du popup */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+/* Style pour le bouton de fermeture */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style pour le bouton OK */
+button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
 
 
 

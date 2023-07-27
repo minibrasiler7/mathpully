@@ -1,10 +1,7 @@
 .titre_compte{
 margin-top:70px;
-
 }
-
 #search-results {
-    z-index: 9999;
     height: auto;
     min-height: 50px;
     overflow-y: auto;
@@ -15,3 +12,26 @@ margin-top:70px;
     background-color: #ff7f7f;
     color: white;
 }
+#demande_eleve{
+    text-decoration:none;
+}
+#info-compte {
+    margin-top:70px;
+}
+
+/* Appliquer une taille de police et une marge pour l'username et le niveau */
+.info-username,
+.info-niveau {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* Appliquer des styles pour centrer l'image de manière horizontale et verticale */
+.info-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ .bw-image {
+      filter: grayscale(100%);
+    }
