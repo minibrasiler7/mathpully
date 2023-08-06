@@ -261,8 +261,18 @@ Différents_type_de_fonctions = {
     "theme": "FA",
     "name": "differents_type_de_fonctions",
     "nom": "Différents type de fonctions",
-    "body": "",
-    "exemple":"",
+    "body": "<p>Une fonction est dite constante si elle a toujours la même valeur pour toutes les valeurs de x. Par exemple, la fonction f(x) = 3 est une fonction constante, car elle renvoie toujours 3 pour n'importe quelle valeur de x. </p> <p> Graphique d’une fonction constante: f (x) = 5 </p> <img src='static/images/fonction_constante.png'>",
+    "exemple":"f(x)=3; g(x)=-5; h(x)=\( \\pi \)",
+    "body2": "<p>une fonction est dite linéaire si elle est de la forme f(x) = ax, où « a » est une constante. Une fonction linéaire passera toujours par l’origine.</p> <p>Les fonctions linéaires ont une pente constante, ce qui signifie que leur graphique est une droite. Par exemple, la fonction f(x) = 2x est une fonction linéaire, car elle est de la forme y = ax avec a = 2.</p><p>On nomme « a » la pente de la fonction ou coefficient de proportionnalité pour les fonctions linéaireS. Elle indique de combien on augmente ou on diminue sur l’axe des y à chaque fois qu’on avance d’une unité sur l’axe des x.</p><p>Si a est positif alors cela veut dire que la fonction monte de gauche à droite. Si a est négatif alors la fonction descend de gauche à droite.</p><p>Si a vaut 0 alors c’est une fonction constante.</p><p>Pour trouver la pente d’une fonction on a besoin des coordonnées de deux de ses points. On utilise la formule suivante pour calculer la pente :</p> <p> $$ \\frac{y_2-y_1}{x_2-x_1}=a $$ avec $$ x_2>x_1 $$ </p><img src='static/images/fonction_linéaire.png'>",
+    "exemple2":"f(x)=2x; g(x)=-3x; h(x)=\( \\pi \)x",
+    "body3": "<p>Une fonction est dite affine si elle est de la forme y = ax + b, où a et b sont des constantes. Les fonctions affines sont similaires aux fonctions linéaires sauf qu’elles ne passent par par l’origine sauf au cas ou b=0.</p><p>La constante « a » se nomme la pente de la fonction et se calcule de la même manière que vue précédemment (voir fonction linéaire).</p><p>La constante « b » se nomme l’ordonnée à l’origine. On peut la trouver facilement. Il suffit de regarder ou la fonction coupe l’axe des ordonnées (y).</p><img src='static/images/fonction_affine.png'>",
+    "exemple3":"f(x)=-x+3; g(x)=3x-5; h(x)=\( \\pi \)x-7.5",
+    "body4": "<p>Une fonction est dite quadratique si elle est de la forme \(y = ax^2 + bx + c \), où a, b et c sont des constantes. Les fonctions quadratiques ont une courbe en forme de parabole. Par exemple, la fonction \( f(x) = x^2 + 2x + 1 \) est une fonction quadratique, car elle est de la forme y = ax2 + bx + c avec a = 1, b = 2 et c = 1.</p><p>Selon la valeur de la constante a, une fonction quadratique peut avoir deux formes différentes :</p><ul><li>Si la constante a est positive, la parabole a une forme en V qui s'ouvre vers le haut.</li><li>Si la constante a est négative, la parabole a une forme en A qui s'ouvre vers le bas.</li></ul><p>Dans les deux cas, la parabole peut avoir un maximum ou un minimum, selon la valeur de a. Par exemple, si a est positif, la parabole aura un minimum, et si a est négatif, elle aura un maximum</p><img src='static/images/fonction_quadratique.png'>",
+    "exemple4":"\(f(x)=-x^2+2x-2\); \(g(x)=3x^2\); h(x)=\( \\pi x^2-x\)",
+    "body5": "<p>Une fonction est dite cubique si elle est de la forme y = \(ax^3 + bx^2 + cx + d\), où a, b, c et d sont des constantes</p><img src='static/images/fonction_cubique.png'>",
+    "exemple5":"\(f(x)=-x^3+x-2\); \(g(x)=-2x^3 \); h(x)=\( \\pi x^3+2x^2+2x-1\)",
+    "body6": "<p>Une fonction homographique est une fonction mathématique qui est définie par une équation de la forme \(y = f(x) = \\frac{a}{x} \). Cette fonction a une forme en S qui ressemble à une hyperbole. Elle n’est pas défini pour x = 0 car la division par 0 est impossible.</p><img src='static/images/fonction_homographique.png'>",
+    "exemple6":"\(f(x)=\\frac{3}{x} \); \(g(x)=\\frac{-5}{x} \); h(x)=\( \\frac{\\pi}{x} \)",
     "type":"graphique",
     "questions": "generer_reconnaissance_fonction",
     "method": "aucune",
@@ -278,7 +288,8 @@ Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degr
     "body": "",
     "exemple":"",
     "type":"question",
-    "questions": "generer_trouver_par_evaluation",
+    "questions": "generer_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degré",
+    "message_aide":["Ecris ta fonction tu peux écrire soit f(x)=3x+2 ou seulement 3x+2 par exemple" ],
     "method": "aucune",
     "badge": bdg[18]
 }
@@ -291,7 +302,8 @@ Trouver_l_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_2ème_degré
     "body": "",
     "exemple":"",
     "type":"question",
-    "questions": "generer_trouver_par_evaluation",
+    "questions": "generer_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_deuxième_degré",
+    "message_aide":["Ecris ta fonction tu peux écrire soit f(x)=3x+2 ou seulement 3x+2 par exemple" ],
     "method": "aucune",
     "badge": bdg[19]
 }
@@ -303,8 +315,9 @@ Trouver_l_expression_fonctionnelle_à_partir_d_un_graphique_premier_degré = {
     "nom": "Trouver l'expression fonctionnelle à partir d'un graphique premier degré",
     "body": "",
     "exemple":"",
-    "type":"question",
-    "questions": "generer_trouver_par_evaluation",
+    "type":"graphique",
+    "questions": "generer_trouver_fonction_premier_degre_avec_graphique",
+    "message_aide":["Ecris ta fonction tu peux écrire soit f(x)=3x+2 ou seulement 3x+2 par exemple" ],
     "method": "aucune",
     "badge": bdg[20]
 }
@@ -315,8 +328,8 @@ Dessiner_le_graphe_d_une_fonction_du_premier_degré = {
     "nom": "Dessiner le graphe d'une fonction du premier degré",
     "body": "",
     "exemple":"",
-    "type":"question",
-    "questions": "generer_trouver_par_evaluation",
+    "type":"dessiner_graphique",
+    "questions": "generer_dessiner_le_graphe_d_une_fonction_du_premier_degré",
     "method": "aucune",
     "badge": bdg[21]
 }

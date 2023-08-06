@@ -78,6 +78,24 @@
         <h4 class="section_chapitre_exemple">Exemple 4</h4>
         <p class="exemple_chapitre_body">{{point.exemple4|safe}}</p>
         {% endif %}
+        {% if 'body5' in point %}
+        <br>
+         <h4 class="section_chapitre_theorie">Théorie 5</h4>
+        <p class="section_chapitre_body">{{point.body5|safe}}</p>
+        {% endif %}
+        {% if 'exemple5' in point %}
+        <h4 class="section_chapitre_exemple">Exemple 5</h4>
+        <p class="exemple_chapitre_body">{{point.exemple5|safe}}</p>
+        {% endif %}
+        {% if 'body6' in point %}
+        <br>
+         <h4 class="section_chapitre_theorie">Théorie 6</h4>
+        <p class="section_chapitre_body">{{point.body6|safe}}</p>
+        {% endif %}
+        {% if 'exemple6' in point %}
+        <h4 class="section_chapitre_exemple">Exemple 6</h4>
+        <p class="exemple_chapitre_body">{{point.exemple6|safe}}</p>
+        {% endif %}
         {% include 'exercice_theorie.html' %}
     </section>
     {% endfor %}

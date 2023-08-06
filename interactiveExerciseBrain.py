@@ -1229,14 +1229,169 @@ def generer_reconnaissance_fonction():
 
 
 
+def generer_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_premier_degré():
+    saut_x = random.randint(1,4)
+    expression = generer_expression_degre_1()
+    exp2= expressionlitteral.Expression_litteral(expression)
+    liste_possible_fonction = générer_liste_combinaison_possible_polynome(exp2.dico_monome_without_distribution)
+    for i in range(len(liste_possible_fonction)):
+        liste_possible_fonction[i]= liste_possible_fonction[i].replace("^{1}","").replace(".0", "")
+        if liste_possible_fonction[i][0]=="+":
+            liste_possible_fonction[i] = liste_possible_fonction[i][1:]
+        liste_possible_fonction.append(f"f(x)={liste_possible_fonction[i]}")
+    print(liste_possible_fonction)
+    tableaux = []
+    tableauy= []
+    for i in range(1,8):
+        nouveaux = i*saut_x
+        nouveauy = evaluer_une_expression(expression, nouveaux)
+        tableaux.append(nouveaux)
+        tableauy.append(nouveauy)
+    chaine = "<table class='table table-bordered table-dark'><tbody><tr><td>x</td>"
+    for i in range(len(tableaux)):
+        chaine+= f"<td>{tableaux[i]}</td>"
+    chaine += "</tr><tr><td>f(x)</td>"
+    for i in range(len(tableauy)):
+        chaine+= f"<td>{tableauy[i]}</td>"
+    chaine += "</tr></tbody</table>"
+    question = {
+        "question": f"Quelle est la fonction représentée dans le tableau ci-dessous?<br> {chaine}",
+        "answer":liste_possible_fonction,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+
+def generer_expression_fonctionnelle_à_partir_d_un_tableau_de_valeur_deuxième_degré():
+    a = random.randint(1,9)
+    if signe_aleatoire()=="-":
+        a= -a
+    b= random.randint(1,9)
+    if signe_aleatoire()=="-":
+        b=-b
+    else:
+        b=f"+{b}"
+    c = random.randint(1,9)
+    if signe_aleatoire() == "-":
+        c = -c
+    else:
+        c = f"+{c}"
+    expression = str(a)+"x^2"+str(b)+"x"+str(c)
+    expression2 = str(a)+"x^{2}"+str(b)+"x^{1}"+str(c)
+    print(expression)
+    exp2= expressionlitteral.Expression_litteral(expression2)
+    liste_possible_fonction = générer_liste_combinaison_possible_polynome(exp2.dico_monome_without_distribution)
+    for i in range(len(liste_possible_fonction)):
+        liste_possible_fonction[i]= liste_possible_fonction[i].replace("^1","").replace(".0", "")
+        if liste_possible_fonction[i][0]=="+":
+            liste_possible_fonction[i] = liste_possible_fonction[i][1:]
+        liste_possible_fonction.append(f"f(x)={liste_possible_fonction[i]}")
+    print(liste_possible_fonction)
+    tableaux = []
+    tableauy= []
+    for i in range(1,8):
+        nouveaux = i
+        nouveauy = evaluer_une_expression(expression, nouveaux)
+        tableaux.append(nouveaux)
+        tableauy.append(nouveauy)
+    chaine = "<table class='table table-bordered table-dark'><tbody><tr><td>x</td>"
+    for i in range(len(tableaux)):
+        chaine+= f"<td>{tableaux[i]}</td>"
+    chaine += "</tr><tr><td>f(x)</td>"
+    for i in range(len(tableauy)):
+        chaine+= f"<td>{tableauy[i]}</td>"
+    chaine += "</tr></tbody</table>"
+    question = {
+        "question": f"Quelle est la fonction représentée dans le tableau ci-dessous?<br> {chaine}",
+        "answer":liste_possible_fonction,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+
+def transformer_nombre_en_chaine_avec_signe(coeff):
+    if coeff==0:
+        return ""
+    elif coeff>0:
+        return f"+{coeff}"
+    else:
+        return f"{coeff}"
+def generer_trouver_fonction_premier_degre_avec_graphique():
+
+    dico_coeff = créer_dico_degré_1()
+    coeff_1 = dico_coeff["x^{1}"]
+    coeff_0 = dico_coeff[""]
+    solution = []
+    if coeff_1 !=0 and coeff_0!=0:
+        solution.append(f"{transformer_nombre_en_chaine_avec_signe(coeff_1)}x{transformer_nombre_en_chaine_avec_signe(coeff_0)}")
+        solution.append(f"{transformer_nombre_en_chaine_avec_signe(coeff_0)}{transformer_nombre_en_chaine_avec_signe(coeff_1)}x")
+    else:
+        if coeff_1 == 0:
+            solution.append(str(coeff_0))
+        elif coeff_0== 0:
+            solution.append(f"{coeff_1}x")
+
+    for i in range(len(solution)):
+        if solution[i][0] == "+":
+            solution[i] = solution[i][1:]
+        solution.append(f"f(x)={solution[i]}")
+
+    question = {
+        "question": f"Quelle est le type de la fonction représentée ci-dessous?",
+        "fonctions":[dico_coeff, {}],
+        "answer": solution,
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
+def créer_dico_degré_1():
+    coeff_0 = random.randint(-5, 5)
+    coeff_1 = random.randint(-5, 5)
+    chaine_0=""
+    chaine_1=""
+    while coeff_0==0 and coeff_1==0:
+        coeff_0 = random.randint(-5, 5)
+        coeff_1 = random.randint(-5, 5)
+    dico_coeff = {"": coeff_0, "x^{1}": coeff_1}
+    return dico_coeff
+
+
+def generer_dessiner_le_graphe_d_une_fonction_du_premier_degré():
+    solution = créer_dico_degré_1()
+    coeff_1 = solution["x^{1}"]
+    coeff_0 = solution[""]
+
+    if coeff_1 !=0 and coeff_0!=0:
+        chaine_fonction = f"{transformer_nombre_en_chaine_avec_signe(coeff_1)}x{transformer_nombre_en_chaine_avec_signe(coeff_0)}"
+    else:
+        if coeff_1 == 0:
+            chaine_fonction = (str(coeff_0))
+        elif coeff_0== 0:
+            chaine_fonction = f"{coeff_1}x"
+    if chaine_fonction[0] == "+":
+        chaine_fonction = chaine_fonction[1:]
+
+    question = {
+        "question": f"Représente la fonction f(x)={chaine_fonction}",
+        "answer": [coeff_1, coeff_0],
+        "feedback": random.choice(congratulations_messages),
+        "feedbackClass": "text-success",
+        "methods": ["enlever_espace"]}
+    return question
 
 
 
 
 
+    print(generer_expression_degre_1())
 
 
 
+
+expression = generer_trouver_fonction_premier_degre_avec_graphique()
+
+
+print(expression)
 
 
 

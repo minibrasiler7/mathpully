@@ -311,84 +311,90 @@ FA177_11H = {'titre': 'FA177',
 ##
 Que_sais_je_p_77_11H = {'titre': 'Que sais-je p.77',
                         'annee': '11H',
-                        'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-                        'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-                        'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-                        "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+                        'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Le plus simplement possible veut dire sous forme réduite'],
+                        'donnee': [["a) pour A si x=10 :", "a) pour B si x=10 :", "a) pour C si x=10: ", "b) pour A si x=-3 :", "b) pour B si x=-3 :", "b) pour C si x=-3: ",],["a)", "b)", "c)", "d)", "e)", "f)", "g)", "h)", "i)", "j)"],["3."],["4. Périmètre = ", "4. Aire = "]],
+                        'reponses': [[["100"],["190"], ["-105"], ["9"], ["21"], ["12"]],[["x-7y+7","x+7-7y","-7y+x+7", "-7y+7+x", "7+x-7y", "7-7y+x"],["a^5"],["2x^2-2x","-2x+2x^2"],["-8b^6"], ["20x^2-18x", "-18x+20x^2"], ["48y"], ["-112xy"], ["10x^2+3xy-18y^2","10x^2-18y^2+3xy","3xy+10x^2-18y^2","3xy-18y^2+10x^2","-18y^2+10x^2+3xy","-18y^2+3xy+10x^2"],["7x-3y", "-3y+7x"], ["3x-9y", "-9y+3x"]],[["4x-45","-45+4x"]], [["14y+16", "16+14y"],["12y^2+26y+1","12y^2+1+26y","26y+12y^2+1","26y+1+12y^2","1+12y^2+26y","1+26y+12y^2"]]],
+                        "indices" : ["\( 2x+3x = 5x\) mais \( x^3 \\times x^2 = x^5\) ", "N'oublie pas d'effectuer la double distribution pour l'exercice 4 pour l'aire", "Exercice 3: 1er set = x, 2ème set = x-15, 3ème set = 2(x-15)"],
                         "image": "FA_exercice_image.png",
                         }
 
-
+##
 FA178_11H = {'titre': 'FA178',
             'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': [],
+            'donnee': [["a) si x=10 A=", "a) si x=10 B=", "a) si x=10 C=", "b) si x=-1 A=", "b) si x=-1 B=", "b) si x=-1 C="]],
+            'reponses': [[["300"],["-150"], ["50"], ["3"], ["-7"], ["11,5"]]],
+            "indices" : ["Attention à d'abord faire les carré avant de faire la multiplication", "\((-1)^2=1\)", "\( 3\\times 10^2 = 300\)"],
             "image": "FA_exercice_image.png",
             }
-
+##
 
 FA179_11H = {'titre': 'FA179', 'annee': '11H',
-                        'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-                        'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-                        'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-                        "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
-                        "image": "FA_exercice_image.png",
-                        }
-FA180_11H = {'titre': 'FA180',
-            'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)'],
+            'donnee': [["a)", "b)", "c)", "d)", "e)", "f)", "g)", "h)"]],
+            'reponses': [[["9a^4-8a^3","-8a^3+9a^4"],["11y+5","5+11y"], ["-30x+54","54-30x"], ["18y^2"], ["x^6y^3"], ["32x^5"], ["-8b^3"], ["16y^12"]]],
+            "indices" : ["Si tu soustrais les polynômes tu dois inverser tous les signes des termes de la parenthèse qui suit le signe -.", "N'oublie pas d'effectuer toutes les multiplications avant de commencer à réduire le monôme", "Transforme les puissances en multiplication : \((3x^2)^3 = 3x^2 \\times 3x^2 \\times 3x^2\)"],
             "image": "FA_exercice_image.png",
             }
+
+##
+
+FA180_11H = {'titre': 'FA180',
+            'annee': '11H',
+            'message_aide': ['réponds par juste ou faux', "Regarde les indices pour avoir plus d'informations sur les réponses"],
+            'donnee': [["a)", "b)", "c)", "d)", "e)"]],
+            'reponses': [[["faux"],["faux"], ["juste"], ["juste"], ["faux"]]],
+            "indices" : ["Pour la a) il faut faire la distributivité et on obtient \(15x+20\)", "b) Il y a une faute de signe on obtient : -10x+15", "e) On doit faire la double distributivité et on obtient \(x^2-47x-150\)"],
+            "image": "FA_exercice_image.png",
+            }
+##
 
 FA181_11H = {'titre': 'FA181',
             'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': ['Le plus simplement possible veut dire sous forme réduite'],
+            'donnee': [["a)", "b) séparé chaque nombre par un ; par exemple 5;7;43"]],
+            'reponses': [[["5p-144","-144+5p"], ["77;41;123", "77;123;41", "41;77;123", "41;123;77", "123;77;41","123;41;77"]]],
+            "indices" : ["Deuxième nombre : p-36", "Troisième nombre : 3(p-36)", "N'oublie pas de faire la distribution du troisième nombre"],
             "image": "FA_exercice_image.png",
             }
-
+##
 
 FA182_11H = {'titre': 'FA182',
             'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)'],
+            'donnee': [["Périmètre = ", "Aire = "]],
+            'reponses': [[["16+16", "16+16x"],["12x^2+24x+12","12x^2+12+24x","24x+12x^2+12","24x+12+12x^2","12+12x^2+24x","12+24x+12x^2"],]],
+            "indices" : ["La formule pour calculer l'aire d'un triangle est \( \\frac{base \\times hauteur}{2} \)", "Multiplie la base et la hauteur en effectuant la double distributivité puis divise par deux les coefficients de chaque monôme", "Pour trouver le périmètre il suffit d'additionner les 3 côtés"],
             "image": "FA_exercice_image.png",
             }
+##
+
 FA183_11H = {'titre': 'FA183',
             'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': ['Entre les valeurs pour les n demandé'],
+            'donnee': [["a)n=1", "a)n=4", "a)n=10",  "b)n=1", "b)n=4", "b)n=10", "c)n=1", "c)n=4", "c)n=10", "d)n=1", "d)n=4", "d)n=10"]],
+            'reponses': [[["1"],["10"], ["55"], ["1"],["30"],["385"],["1"], ["100"], ["3025"],["1"],["354"], ["25333"]]],
+            "indices" : ["Les formules sont bien exactes!", "Essaie de calculer la valeur de l'expression en utilisant la suite puis la formule pour vérifier si les deux correspondent", "Bien qu'elles soient exactes ce que tu viens de faire ne constitue pas une preuve. Il faudrait prouver pour tous les nombres quels qu'ils soient"],
             "image": "FA_exercice_image.png",
             }
 
-
+##
 FA184_11H = {'titre': 'FA184',
             'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une racine écris comme cela racine(3x+2) cela équivaut à \( \\sqrt{3x+2}\)'],
+            'donnee': [["a) Longueur de arêtes L=", "a) Aire totales de ses faces A=", "a) Volume V=", "a) Longueur maximale d'une tige"],["b) x=","b) longueur des arêtes", "b) Aire totale des faces"]],
+            'reponses': [[["4x+28","28+4x"],["14x+24", "24+14x"], ["12x"], ["racine(x^2+25)", "racine(25+x^2)"]],[["6"],["52"], ["108"]]],
+            "indices" : ["Chaque arête se retrouve 4 fois sur le pavé droit", "Pour calculer l'aire totale tu dois calculer l'aire de chaque face et additionner le tout", "La longueur de la plus grande tige correspond à la diagonale la plus grande du pavé droit. Tu dois utiliser Pythagore 2 fois pour la trouver"],
             "image": "FA_exercice_image.png",
             }
-
+##
 
 FA185_11H = {'titre': 'FA185',
             'annee': '11H',
-            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Pour écrire une fraction note le symbole / par exemple 3/2'],
-            'donnee': [["a)", "b)", "c)", "d)"],["Périmètre p=", "Aire A="],["a) Périmètre P=", "a) Aires A=", "b) Périmètre P=", "b) Aires A="],["a)","b)","c)","d)","e)","f)","g)"]],
-            'reponses': [[["3n"],["3/4z"], ["12x+28","28+12x"], ["12y+336", "336+12y"]],[["8x"],["4x^2"]],[["6y+50","50+6y"], ["75y"], ["80"],["375"]],[["5b"], ["25a"], ["c^3"], ["11y"], ["10d"], ["11x+9", "9+11x"], ["4x"]]],
-            "indices" : ["il faut d'abord faire les coefficients", "N'oublie pas de changer d'unité", "trouve les deux solutions"],
+            'message_aide': ['Si tu souhaites inscrire une puissance écrit le symbole ^ comme 3^2 (3 puissance 2)', 'Donne tes réponses sous forme réduite'],
+            'donnee': [["a)", "b)", "c)"]],
+            'reponses': [[["a^2-2ab","-2ab+a^2"],["a^2-ac","-ac+a^2"], ["a^2-d^2","-d^2+a^2"]]],
+            "indices" : ["N'oublie pas de distribuer quand cela est utile", "Un rectangle avec une largeur a et une longueur c a une aire de ac", "L'aire d'un parallélogramme est : \( base \\times hauteur \)"],
             "image": "FA_exercice_image.png",
             }
 
